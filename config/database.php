@@ -55,7 +55,7 @@ return [
         'mysql' => [
             'host' => 'localhost',
 			'driver'    => 'mysql',
-			'database'  => 'timf',
+			'database'  => 'cosociety',
 			'username'  => 'root',
 			'password'  => '',
 			'charset'   => 'utf8',

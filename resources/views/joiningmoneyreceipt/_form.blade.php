@@ -6,13 +6,50 @@
             <span id="name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-ProductCode-error">
-        {!! Form::label("ProductCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-JoiningmoneyreceiptCode-error">
+        {!! Form::label("JoiningmoneyreceiptCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("ProductCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="ProductCode-error" class="help-block"></span>
+            {!! Form::text("JoiningmoneyreceiptCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="JoiningmoneyreceiptCode-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-6" id="form-test12-error">
+        {!! Form::label("test12","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("test12",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="test12-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-test13-error">
+        {!! Form::label("test13","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("test13",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="test13-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-test14-error">
+        {!! Form::label("test14","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("test14",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="test14-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-test15-error">
+        {!! Form::label("test15","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("test15",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="test15-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-test16-error">
+        {!! Form::label("test16","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("test16",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="test16-error" class="help-block"></span>
+        </div>
+    </div>
+
+
     <div class="form-group required col-md-6" id="form-unitprice-error">
         {!! Form::label("unitprice","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -23,7 +60,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('product/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('joiningmoneyreceipt/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn

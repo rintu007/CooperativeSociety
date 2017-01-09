@@ -6,11 +6,11 @@
             <span id="name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-ProductCode-error">
-        {!! Form::label("ProductCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-LoanapplicationCode-error">
+        {!! Form::label("LoanapplicationCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("ProductCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="ProductCode-error" class="help-block"></span>
+            {!! Form::text("LoanapplicationCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="LoanapplicationCode-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-unitprice-error">
@@ -23,7 +23,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('product/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('loanapplication/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn

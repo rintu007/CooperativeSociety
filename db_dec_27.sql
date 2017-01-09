@@ -10,13 +10,73 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for timf
-DROP DATABASE IF EXISTS `timf`;
-CREATE DATABASE IF NOT EXISTS `timf` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `timf`;
+-- Dumping database structure for cosociety
+DROP DATABASE IF EXISTS `cosociety`;
+CREATE DATABASE IF NOT EXISTS `cosociety` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `cosociety`;
 
 
--- Dumping structure for table timf.blog_post
+-- Dumping structure for table cosociety.account_status
+DROP TABLE IF EXISTS `account_status`;
+CREATE TABLE IF NOT EXISTS `account_status` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `description` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.account_status: ~5 rows (approximately)
+DELETE FROM `account_status`;
+/*!40000 ALTER TABLE `account_status` DISABLE KEYS */;
+INSERT INTO `account_status` (`id`, `description`) VALUES
+	(1, 'Active'),
+	(2, 'Inactive'),
+	(3, 'Suspended'),
+	(4, 'Deactivated'),
+	(5, 'Blocked');
+/*!40000 ALTER TABLE `account_status` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.areas
+DROP TABLE IF EXISTS `areas`;
+CREATE TABLE IF NOT EXISTS `areas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `AreaCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.areas: ~0 rows (approximately)
+DELETE FROM `areas`;
+/*!40000 ALTER TABLE `areas` DISABLE KEYS */;
+INSERT INTO `areas` (`id`, `name`, `AreaCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-02 10:05:05', '2017-01-02 10:05:05');
+/*!40000 ALTER TABLE `areas` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.assets_debt_info
+DROP TABLE IF EXISTS `assets_debt_info`;
+CREATE TABLE IF NOT EXISTS `assets_debt_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `member_id` int(11) unsigned DEFAULT NULL,
+  `loan_id` int(11) unsigned DEFAULT NULL,
+  `type_id` int(11) unsigned DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `amount` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.assets_debt_info: ~0 rows (approximately)
+DELETE FROM `assets_debt_info`;
+/*!40000 ALTER TABLE `assets_debt_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `assets_debt_info` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.blog_post
 DROP TABLE IF EXISTS `blog_post`;
 CREATE TABLE IF NOT EXISTS `blog_post` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -27,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `blog_post` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.blog_post: ~0 rows (approximately)
+-- Dumping data for table cosociety.blog_post: ~0 rows (approximately)
 DELETE FROM `blog_post`;
 /*!40000 ALTER TABLE `blog_post` DISABLE KEYS */;
 INSERT INTO `blog_post` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES
@@ -35,9 +95,251 @@ INSERT INTO `blog_post` (`id`, `title`, `description`, `created_at`, `updated_at
 /*!40000 ALTER TABLE `blog_post` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.graces
+-- Dumping structure for table cosociety.brns
+DROP TABLE IF EXISTS `brns`;
+CREATE TABLE IF NOT EXISTS `brns` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `BrnCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.brns: ~0 rows (approximately)
+DELETE FROM `brns`;
+/*!40000 ALTER TABLE `brns` DISABLE KEYS */;
+INSERT INTO `brns` (`id`, `name`, `BrnCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 05:16:26', '2017-01-03 05:16:26');
+/*!40000 ALTER TABLE `brns` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.business_types
+DROP TABLE IF EXISTS `business_types`;
+CREATE TABLE IF NOT EXISTS `business_types` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.business_types: ~2 rows (approximately)
+DELETE FROM `business_types`;
+/*!40000 ALTER TABLE `business_types` DISABLE KEYS */;
+INSERT INTO `business_types` (`id`, `name`) VALUES
+	(1, 'OwnerShip'),
+	(2, 'PartnerShip');
+/*!40000 ALTER TABLE `business_types` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.cashinflows
+DROP TABLE IF EXISTS `cashinflows`;
+CREATE TABLE IF NOT EXISTS `cashinflows` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `CashinflowCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.cashinflows: ~0 rows (approximately)
+DELETE FROM `cashinflows`;
+/*!40000 ALTER TABLE `cashinflows` DISABLE KEYS */;
+INSERT INTO `cashinflows` (`id`, `name`, `CashinflowCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 04:08:12', '2017-01-03 04:08:12');
+/*!40000 ALTER TABLE `cashinflows` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.cashoutflows
+DROP TABLE IF EXISTS `cashoutflows`;
+CREATE TABLE IF NOT EXISTS `cashoutflows` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `CashoutflowCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.cashoutflows: ~0 rows (approximately)
+DELETE FROM `cashoutflows`;
+/*!40000 ALTER TABLE `cashoutflows` DISABLE KEYS */;
+INSERT INTO `cashoutflows` (`id`, `name`, `CashoutflowCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 04:13:40', '2017-01-03 04:13:40');
+/*!40000 ALTER TABLE `cashoutflows` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.cash_inflow
+DROP TABLE IF EXISTS `cash_inflow`;
+CREATE TABLE IF NOT EXISTS `cash_inflow` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.cash_inflow: ~2 rows (approximately)
+DELETE FROM `cash_inflow`;
+/*!40000 ALTER TABLE `cash_inflow` DISABLE KEYS */;
+INSERT INTO `cash_inflow` (`id`, `name`, `description`) VALUES
+	(1, 'test', 'test'),
+	(2, ' member', 'test Member');
+/*!40000 ALTER TABLE `cash_inflow` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.cash_outflow
+DROP TABLE IF EXISTS `cash_outflow`;
+CREATE TABLE IF NOT EXISTS `cash_outflow` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.cash_outflow: ~2 rows (approximately)
+DELETE FROM `cash_outflow`;
+/*!40000 ALTER TABLE `cash_outflow` DISABLE KEYS */;
+INSERT INTO `cash_outflow` (`id`, `name`, `description`) VALUES
+	(1, 'test', 'test'),
+	(2, ' member', 'test Member');
+/*!40000 ALTER TABLE `cash_outflow` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.countrs
+DROP TABLE IF EXISTS `countrs`;
+CREATE TABLE IF NOT EXISTS `countrs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `CountrCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.countrs: ~0 rows (approximately)
+DELETE FROM `countrs`;
+/*!40000 ALTER TABLE `countrs` DISABLE KEYS */;
+INSERT INTO `countrs` (`id`, `name`, `CountrCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 05:20:40', '2017-01-03 05:20:40');
+/*!40000 ALTER TABLE `countrs` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.departments
+DROP TABLE IF EXISTS `departments`;
+CREATE TABLE IF NOT EXISTS `departments` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.departments: ~2 rows (approximately)
+DELETE FROM `departments`;
+/*!40000 ALTER TABLE `departments` DISABLE KEYS */;
+INSERT INTO `departments` (`id`, `name`) VALUES
+	(1, 'TMMS-ICT'),
+	(2, 'TMMS-Account');
+/*!40000 ALTER TABLE `departments` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.districts
+DROP TABLE IF EXISTS `districts`;
+CREATE TABLE IF NOT EXISTS `districts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `DistrictCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.districts: ~0 rows (approximately)
+DELETE FROM `districts`;
+/*!40000 ALTER TABLE `districts` DISABLE KEYS */;
+INSERT INTO `districts` (`id`, `name`, `DistrictCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 05:09:39', '2017-01-03 05:09:39');
+/*!40000 ALTER TABLE `districts` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.divisions
+DROP TABLE IF EXISTS `divisions`;
+CREATE TABLE IF NOT EXISTS `divisions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `DivisionCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.divisions: ~0 rows (approximately)
+DELETE FROM `divisions`;
+/*!40000 ALTER TABLE `divisions` DISABLE KEYS */;
+INSERT INTO `divisions` (`id`, `name`, `DivisionCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 04:44:37', '2017-01-03 04:44:37');
+/*!40000 ALTER TABLE `divisions` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.educations
+DROP TABLE IF EXISTS `educations`;
+CREATE TABLE IF NOT EXISTS `educations` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.educations: ~4 rows (approximately)
+DELETE FROM `educations`;
+/*!40000 ALTER TABLE `educations` DISABLE KEYS */;
+INSERT INTO `educations` (`id`, `name`) VALUES
+	(1, 'PSC'),
+	(2, 'JSC'),
+	(3, 'SSC'),
+	(4, 'HSC');
+/*!40000 ALTER TABLE `educations` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.graces
 DROP TABLE IF EXISTS `graces`;
 CREATE TABLE IF NOT EXISTS `graces` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `ProductCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` varchar(50) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.graces: ~0 rows (approximately)
+DELETE FROM `graces`;
+/*!40000 ALTER TABLE `graces` DISABLE KEYS */;
+INSERT INTO `graces` (`id`, `name`, `ProductCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, 'name1mo', NULL, NULL, '3.60', NULL, NULL);
+/*!40000 ALTER TABLE `graces` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.jamindars
+DROP TABLE IF EXISTS `jamindars`;
+CREATE TABLE IF NOT EXISTS `jamindars` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(500) DEFAULT NULL,
   `ProductCode` varchar(500) DEFAULT NULL,
@@ -46,17 +348,15 @@ CREATE TABLE IF NOT EXISTS `graces` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.graces: ~1 rows (approximately)
-DELETE FROM `graces`;
-/*!40000 ALTER TABLE `graces` DISABLE KEYS */;
-INSERT INTO `graces` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
-	(1, 'name1mo', NULL, 3.60, NULL, '2016-12-26 05:14:56');
-/*!40000 ALTER TABLE `graces` ENABLE KEYS */;
+-- Dumping data for table cosociety.jamindars: ~0 rows (approximately)
+DELETE FROM `jamindars`;
+/*!40000 ALTER TABLE `jamindars` DISABLE KEYS */;
+/*!40000 ALTER TABLE `jamindars` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.loans
+-- Dumping structure for table cosociety.loans
 DROP TABLE IF EXISTS `loans`;
 CREATE TABLE IF NOT EXISTS `loans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -69,7 +369,7 @@ CREATE TABLE IF NOT EXISTS `loans` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.loans: ~1 rows (approximately)
+-- Dumping data for table cosociety.loans: ~0 rows (approximately)
 DELETE FROM `loans`;
 /*!40000 ALTER TABLE `loans` DISABLE KEYS */;
 INSERT INTO `loans` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -77,7 +377,7 @@ INSERT INTO `loans` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `up
 /*!40000 ALTER TABLE `loans` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.members
+-- Dumping structure for table cosociety.members
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -90,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.members: ~1 rows (approximately)
+-- Dumping data for table cosociety.members: ~0 rows (approximately)
 DELETE FROM `members`;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
 INSERT INTO `members` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -98,14 +398,14 @@ INSERT INTO `members` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.migrations
+-- Dumping structure for table cosociety.migrations
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.migrations: ~6 rows (approximately)
+-- Dumping data for table cosociety.migrations: ~6 rows (approximately)
 DELETE FROM `migrations`;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
@@ -118,7 +418,7 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.organizations
+-- Dumping structure for table cosociety.organizations
 DROP TABLE IF EXISTS `organizations`;
 CREATE TABLE IF NOT EXISTS `organizations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -131,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `organizations` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.organizations: ~0 rows (approximately)
+-- Dumping data for table cosociety.organizations: ~0 rows (approximately)
 DELETE FROM `organizations`;
 /*!40000 ALTER TABLE `organizations` DISABLE KEYS */;
 INSERT INTO `organizations` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -139,7 +439,7 @@ INSERT INTO `organizations` (`id`, `name`, `ProductCode`, `unitprice`, `created_
 /*!40000 ALTER TABLE `organizations` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.password_resets
+-- Dumping structure for table cosociety.password_resets
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -149,13 +449,13 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
   KEY `password_resets_token_index` (`token`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.password_resets: ~0 rows (approximately)
+-- Dumping data for table cosociety.password_resets: ~0 rows (approximately)
 DELETE FROM `password_resets`;
 /*!40000 ALTER TABLE `password_resets` DISABLE KEYS */;
 /*!40000 ALTER TABLE `password_resets` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.posts
+-- Dumping structure for table cosociety.posts
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -167,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   KEY `posts_user_id_index` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=501 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.posts: ~500 rows (approximately)
+-- Dumping data for table cosociety.posts: ~500 rows (approximately)
 DELETE FROM `posts`;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
 INSERT INTO `posts` (`id`, `user_id`, `title`, `created_at`, `updated_at`) VALUES
@@ -674,7 +974,7 @@ INSERT INTO `posts` (`id`, `user_id`, `title`, `created_at`, `updated_at`) VALUE
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.products
+-- Dumping structure for table cosociety.products
 DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -685,40 +985,19 @@ CREATE TABLE IF NOT EXISTS `products` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   FULLTEXT KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.products: ~23 rows (approximately)
+-- Dumping data for table cosociety.products: ~2 rows (approximately)
 DELETE FROM `products`;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
 INSERT INTO `products` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
-	(1, 'name1mo', NULL, 3.60, NULL, '2016-12-26 05:14:56'),
-	(2, 'name2', NULL, 4.00, NULL, NULL),
-	(3, 'name3', NULL, 4.00, NULL, NULL),
-	(4, 'name4', NULL, 3.50, NULL, NULL),
-	(5, 'name5', NULL, 3.50, NULL, NULL),
-	(6, 'name6', NULL, 3.50, NULL, NULL),
-	(7, 'name7', NULL, 3.50, NULL, NULL),
-	(8, 'name8', NULL, 3.50, NULL, NULL),
-	(9, 'name9', NULL, 4.00, NULL, NULL),
-	(10, 'name10', NULL, 4.00, NULL, NULL),
-	(11, 'name11', NULL, 3.50, NULL, NULL),
-	(12, 'name12', NULL, 3.50, NULL, NULL),
-	(13, 'name13', NULL, 3.50, NULL, NULL),
-	(14, 'name14', NULL, 3.50, NULL, NULL),
-	(15, 'name15', NULL, 3.50, NULL, NULL),
-	(16, 'name16', NULL, 3.50, NULL, NULL),
-	(17, 'name17', NULL, 3.50, NULL, NULL),
-	(18, 'name18', NULL, 3.50, NULL, NULL),
-	(19, 'name19', NULL, 2.75, NULL, NULL),
-	(20, 'name20', NULL, 4.00, NULL, NULL),
-	(21, 'new product', NULL, 12.00, '2016-12-26 04:53:48', '2016-12-26 04:53:48'),
-	(22, '1212', NULL, 2121.00, '2016-12-26 04:55:26', '2016-12-26 04:55:26'),
-	(23, 'sa', NULL, 34.00, '2016-12-26 05:41:50', '2016-12-26 05:41:50'),
-	(24, '1', '2', 3.00, '2016-12-26 08:38:42', '2016-12-26 08:38:42');
+	(24, '1', '2', 3.00, '2016-12-26 08:38:42', '2016-12-26 08:38:42'),
+	(26, '9', '8', 7.00, '2017-01-07 03:56:09', '2017-01-07 03:56:09'),
+	(27, '8', '7', 6.00, '2017-01-07 03:56:15', '2017-01-07 03:56:15');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.purposes
+-- Dumping structure for table cosociety.purposes
 DROP TABLE IF EXISTS `purposes`;
 CREATE TABLE IF NOT EXISTS `purposes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -731,7 +1010,7 @@ CREATE TABLE IF NOT EXISTS `purposes` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- Dumping data for table timf.purposes: ~1 rows (approximately)
+-- Dumping data for table cosociety.purposes: ~0 rows (approximately)
 DELETE FROM `purposes`;
 /*!40000 ALTER TABLE `purposes` DISABLE KEYS */;
 INSERT INTO `purposes` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -739,7 +1018,7 @@ INSERT INTO `purposes` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, 
 /*!40000 ALTER TABLE `purposes` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.surveys
+-- Dumping structure for table cosociety.surveys
 DROP TABLE IF EXISTS `surveys`;
 CREATE TABLE IF NOT EXISTS `surveys` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -754,7 +1033,7 @@ CREATE TABLE IF NOT EXISTS `surveys` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.surveys: ~0 rows (approximately)
+-- Dumping data for table cosociety.surveys: ~0 rows (approximately)
 DELETE FROM `surveys`;
 /*!40000 ALTER TABLE `surveys` DISABLE KEYS */;
 INSERT INTO `surveys` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -762,7 +1041,7 @@ INSERT INTO `surveys` (`id`, `name`, `email`, `password`, `remember_token`, `cre
 /*!40000 ALTER TABLE `surveys` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.taggables
+-- Dumping structure for table cosociety.taggables
 DROP TABLE IF EXISTS `taggables`;
 CREATE TABLE IF NOT EXISTS `taggables` (
   `tag_id` int(10) unsigned NOT NULL,
@@ -771,7 +1050,7 @@ CREATE TABLE IF NOT EXISTS `taggables` (
   KEY `taggables_taggable_id_taggable_type_index` (`taggable_id`,`taggable_type`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.taggables: ~2,502 rows (approximately)
+-- Dumping data for table cosociety.taggables: ~2,502 rows (approximately)
 DELETE FROM `taggables`;
 /*!40000 ALTER TABLE `taggables` DISABLE KEYS */;
 INSERT INTO `taggables` (`tag_id`, `taggable_id`, `taggable_type`) VALUES
@@ -3280,7 +3559,7 @@ INSERT INTO `taggables` (`tag_id`, `taggable_id`, `taggable_type`) VALUES
 /*!40000 ALTER TABLE `taggables` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.tags
+-- Dumping structure for table cosociety.tags
 DROP TABLE IF EXISTS `tags`;
 CREATE TABLE IF NOT EXISTS `tags` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -3288,7 +3567,7 @@ CREATE TABLE IF NOT EXISTS `tags` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.tags: ~4 rows (approximately)
+-- Dumping data for table cosociety.tags: ~4 rows (approximately)
 DELETE FROM `tags`;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
 INSERT INTO `tags` (`id`, `name`) VALUES
@@ -3299,7 +3578,29 @@ INSERT INTO `tags` (`id`, `name`) VALUES
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.users
+-- Dumping structure for table cosociety.unions
+DROP TABLE IF EXISTS `unions`;
+CREATE TABLE IF NOT EXISTS `unions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `UnionCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.unions: ~0 rows (approximately)
+DELETE FROM `unions`;
+/*!40000 ALTER TABLE `unions` DISABLE KEYS */;
+INSERT INTO `unions` (`id`, `name`, `UnionCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-03 05:10:09', '2017-01-03 05:10:09');
+/*!40000 ALTER TABLE `unions` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.users
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -3314,7 +3615,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.users: ~500 rows (approximately)
+-- Dumping data for table cosociety.users: ~501 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -3822,7 +4123,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 
--- Dumping structure for table timf.user_post
+-- Dumping structure for table cosociety.user_post
 DROP TABLE IF EXISTS `user_post`;
 CREATE TABLE IF NOT EXISTS `user_post` (
   `user_id` int(10) unsigned NOT NULL,
@@ -3833,10 +4134,33 @@ CREATE TABLE IF NOT EXISTS `user_post` (
   CONSTRAINT `user_post_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table timf.user_post: ~0 rows (approximately)
+-- Dumping data for table cosociety.user_post: ~0 rows (approximately)
 DELETE FROM `user_post`;
 /*!40000 ALTER TABLE `user_post` DISABLE KEYS */;
 /*!40000 ALTER TABLE `user_post` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.zones
+DROP TABLE IF EXISTS `zones`;
+CREATE TABLE IF NOT EXISTS `zones` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `ZoneCode` varchar(500) DEFAULT NULL,
+  `testfield` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.zones: ~2 rows (approximately)
+DELETE FROM `zones`;
+/*!40000 ALTER TABLE `zones` DISABLE KEYS */;
+INSERT INTO `zones` (`id`, `name`, `ZoneCode`, `testfield`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(1, '1', '2', '3', 4.00, '2017-01-02 09:54:44', '2017-01-02 09:54:44'),
+	(2, '7', '8', '9', 8.00, '2017-01-03 04:40:20', '2017-01-03 04:40:20');
+/*!40000 ALTER TABLE `zones` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

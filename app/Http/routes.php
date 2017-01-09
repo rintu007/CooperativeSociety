@@ -31,6 +31,10 @@ Route::controllers([
     'services'   => 'ServiceController',
     'relation'   => 'RelationController',
     'product'   => 'ProductController',
+    'joiningmoneyreceipt'   => 'JoiningmoneyreceiptController',
+    'loanapplicationmoneyreceipt'   => 'LoanapplicationmoneyreceiptController',
+    'member'   => 'MemberController',
+    'loanapplication'   => 'LoanapplicationController',
 ]);
 
 Route::resource('users', 'UsersController');

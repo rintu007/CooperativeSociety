@@ -57,6 +57,7 @@
             <td align="center">{{$i++}}</td>
             <td>{{$product->name}}</td>
             <td>{{$product->ProductCode}}</td>
+            <td>{{$product->testfield}}</td>
             <td align="right">$ {{$product->unitprice}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
