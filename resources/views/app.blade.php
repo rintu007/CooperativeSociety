@@ -11,7 +11,7 @@
         <meta name="description" content="jQuery Datatables API for Laravel 4 and Laravel 5">
     @endif
 
-    <title>টিএমএসএস এমপ্লয়িজ কো-অপারেটিভ সোসাইটি লিঃ (TECSL)</title>
+    <title>টিএমএসএস এমপ্লয়িজ কো-অপারেটিভ সোসাইটি লিঃ (TECSLa)</title>
 
     <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/demo.css') }}" rel="stylesheet">
