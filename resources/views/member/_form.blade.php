@@ -1,4 +1,11 @@
 <div class="col-md-12">
+    <div class="form-group required col-md-12" id="form-MemberNameBangla-error">
+        {!! Form::label("MemberNameBangla","ব্যক্তিগত তথ্যঃ",["class"=>"control-label col-md-6"]) !!}
+        <div class="col-md-6">
+           <!--  {!! Form::text("MemberNameBangla",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="MemberNameBangla-error" class="help-block"></span> -->
+        </div>
+    </div>
     <div class="form-group required col-md-6" id="form-MemberNameBangla-error">
         {!! Form::label("MemberNameBangla","নাম(বাংলায়)",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
