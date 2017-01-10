@@ -129,12 +129,12 @@
                                     <!-- Nominee Part -->
 
     <div class="form-group required col-md-6" id="">
-        {!! Form::label("","নমিনীর তথ্য-১:",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("","নমিনীর তথ্য-১ঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
         </div>
     </div>
     <div class="form-group required col-md-6" id="">
-        {!! Form::label("","নমিনীর তথ্য-২:",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("","নমিনীর তথ্য-২ঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
         </div>
     </div>
