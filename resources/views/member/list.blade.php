@@ -32,19 +32,19 @@
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('member/list?field=MemberCode&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
-                Member Code
+            <a href="javascript:ajaxLoad('member/list?field=BanglaName&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
+                BanglaName
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='MemberCode'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('member_field')=='BanglaName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('member/list?field=unitprice&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('member/list?field=FatherName&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
+                FatherName
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='unitprice'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('member_field')=='FatherName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -56,9 +56,8 @@
         <tr>
             <td align="center">{{$i++}}</td>
             <td>{{$member->name}}</td>
-            <td>{{$member->MemberCode}}</td>
-            <td>{{$member->testfield}}</td>
-            <td align="right">$ {{$member->unitprice}}</td>
+            <td>{{$member->BanglaName}}</td>
+            <td align="right">$ {{$member->FatherName}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('member/update/{{$member->id}}')">

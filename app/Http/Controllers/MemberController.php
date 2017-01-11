@@ -57,9 +57,8 @@ class MemberController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "name" => "required|unique:members",
-            "MemberCode" => "required|unique:members",
-            "unitprice" => "required|numeric"
+            "CSMId" => "required|unique:members"
+            //"name" => "required|unique:members"
         ]);
         if ($validator->fails()) {
             return array(
@@ -68,9 +67,43 @@ class MemberController extends Controller
             );
         }
         $member = new Member();
-        $member->name = Input::get('name');
-        $member->MemberCode = Input::get('MemberCode');
-        $member->unitprice = Input::get('unitprice');
+        $member->CSMId              = Input::get('CSMId'); 
+        $member->BanglaName         = Input::get('BanglaName');
+        $member->name               = Input::get('name');
+        $member->FatherName         = Input::get('FatherName');
+        $member->MotherName         = Input::get('MotherName');
+        $member->HusbandWifeName    = Input::get('FatherName');
+        $member->Age                = Input::get('Age');
+        $member->Occupation         = Input::get('Occupation');
+        $member->Nationality        = Input::get('Nationality');
+        $member->NId                = Input::get('NId');
+        $member->PassportNo         = Input::get('PassportNo');
+        $member->TaxIdNo            = Input::get('TaxIdNo');
+        $member->Phone              = Input::get('Phone');
+        $member->Mobile             = Input::get('Mobile');
+        $member->PresentVillageName = Input::get('PresentVillageName');
+        $member->PresentPostOffice  = Input::get('PresentPostOffice');
+        $member->PresentUpojela     = Input::get('PresentUpojela');
+        $member->PresentJela        = Input::get('PresentJela');
+        $member->SPName             = Input::get('SPName');
+        $member->SPName2            = Input::get('SPName2');
+        $member->SPFatherName       = Input::get('SPFatherName');
+        $member->SPFatherName2      = Input::get('SPFatherName2');
+        $member->SPMotherName       = Input::get('SPMotherName');
+        $member->SPMotherName2      = Input::get('SPMotherName2');
+        $member->SPHusbanWifeName   = Input::get('SPHusbanWifeName');
+        $member->SPHusbanWifeName2  = Input::get('SPHusbanWifeName2');
+        $member->Relation           = Input::get('Relation');
+        $member->Relation2          = Input::get('Relation2');
+        $member->GivenPortion       = Input::get('GivenPortion');
+        $member->GivenPortion2      = Input::get('GivenPortion2');
+        $member->Image              = Input::get('Image');
+        $member->TMSSIdCard         = Input::get('TMSSIdCard');
+        $member->NIdImage           = Input::get('NIdImage');
+        $member->NomineeImage       = Input::get('NomineeImage');
+        $member->BirthCertificate   = Input::get('BirthCertificate');
+        $member->NomineeImage2      = Input::get('NomineeImage2');
+        $member->BirthCertificate2  = Input::get('BirthCertificate2');
         $member->save();
         return ['url' => 'member/list'];
     }

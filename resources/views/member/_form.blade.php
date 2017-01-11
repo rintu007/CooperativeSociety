@@ -1,52 +1,52 @@
 <div class="col-md-12">
-    <div class="form-group required col-md-12" id="form-MemberNameBangla-error">
-        {!! Form::label("MemberNameBangla","ব্যক্তিগত তথ্যঃ",["class"=>"control-label col-md-6"]) !!}
+    <div class="form-group required col-md-12" id="form-PersonalInformation-error">
+        {!! Form::label("PersonalInformation","ব্যক্তিগত তথ্যঃ",["class"=>"control-label col-md-6"]) !!}
         <div class="col-md-6">
           
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-MemberNameBangla-error">
-        {!! Form::label("MemberIdNumber","সদস্য নং",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-CSMId-error">
+        {!! Form::label("CSMId","সদস্য নং",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberIdNumber",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("CSMId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="CSMId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-BanglaName-error">
+        {!! Form::label("BanglaName","নাম(বাংলায়)",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("BanglaName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="MemberNameBangla-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-MemberNameBangla-error">
-        {!! Form::label("MemberNameBangla","নাম(বাংলায়)",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-name-error">
+        {!! Form::label("name","ইংরেজী বড় অক্ষরে ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberNameBangla",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberNameBangla-error" class="help-block"></span>
+            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-MemberNameEnglish-error">
-        {!! Form::label("MemberNameEnglish","ইংরেজী বড় অক্ষরে ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-FatherName-error">
+        {!! Form::label("FatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberNameEnglish",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberNameEnglish-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-MemberFatherName-error">
-        {!! Form::label("MemberFatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("MemberFatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberFatherName-error" class="help-block"></span>
+            {!! Form::text("FatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="FatherName-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-MemberFatherName-error">
-        {!! Form::label("MemberMotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-MotherName-error">
+        {!! Form::label("MotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberFatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberFatherName-error" class="help-block"></span>
+            {!! Form::text("MotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="MotherName-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-HasbandWifeName-error">
-        {!! Form::label("HasbandWifeName","স্বামী/ স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-HusbandWifeName-error">
+        {!! Form::label("HusbandWifeName","স্বামী/ স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("HasbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="HasbandWifeName-error" class="help-block"></span>
+            {!! Form::text("HusbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="HusbandWifeName-error" class="help-block"></span>
         </div>
     </div>
 
@@ -57,11 +57,11 @@
             <span id="Age-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Profession-error">
-        {!! Form::label("Profession","পেশা",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-Occupation-error">
+        {!! Form::label("Occupation","পেশা",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Profession",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Profession-error" class="help-block"></span>
+            {!! Form::text("Occupation",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Occupation-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-Nationality-error">
@@ -71,25 +71,25 @@
             <span id="Nationality-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Nid-error">
-        {!! Form::label("Nid","জাতীয় পরিচয় পত্র নং",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-NId-error">
+        {!! Form::label("NId","জাতীয় পরিচয় পত্র নং",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Nid",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Nid-error" class="help-block"></span>
+            {!! Form::text("NId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-PassportId-error">
-        {!! Form::label("PassportId","পাস্পর্ত নং যদি থাকে",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-PassportNo-error">
+        {!! Form::label("PassportNo","পাস্পর্ত নং যদি থাকে",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("PassportId",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PassportId-error" class="help-block"></span>
+            {!! Form::text("PassportNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PassportNo-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-IncomeTaxVerificationNo-error">
-        {!! Form::label("IncomeTaxVerificationNo","আয়কর সনাক্তকরণ নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-TaxIdNo-error">
+        {!! Form::label("TaxIdNo","আয়কর সনাক্তকরণ নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("IncomeTaxVerificationNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="IncomeTaxVerificationNo-error" class="help-block"></span>
+            {!! Form::text("TaxIdNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TaxIdNo-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-Phone-error">
@@ -114,32 +114,32 @@
            
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-VillageName-error">
-        {!! Form::label("VillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-PresentVillageName-error">
+        {!! Form::label("PresentVillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("VillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="VillageName-error" class="help-block"></span>
+            {!! Form::text("PresentVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PresentVillageName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-PostOffice-error">
-        {!! Form::label("PostOffice","ডাক",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-PresentPostOffice-error">
+        {!! Form::label("PresentPostOffice","ডাক",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("PostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PostOffice-error" class="help-block"></span>
+            {!! Form::text("PresentPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PresentPostOffice-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Upojela-error">
-        {!! Form::label("Upojela","উপজেলা",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-PresentUpojela-error">
+        {!! Form::label("PresentUpojela","উপজেলা",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Upojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Upojela-error" class="help-block"></span>
+            {!! Form::text("PresentUpojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PresentUpojela-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Jela-error">
-        {!! Form::label("Jela","জেলা",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-PresentJela-error">
+        {!! Form::label("PresentJela","জেলা",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Jela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Jela-error" class="help-block"></span>
+            {!! Form::text("PresentJela",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PresentJela-error" class="help-block"></span>
         </div>
     </div>
                                     <!-- Nominee Part -->
@@ -154,67 +154,67 @@
         <div class="col-md-6">
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-SelectedPersonName-error">
-        {!! Form::label("SelectedPersonName","মনোনীত ব্যক্তির নাম",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-SPName-error">
+        {!! Form::label("SPName","মনোনীত ব্যক্তির নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonName-error" class="help-block"></span>
+            {!! Form::text("SPName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-SelectedPersonName2-error">
-        {!! Form::label("SelectedPersonName2","মনোনীত ব্যক্তির নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-SPName2-error">
+        {!! Form::label("SPName2","মনোনীত ব্যক্তির নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonName2-error" class="help-block"></span>
+            {!! Form::text("SPName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-SelectedPersonFatherName-error">
-        {!! Form::label("SelectedPersonFatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-SPFatherName-error">
+        {!! Form::label("SPFatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonFatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonFatherName-error" class="help-block"></span>
+            {!! Form::text("SPFatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPFatherName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-SelectedPersonFatherName2-error">
-        {!! Form::label("SelectedPersonFatherName2","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-SPFatherName2-error">
+        {!! Form::label("SPName2","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonFatherName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonFatherName2-error" class="help-block"></span>
+            {!! Form::text("SPFatherName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPFatherName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SelectedPersonMotherName-error">
-        {!! Form::label("SelectedPersonMotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="SPMotherName-error">
+        {!! Form::label("SPMotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonMotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonMotherName-error" class="help-block"></span>
+            {!! Form::text("SPMotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPMotherName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SelectedPersonMotherName2-error">
-        {!! Form::label("SelectedPersonMotherName2","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="SPMotherName2-error">
+        {!! Form::label("SPMotherName2","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonMotherName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonMotherName2-error" class="help-block"></span>
+            {!! Form::text("SPMotherName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPMotherName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SelectedPersonHusbandWifeName">
-        {!! Form::label("SelectedPersonHusbandWifeName","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="SPHusbandWifeName">
+        {!! Form::label("SPHusbandWifeName","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonHusbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonHusbandWifeName-error" class="help-block"></span>
+            {!! Form::text("SPHusbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPHusbandWifeName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SelectedPersonHusbandWifeName2-error">
-        {!! Form::label("SelectedPersonHusbandWifeName2","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="SPHusbandWifeName2-error">
+        {!! Form::label("SPHusbandWifeName2","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("SelectedPersonHusbandWifeName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="SelectedPersonHusbandWifeName2-error" class="help-block"></span>
+            {!! Form::text("SPHusbandWifeName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SPHusbandWifeName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Relation1-error">
-        {!! Form::label("Relation1","সম্পর্ক",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-Relation-error">
+        {!! Form::label("Relation","সম্পর্ক",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Relation1",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Relation1-error" class="help-block"></span>
+            {!! Form::text("Relation",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Relation-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-Relation2-error">
@@ -236,6 +236,64 @@
         <div class="col-md-6">
             {!! Form::text("GivenPortion2",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="GivenPortion2-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-Image-error">
+        {!! Form::label("Image","ছবি সংযুক্তিঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+         
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-Image-error">
+        {!! Form::label("Image","সদস্যের ছবিঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("Image",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Image-error" class="help-block"></span>
+        </div>
+    </div>
+    
+    <div class="form-group required col-md-6" id="form-TMSSIdCard-error">
+        {!! Form::label("TMSSIdCard","সদস্যের টিএমএসএস আইডিঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("TMSSIdCard",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TMSSIdCard-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-NId-error">
+        {!! Form::label("NId","সদস্যের জাতীয় পরিচয়পত্রঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("NId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="NomineeImage-error">
+        {!! Form::label("NomineeImage","নমিনীর ছবি-১ঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("NomineeImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NomineeImage-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-BirthCertificate-error">
+        {!! Form::label("BirthCertificate","নমিনীর আইডি/জন্ম নিবন্ধনঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("BirthCertificate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="BirthCertificate-error" class="help-block"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group required col-md-6" id="NomineeImage2-error">
+        {!! Form::label("NomineeImage2","নমিনীর ছবি-২ঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("NomineeImage2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NomineeImage2-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-BirthCertificate-error">
+        {!! Form::label("BirthCertificate","নমিনীর আইডি/জন্ম নিবন্ধনঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("BirthCertificate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="BirthCertificate-error" class="help-block"></span>
         </div>
     </div>
 </div>
