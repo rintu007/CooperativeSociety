@@ -8,7 +8,7 @@
             <ul class="dropdown-menu">
                 <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
                 <li><a tabindex="-1" href="{{ url('/member') }}">Member Joining</a></li>
-                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Proposal</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanapplication') }}">Loan Proposal</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
