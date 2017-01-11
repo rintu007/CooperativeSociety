@@ -182,28 +182,28 @@
             <span id="SPFatherName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SPMotherName-error">
+    <div class="form-group required col-md-6" id="form-SPMotherName-error">
         {!! Form::label("SPMotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("SPMotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="SPMotherName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SPMotherName2-error">
+    <div class="form-group required col-md-6" id="form-SPMotherName2-error">
         {!! Form::label("SPMotherName2","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("SPMotherName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="SPMotherName2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SPHusbandWifeName">
+    <div class="form-group required col-md-6" id="form-SPHusbandWifeName">
         {!! Form::label("SPHusbandWifeName","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("SPHusbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="SPHusbandWifeName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="SPHusbandWifeName2-error">
+    <div class="form-group required col-md-6" id="form-SPHusbandWifeName2-error">
         {!! Form::label("SPHusbandWifeName2","স্বামী/স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("SPHusbandWifeName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -224,14 +224,14 @@
             <span id="Relation2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="GivenPortion-error">
+    <div class="form-group required col-md-6" id="form-GivenPortion-error">
         {!! Form::label("GivenPortion","অংশ (কত ভাগ)",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("GivenPortion",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="GivenPortion-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="GivenPortion2-error">
+    <div class="form-group required col-md-6" id="form-GivenPortion2-error">
         {!! Form::label("GivenPortion2","অংশ (কত ভাগ)",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("GivenPortion2",null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -259,14 +259,14 @@
             <span id="TMSSIdCard-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-NId-error">
-        {!! Form::label("NId","সদস্যের জাতীয় পরিচয়পত্রঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-NIdImage-error">
+        {!! Form::label("NIdImage","সদস্যের জাতীয় পরিচয়পত্রঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::file("NId",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="NId-error" class="help-block"></span>
+            {!! Form::file("NIdImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NIdImage-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="NomineeImage-error">
+    <div class="form-group required col-md-6" id="form-NomineeImage-error">
         {!! Form::label("NomineeImage","নমিনীর ছবি-১ঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::file("NomineeImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
@@ -282,18 +282,18 @@
     </div>
 
 
-    <div class="form-group required col-md-6" id="NomineeImage2-error">
+    <div class="form-group required col-md-6" id="form-NomineeImage2-error">
         {!! Form::label("NomineeImage2","নমিনীর ছবি-২ঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::file("NomineeImage2",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="NomineeImage2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-BirthCertificate-error">
-        {!! Form::label("BirthCertificate","নমিনীর আইডি/জন্ম নিবন্ধনঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-BirthCertificate2-error">
+        {!! Form::label("BirthCertificate2","নমিনীর আইডি/জন্ম নিবন্ধনঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::file("BirthCertificate",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BirthCertificate-error" class="help-block"></span>
+            {!! Form::file("BirthCertificate2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="BirthCertificate2-error" class="help-block"></span>
         </div>
     </div>
 </div>
