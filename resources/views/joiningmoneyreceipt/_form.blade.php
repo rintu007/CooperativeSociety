@@ -1,34 +1,55 @@
 <div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-name-error">
+    <div class="form-group required col-md-12" id="form-SerialNo-error">
+        {!! Form::label("SerialNo","Serial No",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-12">
+            {!! Form::text("SerialNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="SerialNo-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-12" id="form-CSMId-error">
+        {!! Form::label("CSMId","Member Id",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-12">
+            {!! Form::text("CSMId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="CSMId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-12" id="form-name-error">
         {!! Form::label("name","প্রোডাক্ট কোডঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
+        <div class="col-md-12">
             {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="name-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-JoiningmoneyreceiptCode-error">
+<!--     <div class="form-group required col-md-6" id="form-JoiningmoneyreceiptCode-error">
         {!! Form::label("JoiningmoneyreceiptCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("JoiningmoneyreceiptCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="JoiningmoneyreceiptCode-error" class="help-block"></span>
         </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-test12-error">
-        {!! Form::label("test12","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    </div> -->
+    <div class="form-group required col-md-6" id="form-Date-error">
+        {!! Form::label("Date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("test12",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="test12-error" class="help-block"></span>
+            {!! Form::text("Date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Date-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-test13-error">
-        {!! Form::label("test13","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-MobileNo-error">
+        {!! Form::label("MobileNo","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("test13",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="test13-error" class="help-block"></span>
+            {!! Form::text("MobileNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="MobileNo-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-test14-error">
-        {!! Form::label("test14","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-JoiningFormFee-error">
+        {!! Form::label("JoiningFormFee","Joining Form Fee",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("JoiningFormFee",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="JoiningFormFee-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-PassBookFee-error">
+        {!! Form::label("PassBookFee","Pass Book Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("test14",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="test14-error" class="help-block"></span>
