@@ -2,8 +2,14 @@
     <div class="form-group required col-md-12" id="form-MemberNameBangla-error">
         {!! Form::label("MemberNameBangla","ব্যক্তিগত তথ্যঃ",["class"=>"control-label col-md-6"]) !!}
         <div class="col-md-6">
-           <!--  {!! Form::text("MemberNameBangla",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberNameBangla-error" class="help-block"></span> -->
+          
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-MemberNameBangla-error">
+        {!! Form::label("MemberIdNumber","সদস্য নং",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("MemberIdNumber",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="MemberNameBangla-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-MemberNameBangla-error">
@@ -35,13 +41,7 @@
             <span id="MemberFatherName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-MemberPresentAddress-error">
-        {!! Form::label("MemberPresentAddress","বর্তমান ঠিকানা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("MemberPresentAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberPresentAddress-error" class="help-block"></span>
-        </div>
-    </div>
+
     <div class="form-group required col-md-6" id="form-HasbandWifeName-error">
         {!! Form::label("HasbandWifeName","স্বামী/ স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -49,34 +49,7 @@
             <span id="HasbandWifeName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-VillageName-error">
-        {!! Form::label("VillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("VillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="VillageName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-PostOffice-error">
-        {!! Form::label("PostOffice","ডাক",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("PostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PostOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Upojela-error">
-        {!! Form::label("Upojela","উপজেলা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Upojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Upojela-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Jela-error">
-        {!! Form::label("Jela","জেলা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Jela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Jela-error" class="help-block"></span>
-        </div>
-    </div>
+
     <div class="form-group required col-md-6" id="form-Age-error">
         {!! Form::label("Age","বয়স",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -131,6 +104,42 @@
         <div class="col-md-6">
             {!! Form::text("Mobile",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="Mobile-error" class="help-block"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group required col-md-12" id="form-MemberPresentAddress-error">
+        {!! Form::label("MemberPresentAddress","বর্তমান ঠিকানাঃ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+           
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-VillageName-error">
+        {!! Form::label("VillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("VillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="VillageName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-PostOffice-error">
+        {!! Form::label("PostOffice","ডাক",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("PostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PostOffice-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-Upojela-error">
+        {!! Form::label("Upojela","উপজেলা",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("Upojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Upojela-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-Jela-error">
+        {!! Form::label("Jela","জেলা",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("Jela",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="Jela-error" class="help-block"></span>
         </div>
     </div>
                                     <!-- Nominee Part -->
