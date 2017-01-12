@@ -15,6 +15,17 @@ DROP DATABASE IF EXISTS `cosociety`;
 CREATE DATABASE IF NOT EXISTS `cosociety` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `cosociety`;
 
+CREATE TABLE IF NOT EXISTS `loans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `ProductCode` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
 
 -- Dumping structure for table cosociety.account_status
 DROP TABLE IF EXISTS `account_status`;
