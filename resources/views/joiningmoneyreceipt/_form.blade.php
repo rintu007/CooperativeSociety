@@ -1,32 +1,25 @@
 <div class="col-md-12">
-    <div class="form-group required col-md-12" id="form-SerialNo-error">
+    <div class="form-group required col-md-6" id="form-SerialNo-error">
         {!! Form::label("SerialNo","Serial No",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-12">
+        <div class="col-md-6">
             {!! Form::text("SerialNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="SerialNo-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-CSMId-error">
-        {!! Form::label("CSMId","Member Id",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-12">
-            {!! Form::text("CSMId",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CSMId-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-12" id="form-name-error">
-        {!! Form::label("name","প্রোডাক্ট কোডঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-12">
+    <div class="form-group required col-md-6" id="form-name-error">
+        {!! Form::label("name","Name,["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
             {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="name-error" class="help-block"></span>
         </div>
     </div>
-<!--     <div class="form-group required col-md-6" id="form-JoiningmoneyreceiptCode-error">
-        {!! Form::label("JoiningmoneyreceiptCode","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-CSMId-error">
+        {!! Form::label("CSMId","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("JoiningmoneyreceiptCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="JoiningmoneyreceiptCode-error" class="help-block"></span>
+            {!! Form::text("CSMId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="CSMId-error" class="help-block"></span>
         </div>
-    </div> -->
+    </div>
     <div class="form-group required col-md-6" id="form-Date-error">
         {!! Form::label("Date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -35,7 +28,7 @@
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-MobileNo-error">
-        {!! Form::label("MobileNo","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("MobileNo","Mobile No",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("MobileNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="MobileNo-error" class="help-block"></span>
@@ -51,31 +44,29 @@
     <div class="form-group required col-md-6" id="form-PassBookFee-error">
         {!! Form::label("PassBookFee","Pass Book Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("test14",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="test14-error" class="help-block"></span>
+            {!! Form::text("PassBookFee",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="PassBookFee-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-test15-error">
-        {!! Form::label("test15","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-NoOfShare-error">
+        {!! Form::label("NoOfShare","No Of Share",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("test15",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="test15-error" class="help-block"></span>
+            {!! Form::text("NoOfShare",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="NoOfShare-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-test16-error">
-        {!! Form::label("test16","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-TotalShareAmount-error">
+        {!! Form::label("TotalShareAmount","Total Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("test16",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="test16-error" class="help-block"></span>
+            {!! Form::text("TotalShareAmount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TotalShareAmount-error" class="help-block"></span>
         </div>
     </div>
-
-
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","প্রোডাক্টের নামঃ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-TotalAmount-error">
+        {!! Form::label("TotalAmount","Total Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
+            {!! Form::text("TotalAmount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TotalAmount-error" class="help-block"></span>
         </div>
     </div>
 </div>

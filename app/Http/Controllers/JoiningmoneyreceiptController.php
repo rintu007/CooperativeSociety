@@ -26,13 +26,15 @@ class JoiningmoneyreceiptController extends Controller
 
     public function getUpdate($id)
     {
+        echo $id;
+        exit();
         return view('joiningmoneyreceipt.update', ['joiningmoneyreceipt' => Joiningmoneyreceipt::find($id)]);
     }
 
     public function postUpdate($id)
     {
         $joiningmoneyreceipt = Joiningmoneyreceipt::find($id);
-        $rules = ["unitprice" => "required|numeric"];
+        // $rules = ["unitprice" => "required|numeric"];
         if ($joiningmoneyreceipt->name != Input::get('name'))
             $rules += ['name' => 'required|unique:joiningmoneyreceipts'];
         $validator = Validator::make(Input::all(), $rules);
@@ -42,14 +44,10 @@ class JoiningmoneyreceiptController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
+        $joiningmoneyreceipt->name = Input::get('CSMId');
         $joiningmoneyreceipt->name = Input::get('name');
-        $joiningmoneyreceipt->JoiningmoneyreceiptCode = Input::get('JoiningmoneyreceiptCode');
-        $joiningmoneyreceipt->test12 = Input::get('test12');
-        $joiningmoneyreceipt->test13 = Input::get('test13');
-        $joiningmoneyreceipt->test14 = Input::get('test14');
-        $joiningmoneyreceipt->test15 = Input::get('test15');
-        $joiningmoneyreceipt->test16 = Input::get('test16');
-        $joiningmoneyreceipt->unitprice = Input::get('unitprice');
+        $joiningmoneyreceipt->NoOfShare = Input::get('NoOfShare');
+        $joiningmoneyreceipt->ShareAmount = Input::get('ShareAmount');
         $joiningmoneyreceipt->save();
         return ['url' => 'joiningmoneyreceipt/list'];
     }
@@ -73,14 +71,16 @@ class JoiningmoneyreceiptController extends Controller
             );
         }
         $joiningmoneyreceipt = new Joiningmoneyreceipt();
+        $joiningmoneyreceipt->SerialNo = Input::get('SerialNo');
+        $joiningmoneyreceipt->CSMId = Input::get('CSMId');
         $joiningmoneyreceipt->name = Input::get('name');
-        $joiningmoneyreceipt->JoiningmoneyreceiptCode = Input::get('JoiningmoneyreceiptCode');
-        $joiningmoneyreceipt->test12 = Input::get('test12');
-        $joiningmoneyreceipt->test13 = Input::get('test13');
-        $joiningmoneyreceipt->test14 = Input::get('test14');
-        $joiningmoneyreceipt->test15 = Input::get('test15');
-        $joiningmoneyreceipt->test16 = Input::get('test16');
-        $joiningmoneyreceipt->unitprice = Input::get('unitprice');
+        $joiningmoneyreceipt->Date = Input::get('Date');
+        $joiningmoneyreceipt->MobileNo = Input::get('MobileNo');
+        $joiningmoneyreceipt->JoiningFormFee = Input::get('JoiningFormFee');
+        $joiningmoneyreceipt->PassBookFee = Input::get('PassBookFee');
+        $joiningmoneyreceipt->NoOfShare = Input::get('NoOfShare');
+        $joiningmoneyreceipt->TotalShareAmount = Input::get('TotalShareAmount');
+        $joiningmoneyreceipt->TotalAmount = Input::get('TotalAmount');
         $joiningmoneyreceipt->save();
         return ['url' => 'joiningmoneyreceipt/list'];
     }

@@ -25,7 +25,7 @@
         <th width="50px" style="text-align: center">No</th>
         <th>
             <a href="javascript:ajaxLoad('joiningmoneyreceipt/list?field=name&sort={{Session::get("joiningmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Name
+                Member Id
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('joiningmoneyreceipt_field')=='name'?(Session::get('joiningmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -33,7 +33,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('joiningmoneyreceipt/list?field=JoiningmoneyreceiptCode&sort={{Session::get("joiningmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Joiningmoneyreceipt Code
+                Name
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('joiningmoneyreceipt_field')=='JoiningmoneyreceiptCode'?(Session::get('joiningmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -41,13 +41,21 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('joiningmoneyreceipt/list?field=unitprice&sort={{Session::get("joiningmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+                No of Share
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('joiningmoneyreceipt_field')=='unitprice'?(Session::get('joiningmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-        <th width="140px">Actions</th>
+        <th>
+            <a href="javascript:ajaxLoad('joiningmoneyreceipt/list?field=unitprice&sort={{Session::get("joiningmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
+                Amount of Share
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('joiningmoneyreceipt_field')=='unitprice'?(Session::get('joiningmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th width="140px" style="text-align: center; color: blue">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -55,10 +63,10 @@
     @foreach($joiningmoneyreceipts as $key=>$joiningmoneyreceipt)
         <tr>
             <td align="center">{{$i++}}</td>
+            <td>{{$joiningmoneyreceipt->CSMId}}</td>
             <td>{{$joiningmoneyreceipt->name}}</td>
-            <td>{{$joiningmoneyreceipt->JoiningmoneyreceiptCode}}</td>
-            <td>{{$joiningmoneyreceipt->testfield}}</td>
-            <td align="right">$ {{$joiningmoneyreceipt->unitprice}}</td>
+            <td>{{$joiningmoneyreceipt->NoOfShare}}</td>
+            <td>{{$joiningmoneyreceipt->ShareAmount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('joiningmoneyreceipt/update/{{$joiningmoneyreceipt->id}}')">
