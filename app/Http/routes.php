@@ -35,6 +35,7 @@ Route::controllers([
     'loanapplicationmoneyreceipt'   => 'LoanapplicationmoneyreceiptController',
     'member'   => 'MemberController',
     'loanapplication'   => 'LoanapplicationController',
+    'loan'   => 'LoanController',
 ]);
 
 Route::resource('users', 'UsersController');
