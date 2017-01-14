@@ -457,7 +457,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
--- Dumping data for table cosociety.members: ~2 rows (approximately)
+-- Dumping data for table cosociety.members: ~1 rows (approximately)
 DELETE FROM `members`;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
 INSERT INTO `members` (`id`, `name`, `MemberCode`, `CSMId`, `BanglaName`, `name12`, `FatherName`, `MotherName`, `HusbandWifeName`, `Age`, `Occupation`, `Nationality`, `NId`, `PassportNo`, `TaxIdNo`, `Phone`, `Mobile`, `PresentVillageName`, `PresentPostOffice`, `PresentUpojela`, `PresentJela`, `SPName`, `SPName2`, `SPFatherName`, `SPFatherName2`, `SPMotherName`, `SPMotherName2`, `SPHusbanWifeName`, `SPHusbanWifeName2`, `Relation`, `Relation2`, `GivenPortion`, `GivenPortion2`, `Image`, `TMSSIdCard`, `NIdImage`, `NomineeImage`, `BirthCertificate`, `NomineeImage2`, `BirthCertificate2`, `created_at`, `updated_at`) VALUES
@@ -1093,6 +1093,27 @@ INSERT INTO `products` (`id`, `name`, `ProductCode`, `unitprice`, `created_at`, 
 	(35, '7', NULL, 0.00, NULL, NULL),
 	(36, '34', '6', 5.00, '2017-01-07 05:52:49', '2017-01-07 05:52:49');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
+
+
+-- Dumping structure for table cosociety.savings
+DROP TABLE IF EXISTS `savings`;
+CREATE TABLE IF NOT EXISTS `savings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `SavingCode` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.savings: ~1 rows (approximately)
+DELETE FROM `savings`;
+/*!40000 ALTER TABLE `savings` DISABLE KEYS */;
+INSERT INTO `savings` (`id`, `name`, `SavingCode`, `unitprice`, `created_at`, `updated_at`) VALUES
+	(37, '1', '2', 3.00, '2017-01-14 04:55:26', '2017-01-14 04:55:26');
+/*!40000 ALTER TABLE `savings` ENABLE KEYS */;
 
 
 -- Dumping structure for table cosociety.surveys
