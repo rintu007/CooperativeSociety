@@ -36,6 +36,7 @@ Route::controllers([
     'member'   => 'MemberController',
     'loanapplication'   => 'LoanapplicationController',
     'loan'   => 'LoanController',
+    'saving'   => 'SavingController',
 ]);
 
 Route::resource('users', 'UsersController');

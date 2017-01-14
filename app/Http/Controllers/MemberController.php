@@ -32,7 +32,7 @@ class MemberController extends Controller
     public function postUpdate($id)
     {
         $member = Member::find($id);
-        $rules = ["unitprice" => "required|numeric"];
+        //$rules = ["unitprice" => "required|numeric"];
         if ($member->name != Input::get('name'))
             $rules += ['name' => 'required|unique:members'];
         $validator = Validator::make(Input::all(), $rules);
@@ -44,7 +44,7 @@ class MemberController extends Controller
         }
         $member->name = Input::get('name');
         $member->MemberCode = Input::get('MemberCode');
-        $member->unitprice = Input::get('unitprice');
+        //$member->unitprice = Input::get('unitprice');
         $member->save();
         return ['url' => 'member/list'];
     }

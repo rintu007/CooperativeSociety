@@ -16,7 +16,7 @@
                 <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
                 <li><a tabindex="-1" href="{{ url('/joiningmoneyreceipt/') }}">Entry Form Fee</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Form Fee</a></li>
-                <li><a tabindex="-1" href="{{ url('/') }}">Savings</a></li>
+                <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Security</a>
