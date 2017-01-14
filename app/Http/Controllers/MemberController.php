@@ -57,8 +57,8 @@ class MemberController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "CSMId" => "required|unique:members"
-            //"name" => "required|unique:members"
+            "name" => "required|unique:members",
+            "MemberCode" => "required|unique:members"
         ]);
         if ($validator->fails()) {
             return array(
@@ -67,9 +67,11 @@ class MemberController extends Controller
             );
         }
         $member = new Member();
+        $member->name = Input::get('name');
+        $member->MemberCode = Input::get('MemberCode');
         $member->CSMId              = Input::get('CSMId'); 
         $member->BanglaName         = Input::get('BanglaName');
-        $member->name               = Input::get('name');
+        $member->name12               = Input::get('name12');
         $member->FatherName         = Input::get('FatherName');
         $member->MotherName         = Input::get('MotherName');
         $member->HusbandWifeName    = Input::get('FatherName');

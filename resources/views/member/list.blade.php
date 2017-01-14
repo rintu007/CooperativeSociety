@@ -57,7 +57,7 @@
             <td align="center">{{$i++}}</td>
             <td>{{$member->name}}</td>
             <td>{{$member->BanglaName}}</td>
-            <td align="right">$ {{$member->FatherName}}</td>
+            <td align="right">{{$member->FatherName}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('member/update/{{$member->id}}')">

@@ -15,17 +15,6 @@ DROP DATABASE IF EXISTS `cosociety`;
 CREATE DATABASE IF NOT EXISTS `cosociety` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `cosociety`;
 
-CREATE TABLE IF NOT EXISTS `loans` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(500) DEFAULT NULL,
-  `ProductCode` varchar(500) DEFAULT NULL,
-  `unitprice` decimal(10,2) DEFAULT '0.00',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FULLTEXT KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
 
 -- Dumping structure for table cosociety.account_status
 DROP TABLE IF EXISTS `account_status`;
@@ -345,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `joiningmoneyreceipts` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Dumping data for table cosociety.joiningmoneyreceipts: ~4 rows (approximately)
+-- Dumping data for table cosociety.joiningmoneyreceipts: ~3 rows (approximately)
 DELETE FROM `joiningmoneyreceipts`;
 /*!40000 ALTER TABLE `joiningmoneyreceipts` DISABLE KEYS */;
 INSERT INTO `joiningmoneyreceipts` (`id`, `name`, `JoiningmoneyreceiptCode`, `test12`, `test13`, `test14`, `test15`, `test16`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -370,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `loanapplicationmoneyreceipts` (
   FULLTEXT KEY `idx_name` (`name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- Dumping data for table cosociety.loanapplicationmoneyreceipts: ~1 rows (approximately)
+-- Dumping data for table cosociety.loanapplicationmoneyreceipts: ~0 rows (approximately)
 DELETE FROM `loanapplicationmoneyreceipts`;
 /*!40000 ALTER TABLE `loanapplicationmoneyreceipts` DISABLE KEYS */;
 INSERT INTO `loanapplicationmoneyreceipts` (`id`, `name`, `LoanapplicationmoneyreceiptCode`, `unitprice`, `created_at`, `updated_at`) VALUES
@@ -401,13 +390,34 @@ INSERT INTO `loanapplications` (`id`, `name`, `LoanapplicationCode`, `unitprice`
 /*!40000 ALTER TABLE `loanapplications` ENABLE KEYS */;
 
 
+-- Dumping structure for table cosociety.loans
+DROP TABLE IF EXISTS `loans`;
+CREATE TABLE IF NOT EXISTS `loans` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `ProductCode` varchar(500) DEFAULT NULL,
+  `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `idx_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table cosociety.loans: ~0 rows (approximately)
+DELETE FROM `loans`;
+/*!40000 ALTER TABLE `loans` DISABLE KEYS */;
+/*!40000 ALTER TABLE `loans` ENABLE KEYS */;
+
+
 -- Dumping structure for table cosociety.members
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(500) DEFAULT NULL,
+  `MemberCode` varchar(500) DEFAULT NULL,
   `CSMId` varchar(500) DEFAULT NULL,
   `BanglaName` varchar(500) DEFAULT NULL,
-  `name` varchar(500) DEFAULT NULL,
+  `name12` varchar(500) DEFAULT NULL,
   `FatherName` varchar(500) DEFAULT NULL,
   `MotherName` varchar(500) DEFAULT NULL,
   `HusbandWifeName` varchar(500) DEFAULT NULL,
@@ -432,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `SPHusbanWifeName` varchar(500) DEFAULT NULL,
   `SPHusbanWifeName2` varchar(500) DEFAULT NULL,
   `Relation` varchar(500) DEFAULT NULL,
-  `RElation2` varchar(500) DEFAULT NULL,
+  `Relation2` varchar(500) DEFAULT NULL,
   `GivenPortion` varchar(500) DEFAULT NULL,
   `GivenPortion2` varchar(500) DEFAULT NULL,
   `Image` varchar(500) DEFAULT NULL,
@@ -442,13 +452,16 @@ CREATE TABLE IF NOT EXISTS `members` (
   `BirthCertificate` varchar(500) DEFAULT NULL,
   `NomineeImage2` varchar(500) DEFAULT NULL,
   `BirthCertificate2` varchar(500) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FULLTEXT KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
--- Dumping data for table cosociety.members: ~0 rows (approximately)
+-- Dumping data for table cosociety.members: ~2 rows (approximately)
 DELETE FROM `members`;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
+INSERT INTO `members` (`id`, `name`, `MemberCode`, `CSMId`, `BanglaName`, `name12`, `FatherName`, `MotherName`, `HusbandWifeName`, `Age`, `Occupation`, `Nationality`, `NId`, `PassportNo`, `TaxIdNo`, `Phone`, `Mobile`, `PresentVillageName`, `PresentPostOffice`, `PresentUpojela`, `PresentJela`, `SPName`, `SPName2`, `SPFatherName`, `SPFatherName2`, `SPMotherName`, `SPMotherName2`, `SPHusbanWifeName`, `SPHusbanWifeName2`, `Relation`, `Relation2`, `GivenPortion`, `GivenPortion2`, `Image`, `TMSSIdCard`, `NIdImage`, `NomineeImage`, `BirthCertificate`, `NomineeImage2`, `BirthCertificate2`, `created_at`, `updated_at`) VALUES
+	(44, '4', '5', '1', '2', '3', '4', '5', '4', '7', '8', '9', '9', '8', '7', '6', '5', '4', '3', '2', '3', '6', '7', '8', '9', '8', '7', NULL, NULL, '4', '3', '2', '4', '5', '6', '7', '8', '9', '8', '7', '2017-01-14 04:39:04', '2017-01-14 04:39:04');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 
 
