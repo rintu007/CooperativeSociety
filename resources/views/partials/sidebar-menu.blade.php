@@ -7,31 +7,63 @@
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
             <ul class="dropdown-menu">
                 <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
-                <li><a tabindex="-1" href="{{ url('/member') }}">Member Joining</a></li>
-                <li><a tabindex="-1" href="{{ url('/loan') }}">Loan Proposal</a></li>
+                <li><a tabindex="-1" href="{{ url('/member') }}">Member</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
             <ul class="dropdown-menu">
                 <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
-                <li><a tabindex="-1" href="{{ url('/joiningmoneyreceipt/') }}">Entry Form Fee</a></li>
-                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Form Fee</a></li>
+                <li><a tabindex="-1" href="{{ url('/joiningmoneyreceipt') }}">Application Form & Pass Book</a></li>
+                <li><a tabindex="-1" href="{{ url('/loan') }}">Shares</a></li>
                 <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Security</a>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Shares</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/loan') }}">Share Certificate</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Loan</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/loan') }}">Loan Proposal</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Savinngs</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/loan') }}">Savings</a></li>
+            </ul>
+        </li>
+<!-- 
+
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li>
+                <li><a tabindex="-1" href="{{ url('/member') }}">Member Joining</a></li>
+                <li><a tabindex="-1" href="{{ url('/loan') }}">Loan Proposal</a></li>
+            </ul>
+        </li> -->
+        <!-- <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li>
+                
+            </ul>
+        </li> -->
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Application & Passbook</a></li>
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Shares</a></li>
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Savings</a></li>
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Loan Application Form</a></li>
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Loan</a></li>
+                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Member</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Users</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/member') }}">Access Control</a></li>
                 <li><a tabindex="-1" href="{{ url('/member') }}">Audit Trail</a></li>
                 <li><a tabindex="-1" href="{{ url('/users') }}">User Role Previledges</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
-            <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Member Identification Report</a></li>
-                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Share Reports</a></li>
-                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Pass Book</a></li>
-                <li><a tabindex="-1" href="{{ url('/applicationformmr') }}">Form</a></li>
             </ul>
         </li>
 </ul>
