@@ -6,11 +6,11 @@
             <span id="serial_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-member_name-error">
-        {!! Form::label("member_name","Name:",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-12" id="form-name-error">
+        {!! Form::label("name","Name:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="member_name-error" class="help-block"></span>
+            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="name-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-12" id="form-member_id-error">
@@ -27,17 +27,24 @@
             <span id="moblie_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-form_fee-error">
-        {!! Form::label("form_fee","Form Fee:",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-12" id="form-saving_amount-error">
+        {!! Form::label("saving_amount","Saving Amount:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("form_fee",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="form_fee-error" class="help-block"></span>
+            {!! Form::text("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="saving_amount-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-12" id="form-withdrawal_amount-error">
+        {!! Form::label("withdrawal_amount","Withdrawa Amount:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("withdrawal_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="withdrawal_amount-error" class="help-block"></span>
         </div>
     </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('savingsmoneyreceipt/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn

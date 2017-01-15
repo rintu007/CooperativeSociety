@@ -32,7 +32,7 @@ class LoanapplicationmoneyreceiptController extends Controller
     public function postUpdate($id)
     {
         $loanapplicationmoneyreceipt = Loanapplicationmoneyreceipt::find($id);
-        $rules = ["unitprice" => "required|numeric"];
+        $rules = ["form_fee" => "required|numeric"];
         if ($loanapplicationmoneyreceipt->name != Input::get('name'))
             $rules += ['name' => 'required|unique:loanapplicationmoneyreceipts'];
         $validator = Validator::make(Input::all(), $rules);
@@ -42,9 +42,13 @@ class LoanapplicationmoneyreceiptController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $loanapplicationmoneyreceipt->name = Input::get('name');
-        $loanapplicationmoneyreceipt->LoanapplicationmoneyreceiptCode = Input::get('LoanapplicationmoneyreceiptCode');
-        $loanapplicationmoneyreceipt->unitprice = Input::get('unitprice');
+        // $loanapplicationmoneyreceipt                = new Loanapplicationmoneyreceipt();
+        $loanapplicationmoneyreceipt->serial_no     = Input::get('serial_no');
+        $loanapplicationmoneyreceipt->member_name   = Input::get('member_name');
+        $loanapplicationmoneyreceipt->CSMId         = Input::get('member_id');
+        $loanapplicationmoneyreceipt->moblie_no     = Input::get('moblie_no');
+        $loanapplicationmoneyreceipt->date          = Input::get('date');
+        $loanapplicationmoneyreceipt->form_fee      = Input::get('form_fee');
         $loanapplicationmoneyreceipt->save();
         return ['url' => 'loanapplicationmoneyreceipt/list'];
     }
@@ -57,9 +61,9 @@ class LoanapplicationmoneyreceiptController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "name" => "required|unique:loanapplicationmoneyreceipts",
-            "LoanapplicationmoneyreceiptCode" => "required|unique:loanapplicationmoneyreceipts",
-            "unitprice" => "required|numeric"
+            "member_name"       => "required|unique:loanapplicationmoneyreceipts",
+            "CSMId"             => "required|unique:member_id",
+            "form_fee"          => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(
@@ -67,10 +71,13 @@ class LoanapplicationmoneyreceiptController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $loanapplicationmoneyreceipt = new Loanapplicationmoneyreceipt();
-        $loanapplicationmoneyreceipt->name = Input::get('name');
-        $loanapplicationmoneyreceipt->LoanapplicationmoneyreceiptCode = Input::get('LoanapplicationmoneyreceiptCode');
-        $loanapplicationmoneyreceipt->unitprice = Input::get('unitprice');
+        $loanapplicationmoneyreceipt                = new Loanapplicationmoneyreceipt();
+        $loanapplicationmoneyreceipt->serial_no     = Input::get('serial_no');
+        $loanapplicationmoneyreceipt->member_name   = Input::get('member_name');
+        $loanapplicationmoneyreceipt->CSMId         = Input::get('member_id');
+        $loanapplicationmoneyreceipt->moblie_no     = Input::get('moblie_no');
+        $loanapplicationmoneyreceipt->date          = Input::get('date');
+        $loanapplicationmoneyreceipt->form_fee      = Input::get('form_fee');
         $loanapplicationmoneyreceipt->save();
         return ['url' => 'loanapplicationmoneyreceipt/list'];
     }
