@@ -33,6 +33,7 @@ Route::controllers([
     'product'   => 'ProductController',
     'joiningmoneyreceipt'   => 'JoiningmoneyreceiptController',
     'loanapplicationmoneyreceipt'   => 'LoanapplicationmoneyreceiptController',
+    'savingsmoneyreceipt'   => 'savingsmoneyreceiptController',
     'member'   => 'MemberController',
     'loanapplication'   => 'LoanapplicationController',
     'loan'   => 'LoanController',

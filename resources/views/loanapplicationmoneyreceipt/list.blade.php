@@ -25,7 +25,7 @@
         <th width="50px" style="text-align: center">No</th>
         <th>
             <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=name&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Name
+                name
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='name'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -33,7 +33,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=LoanapplicationmoneyreceiptCode&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Loanapplicationmoneyreceipt Code
+                Member Id
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='LoanapplicationmoneyreceiptCode'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -41,7 +41,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=unitprice&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+                Form Price
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='unitprice'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -55,10 +55,11 @@
     @foreach($loanapplicationmoneyreceipts as $key=>$loanapplicationmoneyreceipt)
         <tr>
             <td align="center">{{$i++}}</td>
+            <td>{{$loanapplicationmoneyreceipt->CSMId}}</td>
             <td>{{$loanapplicationmoneyreceipt->name}}</td>
-            <td>{{$loanapplicationmoneyreceipt->LoanapplicationmoneyreceiptCode}}</td>
-            <td>{{$loanapplicationmoneyreceipt->testfield}}</td>
-            <td align="right">$ {{$loanapplicationmoneyreceipt->unitprice}}</td>
+            <td>{{$loanapplicationmoneyreceipt->form_fee}}</td>
+           <!--  <td align="right">$ {{$loanapplicationmoneyreceipt->unitprice}}</td>
+            <td align="right">$ {{$loanapplicationmoneyreceipt->unitprice}}</td> -->
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('loanapplicationmoneyreceipt/update/{{$loanapplicationmoneyreceipt->id}}')">
