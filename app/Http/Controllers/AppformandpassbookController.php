@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Appformandpassbook;
+use App\appformandpassbook;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -11,23 +11,30 @@ class AppformandpassbookController extends Controller
 {
     public function getIndex()
     {
+
         return view('appformandpassbook.index');
+
     }
 
     public function getList()
     {
+
         Session::put('appformandpassbook_search', Input::has('ok') ? Input::get('search') : (Session::has('appformandpassbook_search') ? Session::get('appformandpassbook_search') : ''));
+
         Session::put('appformandpassbook_field', Input::has('field') ? Input::get('field') : (Session::has('appformandpassbook_field') ? Session::get('appformandpassbook_field') : 'member_name'));
+
         Session::put('appformandpassbook_sort', Input::has('sort') ? Input::get('sort') : (Session::has('appformandpassbook_sort') ? Session::get('appformandpassbook_sort') : 'asc'));
-        $appformandpassbooks = appformandpassbook::where('name', 'like', '%' . Session::get('appformandpassbook_search') . '%')
+
+        $appformandpassbooks = appformandpassbook::where('member_name', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
             ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(8);
         return view('appformandpassbook.list', ['appformandpassbooks' => $appformandpassbooks]);
+        echo "shishir";
+        exit();
+
     }
 
     public function getUpdate($id)
     {
-        // echo $id;
-        // exit();
         return view('appformandpassbook.update', ['appformandpassbook' => appformandpassbook::find($id)]);
     }
 
@@ -35,7 +42,7 @@ class AppformandpassbookController extends Controller
     {
         $appformandpassbook = appformandpassbook::find($id);
         // $rules = ["unitprice" => "required|numeric"];
-        if ($appformandpassbook->name != Input::get('member_name'))
+        if ($appformandpassbook->member_name != Input::get('member_name'))
             $rules += ['member_name' => 'required|unique:appformandpassbooks'];
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
@@ -44,13 +51,16 @@ class AppformandpassbookController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $appformandpassbook->serial_no      = Input::get('serial_no');
-        $appformandpassbook->member_name    = Input::get('member_name');
-        $appformandpassbook->member_id      = Input::get('member_id');
-        $appformandpassbook->mobile_no      = Input::get('mobile_no');
-        $appformandpassbook->date           = Input::get('date');
-        $appformandpassbook->app_form       = Input::get('app_form');
-        $appformandpassbook->passbook       = Input::get('passbook');
+       $appformandpassbook->serial_no = Input::get('serial_no');
+        $appformandpassbook->member_name = Input::get('member_name');       
+        $appformandpassbook->member_id = Input::get('member_id');
+        $appformandpassbook->mobile_no = Input::get('mobile_no');
+        $appformandpassbook->date       = Input::get('date');
+        $appformandpassbook->app_form = Input::get('app_form');
+        $appformandpassbook->passbook = Input::get('passbook'); 
+        $appformandpassbook->name = Input::get('name');       
+        $appformandpassbook->CompanyrajCode = Input::get('CompanyrajCode');
+        $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
         return ['url' => 'appformandpassbook/list'];
     }
@@ -63,9 +73,9 @@ class AppformandpassbookController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "member_name"   => "required|unique:appformandpassbooks",
-            "member_id"     => "required|unique:appformandpassbooks"
-           
+            "member_name" => "required|unique:appformandpassbooks"
+            // "CompanyrajCode" => "required|unique:appformandpassbooks",
+            // "unitprice" => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(
@@ -73,14 +83,17 @@ class AppformandpassbookController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $appformandpassbook                 = new appformandpassbook();
-        $appformandpassbook->serial_no      = Input::get('serial_no');
-        $appformandpassbook->member_name    = Input::get('member_name');
-        $appformandpassbook->member_id      = Input::get('member_id');
-        $appformandpassbook->mobile_no      = Input::get('mobile_no');
-        $appformandpassbook->date           = Input::get('date');
-        $appformandpassbook->app_form       = Input::get('app_form');
-        $appformandpassbook->passbook       = Input::get('passbook');
+        $appformandpassbook = new appformandpassbook();
+        $appformandpassbook->serial_no = Input::get('serial_no');
+        $appformandpassbook->member_name = Input::get('member_name');       
+        $appformandpassbook->member_id = Input::get('member_id');
+        $appformandpassbook->mobile_no = Input::get('mobile_no');
+        $appformandpassbook->date       = Input::get('date');
+        $appformandpassbook->app_form = Input::get('app_form');
+        $appformandpassbook->passbook = Input::get('passbook'); 
+        $appformandpassbook->name = Input::get('name');       
+        $appformandpassbook->CompanyrajCode = Input::get('CompanyrajCode');
+        $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
         return ['url' => 'appformandpassbook/list'];
     }

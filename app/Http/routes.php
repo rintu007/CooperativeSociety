@@ -39,6 +39,7 @@ Route::controllers([
     'loan'                           => 'LoanController',
     'saving'                         => 'SavingController',
     'appformandpassbook'             => 'AppformandpassbookController',
+    'share'                          => 'ShareController',
 ]);
 
 Route::resource('users', 'UsersController');

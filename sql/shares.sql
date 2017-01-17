@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS `appformandpassbooks`;
-CREATE TABLE IF NOT EXISTS `appformandpassbooks` (
+DROP TABLE IF EXISTS `shares`;
+CREATE TABLE IF NOT EXISTS `shares` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `serial_no` int(11) DEFAULT NULL,
   `member_name` varchar(500) DEFAULT NULL,

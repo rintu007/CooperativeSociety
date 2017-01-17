@@ -20,8 +20,8 @@
 		    <div class="row"></div>
 		    <div class="row">
 		        <!-- <div class="col-md-3"></div> -->
-		        <div class="col-md-12 appformandpassbook">
-                     <div id="content"></div>
+		        <div class="col-md-12 companyraj">
+		            <div id="content"></div>
 		        </div>
 		        <!-- <div class="col-md-3"></div> -->
 		    </div>
@@ -65,7 +65,7 @@
         });
     }
     $(document).ready(function () {
-        ajaxLoad('appformandpassbook/list');
+        ajaxLoad('companyraj/list');
     });
 </script><!-- 
 </body>

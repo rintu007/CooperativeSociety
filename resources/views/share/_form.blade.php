@@ -73,7 +73,7 @@
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('appformandpassbook/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('share/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
