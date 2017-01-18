@@ -1,5 +1,4 @@
 <div class="col-md-12">
-    
     <div class="form-group required col-md-6" id="form-serial_no-error">
         {!! Form::label("serial_no","Serial No",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -21,17 +20,17 @@
             <span id="member_id-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-moblie_no-error">
-        {!! Form::label("moblie_no","Mobile No",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-mobile_no-error">
+        {!! Form::label("mobile_no","Mobile No",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("moblie_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="moblie_no-error" class="help-block"></span>
+            {!! Form::text("mobile_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="mobile_no-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-date-error">
         {!! Form::label("date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("date12",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="date-error" class="help-block"></span>
         </div>
     </div>

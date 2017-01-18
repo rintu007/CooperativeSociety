@@ -1,4 +1,4 @@
-<h1 class="page-header">Member Shares
+<h1 class="page-header">Share List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('share/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
