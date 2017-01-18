@@ -1,4 +1,4 @@
-<h2 class="page-header">Edit appformandpassbook</h2>
-{!! Form::model($appformandpassbook,["id"=>"frm","class"=>"form-horizontal"]) !!}
-@include("appformandpassbook._form")
+<h2 class="page-header">Edit share</h2>
+{!! Form::model($share,["id"=>"frm","class"=>"form-horizontal"]) !!}
+@include("share._form")
 {!! Form::close() !!}

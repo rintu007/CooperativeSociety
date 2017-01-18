@@ -35,41 +35,20 @@
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-app_form-error">
-        {!! Form::label("app_form","Entry Form Fee",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-share_number-error">
+        {!! Form::label("share_number","No of Shres",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("app_form",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="app_form-error" class="help-block"></span>
+            {!! Form::text("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="share_number-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-passbook-error">
-        {!! Form::label("passbook","Passbook",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-share_amount-error">
+        {!! Form::label("share_amount","Total Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("passbook",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="passbook-error" class="help-block"></span>
+            {!! Form::text("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="share_amount-error" class="help-block"></span>
         </div>
     </div>
-   <!--  <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","name",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CompanyrajCode-error">
-        {!! Form::label("CompanyrajCode","faname",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CompanyrajCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CompanyrajCode-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-unitprice-error">
-        {!! Form::label("unitprice","moname",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("unitprice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="unitprice-error" class="help-block"></span>
-        </div>
-    </div> -->
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

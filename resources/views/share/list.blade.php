@@ -1,19 +1,19 @@
-<h1 class="page-header">Application Form & Passbook Fee
+<h1 class="page-header">Member Shares
     <div class="pull-right">
-        <a href="javascript:ajaxLoad('appformandpassbook/create')" class="btn btn-primary pull-right"><i
+        <a href="javascript:ajaxLoad('share/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
 </h1>
 <div class="col-sm-7 form-group">
     <div class="input-group">
-        <input class="form-control" id="search" value="{{ Session::get('appformandpassbook_search') }}"
-               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('appformandpassbook/list')}}?ok=1&search='+this.value)"
+        <input class="form-control" id="search" value="{{ Session::get('share_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('share/list')}}?ok=1&search='+this.value)"
                placeholder="Search..."
                type="text">
 
         <div class="input-group-btn">
             <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('appformandpassbook/list')}}?ok=1&search='+$('#search').val())"><i
+                    onclick="ajaxLoad('{{url('share/list')}}?ok=1&search='+$('#search').val())"><i
                         class="glyphicon glyphicon-search"></i>
             </button>
         </div>
@@ -24,35 +24,35 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('appformandpassbook/list?field=member_name&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('share/list?field=member_name&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
                 Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('appformandpassbook_field')=='member_name'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('share_field')=='member_name'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('appformandpassbook/list?field=member_id&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('share/list?field=member_id&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
                 Member Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('appformandpassbook_field')=='member_id'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('share_field')=='member_id'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('appformandpassbook/list?field=app_form&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
-                Entry Form Fee
+            <a href="javascript:ajaxLoad('share/list?field=share_number&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+                No of Shares
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('appformandpassbook_field')=='app_form'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('share_field')=='share_number'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('appformandpassbook/list?field=passbook&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
-                Passbook 
+            <a href="javascript:ajaxLoad('share/list?field=share_amount&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+                Share Amount 
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('appformandpassbook_field')=='passbook'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('share_field')=='share_amount'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -60,19 +60,19 @@
     </thead>
     <tbody>
     <?php $i = 1;?>
-    @foreach($appformandpassbooks as $key=>$appformandpassbook)
+    @foreach($shares as $key=>$share)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$appformandpassbook->member_name}}</td>
-            <td>{{$appformandpassbook->member_id}}</td>
-            <td>{{$appformandpassbook->app_form}}</td>
-            <td align="right"><!-- $  -->{{$appformandpassbook->passbook}}</td>
+            <td>{{$share->member_name}}</td>
+            <td>{{$share->member_id}}</td>
+            <td>{{$share->share_number}}</td>
+            <td align="right"><!-- $  -->{{$share->share_amount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('appformandpassbook/update/{{$appformandpassbook->id}}')">
+                   href="javascript:ajaxLoad('share/update/{{$share->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> Edit</a>
                 <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('appformandpassbook/delete/{{$appformandpassbook->id}}')">
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
@@ -80,10 +80,10 @@
     @endforeach
     </tbody>
 </table>
-<div class="pull-right">{!! str_replace('/?','?',$appformandpassbooks->render()) !!}</div>
+<div class="pull-right">{!! str_replace('/?','?',$shares->render()) !!}</div>
 <div class="row">
     <i class="col-sm-12">
-        Total: {{$appformandpassbooks->total()}} records
+        Total: {{$shares->total()}} records
     </i>
 </div>
 <script>

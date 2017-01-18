@@ -24,12 +24,11 @@ class ShareController extends Controller
         Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : 'member_name'));
 
         Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
-
         $shares = share::where('member_name', 'like', '%' . Session::get('share_search') . '%') 
             ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(8);
         return view('share.list', ['shares' => $shares]);
-        echo "shishir";
-        exit();
+        // echo "shishir";
+        // exit();
 
     }
 
@@ -41,7 +40,7 @@ class ShareController extends Controller
     public function postUpdate($id)
     {
         $share = share::find($id);
-        // $rules = ["unitprice" => "required|numeric"];
+         $rules = ["share_amount" => "required|numeric"];
         if ($share->member_name != Input::get('member_name'))
             $rules += ['member_name' => 'required|unique:shares'];
         $validator = Validator::make(Input::all(), $rules);
@@ -51,16 +50,13 @@ class ShareController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-       $share->serial_no = Input::get('serial_no');
+        $share->serial_no = Input::get('serial_no');
         $share->member_name = Input::get('member_name');       
         $share->member_id = Input::get('member_id');
         $share->mobile_no = Input::get('mobile_no');
         $share->date       = Input::get('date');
-        $share->app_form = Input::get('app_form');
-        $share->passbook = Input::get('passbook'); 
-        $share->name = Input::get('name');       
-        $share->CompanyrajCode = Input::get('CompanyrajCode');
-        $share->unitprice = Input::get('unitprice');
+        $share->share_number = Input::get('share_number');
+        $share->share_amount = Input::get('share_amount'); 
         $share->save();
         return ['url' => 'share/list'];
     }
@@ -72,10 +68,11 @@ class ShareController extends Controller
 
     public function postCreate()
     {
+
         $validator = Validator::make(Input::all(), [
-            "member_name" => "required|unique:shares"
-            // "CompanyrajCode" => "required|unique:shares",
-            // "unitprice" => "required|numeric"
+            "member_name" => "required|unique:shares",
+            "member_id" => "required|unique:shares",
+            "share_amount" => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(
@@ -83,18 +80,19 @@ class ShareController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $share = new share();
+                $share = new share();
+                echo "shishir";
+        exit();
+
         $share->serial_no = Input::get('serial_no');
         $share->member_name = Input::get('member_name');       
         $share->member_id = Input::get('member_id');
         $share->mobile_no = Input::get('mobile_no');
         $share->date       = Input::get('date');
-        $share->app_form = Input::get('app_form');
-        $share->passbook = Input::get('passbook'); 
-        $share->name = Input::get('name');       
-        $share->CompanyrajCode = Input::get('CompanyrajCode');
-        $share->unitprice = Input::get('unitprice');
+        $share->share_number = Input::get('share_number');
+        $share->share_amount = Input::get('share_amount'); 
         $share->save();
+
         return ['url' => 'share/list'];
     }
 

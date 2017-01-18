@@ -1,4 +1,4 @@
-<h2 class="page-header">New appformandpassbook</h2>
+<h2 class="page-header">New share</h2>
 {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
-@include("appformandpassbook._form")
+@include("share._form")
 {!! Form::close() !!}

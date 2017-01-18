@@ -20,7 +20,7 @@
 		    <div class="row"></div>
 		    <div class="row">
 		        <!-- <div class="col-md-3"></div> -->
-		        <div class="col-md-12 appformandpassbook">
+		        <div class="col-md-12 share">
                      <div id="content"></div>
 		        </div>
 		        <!-- <div class="col-md-3"></div> -->
@@ -65,7 +65,7 @@
         });
     }
     $(document).ready(function () {
-        ajaxLoad('appformandpassbook/list');
+        ajaxLoad('share/list');
     });
 </script><!-- 
 </body>
