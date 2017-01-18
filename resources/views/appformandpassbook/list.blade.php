@@ -55,6 +55,22 @@
                class="glyphicon  {{ Session::get('appformandpassbook_field')=='passbook'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
+         <th>
+            <a href="javascript:ajaxLoad('appformandpassbook/list?field=share_amount&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
+                Entry Share Amount
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('appformandpassbook_field')=='share_amount'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('appformandpassbook/list?field=saving_amount&sort={{Session::get("appformandpassbook_sort")=="asc"?"desc":"asc"}}')">
+                Entry Saving Amount
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('appformandpassbook_field')=='saving_amount'?(Session::get('appformandpassbook_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
         <th width="140px">Actions</th>
     </tr>
     </thead>
@@ -67,6 +83,8 @@
             <td>{{$appformandpassbook->member_id}}</td>
             <td>{{$appformandpassbook->app_form}}</td>
             <td align="right"><!-- $  -->{{$appformandpassbook->passbook}}</td>
+            <td>{{$appformandpassbook->share_amount}}</td>
+            <td>{{$appformandpassbook->saving_amount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('appformandpassbook/update/{{$appformandpassbook->id}}')">
