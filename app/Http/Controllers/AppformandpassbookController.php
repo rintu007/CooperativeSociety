@@ -28,8 +28,6 @@ class AppformandpassbookController extends Controller
         $appformandpassbooks = appformandpassbook::where('member_name', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
             ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(8);
         return view('appformandpassbook.list', ['appformandpassbooks' => $appformandpassbooks]);
-        echo "shishir";
-        exit();
 
     }
 
