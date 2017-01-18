@@ -1,4 +1,4 @@
-<h1 class="page-header">Saving List
+<h1 class="page-header">Monthly Saving List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('saving/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -32,19 +32,35 @@
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=SavingCode&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Saving Code
+            <a href="javascript:ajaxLoad('saving/list?field=member_id&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+                member_id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='SavingCode'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('saving_field')=='member_id'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=unitprice&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('saving/list?field=month_name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+                Month Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='unitprice'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('saving_field')=='month_name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('saving/list?field=saving_amount&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+                Saving Amount
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('saving_field')=='saving_amount'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('saving/list?field=total_saving&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+                Total Savings
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('saving_field')=='total_saving'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -56,9 +72,11 @@
         <tr>
             <td align="center">{{$i++}}</td>
             <td>{{$saving->name}}</td>
-            <td>{{$saving->SavingCode}}</td>
-            <td>{{$saving->testfield}}</td>
-            <td align="right">$ {{$saving->unitprice}}</td>
+            <td>{{$saving->member_id}}</td>
+            <td>{{$saving->month_name}}</td>
+            <td>{{$saving->saving_amount}}</td>
+            <td></td>
+            <!-- <td align="right">$ {{$saving->unitprice}}</td> -->
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('saving/update/{{$saving->id}}')">
