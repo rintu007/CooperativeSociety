@@ -24,16 +24,16 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('saving/list?field=member_name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
                 Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('saving_field')=='member_name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
             <a href="javascript:ajaxLoad('saving/list?field=member_id&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                member_id
+                Member Id
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('saving_field')=='member_id'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">

@@ -79,6 +79,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+            <link rel="icon" type="http://localhost/public/image/gif/png" href="/public/images/logo.png">
             <a class="navbar-brand" href="{{ url('/') }}">
                 <span class="dt-icon"><i class="fa fa-th-list"></i></span>
                 টিএমএসএস এমপ্লয়িজ কো-অপারেটিভ সোসাইটি লিঃ (TECSL)</a>
