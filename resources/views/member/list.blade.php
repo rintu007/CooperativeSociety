@@ -27,16 +27,14 @@
             <a href="javascript:ajaxLoad('member/list?field=name&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
                 Name
             </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='name'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            <i style="font-size: 12px" class="glyphicon  {{ Session::get('member_field')=='name'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
             <a href="javascript:ajaxLoad('member/list?field=BanglaName&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
                 BanglaName
             </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='BanglaName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            <i style="font-size: 12px" class="glyphicon  {{ Session::get('member_field')=='BanglaName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>

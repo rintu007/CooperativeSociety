@@ -40,7 +40,8 @@ Route::controllers([
     'saving'                         => 'SavingController',
     'appformandpassbook'             => 'AppformandpassbookController',
     'share'                          => 'ShareController',
-    'sharecertificate'               => 'SharecertificateController'
+    'sharecertificate'               => 'SharecertificateController',
+    'message'                        => 'MessageController',
 ]);
 
 Route::resource('users', 'UsersController');

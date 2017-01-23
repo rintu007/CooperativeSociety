@@ -1,85 +1,75 @@
-<h1 class="page-header">Member List
+<h1 class="page-header">Share Certificate List
     <div class="pull-right">
-        <a href="javascript:ajaxLoad('member/create')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-plus-sign"></i> New</a>
+        <a href="javascript:ajaxload('sharecertificate/create')" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i>New</a>
     </div>
 </h1>
 <div class="col-sm-7 form-group">
     <div class="input-group">
-        <input class="form-control" id="search" value="{{ Session::get('member_search') }}"
-               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('member/list')}}?ok=1&search='+this.value)"
-               placeholder="Search..."
-               type="text">
-
+        <input class="form-control" id="search" value="{{Session::get(sharecertificate_search)}}" onkeydown="if (event.keyCode==13) ajaxload('{{url('sharecertificate/list')}}ok=1&search='+this.value)"
+        placeholder="serch..." type="text">
         <div class="input-group-btn">
-            <button type="button" class="btn btn-default"
-                    onclick="ajaxLoad('{{url('member/list')}}?ok=1&search='+$('#search').val())"><i
-                        class="glyphicon glyphicon-search"></i>
-            </button>
+            <button type="button" class="btn btn-default" onclick="ajaxload('{{url('sharecertificate/list')}}ok=1&search='+$('#search').val())"><i class="glyphicon glyphicon-search"></i></button>
         </div>
     </div>
 </div>
 <table class="table table-bordered table-striped">
     <thead>
-    <tr>
-        <th width="50px" style="text-align: center">No</th>
-        <th>
-            <a href="javascript:ajaxLoad('member/list?field=name&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
-                Name
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='name'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th>
-            <a href="javascript:ajaxLoad('member/list?field=BanglaName&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
-                BanglaName
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='BanglaName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th>
-            <a href="javascript:ajaxLoad('member/list?field=FatherName&sort={{Session::get("member_sort")=="asc"?"desc":"asc"}}')">
-                FatherName
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('member_field')=='FatherName'?(Session::get('member_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th width="140px">Actions</th>
-    </tr>
+        <tr>
+            <th width="50px" style="text-align: center">Serial No</th>
+            <th>
+                <a href="javascript:ajaxload('sharecertificate/list?field=member_id&sort={{Session::get("sharecertificate_sort")=="asc"?"desc":"asc"}}')">Member Id</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='member_id'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+            <th>
+                <a href="javascript:ajaxload('sharecertificate/list?field=member_name&sort={{Session::get("sharecertificate_sort")=="asc"?"desc":"asc"}}')">Member Name</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='member_name'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+            <th>
+                <a href="javascript:ajaxload('sharecertificate/list?field=share_number&sort={{Session::get("sharecertificate_sort")=="asc"?"desc":"asc"}}')">No of Shares</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='share_number'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+            <th>
+                <a href="javascript:ajaxload('sharecertificate/list?field=share_amount&sort={{Session::get("sharecertificate_sort")=="asc"?"desc":"asc"}}')">Share Amount</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='share_amount'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+            <th>
+                <a href="javascript:ajaxload('sharecertificate/list?field=created_at&sort={{Session::get("sharecertificate_sort")=="asc"?"desc":"asc"}}')">Prepared at</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='created_at'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+            <th>
+                <a href="javascript:ajaxload('sharecertifiate/list?field=updated_at&sort={{Session::get("sharecertifiate_sort")=="asc"?"desc":"asc"}}')">Updated at</a>
+                <i style="font-size: 12px" class="glyphicon{{Session::get('sharecertificate_field')=='updated_at'?(Session::get('sharecertificate_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+            </th>
+        </tr>
     </thead>
     <tbody>
-    <?php $i = 1;?>
-    @foreach($members as $key=>$member)
+        <?php $i=1;?>
+        @foreach($sharecertificates as $key=>$sharecertificate)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$member->name}}</td>
-            <td>{{$member->BanglaName}}</td>
-            <td align="right">{{$member->FatherName}}</td>
-            <td style="text-align: center">
-                <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('member/update/{{$member->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('member/delete/{{$member->id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </a>
-            </td>
+            <td>{{$sharecertificate->member_id}}</td>
+            <td>{{$sharecertificate->member_name}}</td>
+            <td>{{$sharecertificate->share_number}}</td>
+            <td>{{$sharecertificate->share_amount}}</td>
+            <td>{{$sharecertificate->created_at}}</td>
+            <td>{{$sharecertificate->updated_at}}</td>
         </tr>
-    @endforeach
+            @endforeach
     </tbody>
 </table>
-<div class="pull-right">{!! str_replace('/?','?',$members->render()) !!}</div>
+<div class="pull-right">{!! str_replace('/?','?',$sharecertificates->render()) !!}}</div>
 <div class="row">
     <i class="col-sm-12">
-        Total: {{$members->total()}} records
+        Total:{{$sharecertificates->total()}} records
     </i>
 </div>
 <script>
-    $('.pagination a').on('click', function (event) {
+//    $('.pagination a'). on('click', function(event){
+//        event.preventDefault();
+//        ajaxload($(this).attr('href'));
+//    });
+    $('.pagination a').oclick(function(event){
         event.preventDefault();
-        ajaxLoad($(this).attr('href'));
+        ajaxload($(this).attr('href'));
     });
 </script>
