@@ -21,8 +21,9 @@ class MemberController extends Controller
         Session::put('member_sort', Input::has('sort') ? Input::get('sort') : (Session::has('member_sort') ? Session::get('member_sort') : 'asc'));
         $members = Member::where('name', 'like', '%' . Session::get('member_search') . '%')
             ->orderBy(Session::get('member_field'), Session::get('member_sort'))->paginate(8);
-           
+
         return view('member.list', ['members' => $members]);
+
     }
 
     public function getUpdate($id)

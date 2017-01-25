@@ -1,4 +1,4 @@
-<h1 class="page-header">Monthly Saving List
+<h1 class="page-header">saving List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('saving/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -24,44 +24,23 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=member_name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('saving/list?field=member_id&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">Member Id</a>
+            <i style="font-size: 12px" class="glyphicon {{Session::get('saving_field')=='member_id'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('saving/list?field=name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
                 Name
             </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='member_name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            <i style="font-size: 12px" class="glyphicon  {{ Session::get('saving_field')=='name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=member_id&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Member Id
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='member_id'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
+            <a href="javascript:ajaxLoad('saving/list?field=saving_amount&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">Saving Amount</a>
+            <i style="font-size: 12px" class="glyphicon {{Session::get('saving_field')=='saving_amount'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('saving/list?field=month_name&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Month Name
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='month_name'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th>
-            <a href="javascript:ajaxLoad('saving/list?field=saving_amount&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Saving Amount
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='saving_amount'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th>
-            <a href="javascript:ajaxLoad('saving/list?field=total_saving&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">
-                Total Savings
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('saving_field')=='total_saving'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
+            <a href="javascript:ajaxLoad('saving/list?field=withdrawal_amount&sort={{Session::get("saving_sort")=="asc"?"desc":"asc"}}')">Withdrawal Amount</a>
+            <i style="font-size: 12px" class="glyphicon {{Session::get('saving_field')=='withdrawal_amount'?(Session::get('saving_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):''}}"></i>
         </th>
         <th width="140px">Actions</th>
     </tr>
@@ -71,12 +50,10 @@
     @foreach($savings as $key=>$saving)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$saving->name}}</td>
             <td>{{$saving->member_id}}</td>
-            <td>{{$saving->month_name}}</td>
-            <td>{{$saving->saving_amount}}</td>
-            <td></td>
-            <!-- <td align="right">$ {{$saving->unitprice}}</td> -->
+            <td>{{$saving->name}}</td>
+            <td align="right">{{$saving->saving_amount}}</td>
+            <td align="right">{{$saving->withdrawal_amount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('saving/update/{{$saving->id}}')">
