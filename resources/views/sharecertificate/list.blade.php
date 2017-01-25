@@ -1,8 +1,10 @@
-<h1 class="page-header">Share Certificate List
+<h3 class="page-header"> Sharecertificate List
     <div class="pull-right">
         <a href="javascript:ajaxload('sharecertificate/create')" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i>New</a>
     </div>
-</h1>
+</h3>
+<?php echo "shisir";
+    exit();?>
 <div class="col-sm-7 form-group">
     <div class="input-group">
         <input class="form-control" id="search" value="{{Session::get(sharecertificate_search)}}" onkeydown="if (event.keyCode==13) ajaxload('{{url('sharecertificate/list')}}ok=1&search='+this.value)"

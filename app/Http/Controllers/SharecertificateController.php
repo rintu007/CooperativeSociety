@@ -13,17 +13,22 @@ class SharecertificateController extends Controller
 {
 	public function getIndex()
 	{
+
+
 		return view('sharecertificate.index');
-		echo "shishir";
-		exit();
 	}
 	public function getList()
 	{
-		Session::put('member_search', Input::has('ok') ? Input::get('search') : (Session::has('member_search') ? Session::get('member_search') : ''));
-		Session::put('member_field', Input::has('field') ? Input::get('field') : (Session::has('member_field') ? Session::get('member_field') : 'name'));
-		Session::put('member_sort', Input::has('sort') ? Input::get('sort') : (Session::has('member_sort') ? Session::get('member_sort') : 'asc'));
-		$sharecertificates = Member::where('name', 'like', '%' . Session::get('member_search') . '%')
-			->orderBy(Session::get('member_field'), Session::get('member_sort'))->paginate(8);
+
+		Session::put('sharecertificate_search', Input::has('ok') ? Input::get('search') : (Session::has('sharecertificate_search') ? Session::get('sharecertificate_search') : ''));
+
+		Session::put('sharecertificate_field', Input::has('field') ? Input::get('field') : (Session::has('sharecertificate_field') ? Session::get('sharecertificate_field') : 'sharecertificate_id'));
+
+		Session::put('sharecertificate_sort', Input::has('sort') ? Input::get('sort') : (Session::has('sharecertificate_sort') ? Session::get('sharecertificate_sort') : 'asc'));
+
+		$sharecertificates = Sharecertificate::where('member_name', 'like', '%' . Session::get('sharecertificate_search') . '%')
+			->orderBy(Session::get('sharecertificate_field'), Session::get('sharecertificate_sort'))->paginate(8);
+
 		return view('sharecertificate.list', ['sharecertificates' => $sharecertificates]);
 	}
 }
