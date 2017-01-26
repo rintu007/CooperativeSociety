@@ -17,7 +17,7 @@ class ShareController extends Controller
     public function getList()
     {
         Session::put('share_search', Input::has('ok') ? Input::get('search') : (Session::has('share_search') ? Session::get('share_search') : ''));
-        Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : 'member_name'));
+        Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : ''));
         Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
         $shares = Share::where('id', 'like', '%' . Session::get('share_search') . '%')
             ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(8);

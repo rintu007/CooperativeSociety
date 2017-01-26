@@ -17,16 +17,16 @@
 </style>
     <div class="panel panel-default">
         <div class="container-fluid">
-            <div class="row"></div>
-            <div class="row">
-                <!-- <div class="col-md-3"></div> -->
-                <div class="col-md-12 saving">
+		    <div class="row"></div>
+		    <div class="row">
+		        <!-- <div class="col-md-3"></div> -->
+		        <div class="col-md-12 monthlysaving">
                      <div id="content"></div>
-                </div>
-                <!-- <div class="col-md-3"></div> -->
-            </div>
-            <div class="loading"></div>
-        </div>
+		        </div>
+		        <!-- <div class="col-md-3"></div> -->
+		    </div>
+		    <div class="loading"></div>
+		</div>
     </div>
 @endsection
 
@@ -65,7 +65,7 @@
         });
     }
     $(document).ready(function () {
-        ajaxLoad('saving/list');
+        ajaxLoad('monthlysaving/list');
     });
 </script><!-- 
 </body>

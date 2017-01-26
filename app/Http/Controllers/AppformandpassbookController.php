@@ -40,15 +40,15 @@ class AppformandpassbookController extends Controller
     {
         $appformandpassbook = appformandpassbook::find($id);
         // $rules = ["unitprice" => "required|numeric"];
-        if ($appformandpassbook->member_name != Input::get('member_name'))
-            $rules += ['member_name' => 'required|unique:appformandpassbooks'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // if ($appformandpassbook->member_name != Input::get('member_name'))
+        //     $rules += ['member_name' => 'required|unique:appformandpassbooks'];
+        // $validator = Validator::make(Input::all(), $rules);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
        $appformandpassbook->serial_no = Input::get('serial_no');
         $appformandpassbook->member_name = Input::get('member_name');       
         $appformandpassbook->member_id = Input::get('member_id');

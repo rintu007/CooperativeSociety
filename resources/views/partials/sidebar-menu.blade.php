@@ -31,7 +31,7 @@
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Savinngs</a>
             <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/loan') }}">Savings</a></li>
+                <li><a tabindex="-1" href="{{ url('/monthlysaving') }}">Savings</a></li>
             </ul>
         </li>
 <!-- 
