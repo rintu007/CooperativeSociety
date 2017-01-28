@@ -21,7 +21,7 @@
 		    <div class="row">
 		        <!-- <div class="col-md-3"></div> -->
 		        <div class="col-md-12 share">
-		            <div id="content"></div>
+                     <div id="content"></div>
 		        </div>
 		        <!-- <div class="col-md-3"></div> -->
 		    </div>

@@ -6,18 +6,18 @@
             <span id="serial_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-member_name-error">
-        {!! Form::label("member_name","Member Name",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("member_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="member_name-error" class="help-block"></span>
-        </div>
-    </div>
     <div class="form-group required col-md-6" id="form-member_id-error">
         {!! Form::label("member_id","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("member_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="member_id-error" class="help-block"></span>
+        </div>
+    </div>
+        <div class="form-group required col-md-6" id="form-member_name-error">
+        {!! Form::label("member_name","Member Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("member_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="member_name-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-mobile_no-error">
@@ -27,27 +27,36 @@
             <span id="mobile_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-date-error">
-        {!! Form::label("date","Date",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-saving_amount-error">
+        {!! Form::label("saving_amount","Saving",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("date12",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="date-error" class="help-block"></span>
+            {!! Form::text("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="saving_amount-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-share_number-error">
-        {!! Form::label("share_number","No of Shres",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-withdrawal_amount-error">
+        {!! Form::label("withdrawal_amount","Withdraw ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="share_number-error" class="help-block"></span>
+            {!! Form::text("withdrawal_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="withdrawal_amount-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-share_amount-error">
-        {!! Form::label("share_amount","Total Share Amount",["class"=>"control-label col-md-3"]) !!}
+   <div class="form-group required col-md-6" id="form-created_at-error">
+        {!! Form::label("created_at","Date ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="share_amount-error" class="help-block"></span>
+            {!! Form::text("created_at",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="created_at-error" class="help-block"></span>
         </div>
     </div>
+      <div class="form-group required col-md-6" id="form-updated_at-error">
+        {!! Form::label("updated_at","Date ",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("updated_at",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="updated_at-error" class="help-block"></span>
+        </div>
+    </div>
+   
+
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

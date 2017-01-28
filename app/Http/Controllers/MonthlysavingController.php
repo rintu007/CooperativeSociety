@@ -27,6 +27,7 @@ class MonthlysavingController extends Controller
 
         $monthlysavings = Monthlysaving::where('member_name', 'like', '%' . Session::get('monthlysaving_search') . '%') 
             ->orderBy(Session::get('monthlysaving_field'), Session::get('monthlysaving_sort'))->paginate(8);
+
         return view('monthlysaving.list', ['monthlysavings' => $monthlysavings]);
 
     }

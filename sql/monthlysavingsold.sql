@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 05:11 AM
+-- Generation Time: Jan 26, 2017 at 11:35 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -23,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shares`
+-- Table structure for table `monthlysavings`
 --
 
-CREATE TABLE `shares` (
+CREATE TABLE `monthlysavings` (
   `id` int(11) NOT NULL,
   `serial_no` varchar(11) DEFAULT NULL,
   `member_id` varchar(500) DEFAULT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE `shares` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `shares`
+-- Dumping data for table `monthlysavings`
 --
 
-INSERT INTO `shares` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`, `saving_amount`, `withdrawal_amount`, `created_at`, `updated_at`, `name`) VALUES
+INSERT INTO `monthlysavings` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`, `saving_amount`, `withdrawal_amount`, `created_at`, `updated_at`, `name`) VALUES
 (2, '1', '1', '1', '1', '1', '1', '1970-01-01 00:00:01', '1970-01-01 00:00:01', ''),
 (3, '3', '3', '3', '3', '3', '3', '1970-01-01 00:00:02', '2017-01-26 09:18:39', ''),
 (5, '2', '2', '2', '2', '2', '2', '1970-01-01 00:00:02', '1970-01-01 00:00:02', '');
@@ -53,9 +53,9 @@ INSERT INTO `shares` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`
 --
 
 --
--- Indexes for table `shares`
+-- Indexes for table `monthlysavings`
 --
-ALTER TABLE `shares`
+ALTER TABLE `monthlysavings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -63,9 +63,9 @@ ALTER TABLE `shares`
 --
 
 --
--- AUTO_INCREMENT for table `shares`
+-- AUTO_INCREMENT for table `monthlysavings`
 --
-ALTER TABLE `shares`
+ALTER TABLE `monthlysavings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

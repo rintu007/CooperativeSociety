@@ -1,48 +1,72 @@
--- --------------------------------------------------------
--- Host:                         127.0.0.1
--- Server version:               10.1.16-MariaDB - mariadb.org binary distribution
--- Server OS:                    Win32
--- HeidiSQL Version:             9.3.0.4984
--- --------------------------------------------------------
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jan 28, 2017 at 05:11 AM
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 7.0.13
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
--- Dumping database structure for cosociety
-DROP DATABASE IF EXISTS `cosociety`;
-CREATE DATABASE IF NOT EXISTS `cosociety` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `cosociety`;
+--
+-- Database: `cosociety`
+--
 
+-- --------------------------------------------------------
 
--- Dumping structure for table cosociety.shares
+--
+-- Table structure for table `shares`
+--
 DROP TABLE IF EXISTS `shares`;
-CREATE TABLE IF NOT EXISTS `shares` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(500) DEFAULT NULL,
-  `serial_no` varchar(500) DEFAULT NULL,
-  `member_name` varchar(500) DEFAULT NULL,
+CREATE TABLE `shares` (
+  `id` int(11) NOT NULL,
+  `serial_no` varchar(11) DEFAULT NULL,
   `member_id` varchar(500) DEFAULT NULL,
+  `member_name` varchar(500) NOT NULL,
   `mobile_no` varchar(500) DEFAULT NULL,
-  `date12` varchar(500) DEFAULT NULL,
-  `share_number` varchar(500) DEFAULT NULL,
-  `share_amount` varchar(500) DEFAULT NULL,
-  `unitprice` decimal(10,2) DEFAULT '0.00',
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+  `saving_amount` varchar(11) DEFAULT NULL,
+  `withdrawal_amount` varchar(50) NOT NULL,
+  `created_at` varchar(500) DEFAULT NULL,
+  `updated_at` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table cosociety.shares: ~4 rows (approximately)
-DELETE FROM `shares`;
-/*!40000 ALTER TABLE `shares` DISABLE KEYS */;
-INSERT INTO `shares` (`id`, `name`, `serial_no`, `member_name`, `member_id`, `mobile_no`, `date12`, `share_number`, `share_amount`, `unitprice`, `created_at`, `updated_at`) VALUES
-	(37, NULL, '7', '6', '5', '4', '3', '2', '5', 0.00, '2017-01-18 06:57:31', '2017-01-18 06:57:31'),
-	(38, NULL, '1', '2', '3', '4', '5', '6', '4', 0.00, '2017-01-18 06:57:41', '2017-01-18 06:57:41'),
-	(39, NULL, '7', '6', '5', '4', '3', '2', '5', 0.00, '2017-01-18 06:58:18', '2017-01-18 06:58:18'),
-	(40, NULL, '0', '9', '8', '7', '6', '5', '4', 0.00, '2017-01-18 07:05:26', '2017-01-18 07:05:26');
-/*!40000 ALTER TABLE `shares` ENABLE KEYS */;
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+--
+-- Dumping data for table `shares`
+--
+
+INSERT INTO `shares` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`, `saving_amount`, `withdrawal_amount`, `created_at`, `updated_at`, `name`) VALUES
+(2, '1', '1', '1', '1', '1', '1', '1970-01-01 00:00:01', '1970-01-01 00:00:01', ''),
+(3, '3', '3', '3', '3', '3', '3', '1970-01-01 00:00:02', '2017-01-26 09:18:39', ''),
+(5, '2', '2', '2', '2', '2', '2', '1970-01-01 00:00:02', '1970-01-01 00:00:02', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `shares`
+--
+ALTER TABLE `shares`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `shares`
+--
+ALTER TABLE `shares`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

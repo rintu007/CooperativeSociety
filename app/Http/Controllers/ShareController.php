@@ -11,17 +11,25 @@ class ShareController extends Controller
 {
     public function getIndex()
     {
+
         return view('share.index');
+
     }
 
     public function getList()
     {
+
         Session::put('share_search', Input::has('ok') ? Input::get('search') : (Session::has('share_search') ? Session::get('share_search') : ''));
-        Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : ''));
+
+        Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : 'member_name'));
+
         Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
-        $shares = Share::where('id', 'like', '%' . Session::get('share_search') . '%')
+
+        $shares = Share::where('name', 'like', '%' . Session::get('share_search') . '%') 
             ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(8);
+            exit();
         return view('share.list', ['shares' => $shares]);
+
     }
 
     public function getUpdate($id)
@@ -32,19 +40,14 @@ class ShareController extends Controller
     public function postUpdate($id)
     {
         $share = Share::find($id);
-        $rules = ["unitprice" => "required|numeric"];
-        if ($share->name != Input::get('name'))
-            $rules += ['name' => 'required|unique:shares'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
-        $share->name = Input::get('name');
-        $share->ShareCode = Input::get('ShareCode');
-        $share->unitprice = Input::get('unitprice');
+        $share-> serial_no = Input::get('serial_no');
+        $share-> member_id = Input::get('member_id');
+        $share-> member_name = Input::get('member_name');
+        $share-> mobile_no = Input::get('mobile_no');
+        $share-> saving_amount = Input::get('saving_amount');
+        $share-> withdrawal_amount = Input::get('withdrawal_amount');
+        $share-> created_at = Input::get('created_at');
+        $share-> updated_at = Input::get('updated_at');
         $share->save();
         return ['url' => 'share/list'];
     }
@@ -56,30 +59,17 @@ class ShareController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
-            //"name" => "required|unique:shares",
-            //"ShareCode" => "required|unique:shares",
-            //"unitprice" => "required|numeric"
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+       
+        
         $share = new Share();
-
-        $share->serial_no = Input::get('serial_no');
-        $share->member_name = Input::get('member_name');
-        $share->member_id = Input::get('member_id');
-        $share->mobile_no = Input::get('mobile_no');
-        $share->date12       = Input::get('date12');
-        $share->share_number = Input::get('share_number');
-        $share->share_amount = Input::get('share_amount'); 
-
-        //$share->name = Input::get('name');
-        //$share->ShareCode = Input::get('ShareCode');
-        //$share->unitprice = Input::get('unitprice');
+        $share-> serial_no = Input::get('serial_no');
+        $share-> member_id = Input::get('member_id');
+        $share-> member_name = Input::get('member_name');
+        $share-> mobile_no = Input::get('mobile_no');
+        $share-> saving_amount = Input::get('saving_amount');
+        $share-> withdrawal_amount = Input::get('withdrawal_amount');
+        $share-> created_at = Input::get('created_at');
+        $share-> updated_at = Input::get('updated_at');
         $share->save();
         return ['url' => 'share/list'];
     }
