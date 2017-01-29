@@ -27,18 +27,18 @@
             <span id="mobile_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-saving_amount-error">
-        {!! Form::label("saving_amount","Saving",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-share_number-error">
+        {!! Form::label("share_number","No of Shares",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="saving_amount-error" class="help-block"></span>
+            {!! Form::text("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="share_number-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-withdrawal_amount-error">
-        {!! Form::label("withdrawal_amount","Withdraw ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-share_amount-error">
+        {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("withdrawal_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="withdrawal_amount-error" class="help-block"></span>
+            {!! Form::text("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="share_amount-error" class="help-block"></span>
         </div>
     </div>
    <div class="form-group required col-md-6" id="form-created_at-error">

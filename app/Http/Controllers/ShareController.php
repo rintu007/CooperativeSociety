@@ -25,9 +25,13 @@ class ShareController extends Controller
 
         Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
 
-        $shares = Share::where('name', 'like', '%' . Session::get('share_search') . '%') 
-            ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(8);
-            exit();
+        $shares = Share::where('created_at', 'like', '%' . Session::get('share_search') . '%') 
+            ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(10);
+            // foreach ($shares as $key => $share) {
+            //     # code...
+            //     echo $share->member_name;
+            // }
+            // exit();
         return view('share.list', ['shares' => $shares]);
 
     }
@@ -44,8 +48,8 @@ class ShareController extends Controller
         $share-> member_id = Input::get('member_id');
         $share-> member_name = Input::get('member_name');
         $share-> mobile_no = Input::get('mobile_no');
-        $share-> saving_amount = Input::get('saving_amount');
-        $share-> withdrawal_amount = Input::get('withdrawal_amount');
+        $share-> share_number = Input::get('share_number');
+        $share-> share_amount = Input::get('share_amount');
         $share-> created_at = Input::get('created_at');
         $share-> updated_at = Input::get('updated_at');
         $share->save();
@@ -66,8 +70,8 @@ class ShareController extends Controller
         $share-> member_id = Input::get('member_id');
         $share-> member_name = Input::get('member_name');
         $share-> mobile_no = Input::get('mobile_no');
-        $share-> saving_amount = Input::get('saving_amount');
-        $share-> withdrawal_amount = Input::get('withdrawal_amount');
+        $share-> share_number = Input::get('share_number');
+        $share-> share_amount = Input::get('share_amount');
         $share-> created_at = Input::get('created_at');
         $share-> updated_at = Input::get('updated_at');
         $share->save();

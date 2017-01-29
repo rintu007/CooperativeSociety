@@ -1,4 +1,4 @@
-<h1 class="page-header">Monthly Savings
+<h1 class="page-header">Savings
     <div class="pull-right">
         <a href="javascript:ajaxLoad('saving/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -83,7 +83,7 @@
             <td>{{$saving->member_name}}</td>
             <td>{{$saving->saving_amount}}</td>
             <td align="right">{{$saving->withdrawal_amount}}</td>
-            <!-- <td>{{$saving->mobile_no}}</td> -->
+            <td>{{$saving->total_amount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('saving/update/{{$saving->id}}')">
