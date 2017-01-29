@@ -43,6 +43,7 @@ Route::controllers([
     'sharecertificate'               => 'SharecertificateController',
     'saving2'                        => 'Saving2Controller',
     'monthlysaving'                  => 'MonthlysavingController',
+
 ]); 
 
 Route::resource('users', 'UsersController');

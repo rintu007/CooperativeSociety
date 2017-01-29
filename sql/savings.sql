@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shares`
+-- Table structure for table `savings`
 --
 DROP TABLE IF EXISTS `savings`;
 CREATE TABLE `savings` (
@@ -39,10 +39,10 @@ CREATE TABLE `savings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `shares`
+-- Dumping data for table `savings`
 --
 
-INSERT INTO `shares` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`, `share_number`, `share_amount`, `created_at`, `updated_at`) VALUES
+INSERT INTO `savings` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`, `share_number`, `share_amount`, `created_at`, `updated_at`) VALUES
 (2, '23', '23', '1', '1', '1', '1', '1970-01-01 00:00:01', '2017-01-29 04:29:16'),
 (3, '3', '3', '3', '3', '3', '3', '1970-01-01 00:00:02', '2017-01-26 09:18:39'),
 (5, '2', '2', '2', '2', '2', '2', '1970-01-01 00:00:02', '1970-01-01 00:00:02'),
@@ -60,9 +60,9 @@ INSERT INTO `shares` (`id`, `serial_no`, `member_id`, `member_name`, `mobile_no`
 --
 
 --
--- Indexes for table `shares`
+-- Indexes for table `savings`
 --
-ALTER TABLE `shares`
+ALTER TABLE `savings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -70,9 +70,9 @@ ALTER TABLE `shares`
 --
 
 --
--- AUTO_INCREMENT for table `shares`
+-- AUTO_INCREMENT for table `savings`
 --
-ALTER TABLE `shares`
+ALTER TABLE `savings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
