@@ -21,7 +21,8 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css' rel='stylesheet'
           type='text/css'>
     <link rel="stylesheet" href="{{ asset('highlight/styles/zenburn.css') }}">
-    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+    <link rel="stylesheet" href="{{ asset('/css/tsal.css') }}">
+    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css"> -->
     <!-- <link href="{{ asset('bootstrap-3.3.6/css/bootstrap.min.css') }}" rel="stylesheet"> -->
     <script src="{{ asset('highlight/highlight.pack.js')  }}"></script>
     <script>hljs.initHighlightingOnLoad();</script>
