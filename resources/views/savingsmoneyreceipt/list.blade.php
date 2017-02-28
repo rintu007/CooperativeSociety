@@ -1,3 +1,5 @@
+@if(Auth::guest())
+@else
 <h1 class="page-header">Money Receipt List for Saving
     <div class="pull-right">
         <a href="javascript:ajaxLoad('savingsmoneyreceipt/create')" class="btn btn-primary pull-right"><i
@@ -79,6 +81,7 @@
         Total: {{$savingsmoneyreceipts->total()}} records
     </i>
 </div>
+@endif
 <script>
     $('.pagination a').on('click', function (event) {
         event.preventDefault();

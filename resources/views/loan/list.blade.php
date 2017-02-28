@@ -1,3 +1,5 @@
+@if(Auth::guest)
+    @else
 <h1 class="page-header">ঋণ তালিকা
     <div class="pull-right">
         <a href="javascript:ajaxLoad('loan/create')" class="btn btn-primary pull-right"><i
@@ -77,6 +79,7 @@
         Total: {{$loans->total()}} records
     </i>
 </div>
+@endif
 <script>
     $('.pagination a').on('click', function (event) {
         event.preventDefault();

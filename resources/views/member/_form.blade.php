@@ -1,23 +1,26 @@
-<div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-CSMId-error">
-        {!! Form::label("CSMId","Member Id:",["class"=>"control-label col-md-3"]) !!}
+<div class="col-md-12" style="background-color: #EAEAEA">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Personal Information</h3>               
+    </div>
+    <div class="form-group required col-md-6" id="form-MemberId-error">
+        {!! Form::label("MemberId","Member Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("CSMId",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CSMId-error" class="help-block"></span>
+            {!! Form::text("MemberId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BanglaName-error">
         {!! Form::label("BanglaName","Name in Bangla:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("BanglaName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberNameBangla-error" class="help-block"></span>
+            <span id="BanglaName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-name12-error">
-        {!! Form::label("name12","Name in English: ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-EnglishName-error">
+        {!! Form::label("EnglishName","Name in English: ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("name12",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name12-error" class="help-block"></span>
+            {!! Form::text("EnglishName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="EnglishName-error" class="help-block"></span>
         </div>
     </div>
 
@@ -38,7 +41,7 @@
     </div>
 
     <div class="form-group required col-md-6" id="form-HusbandWifeName-error">
-        {!! Form::label("Husband/WifeName","Husban/Wife Name",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("HusbandWifeName","Husband/Wife Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("HusbandWifeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="HusbandWifeName-error" class="help-block"></span>
@@ -101,13 +104,12 @@
             <span id="Mobile-error" class="help-block"></span>
         </div>
     </div>
-
-    <div class="form-group required col-md-12" id="form-MemberPresentAddress-error">
-        {!! Form::label("MemberPresentAddress","Present Address",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-           
-        </div>
+</div>
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Present Address</h3>               
     </div>
+    
     <div class="form-group required col-md-6" id="form-PresentVillageName-error">
         {!! Form::label("PresentVillageName","Village:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -136,29 +138,13 @@
             <span id="PresentJela-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-name-error">
-        {!! Form::label("name","",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="name-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-MemberCode-error">
-        {!! Form::label("MemberCode","",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("MemberCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MemberCode-error" class="help-block"></span>
-        </div>
+</div>
+<div class="col-md-12" style="background-color: #EAEAEA">
+    <div class="form-group required col-md-6" id="">
+    <h3>Nominee Information-1</h3>
     </div>
     <div class="form-group required col-md-6" id="">
-        {!! Form::label("","Nominee Information-1:",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="">
-        {!! Form::label("","Nominee Information-2",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-        </div>
+       <h3>Nominee Information-2</h3>
     </div>
      <div class="form-group required col-md-6" id="form-SPName-error">
         {!! Form::label("SPName","Name:",["class"=>"control-label col-md-3"]) !!}
@@ -244,16 +230,15 @@
             <span id="GivenPortion2-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Image-error">
-        {!! Form::label("Image","Images:",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-         
-        </div>
+</div>
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12">
+       <h4>Images</h4>
     </div>
     <div class="form-group required col-md-6" id="form-Image-error">
         {!! Form::label("Image","Member Pic:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Image",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("Image",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="Image-error" class="help-block"></span>
         </div>
     </div>
@@ -261,42 +246,42 @@
     <div class="form-group required col-md-6" id="form-TMSSIdCard-error">
         {!! Form::label("TMSSIdCard","Member TMSS Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("TMSSIdCard",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("TMSSIdCard",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="TMSSIdCard-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-NIdImage-error">
         {!! Form::label("NIdImage","NId copy:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("NIdImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("NIdImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="NIdImage-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-NomineeImage-error">
         {!! Form::label("NomineeImage","Nominee Pic-1:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("NomineeImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("NomineeImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="NomineeImage-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BirthCertificate-error">
         {!! Form::label("BirthCertificate","Nominee NId:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("BirthCertificate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("BirthCertificate",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="BirthCertificate-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-NomineeImage2-error">
         {!! Form::label("NomineeImage2","Nominee Pic-2:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("NomineeImage2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("NomineeImage2",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="NomineeImage2-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BirthCertificate2-error">
         {!! Form::label("BirthCertificate2","Nominee NId:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("BirthCertificate2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::file("BirthCertificate2",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="BirthCertificate2-error" class="help-block"></span>
         </div>
     </div>
@@ -328,7 +313,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('BanglaName');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

@@ -1,3 +1,5 @@
+@if(Auth::guest())
+@else
 <h3 class="page-header"> Sharecertificate List
     <div class="pull-right">
         <a href="javascript:ajaxload('sharecertificate/create')" class="btn btn-primary pull-right"><i class="glyphicon glyphicon-plus-sign"></i>New</a>
@@ -65,6 +67,7 @@
         Total:{{$sharecertificates->total()}} records
     </i>
 </div>
+@endif
 <script>
 //    $('.pagination a'). on('click', function(event){
 //        event.preventDefault();

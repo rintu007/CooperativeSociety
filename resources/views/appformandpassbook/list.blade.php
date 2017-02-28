@@ -1,3 +1,5 @@
+@if(Auth::guest())
+    @else
 <h1 class="page-header">Application Form & Passbook Fee
     <div class="pull-right">
         <a href="javascript:ajaxLoad('appformandpassbook/create')" class="btn btn-primary pull-right"><i
@@ -104,6 +106,7 @@
         Total: {{$appformandpassbooks->total()}} records
     </i>
 </div>
+@endif
 <script>
     $('.pagination a').on('click', function (event) {
         event.preventDefault();

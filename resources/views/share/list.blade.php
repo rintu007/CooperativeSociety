@@ -1,3 +1,5 @@
+@if(Auth::guest())
+@else
 <h1 class="page-header">Share List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('share/create')" class="btn btn-primary pull-right"><i
@@ -103,6 +105,7 @@
         Total: {{$shares->total()}} records
     </i>
 </div>
+@endif
 <script>
     $('.pagination a').on('click', function (event) {
         event.preventDefault();
