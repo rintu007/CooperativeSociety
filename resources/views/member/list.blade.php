@@ -78,7 +78,7 @@
             <td>{{$member->NId}}</td>
             <td>{{$member->Mobile}}</td>
 
-        <!-- @if(Auth::user()->()) -->
+        @if(Auth::user()->user_type == "admin")
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('member/update/{{$member->id}}')">
@@ -88,7 +88,19 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
+         @else
+            <td style="text-align: center">
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('member/update/{{$member->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> view</a>
+               <!--  <a class="btn btn-danger btn-xs" title="Delete"
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('member/delete/{{$member->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> Delete
+                </a> -->
+            </td>
+        @endif
         </tr>
+
     @endforeach
     </tbody>
 </table>

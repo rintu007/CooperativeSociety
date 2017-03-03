@@ -49,7 +49,7 @@ class AppformandpassbookController extends Controller
         //         'errors' => $validator->getMessageBag()->toArray()
         //     );
         // }
-       $appformandpassbook->serial_no = Input::get('serial_no');
+        $appformandpassbook->serial_no = Input::get('serial_no');
         $appformandpassbook->member_name = Input::get('member_name');       
         $appformandpassbook->member_id = Input::get('member_id');
         $appformandpassbook->mobile_no = Input::get('mobile_no');

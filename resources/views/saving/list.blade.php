@@ -86,6 +86,7 @@
             <td>{{$saving->saving_amount}}</td>
             <td align="right">{{$saving->withdrawal_amount}}</td>
             <td>{{$saving->total_amount}}</td>
+            @if(Auth::user()->user_type == "admin")
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('saving/update/{{$saving->id}}')">
@@ -95,6 +96,17 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
+            @else
+            <td style="text-align: center">
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('saving/update/{{$saving->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <!-- <a class="btn btn-danger btn-xs" title="Delete"
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('saving/delete/{{$saving->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> Delete
+                </a> -->
+            </td>
+            @endif
         </tr>
     @endforeach
     </tbody>

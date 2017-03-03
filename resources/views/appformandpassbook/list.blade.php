@@ -87,6 +87,7 @@
             <td align="right"><!-- $  -->{{$appformandpassbook->passbook}}</td>
             <td>{{$appformandpassbook->share_amount}}</td>
             <td>{{$appformandpassbook->saving_amount}}</td>
+            @if(Auth::user()->user_type == "admin")
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('appformandpassbook/update/{{$appformandpassbook->id}}')">
@@ -96,6 +97,17 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
+            @else
+            <td style="text-align: center">
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('appformandpassbook/update/{{$appformandpassbook->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> view</a>
+                <!-- <a class="btn btn-danger btn-xs" title="Delete"
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('appformandpassbook/delete/{{$appformandpassbook->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> Delete
+                </a> -->
+            </td>
+            @endif
         </tr>
     @endforeach
     </tbody>

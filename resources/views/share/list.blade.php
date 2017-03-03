@@ -86,6 +86,7 @@
             <td>{{$share->share_number}}</td>
             <td align="right">{{$share->share_amount}}</td>
             <td>{{$share->created_at}}</td>
+            @if(Auth::user()->user_type == "admin")
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('share/update/{{$share->id}}')">
@@ -95,6 +96,17 @@
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a>
             </td>
+            @else
+            <td style="text-align: center">
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('share/update/{{$share->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
+                <!-- <a class="btn btn-danger btn-xs" title="Delete"
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> Delete
+                </a> -->
+            </td>
+            @endif
         </tr>
     @endforeach
     </tbody>

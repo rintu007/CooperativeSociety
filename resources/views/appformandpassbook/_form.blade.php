@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" style="background-color: #EAEAEA">
     
     <div class="form-group required col-md-6" id="form-serial_no-error">
         {!! Form::label("serial_no","Serial No",["class"=>"control-label col-md-3"]) !!}
@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-passbook-error">
-        {!! Form::label("passbook","Passbook",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("passbook","Passbook Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("passbook",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="passbook-error" class="help-block"></span>
@@ -59,14 +59,14 @@
     <div class="form-group required col-md-6" id="form-share_amount-error">
         {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="passbook-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-saving_amount-error">
         {!! Form::label("saving_amount","Saving Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="passbook-error" class="help-block"></span>
         </div>
     </div>
