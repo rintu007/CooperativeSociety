@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 05:11 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Mar 30, 2017 at 07:54 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 7.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -25,15 +25,22 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `shares`
 --
-DROP TABLE IF EXISTS `shares`;
+
 CREATE TABLE `shares` (
   `id` int(11) NOT NULL,
   `serial_no` varchar(11) DEFAULT NULL,
   `member_id` varchar(500) DEFAULT NULL,
   `member_name` varchar(500) NOT NULL,
   `mobile_no` varchar(500) DEFAULT NULL,
-  `saving_amount` varchar(11) DEFAULT NULL,
-  `withdrawal_amount` varchar(50) NOT NULL,
+  `base_share_number` int(11) DEFAULT NULL,
+  `base_share_amount` float(22) DEFAULT NULL,
+  `add_share_number` int(11) DEFAULT NULL,
+  `add_share_amount` float(22) DEFAULT NULL,
+  `withdraw_share_number` int(11) DEFAULT NULL,
+  `withdraw_share_amount` float(22) DEFAULT NULL,
+  `present_share_number` int(11) DEFAULT NULL,
+  `present_share_amount` float(22) DEFAULT NULL,
+  `date` varchar(500) NOT NULL,
   `created_at` varchar(500) DEFAULT NULL,
   `updated_at` varchar(100) NOT NULL,
   `name` varchar(100) NOT NULL

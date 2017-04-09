@@ -1,10 +1,11 @@
 @if(Auth::guest())
+<h4>Please Log in</h4>
 @else
-<h1 class="page-header">Share List
-    <div class="pull-right">
+<h1 class="page-header">Share Exchange List
+    <!-- <div class="pull-right">
         <a href="javascript:ajaxLoad('share/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div>
+    </div> -->
 </h1>
 <div class="col-sm-7 form-group">
     <div class="input-group">
@@ -27,7 +28,7 @@
         <th width="50px" style="text-align: center">No</th>
         <th>
             <a href="javascript:ajaxLoad('share/list?field=member_id&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
-                Member Id
+                Id
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('share_field')=='member_id'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -83,30 +84,33 @@
             <td align="center">{{$i++}}</td>
             <td>{{$share->member_id}}</td>
             <td>{{$share->member_name}}</td>
-            <td>{{$share->share_number}}</td>
-            <td align="right">{{$share->share_amount}}</td>
+            <td>{{$share->base_share_number}}</td>
+            <td align="right">{{$share->base_share_amount}}</td>
             <td>{{$share->created_at}}</td>
-            @if(Auth::user()->user_type == "admin")
+            <!-- @if(Auth::user()->user_type == "admin") -->
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('share/update/{{$share->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
-                <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </a>
+                   href="javascript:ajaxLoad('share/update/{{$share->member_id}}')">
+                    <i class="glyphicon glyphicon-plus-sign"></i> add</a>
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('share/create/{{$share->member_id}}')">
+                    <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
+                <!-- <a class="btn btn-danger btn-xs" title="Delete"
+                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->member_id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> delete
+                </a> -->
             </td>
-            @else
-            <td style="text-align: center">
+            <!-- @else -->
+            <!-- <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('share/update/{{$share->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <i class="glyphicon glyphicon-edit"></i> Edit</a> -->
                 <!-- <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </a> -->
             </td>
-            @endif
+            <!-- @endif -->
         </tr>
     @endforeach
     </tbody>

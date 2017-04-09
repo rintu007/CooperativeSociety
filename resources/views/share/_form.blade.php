@@ -1,62 +1,59 @@
+<div class="col-md-12" border="1px solid black">
+    <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        
+        <th>          
+             Your Shares
+        </th>
+         <th>
+            Your Amount
+        </th>
+        
+    </tr>
+    </thead>
+   
+     <tbody>
+    
+        <tr>
+            <td align="center"></td>
+            <td align="center"></td>          
+       </tr>
+   
+    </tbody> 
+</table>
+</div>
 <div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-serial_no-error">
-        {!! Form::label("serial_no","Serial No",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("serial_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="serial_no-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-member_id-error">
+     <div class="form-group required col-md-6" id="form-member_id-error">
         {!! Form::label("member_id","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("member_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="member_id-error" class="help-block"></span>
         </div>
     </div>
-        <div class="form-group required col-md-6" id="form-member_name-error">
-        {!! Form::label("member_name","Member Name",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-update_date-error">
+        {!! Form::label("update_date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="member_name-error" class="help-block"></span>
+            {!! Form::text("update_date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="update_date-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-mobile_no-error">
-        {!! Form::label("mobile_no","Mobile No",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("mobile_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="mobile_no-error" class="help-block"></span>
-        </div>
-    </div>
+   
     <div class="form-group required col-md-6" id="form-share_number-error">
-        {!! Form::label("share_number","No of Shares",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("share_number","Share Number",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="share_number-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-share_amount-error">
         {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="share_amount-error" class="help-block"></span>
         </div>
-    </div>
-   <div class="form-group required col-md-6" id="form-created_at-error">
-        {!! Form::label("created_at","Date ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("created_at",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="created_at-error" class="help-block"></span>
-        </div>
-    </div>
-      <div class="form-group required col-md-6" id="form-updated_at-error">
-        {!! Form::label("updated_at","Date ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("updated_at",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="updated_at-error" class="help-block"></span>
-        </div>
-    </div>
-   
-
+    </div>  
+ 
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
@@ -85,7 +82,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('member_name');
+                        index = $(this).attr('member_id');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
