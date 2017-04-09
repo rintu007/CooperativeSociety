@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Share;
+use App\Addshare;
+use App\Withdrawshare;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -31,13 +33,10 @@ class ShareController extends Controller
 
     }
 
-    public function getUpdate($id)
+    public function getUpdate($member_id)
     {
-         $share = Share::find($id);
-       
-        // $shares = Share::where('member_id', $id)->get();
-      
-        //return view('share.update', ['shares' => $shares]);
+        
+        $share = Share::find($member_id);
         return view('share.update', ['share' => $share]);
     }
 
@@ -48,7 +47,6 @@ class ShareController extends Controller
 
         $share = Share::find($id);
         $member_id    = Input::get('member_id');
-        // $share->member_id    = $member_id ;
         $share->date  = Input::get('date');
         $add_share_number    = Input::get('share_number');
         $share->add_share_number = $add_share_number; 
@@ -62,14 +60,20 @@ class ShareController extends Controller
                     $present_share_amount = $share_data->present_share_amount;
                  }
         $present_share_number = ($present_share_number + $add_share_number);
-        // echo $present_share_number;
         $present_share_amount = $present_share_amount + $add_share_amount;
-        // exit();
         $share->present_share_number = $present_share_number;
         $share->present_share_amount = $present_share_amount;
         $share->created_at   = Input::get('created_at');
         $share->updated_at   = Input::get('updated_at');
         $share->save();
+
+        $addshare = new Addshare();
+         $addshare->serial_no = Input::get('serial_no');
+        $addshare->member_id = Input::get('member_id');
+        $addshare->date = Input::get('date');
+        $addshare->share_number = Input::get('share_number');
+        $addshare->share_amount = Input::get('share_amount');
+        $addshare->save();
 
         // $share = Share::find($id);
         // $share->present_share_number += $add_share_number;
@@ -78,18 +82,16 @@ class ShareController extends Controller
         return ['url' => 'share/list'];
     }
 
-    public function getCreate($id)
+    public function getCreate($member_id)
     {
-         return view('share.create', ['share' => Share::find($id)]);
+         return view('share.create', ['share' => Share::find($member_id)]);
         // return view('share.create');
     }
 
-    public function postCreate()
+    public function postCreate($id)
     {
-        $share = new Share();
-        // $share = Share::find($id);
+        $share = Share::find($id);
         $member_id    = Input::get('member_id');
-        // $share->member_id    = $member_id ;
         $share->date  = Input::get('date');
         $withdraw_share_number    = Input::get('share_number');
         $share->withdraw_share_number = $withdraw_share_number; 
@@ -97,20 +99,26 @@ class ShareController extends Controller
         $share->withdraw_share_amount = $withdraw_share_amount;
         
 
-                /*$shares = Share::where('member_id', $member_id);
-                 @foreach($shares as $key=>$share)
-                    $present_share_number = $share->present_share_number;
-                    $present_share_amount = $share->present_share_amount;
-                 @endforeach*/
-
+                $shares_data = Share::where('member_id', $member_id)->get();
+                 foreach($shares_data as $key=>$share_data){
+                    $present_share_number = $share_data->present_share_number;
+                    $present_share_amount = $share_data->present_share_amount;
+                 }
+        $present_share_number = ($present_share_number - $withdraw_share_number);
+        $present_share_amount = $present_share_amount - $withdraw_share_amount;
+        $share->present_share_number = $present_share_number;
+        $share->present_share_amount = $present_share_amount;
         $share->created_at   = Input::get('created_at');
         $share->updated_at   = Input::get('updated_at');
         $share->save();
 
-        // $share = Share::find($id);
-        // $share->present_share_number += $add_share_number;
-        // $share->present_share_amount += $add_share_amount;
-        // $share->save();
+        $withdrawshare = new Withdrawshare();
+        $withdrawshare->serial_no = Input::get('serial_no');
+        $withdrawshare->member_id = Input::get('member_id');
+        $withdrawshare->date = Input::get('date');
+        $withdrawshare->share_number = Input::get('share_number');
+        $withdrawshare->share_amount = Input::get('share_amount');
+        $withdrawshare->save();
         return ['url' => 'share/list'];
        
         // $share = new Share();

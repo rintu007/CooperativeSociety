@@ -84,18 +84,18 @@
             <td align="center">{{$i++}}</td>
             <td>{{$share->member_id}}</td>
             <td>{{$share->member_name}}</td>
-            <td>{{$share->base_share_number}}</td>
-            <td align="right">{{$share->base_share_amount}}</td>
-            <td>{{$share->created_at}}</td>
+            <td>{{$share->present_share_number}}</td>
+            <td align="right">{{$share->present_share_amount}}</td>
+            <td>{{$share->date}}</td>
             <!-- @if(Auth::user()->user_type == "admin") -->
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('share/update/{{$share->member_id}}')">
+                   href="javascript:ajaxLoad('share/update/{{$share->id}}')">
                     <i class="glyphicon glyphicon-plus-sign"></i> add</a>
                 <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('share/create/{{$share->member_id}}')">
+                   href="javascript:ajaxLoad('share/create/{{$share->id}}')">
                     <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
-                <!-- <a class="btn btn-danger btn-xs" title="Delete"
+               <!--  <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->member_id}}')">
                     <i class="glyphicon glyphicon-trash"></i> delete
                 </a> -->

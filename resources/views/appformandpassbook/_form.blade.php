@@ -31,22 +31,29 @@
     <div class="form-group required col-md-6" id="form-date-error">
         {!! Form::label("date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("date",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::date("date",\Carbon\Carbon::now(),["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-app_form-error">
         {!! Form::label("app_form","Entry Form Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("app_form",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("app_form",100,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="app_form-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-passbook-error">
         {!! Form::label("passbook","Passbook Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("passbook",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("passbook",50,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="passbook-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-saving_amount-error">
+        {!! Form::label("saving_amount","Saving Amount",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::number("saving_amount",100,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="saving_amount-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-share_number-error">
@@ -63,13 +70,7 @@
             <span id="share_amount-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-saving_amount-error">
-        {!! Form::label("saving_amount","Saving Amount",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::number("saving_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="saving_amount-error" class="help-block"></span>
-        </div>
-    </div>
+    
     <div class="form-group required col-md-6" id="form-name-error">
         {!! Form::label("name","DPS Duration",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">

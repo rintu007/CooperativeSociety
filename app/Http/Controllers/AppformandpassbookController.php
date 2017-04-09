@@ -57,9 +57,9 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->date       = Input::get('date');
         $appformandpassbook->app_form = Input::get('app_form');
         $appformandpassbook->passbook = Input::get('passbook');
+        $appformandpassbook->saving_amount = Input::get('saving_amount'); 
         $appformandpassbook->share_number = Input::get('share_number');
-        $appformandpassbook->share_amount = Input::get('share_amount');
-        $appformandpassbook->saving_amount = Input::get('saving_amount');   
+        $appformandpassbook->share_amount = Input::get('share_amount');          
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
@@ -100,18 +100,18 @@ class AppformandpassbookController extends Controller
             );
         }
         $appformandpassbook = new Appformandpassbook();
-        $appformandpassbook->serial_no      = Input::get('serial_no');
-        $appformandpassbook->member_name    = Input::get('member_name');       
-        $appformandpassbook->member_id      = Input::get('member_id');
-        $appformandpassbook->mobile_no      = Input::get('mobile_no');
-        $appformandpassbook->date           = Input::get('date');
-        $appformandpassbook->app_form       = Input::get('app_form');
-        $appformandpassbook->passbook       = Input::get('passbook'); 
-        $appformandpassbook->share_number   = Input::get('share_number'); 
-        $appformandpassbook->share_amount   = Input::get('share_amount');
-        $appformandpassbook->saving_amount  = Input::get('saving_amount');  
-        $appformandpassbook->name           = Input::get('name');       
-        $appformandpassbook->unitprice      = Input::get('unitprice');
+         $appformandpassbook->serial_no = Input::get('serial_no');
+        $appformandpassbook->member_name = Input::get('member_name');       
+        $appformandpassbook->member_id = Input::get('member_id');
+        $appformandpassbook->mobile_no = Input::get('mobile_no');
+        $appformandpassbook->date       = Input::get('date');
+        $appformandpassbook->app_form = Input::get('app_form');
+        $appformandpassbook->passbook = Input::get('passbook');
+        $appformandpassbook->saving_amount = Input::get('saving_amount'); 
+        $appformandpassbook->share_number = Input::get('share_number');
+        $appformandpassbook->share_amount = Input::get('share_amount');          
+        $appformandpassbook->name = Input::get('name');       
+        $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
 
         $share = new Share();
