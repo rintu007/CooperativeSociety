@@ -34,7 +34,8 @@ CREATE TABLE `addshares` (
   `share_number` int(22) DEFAULT NULL,
   `share_amount` double DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY ('id')
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
