@@ -87,7 +87,6 @@
             <td>{{$share->present_share_number}}</td>
             <td align="right">{{$share->present_share_amount}}</td>
             <td>{{$share->date}}</td>
-            <!-- @if(Auth::user()->user_type == "admin") -->
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('share/update/{{$share->id}}')">
@@ -95,22 +94,8 @@
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('share/create/{{$share->id}}')">
                     <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
-               <!--  <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->member_id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> delete
-                </a> -->
             </td>
-            <!-- @else -->
-            <!-- <td style="text-align: center">
-                <a class="btn btn-primary btn-xs" title="Edit"
-                   href="javascript:ajaxLoad('share/update/{{$share->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> Edit</a> -->
-                <!-- <a class="btn btn-danger btn-xs" title="Delete"
-                   href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('share/delete/{{$share->id}}')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </a> -->
             </td>
-            <!-- @endif -->
         </tr>
     @endforeach
     </tbody>

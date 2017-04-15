@@ -31,42 +31,42 @@
     <div class="form-group required col-md-6" id="form-date-error">
         {!! Form::label("date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::date("date",\Carbon\Carbon::now(),["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::date("date",\Carbon\Carbon::now(),["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-app_form-error">
         {!! Form::label("app_form","Entry Form Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("app_form",100,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("app_form",100,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="app_form-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-passbook-error">
         {!! Form::label("passbook","Passbook Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("passbook",50,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("passbook",50,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="passbook-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-saving_amount-error">
         {!! Form::label("saving_amount","Saving Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("saving_amount",100,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("saving_amount",100,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="saving_amount-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-share_number-error">
         {!! Form::label("share_number","No of Shares",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::number("share_number",null,["class"=>"form-control required","id"=>"focus"]) !!}
+        <div class="col-md-6" onChange= "updatePrice()">
+            {!! Form::number("share_number",null,["class"=>"form-control required","id"=>"share_number"]) !!}
             <span id="share_number-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-share_amount-error">
         {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"share_amount"]) !!}
             <span id="share_amount-error" class="help-block"></span>
         </div>
     </div>
@@ -97,6 +97,19 @@
     </div>
 </div>
 <script>
+
+      $(document).ready(function()
+    {
+            function updatePrice()
+            {
+                var share_number = parseFloat($("#share_number").val());
+                var share_amount = share_number * 100.00;
+                // var share_amount = total.toFixed(2);
+                $("#share_amount").val(share_amount);
+            }
+            $(document).on("change, keyup", "#share_number", updatePrice);
+    });
+
     $("#frm").submit(function (event) {
         event.preventDefault();
         $('.loading').show();

@@ -154,7 +154,8 @@
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatables.bootstrap.js') }}"></script>
 <script src="{{ asset('js/handlebars.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.0.0/jquery.mark.min.js"></script>
+<script src="{{ asset('js/jquery.mark.min.js') }}"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.0.0/jquery.mark.min.js"></script> -->
 <script>
     $(function () {
         var $input = $("input[name='keyword']"), $context = $(".keyword");
