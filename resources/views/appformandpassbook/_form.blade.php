@@ -66,7 +66,7 @@
     <div class="form-group required col-md-6" id="form-share_amount-error">
         {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"share_amount"]) !!}
+            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"share_amount", "readonly"=>"true"]) !!}
             <span id="share_amount-error" class="help-block"></span>
         </div>
     </div>

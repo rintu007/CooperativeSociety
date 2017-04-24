@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Appformandpassbook;
 use App\Share;
+use App\Addshare;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -64,8 +65,15 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
 
+        $addshare = Addshare::find($id);
+        $addshare->serial_no = Input::get('serial_no');
+        $addshare->member_id = Input::get('member_id');
+        $addshare->date = Input::get('date');
+        $addshare->share_number = Input::get('share_number');
+        $addshare->share_amount = Input::get('share_amount');
+        $addshare->save();
 
-        $share = share::find($id);
+        $share = Share::find($id);
         $share->serial_no       = Input::get('serial_no');
         $share->member_id       = Input::get('member_id');       
         $share->member_name     = Input::get('member_name');
@@ -100,7 +108,7 @@ class AppformandpassbookController extends Controller
             );
         }
         $appformandpassbook = new Appformandpassbook();
-         $appformandpassbook->serial_no = Input::get('serial_no');
+        $appformandpassbook->serial_no = Input::get('serial_no');
         $appformandpassbook->member_name = Input::get('member_name');       
         $appformandpassbook->member_id = Input::get('member_id');
         $appformandpassbook->mobile_no = Input::get('mobile_no');
@@ -113,6 +121,14 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
         $appformandpassbook->save();
+
+        $addshare = new Addshare();
+        $addshare->serial_no = Input::get('serial_no');
+        $addshare->member_id = Input::get('member_id');
+        $addshare->date = Input::get('date');
+        $addshare->share_number = Input::get('share_number');
+        $addshare->share_amount = Input::get('share_amount');
+        $addshare->save();
 
         $share = new Share();
         $share->serial_no    = Input::get('serial_no');

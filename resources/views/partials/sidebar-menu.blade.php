@@ -13,8 +13,8 @@
             <ul class="dropdown-menu">
                 
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
-                <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
-                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li>
+               <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Share Exchange</a>

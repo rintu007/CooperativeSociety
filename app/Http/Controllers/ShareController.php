@@ -68,7 +68,7 @@ class ShareController extends Controller
         $share->save();
 
         $addshare = new Addshare();
-         $addshare->serial_no = Input::get('serial_no');
+        $addshare->serial_no = Input::get('serial_no');
         $addshare->member_id = Input::get('member_id');
         $addshare->date = Input::get('date');
         $addshare->share_number = Input::get('share_number');
