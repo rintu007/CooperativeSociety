@@ -43,10 +43,29 @@ Route::controllers([
     'sharecertificate'               => 'SharecertificateController',
     'saving2'                        => 'Saving2Controller',
     'monthlysaving'                  => 'MonthlysavingController',
+    'zone'                           => 'ZoneController',
+    'area'                           => 'AreaController',
+    'branch'                         => 'BrnController',
+    'brn'                            => 'BrnController',
+    'division'                       => 'DivisionController',
+    'mikrofdivision'                 => 'MikrofdivisionController',
+    'thana'                          => 'ThanaController',
+    'union'                          => 'UnionController',
+    'ward'                           => 'WardController',
+    'postoffice'                     => 'PostofficeController',
+    'district'                       => 'DistrictController',
 
 ]); 
 
 Route::resource('users', 'UsersController');
+
+Route::get('getZone','SelectBoxController@getZone');
+
+Route::get('getArea','SelectBoxController@getArea');
+
+Route::get('getBranch','SelectBoxController@getBranch');
+
+Route::get('getThana','SelectBoxController@getThana');
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {
