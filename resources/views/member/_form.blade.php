@@ -1,3 +1,36 @@
+<!-- <div class="col-md-12" style="background-color: #EAEAEA">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Office Information</h3>               
+    </div>
+<div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
+            {!! Form::label("DivisionOfficeId","Division Office",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("DivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"DivisionOfficeId"]) !!}
+                <span id="DivisionOfficeId-error" class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group required col-md-6" id="form-ZoneId-error">
+            {!! Form::label("ZoneId","Zone",["class"=>"control-label col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("ZoneId",$Zone_info,null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
+                <span id="ZoneId-error" class="help-block"></span>
+            </div>
+        </div>
+        <div class="form-group required col-md-6" id="form-AreaId-error">
+            {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("AreaId",$area,null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
+                <span id="AreaId-error" class="help-block"></span>
+            </div>
+        </div>
+         <div class="form-group required col-md-6" id="form-AreaId-error">
+            {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("AreaId",$area,null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
+                <span id="AreaId-error" class="help-block"></span>
+            </div>
+        </div>
+</div> -->
 <div class="col-md-12" style="background-color: #EAEAEA">
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Personal Information</h3>               

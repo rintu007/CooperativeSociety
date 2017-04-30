@@ -94,6 +94,9 @@
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('share/create/{{$share->id}}')">
                     <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
+                <a class="btn btn-primary btn-xs" title="Edit"
+                   href="javascript:ajaxLoad('share/delete/{{$share->id}}')">
+                    <i class="glyphicon glyphicon-cross-sign"></i> delete</a>
             </td>
             </td>
         </tr>

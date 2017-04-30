@@ -80,7 +80,7 @@
         <?php $i = 1;
         $j = 0;
         ?>
-        @foreach($DistrictInfo as $key=>$area)
+        @foreach($areas as $key=>$area)
             <tr>
                 <td align="center">{{$i++}}</td>
                 <td>{{$area->AreaName}}</td>
@@ -91,13 +91,13 @@
                 <td>{{$area->AreaEmail}}</td>
 
                 <td style="text-align: center">
-                    {{--<a class="btn btn-primary btn-xs" title="Edit"--}}
-                    {{--href="javascript:ajaxLoad('area/update/{{$area->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-edit"></i> আপডেট</a>--}}
-                    {{--<a class="btn btn-danger btn-xs" title="Delete"--}}
-                    {{--href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('area/delete/{{$area->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-trash"></i> ডিলিট--}}
-                    {{--</a>--}}
+                    <a class="btn btn-primary btn-xs" title="Edit"
+                    href="javascript:ajaxLoad('area/update/{{$area->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> update</a>
+                    <a class="btn btn-danger btn-xs" title="Delete"
+                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('area/delete/{{$area->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> delete
+                    </a>
                 </td>
             </tr>
         @endforeach

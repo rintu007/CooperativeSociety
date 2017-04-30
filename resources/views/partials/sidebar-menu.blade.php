@@ -22,6 +22,19 @@
                 <li><a tabindex="-1" href="{{ url('/share') }}">Shares</a></li>
             </ul>
         </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Settings</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
+                <li><a tabindex="-1" href="{{ url('/zone') }}">Zones</a></li>
+                <li><a tabindex="-1" href="{{ url('/area') }}">Areas</a></li>
+                <li><a tabindex="-1" href="{{ url('/brn') }}">Branches</a></li>
+                <li><a tabindex="-1" href="{{ url('/division') }}">Divisions</a></li>
+                <li><a tabindex="-1" href="{{ url('/district') }}">Districts</a></li>
+                <li><a tabindex="-1" href="{{ url('/thana') }}">Pollice Stations</a></li>
+                <li><a tabindex="-1" href="{{ url('/union') }}">Unions</a></li>
+                <li><a tabindex="-1" href="{{ url('/ward') }}">Wards</a></li>
+            </ul>
+        </li>
         <!-- <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Shares</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/monthlysaving') }}">Share Certificate</a></li>
@@ -73,5 +86,19 @@
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
         </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Settings</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
+                <li><a tabindex="-1" href="{{ url('/zone') }}">Zones</a></li>
+                <li><a tabindex="-1" href="{{ url('/area') }}">Areas</a></li>
+                <li><a tabindex="-1" href="{{ url('/brn') }}">Branches</a></li>
+                <li><a tabindex="-1" href="{{ url('/division') }}">Divisions</a></li>
+                <li><a tabindex="-1" href="{{ url('/district') }}">Districts</a></li>
+                <li><a tabindex="-1" href="{{ url('/thana') }}">Pollice Stations</a></li>
+                <li><a tabindex="-1" href="{{ url('/union') }}">Unions</a></li>
+                <li><a tabindex="-1" href="{{ url('/ward') }}">Wards</a></li>
+            </ul>
+        </li>
+
     </ul>
 @endif

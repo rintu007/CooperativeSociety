@@ -92,10 +92,10 @@
                 <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                 href="javascript:ajaxLoad('brn/update/{{$brn->id}}')">
-                <i class="glyphicon glyphicon-edit"></i> update</a>
+                <i class="glyphicon glyphicon-edit"></i>update</a>
                 <a class="btn btn-danger btn-xs" title="Delete"
                 href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('brn/delete/{{$brn->id}}')">
-                <i class="glyphicon glyphicon-trash"></i> delete
+                <i class="glyphicon glyphicon-trash"></i>delete
                 </a>
                 </td>
             </tr>

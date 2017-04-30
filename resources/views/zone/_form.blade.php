@@ -1,97 +1,95 @@
-<div class="col-md-12">
+<div class="col-md-12" style="background-color: #EAEAEA">
     <div class="borderportion">
         <div class="form-group required col-md-6" id="form-ZoneDivisionOfficeId-error">
-            {!! Form::label("ZoneDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::select("ZoneDivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"ZoneDivisionOfficeId"]) !!}
                 <span id="ZoneDivisionOfficeId-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneName-error">
-            {!! Form::label("ZoneName","Zone Name",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneName","Zone Name",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZoneName",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneName-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneCode-error">
-            {!! Form::label("ZoneCode","Zone Code",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneCode","Zone Code",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZoneCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneCode-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneAddress-error">
-            {!! Form::label("ZoneAddress","Address",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
-                {!! Form::textarea("ZoneAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::label("ZoneAddress","Address",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::text("ZoneAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneAddress-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneMobileNo-error">
-            {!! Form::label("ZoneMobileNo","Mobile No",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneMobileNo","Mobile No",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZoneMobileNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneMobileNo-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneEmail-error">
-            {!! Form::label("ZoneEmail","Email Id",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneEmail","Email Id",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::email("ZoneEmail",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneEmail-error" class="help-block"></span>
             </div>
         </div>
-    </div>
-    <div class="borderportion">
         <div class="form-group required col-md-6" id="form-ZoneDivisionId-error">
-            {!! Form::label("ZoneDivisionId","Division",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneDivisionId","Division",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::select("ZoneDivisionId",$DivisionInfo,null,["class"=>"form-control DivisionId required","id"=>"DivisionId"]) !!}
                 <span id="ZoneDivisionId-error" class="help-block"></span>
             </div>
         </div>
 
         <div class="form-group required col-md-6" id="form-ZoneDistrictId-error">
-            {!! Form::label("ZoneDistrictId","District",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneDistrictId","District",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::select("ZoneDistrictId",$district_info,null,["class"=>"form-control DistrictId required","id"=>"DistrictId"]) !!}
                 <span id="ZoneDistrictId-error" class="help-block"></span>
             </div>
         </div>
 
         <div class="form-group required col-md-6" id="form-ZoneThanaId-error">
-            {!! Form::label("ZoneThanaId","Pollice Station",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneThanaId","Pollice Station",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::select("ZoneThanaId",$ThanaInfo,null,["class"=>"form-control ThanaId required","id"=>"ThanaId"]) !!}
                 <span id="ZoneThanaId-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneUnionId-error">
-            {!! Form::label("ZoneUnionId","Union",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneUnionId","Union",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::select("ZoneUnionId",$UnionInfo,null,["class"=>"form-control UnionId required","id"=>"UnionId"]) !!}
                 <span id="ZoneUnionId-error" class="help-block"></span>
             </div>
         </div>
 
         <div class="form-group required col-md-6" id="form-ZoneWardId-error">
-            {!! Form::label("ZoneWardId","Ward",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZoneWardId",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneWardId-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneRoadNo-error">
-            {!! Form::label("ZoneRoadNo","Road No",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZoneRoadNo","Road No",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZoneRoadNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneRoadNo-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZonePostOfficeId-error">
-            {!! Form::label("ZonePostOfficeId","Post Office",["class"=>"control-label test col-md-12"]) !!}
-            <div class="col-md-12">
+            {!! Form::label("ZonePostOfficeId","Post Office",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
                 {!! Form::text("ZonePostOfficeId",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZonePostOfficeId-error" class="help-block"></span>
             </div>

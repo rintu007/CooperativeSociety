@@ -29,27 +29,36 @@ class BrnController extends Controller
         Session::put('brn_search', Input::has('ok') ? Input::get('search') : (Session::has('brn_search') ? Session::get('brn_search') : ''));
         Session::put('brn_field', Input::has('field') ? Input::get('field') : (Session::has('brn_field') ? Session::get('brn_field') : 'id'));
         Session::put('brn_sort', Input::has('sort') ? Input::get('sort') : (Session::has('brn_sort') ? Session::get('brn_sort') : 'asc'));
+
         $brns = Brn::select('*')
-            ->join('areas','brns.AreaId', '=', 'areas.id')
-        ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')
-            ->orderBy(Session::get('brn_field'), Session::get('brn_sort'))->paginate(8);
+            -> join('areas', 'brns.AreaId', '=','areas.id')
+            ->where('BranchName', 'like', '%' . Session::get('area_search') . '%')
+            ->orderBy(Session::get('area_field'), Session::get('area_sort'))->paginate(8);
+        return view('brn.list', ['brns' => $brns]);
+
+        // $brns = Brn::select('*')
+        //     ->join('areas','brns.AreaId', '=', 'areas.id')
+        //     ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')->get();
+
+        // return view('brn.list', ['brns' => $brns]);
+
 //        $result = User
 //            ::join('contacts', 'users.id', '=', 'contacts.user_id')
 //            ->join('orders', 'users.id', '=', 'orders.user_id')
 //            ->select('users.id', 'contacts.phone', 'orders.price')
 //            ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
 //            ->get();
-        $area_data = Brn::select('*')
-            -> join('areas','brns.AreaId', '=', 'areas.id')
+        // $area_data = Brn::select('*')
+        //     -> join('areas','brns.AreaId', '=', 'areas.id')->paginate(8);
 //            ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')
 //            ->orderBy(Session::get('brn_field'), Session::get('brn_sort'))
-            ->paginate(8);
+            
 
 //        $area_data=DB::table('brns')
 //            ->join('areas', 'brns.AreaId', '=', 'areas.id')
 //            ->select('*')
 //            ->get();
-        return view('brn.list', ['brns' => $brns],['area_data' => $area_data]);
+        
 
         //return view('brn.list', ['brns' => $brns],['area_data' => $area_data]);
     }

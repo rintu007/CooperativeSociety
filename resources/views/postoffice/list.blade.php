@@ -1,9 +1,9 @@
 @if (Auth::guest())
 @else
-    <h1 class="page-header">পোষ্ট অফিস তালিকা
+    <h1 class="page-header">Post Offices
         <div class="pull-right">
             <a href="javascript:ajaxLoad('postoffice/create')" class="btn btn-primary pull-right"><i
-                        class="glyphicon glyphicon-plus-sign"></i>নতুন</a>
+                        class="glyphicon glyphicon-plus-sign"></i>New</a>
         </div>
     </h1>
     <div class="col-sm-7 form-group">
@@ -24,10 +24,10 @@
     <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th width="50px" style="text-align: center">ক্রমিক নং</th>
+            <th width="50px" style="text-align: center">Serial No</th>
             <th>
                 <a href="javascript:ajaxLoad('postoffice/list?field=PostofficeName&sort={{Session::get("postoffice_sort")=="asc"?"desc":"asc"}}')">
-                    পোষ্ট অফিস নাম
+                    Post Office 
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('postoffice_field')=='PostofficeName'?(Session::get('postoffice_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -35,7 +35,7 @@
             </th>
             <th>
                 <a href="javascript:ajaxLoad('postoffice/list?field=ThanaName&sort={{Session::get("postoffice_sort")=="asc"?"desc":"asc"}}')">
-                    থানার নাম
+                    Pollice Station
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('postoffice_field')=='ThanaName'?(Session::get('postoffice_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -43,7 +43,7 @@
             </th>
             <th>
                 <a href="javascript:ajaxLoad('postoffice/list?field=DistrictId&sort={{Session::get("postoffice_sort")=="asc"?"desc":"asc"}}')">
-                    জেলা নাম
+                    District
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('postoffice_field')=='DistrictId'?(Session::get('postoffice_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -51,13 +51,13 @@
             </th>
             <th>
                 <a href="javascript:ajaxLoad('postoffice/list?field=DivisionId&sort={{Session::get("postoffice_sort")=="asc"?"desc":"asc"}}')">
-                    বিভাগ নাম
+                    Division
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('postoffice_field')=='DivisionId'?(Session::get('postoffice_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </th>
-            <th width="140px">অ্যাকশন সমূহ</th>
+            <th width="140px">Actions</th>
         </tr>
         </thead>
         <tbody>

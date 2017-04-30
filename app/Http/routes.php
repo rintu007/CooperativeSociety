@@ -54,6 +54,7 @@ Route::controllers([
     'ward'                           => 'WardController',
     'postoffice'                     => 'PostofficeController',
     'district'                       => 'DistrictController',
+    'domain'                         => 'DomainController',
 
 ]); 
 

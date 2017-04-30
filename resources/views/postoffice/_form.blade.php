@@ -1,27 +1,27 @@
-<div class="col-md-12">
+<div class="col-md-12" style="background-color: #EAEAEA">
     <div class="form-group required col-md-6" id="form-DivisionId-error">
-        {!! Form::label("DivisionId","বিভাগের নাম",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("DivisionId","Division",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("DivisionId",$DivisionInfo,null,["class"=>"form-control DivisionId required","id"=>"DivisionId"]) !!}
             <span id="DivisionId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-DistrictId-error">
-        {!! Form::label("DistrictId","জেলা",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("DistrictId","District",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("DistrictId",$DistrictInfo,null,["class"=>"form-control DistrictId required","id"=>"DistrictId"]) !!}
             <span id="DistrictId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-ThanaId-error">
-        {!! Form::label("ThanaId","থানার নাম",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("ThanaId","Pollice Station",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("ThanaId",$thana,null,["class"=>"form-control ThanaId required","id"=>"ThanaId"]) !!}
             <span id="ThanaId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-PostofficeName-error">
-        {!! Form::label("PostofficeName","পোষ্ট অফিস নাম",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("PostofficeName","Post Office Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("PostofficeName",null,["class"=>"form-control PostofficeName required","id"=>"PostofficeName"]) !!}
             <span id="PostofficeName-error" class="help-block"></span>

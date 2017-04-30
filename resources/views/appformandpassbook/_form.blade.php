@@ -38,14 +38,14 @@
     <div class="form-group required col-md-6" id="form-app_form-error">
         {!! Form::label("app_form","Entry Form Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("app_form",100,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
+            {!! Form::number("app_form",50 ,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="app_form-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-passbook-error">
         {!! Form::label("passbook","Passbook Fee",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("passbook",50,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
+            {!! Form::number("passbook",20,["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
             <span id="passbook-error" class="help-block"></span>
         </div>
     </div>
