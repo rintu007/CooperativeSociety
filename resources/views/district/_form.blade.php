@@ -1,4 +1,7 @@
-<div class="col-md-12">
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>District Information</h3>               
+    </div>
     <div class="form-group required col-md-6" id="form-DivisionId-error">
         {!! Form::label("DivisionId","Division",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">

@@ -41,7 +41,7 @@
                    class="glyphicon  {{ Session::get('division_field')=='DivisionNameBangla'?(Session::get('division_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </th>
-            <th width="140px">Actions</th>
+           <!--  <th width="140px">Actions</th> -->
         </tr>
         </thead>
         <tbody>
@@ -51,15 +51,15 @@
                 <td align="center">{{$i++}}</td>
                 <td>{{$division->DivisionName}}</td>
                 <td>{{$division->DivisionNameBangla}}</td>
-                <td style="text-align: center">
-                    {{--<a class="btn btn-primary btn-xs" title="Edit"--}}
-                    {{--href="javascript:ajaxLoad('division/update/{{$division->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-edit"></i> বিভাগের নাম</a>--}}
-                    {{--<a class="btn btn-danger btn-xs" title="Delete"--}}
-                    {{--href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('division/delete/{{$division->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-trash"></i> ডিলিট--}}
-                    {{--</a>--}}
-                </td>
+               <!--  <td style="text-align: center">
+                    <a class="btn btn-primary btn-xs" title="Edit"
+                    href="javascript:ajaxLoad('division/update/{{$division->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> edit</a>
+                    <a class="btn btn-danger btn-xs" title="Delete"
+                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('division/delete/{{$division->id}}')">
+                    <i class="glyphicon glyphicon-trash"></i> delete
+                    </a>
+                </td> -->
             </tr>
         @endforeach
         </tbody>

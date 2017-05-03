@@ -1,5 +1,15 @@
 <div class="col-md-12" style="background-color: #EAEAEA">
-    <div class="borderportion">
+
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Area Office Information</h3>               
+    </div>
+         <div class="form-group required col-md-6" id="form-DomainName-error">
+            {!! Form::label("DomainName","Domains",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("DomainName",$DomainInfo, null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+                <span id="DomainName-error" class="help-block"></span>
+            </div>
+        </div>
         <div class="form-group required col-md-6" id="form-AreaDivisionOfficeId-error">
             {!! Form::label("AreaDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -56,8 +66,12 @@
                 <span id="AreaAddress-error" class="help-block"></span>
             </div>
         </div>
-    </div>
-    <div class="borderportion">
+ </div>
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Area Office Address</h3>               
+    </div>   
+    
         <div class="form-group required col-md-6" id="form-AreaDivisionId-error">
             {!! Form::label("AreaDivisionId","Division",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -88,15 +102,6 @@
                 <span id="AreaUnionId-error" class="help-block"></span>
             </div>
         </div>
-
-        <div class="form-group required col-md-6" id="form-AreaWardId-error">
-            {!! Form::label("AreaWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("AreaWardId",null,["class"=>"form-control required"]) !!}
-                <span id="AreaWardId-error" class="help-block"></span>
-            </div>
-        </div>
-
         <div class="form-group required col-md-6" id="form-AreaPostOfficeId-error">
             {!! Form::label("AreaPostOfficeId","Area Post Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -104,8 +109,22 @@
                 <span id="AreaPostOfficeId-error" class="help-block"></span>
             </div>
         </div>
+        <div class="form-group required col-md-6" id="form-AreaWardId-error">
+            {!! Form::label("AreaWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::text("AreaWardId",null,["class"=>"form-control required"]) !!}
+                <span id="AreaWardId-error" class="help-block"></span>
+            </div>
+        </div>
+         <div class="form-group required col-md-6" id="form-AreaRoadNo-error">
+            {!! Form::label("AreaRoadNo","Road No",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::text("AreaRoadNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+                <span id="AreaRoadNo-error" class="help-block"></span>
+            </div>
+        </div>
 
-    </div>
+        
 </div>
 
 <div class="form-group">
@@ -181,7 +200,7 @@
                 data: {'id': DivisionId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
-                        $('#DistrictId').append('<option value="' + subcatObj.id + '">' + subcatObj.DistrictName + '</option>')
+                        $('#DistrictId').append('<option value="'+subcatObj.id+'">'+subcatObj.DistrictName +'</option>')
                     });
                 },
                 error: function () {
@@ -204,7 +223,7 @@
                 data: {'id': DistrictId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj1) {
-                        $('#ThanaId').append('<option value="' + subcatObj1.id + '">' + subcatObj1.ThanaName + '</option>')
+                        $('#ThanaId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ThanaName +'</option>')
                     });
                 },
                 error: function () {
@@ -228,7 +247,7 @@
                 data: {'id': ThanaId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj2) {
-                        $('#UnionId').append('<option value="' + subcatObj2.id + '">' + subcatObj2.UnionName + '</option>')
+                        $('#UnionId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.UnionName +'</option>')
                     });
                 },
                 error: function () {
@@ -252,7 +271,7 @@
                 data: {'id': UnionId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj2) {
-                        $('#WordId').append('<option value="' + subcatObj2.id + '">' + subcatObj2.WardName + '</option>')
+                        $('#WordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
                     });
                 },
                 error: function () {
@@ -276,7 +295,7 @@
                 data: {'id': DistrictId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj3) {
-                        $('#PostOfficeId').append('<option value="' + subcatObj3.id + '">' + subcatObj3.PostofficeName + '</option>')
+                        $('#PostOfficeId').append('<option value="'+subcatObj3.id+'">'+subcatObj3.PostofficeName +'</option>')
                     });
                 },
                 error: function () {
@@ -285,6 +304,31 @@
             });
             $.ajax(clear);
         });
+
+        $(document).on('change', '.ZoneId', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var ZoneId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#AreaId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getArea',
+                data: {'id': ZoneId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObjArea) {
+                        $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
     });
 
 </script>

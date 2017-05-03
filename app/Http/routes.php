@@ -60,6 +60,12 @@ Route::controllers([
 
 Route::resource('users', 'UsersController');
 
+Route::get('getDivisionOffice', 'SelectBoxController@getDivisionOffice');
+
+Route::get('getDivision', 'SelectBoxController@getDivision');
+
+Route::get('getDistrict', 'SelectBoxController@getDistrict');
+
 Route::get('getZone','SelectBoxController@getZone');
 
 Route::get('getArea','SelectBoxController@getArea');

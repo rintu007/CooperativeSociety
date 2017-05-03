@@ -1,5 +1,14 @@
 <div class="col-md-12" style="background-color: #EAEAEA">
-    <div class="borderportion">
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Zonal Office Information</h3>               
+    </div>
+         <div class="form-group required col-md-6" id="form-DomainName-error">
+            {!! Form::label("DomainName","Domains",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("DomainName",$DomainInfo, null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+                <span id="DomainName-error" class="help-block"></span>
+            </div>
+        </div>
         <div class="form-group required col-md-6" id="form-ZoneDivisionOfficeId-error">
             {!! Form::label("ZoneDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -42,6 +51,11 @@
                 <span id="ZoneEmail-error" class="help-block"></span>
             </div>
         </div>
+    </div>
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Zonal Office Address</h3>               
+    </div>
         <div class="form-group required col-md-6" id="form-ZoneDivisionId-error">
             {!! Form::label("ZoneDivisionId","Division",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -72,7 +86,13 @@
                 <span id="ZoneUnionId-error" class="help-block"></span>
             </div>
         </div>
-
+        <div class="form-group required col-md-6" id="form-ZonePostOfficeId-error">
+            {!! Form::label("ZonePostOfficeId","Post Office",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::text("ZonePostOfficeId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+                <span id="ZonePostOfficeId-error" class="help-block"></span>
+            </div>
+        </div>
         <div class="form-group required col-md-6" id="form-ZoneWardId-error">
             {!! Form::label("ZoneWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -87,15 +107,6 @@
                 <span id="ZoneRoadNo-error" class="help-block"></span>
             </div>
         </div>
-        <div class="form-group required col-md-6" id="form-ZonePostOfficeId-error">
-            {!! Form::label("ZonePostOfficeId","Post Office",["class"=>"control-label test col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("ZonePostOfficeId",null,["class"=>"form-control required","id"=>"focus"]) !!}
-                <span id="ZonePostOfficeId-error" class="help-block"></span>
-            </div>
-        </div>
-
-    </div>
 </div>
 
 <div class="form-group">
@@ -273,6 +284,31 @@
             });
             $.ajax(clear);
         });
+
+        $(document).on('change', '.ZoneId', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var ZoneId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#AreaId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getArea',
+                data: {'id': ZoneId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObjArea) {
+                        $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
     });
 
 </script>

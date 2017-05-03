@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Domain;
 use App\Division;
 use App\Mikrofdivision;
 use App\Postoffice;
@@ -38,6 +39,7 @@ class AreaController extends Controller
     public function getUpdate($id)
     {
         // $data = Zone::all();
+        $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
         $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $Zone_info = [''=>'--select--'] + Zone::lists('ZoneName', 'id')->all();
         $ThanaInfo =[''=>'--select--'] + Thana::lists('ThanaName', 'id')->all();
@@ -47,18 +49,8 @@ class AreaController extends Controller
         $PostOfficeInfo =[''=>'--select--'] + Postoffice::lists('PostofficeName', 'id')->all();
         $district_info =[''=>'--select--'] + District::lists('DistrictName', 'id')->all();
         return view('area.update',['area' => Area::find($id)])->with('Zone_info',$Zone_info)->with('ThanaInfo',$ThanaInfo)->with('district_info',$district_info)->with('DivisionInfo',$DivisionInfo)
-            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo);
-//        $thana_info = Thana::lists('ThanaName', 'id');
-//        $district_info = District::lists('DistrictName', 'id');
-//        $Zone_info = Zone::lists('ZoneName', 'id');
-//        return view('area.update',['area' => Area::find($id)])->with('thana_info', $thana_info)->with('district_info',$district_info)->with('Zone_info',$Zone_info);
+            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo)->with('DomainInfo', $DomainInfo);
 
-//        return view('area.update', ['area' => DB::table('areas')
-//            ->leftJoin('zones', 'zones.id', '=', 'zones.id')
-//            ->where('areas.id',$id)
-//            ->select('*')
-//            ->get()]);
-//        return view('area.update', ['area' => Area::find($id)],['Zone_info'=>$Zone_info]);
     }
 
     public function postUpdate($id)
@@ -75,6 +67,7 @@ class AreaController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
+        $area->DomainName = Input::get('DomainName');
         $area->ZoneId = Input::get('ZoneId');
         $area->AreaName = Input::get('AreaName');
         $area->AreaCode = Input::get('AreaCode');
@@ -102,17 +95,7 @@ class AreaController extends Controller
 
     public function getCreate()
     {
-//        Session::put('area_search', Input::has('ok') ? Input::get('search') : (Session::has('area_search') ? Session::get('area_search') : ''));
-//        Session::put('area_field', Input::has('field') ? Input::get('field') : (Session::has('area_field') ? Session::get('area_field') : 'id'));
-//        Session::put('area_sort', Input::has('sort') ? Input::get('sort') : (Session::has('area_sort') ? Session::get('area_sort') : 'asc'));
-//        $areas1 = Zone::where('id', 'like', '%' . Session::get('area_search') . '%');
-//        $zone_data=DB::table('areas')
-//            ->join('zones', 'areas.ZoneId', '=', 'zones.id')
-//            ->select('*')
-//            ->get();
-        //print_r($areas1);
-        //
-        //var_dump($areas1);
+        $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
         $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $Zone_info = [''=>'--select--'] + Zone::lists('ZoneName', 'id')->all();
         $ThanaInfo =[''=>'--select--'] + Thana::lists('ThanaName', 'id')->all();
@@ -122,24 +105,9 @@ class AreaController extends Controller
         $PostOfficeInfo =[''=>'--select--'] + Postoffice::lists('PostofficeName', 'id')->all();
         $district_info =[''=>'--select--'] + District::lists('DistrictName', 'id')->all();
         return view('area.create')->with('Zone_info',$Zone_info)->with('ThanaInfo',$ThanaInfo)->with('district_info',$district_info)->with('DivisionInfo',$DivisionInfo)
-            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo);
+            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo)->with('DomainInfo', $DomainInfo);
 
-        //$Zone_info = Zone::lists('ZoneName', 'id');
-        //return view('area.create')->with('thana_info', $thana_info)->with('district_info',$district_info)->with('Zone_info',$Zone_info);
-
-//       $testData= DB::table('users')
-//            ->join('contacts', 'users.id', '=', 'contacts.user_id')
-//            ->join('orders', 'users.id', '=', 'orders.user_id')
-//            ->select('users.id', 'contacts.phone', 'orders.price')
-//            ->get();
-//        $Zone_info = DB::table('zones');
-        //$Zone_info = Zone::all(['id', 'ZoneName']);
-        // $Zone_info = Zone::lists('ZoneName', 'id');
-        //$data = Zone::all();
-//        var_dump($data);
-//        die();
-        //$Zone_info = ['Dhaka','Rajshahi','Bogra'];
-        // return view('area.create',compact('Zone_info',$Zone_info));
+      
     }
     public function postCreate()
     {
@@ -154,6 +122,7 @@ class AreaController extends Controller
 //            );
 //        }
         $area = new Area();
+        $area->DomainName = Input::get('DomainName');
         $area->ZoneId = Input::get('ZoneId');
         $area->AreaName = Input::get('AreaName');
         $area->AreaCode = Input::get('AreaCode');

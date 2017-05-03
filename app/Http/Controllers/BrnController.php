@@ -12,6 +12,7 @@ use App\District;
 use App\Thana;
 use App\Brn;
 use App\Area;
+use App\Domain;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -36,35 +37,11 @@ class BrnController extends Controller
             ->orderBy(Session::get('area_field'), Session::get('area_sort'))->paginate(8);
         return view('brn.list', ['brns' => $brns]);
 
-        // $brns = Brn::select('*')
-        //     ->join('areas','brns.AreaId', '=', 'areas.id')
-        //     ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')->get();
-
-        // return view('brn.list', ['brns' => $brns]);
-
-//        $result = User
-//            ::join('contacts', 'users.id', '=', 'contacts.user_id')
-//            ->join('orders', 'users.id', '=', 'orders.user_id')
-//            ->select('users.id', 'contacts.phone', 'orders.price')
-//            ->getQuery() // Optional: downgrade to non-eloquent builder so we don't build invalid User objects.
-//            ->get();
-        // $area_data = Brn::select('*')
-        //     -> join('areas','brns.AreaId', '=', 'areas.id')->paginate(8);
-//            ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')
-//            ->orderBy(Session::get('brn_field'), Session::get('brn_sort'))
-            
-
-//        $area_data=DB::table('brns')
-//            ->join('areas', 'brns.AreaId', '=', 'areas.id')
-//            ->select('*')
-//            ->get();
-        
-
-        //return view('brn.list', ['brns' => $brns],['area_data' => $area_data]);
     }
 
     public function getUpdate($id)
     {
+        $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
         $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
         $Zone_info =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
@@ -75,7 +52,7 @@ class BrnController extends Controller
         $PostOfficeInfo =[''=>'--select--'] +  Postoffice::lists('PostofficeName', 'id')->all();
         $district_info =[''=>'--select--'] +  District::lists('DistrictName', 'id')->all();
         return view('brn.update', ['brn' => Brn::find($id)])->with('area',$area)->with('Zone_info',$Zone_info)->with('ThanaInfo',$ThanaInfo)->with('district_info',$district_info)->with('DivisionInfo',$DivisionInfo)
-            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo);
+            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo)->with('DomainInfo', $DomainInfo);
     }
 
     public function postUpdate($id)
@@ -91,6 +68,7 @@ class BrnController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }*/
+        $brn->DomainName = Input::get('DomainName');
         $brn->DivisionOfficeId = Input::get('DivisionOfficeId');
         $brn->ZoneId = Input::get('ZoneId');
         $brn->AreaId = Input::get('AreaId');
@@ -111,7 +89,8 @@ class BrnController extends Controller
     }
 
     public function getCreate()
-    {
+    {   
+        $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
         $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
         $Zone_info =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
@@ -122,7 +101,7 @@ class BrnController extends Controller
         $PostOfficeInfo =[''=>'--select--'] +  Postoffice::lists('PostofficeName', 'id')->all();
         $district_info =[''=>'--select--'] +  District::lists('DistrictName', 'id')->all();
         return view('brn.create')->with('area',$area)->with('Zone_info',$Zone_info)->with('ThanaInfo',$ThanaInfo)->with('district_info',$district_info)->with('DivisionInfo',$DivisionInfo)
-            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo);
+            ->with('UnionInfo',$UnionInfo)->with('PostOfficeInfo',$PostOfficeInfo)->with('WardInfo',$WardInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo)->with('DomainInfo', $DomainInfo);
     }
 
     public function postCreate()
@@ -138,6 +117,7 @@ class BrnController extends Controller
             );
         }*/
         $brn = new Brn();
+        $brn->DomainName = Input::get('DomainName');
         $brn->DivisionOfficeId = Input::get('DivisionOfficeId');
         $brn->ZoneId = Input::get('ZoneId');
         $brn->AreaId = Input::get('AreaId');

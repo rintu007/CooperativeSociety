@@ -2,6 +2,18 @@
 namespace App\Http\Controllers;
 
 use App\Member;
+use App\Division;
+use App\Mikrofdivision;
+use App\Postoffice;
+use App\Union;
+use App\Ward;
+use App\Zone;
+use DB;
+use App\District;
+use App\Thana;
+use App\Brn;
+use App\Area;
+use App\Domain;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -31,7 +43,14 @@ class MemberController extends Controller
 
     public function getUpdate($id)
     {
-        return view('member.update', ['member' => Member::find($id)]);
+        $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
+        $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
+        $Zone_info =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
+        $area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
+        $BranchInfo =[''=>'--select--'] +  Brn::lists('BranchName', 'id')->all();
+        
+        return view('member.update', ['member' => Member::find($id)])->with('DomainInfo', $DomainInfo)->with('DivisionOfficeInfo',$DivisionOfficeInfo)->with('Zone_info',$Zone_info)->with('area',$area)->with('BranchInfo',$BranchInfo);
+        
     }
 
     public function postUpdate($id)
@@ -47,8 +66,16 @@ class MemberController extends Controller
         //         'errors' => $validator->getMessageBag()->toArray()
         //     );
         // }
+        
+        $member->DomainName         = Input::get('DomainName');
+        $member->DivisionOfficeId   = Input::get('DivisionOfficeId');
+        $member->ZoneId             = Input::get('ZoneId');
+        $member->AreaId             = Input::get('AreaId');
+        $member->BranchId           = Input::get('BranchId');
+        $member->TMSSId             = Input::get('TMSSID');
+
         $member->MemberId           = Input::get('MemberId');
-        $member_id = Input::get('MemberId');
+        $member_id                  = Input::get('MemberId');
 
         $member->BanglaName         = Input::get('BanglaName');
         $member->EnglishName        = Input::get('EnglishName');
@@ -140,44 +167,38 @@ class MemberController extends Controller
 
     public function getCreate()
     {
-        return view('member.create');
+       $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
+       $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
+       $Zone_info =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
+       $area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
+       $BranchInfo =[''=>'--select--'] +  Brn::lists('BranchName', 'id')->all();
+        return view('member.create')->with('DomainInfo', $DomainInfo)->with('DivisionOfficeInfo', $DivisionOfficeInfo)->with('Zone_info',$Zone_info)->with('area',$area)->with('BranchInfo',$BranchInfo);
+        
     }
 
     public function postCreate()
     {
-        // $validator = Validator::make(Input::all(), [
-        //     "name" => "required|unique:members",
-        //     "MemberCode" => "required|unique:members"
-        // ]);
-        // if ($validator->fails()) {
-        //     return array(
-        //         'fail' => true,
-        //         'errors' => $validator->getMessageBag()->toArray()
-        //     );
-        // }
-        
-
-        // $jamindarnid = Input::get('JamindarNid');
-
-        // $jamindar->JamindarNid = Input::get('JamindarNid');
-
-        // $file = Input::file('JamindarImage');
-        // $input = array('image' => $file);
-
-        // $destinationPath = 'uploads/';
-        // if (!empty($file)) {
-        //     $filename = $jamindarnid."_".$file->getClientOriginalName();
-
-        //     Input::file('JamindarImage')->move($destinationPath, $filename);
-        //     $jamindar->Jamindarphoto = $filename;
-        // }
-
-
-        
+        $validator = Validator::make(Input::all(), [
+            "TMSSID" => "required|unique:members",
+            "MemberId" => "required|unique:members"
+        ]);
+        if ($validator->fails()) {
+            return array(
+                'fail' => true,
+                'errors' => $validator->getMessageBag()->toArray()
+            );
+        }
+                
         $member = new Member();
-        $member->MemberId           = Input::get('MemberId');
-        $member_id = Input::get('MemberId');
+        $member->DomainName         = Input::get('DomainName');
+        $member->DivisionOfficeId   = Input::get('DivisionOfficeId');
+        $member->ZoneId             = Input::get('ZoneId');
+        $member->AreaId             = Input::get('AreaId');
+        $member->BranchId           = Input::get('BranchId');
+        $member->TMSSId             = Input::get('TMSSID');
 
+        $member->MemberId           = Input::get('MemberId');
+        $member_id                  = Input::get('MemberId');
         $member->BanglaName         = Input::get('BanglaName');
         $member->EnglishName        = Input::get('EnglishName');
         $member->FatherName         = Input::get('FatherName');

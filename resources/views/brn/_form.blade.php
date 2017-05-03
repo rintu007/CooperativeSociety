@@ -1,5 +1,14 @@
 <div class="col-md-12" style="background-color: #EAEAEA">
-    <div class="borderportion">
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Branch Office Information</h3>               
+    </div>
+         <div class="form-group required col-md-6" id="form-DomainName-error">
+            {!! Form::label("DomainName","Domains",["class"=>"control-label test col-md-3"]) !!}
+            <div class="col-md-6">
+                {!! Form::select("DomainName",$DomainInfo, null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+                <span id="DomainName-error" class="help-block"></span>
+            </div>
+        </div>
         <div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
             {!! Form::label("DivisionOfficeId","Division Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -22,7 +31,7 @@
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-BranchName-error">
-            {!! Form::label("BranchName","Branch",["class"=>"control-label col-md-3"]) !!}
+            {!! Form::label("BranchName","Branch Name",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("BranchName",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="BranchName-error" class="help-block"></span>
@@ -36,7 +45,7 @@
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-OpeningDate-error">
-            {!! Form::label("OpeningDate","Branch Opening Date",["class"=>"control-label col-md-3"]) !!}
+            {!! Form::label("OpeningDate","Opening Date",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::date("OpeningDate",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="OpeningDate-error" class="help-block"></span>
@@ -63,8 +72,11 @@
                 <span id="BranchAddress-error" class="help-block"></span>
             </div>
         </div>
-    </div>
-    <div class="borderportion">
+</div>
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
+        <h3>Branch Office Address</h3>               
+    </div>    
         <div class="form-group required col-md-6" id="form-BranchDivisionId-error">
             {!! Form::label("BranchDivisionId","Division",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
@@ -108,7 +120,7 @@
                 <span id="BranchWardId-error" class="help-block"></span>
             </div>
         </div>
-    </div>
+    
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

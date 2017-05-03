@@ -25,6 +25,7 @@
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
+                <li><a tabindex="-1" href="{{ url('/mikrofdivision') }}">Divisional Office</a></li>
                 <li><a tabindex="-1" href="{{ url('/zone') }}">Zones</a></li>
                 <li><a tabindex="-1" href="{{ url('/area') }}">Areas</a></li>
                 <li><a tabindex="-1" href="{{ url('/brn') }}">Branches</a></li>
