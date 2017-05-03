@@ -61,19 +61,18 @@ class ZoneController extends Controller
             );
         }
         $zone->DomainName = Input::get('DomainName');
-        $zone->ZoneName = Input::get('ZoneName');
-        $zone->ZoneCode = Input::get('ZoneCode');
         $zone->ZoneDivisionOfficeId = Input::get('ZoneDivisionOfficeId');
+        $zone->ZoneName = Input::get('ZoneName');
+        $zone->ZoneEmail = Input::get('ZoneEmail');
+        $zone->ZoneCode = Input::get('ZoneCode');        
         $zone->ZoneAddress = Input::get('ZoneAddress');
         $zone->ZoneMobileNo = Input::get('ZoneMobileNo');
         $zone->ZoneThanaId = Input::get('ZoneThanaId');
         $zone->ZoneDistrictId = Input::get('ZoneDistrictId');
-        $zone->ZoneDivisionId = Input::get('ZoneDivisionId');
         $zone->ZoneUnionId = Input::get('ZoneUnionId');
-        $zone->ZoneWardId = Input::get('ZoneWardId');
         $zone->ZonePostOfficeId = Input::get('ZonePostOfficeId');
-        $zone->ZoneRoadNo = Input::get('ZoneRoadNo');
-        $zone->ZoneEmail = Input::get('ZoneEmail');
+        $zone->ZoneWardId = Input::get('ZoneWardId');
+        $zone->ZoneDivisionId = Input::get('ZoneDivisionId');
         $zone->save();
         return ['url' => 'zone/list'];
     }
@@ -104,19 +103,20 @@ class ZoneController extends Controller
         }
         $zone = new Zone();
         $zone->DomainName = Input::get('DomainName');
-        $zone->ZoneName = Input::get('ZoneName');
-        $zone->ZoneCode = Input::get('ZoneCode');
         $zone->ZoneDivisionOfficeId = Input::get('ZoneDivisionOfficeId');
+        $zone->ZoneName = Input::get('ZoneName');
+        $zone->ZoneEmail = Input::get('ZoneEmail');
+        $zone->ZoneCode = Input::get('ZoneCode');        
         $zone->ZoneAddress = Input::get('ZoneAddress');
         $zone->ZoneMobileNo = Input::get('ZoneMobileNo');
         $zone->ZoneThanaId = Input::get('ZoneThanaId');
         $zone->ZoneDistrictId = Input::get('ZoneDistrictId');
-        $zone->ZoneDivisionId = Input::get('ZoneDivisionId');
         $zone->ZoneUnionId = Input::get('ZoneUnionId');
-        $zone->ZoneWardId = Input::get('ZoneWardId');
         $zone->ZonePostOfficeId = Input::get('ZonePostOfficeId');
-        $zone->ZoneRoadNo = Input::get('ZoneRoadNo');
-        $zone->ZoneEmail = Input::get('ZoneEmail');
+        $zone->ZoneWardId = Input::get('ZoneWardId');
+        $zone->ZoneDivisionId = Input::get('ZoneDivisionId');
+        // $zone->ZoneRoadNo = Input::get('ZoneRoadNo');
+        
         $zone->save();
         return ['url' => 'zone/list'];
     }

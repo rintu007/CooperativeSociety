@@ -100,13 +100,13 @@
                 <span id="ZoneWardId-error" class="help-block"></span>
             </div>
         </div>
-        <div class="form-group required col-md-6" id="form-ZoneRoadNo-error">
+       <!--  <div class="form-group required col-md-6" id="form-ZoneRoadNo-error">
             {!! Form::label("ZoneRoadNo","Road No",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("ZoneRoadNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneRoadNo-error" class="help-block"></span>
             </div>
-        </div>
+        </div> -->
 </div>
 
 <div class="form-group">

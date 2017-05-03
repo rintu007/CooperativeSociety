@@ -390,21 +390,22 @@
 <script>
 
     $(document).ready(function () {
-        $(document).on('change', '.DivisionId', function () {
+        $(document).on('change', '.DomainId', function () {
             //console.log("yes it is change");
 
             var op = " ";
-            var DivisionId = $(this).val();
+            var DomainId = $(this).val();
+            alert ("zia");
             //var div = $(this).parent();
             //console.log(DivisionId);
-            $('#DistrictId').empty();
+            $('#DivisionOfficeId').empty();
             $.ajax({
                 type: 'get',
-                url: 'getDistrict',
-                data: {'id': DivisionId},
+                url: 'getDivisionoffice',
+                data: {'id': DomainId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
-                        $('#DistrictId').append('<option value="'+subcatObj.id+'">'+subcatObj.DistrictName +'</option>')
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
                     });
                 },
                 error: function () {

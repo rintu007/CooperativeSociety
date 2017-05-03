@@ -73,6 +73,7 @@ class AreaController extends Controller
         $area->AreaCode = Input::get('AreaCode');
         $area->AreaAddress = Input::get('AreaAddress');
         $area->AreaMobileNo = Input::get('AreaMobileNo');
+        $area->AreaDivisionOfficeId = Input::get('AreaDivisionOfficeId');
         $area->AreaDistrictId = Input::get('AreaDistrictId');
         $area->AreaThanaId = Input::get('AreaThanaId');
         $area->AreaDivisionId = Input::get('AreaDivisionId');
