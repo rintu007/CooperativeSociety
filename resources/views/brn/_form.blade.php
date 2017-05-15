@@ -12,7 +12,7 @@
         <div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
             {!! Form::label("DivisionOfficeId","Division Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
-                {!! Form::select("DivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"DivisionOfficeId"]) !!}
+                {!! Form::select("DivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
                 <span id="DivisionOfficeId-error" class="help-block"></span>
             </div>
         </div>
@@ -178,6 +178,79 @@
 <script>
 
     $(document).ready(function () {
+
+        $(document).on('change', '.DomainName', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var DomainName = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#DivisionOfficeId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getDivisionOffice',
+                data: {'id': DomainName},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
+          $(document).on('change', '.DivisionOfficeId', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var DivisionOfficeId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#ZoneId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getZone',
+                data: {'id': DivisionOfficeId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#ZoneId').append('<option value="'+subcatObj.id+'">'+subcatObj.ZoneName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
+           $(document).on('change', '.ZoneId', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var ZoneId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#AreaId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getArea',
+                data: {'id': ZoneId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#AreaId').append('<option value="'+subcatObj.id+'">'+subcatObj.AreaName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
         $(document).on('change', '.DivisionId', function () {
             //console.log("yes it is change");
 

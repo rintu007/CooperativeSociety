@@ -22,7 +22,7 @@
                 <li><a tabindex="-1" href="{{ url('/share') }}">Shares</a></li>
             </ul>
         </li>
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Settings</a>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
                 <li><a tabindex="-1" href="{{ url('/mikrofdivision') }}">Divisional Office</a></li>
@@ -87,7 +87,7 @@
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
         </li>
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Settings</a>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
                 <li><a tabindex="-1" href="{{ url('/zone') }}">Zones</a></li>

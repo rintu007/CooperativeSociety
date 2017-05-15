@@ -32,9 +32,9 @@ class BrnController extends Controller
         Session::put('brn_sort', Input::has('sort') ? Input::get('sort') : (Session::has('brn_sort') ? Session::get('brn_sort') : 'asc'));
 
         $brns = Brn::select('*')
-            -> join('areas', 'brns.AreaId', '=','areas.id')
-            ->where('BranchName', 'like', '%' . Session::get('area_search') . '%')
-            ->orderBy(Session::get('area_field'), Session::get('area_sort'))->paginate(8);
+            ->join('areas', 'brns.AreaId', '=','areas.id')
+            ->where('BranchName', 'like', '%' . Session::get('brn_search') . '%')
+            ->paginate(8);
         return view('brn.list', ['brns' => $brns]);
 
     }

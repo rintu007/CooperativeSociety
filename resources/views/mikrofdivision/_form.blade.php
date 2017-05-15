@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-DivisionOfficeWardId-error">
-            {!! Form::label("DivisionOfficeWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
+            {!! Form::label("DivisionOfficeWardId","Ward No",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("DivisionOfficeWardId",null,["class"=>"form-control DivisionOfficeWardId required","id"=>"DivisionOfficeWardId"]) !!}
                 <span id="DivisionOfficeWardId-error" class="help-block"></span>
@@ -137,7 +137,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('DomainName');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
@@ -211,54 +211,55 @@
             });
             $.ajax(clear);
         });
+    });
 
-        $(document).on('change', '.DivisionOfficeThanaId', function () {
-            //console.log("yes it is change");
+        // $(document).on('change', '.DivisionOfficeThanaId', function () {
+        //     //console.log("yes it is change");
 
-            var op = " ";
-            var DivisionOfficeThanaId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
-            $('#DivisionOfficeUnionId').empty();
-            $.ajax({
-                type: 'get',
-                url: 'getUnion',
-                data: {'id': DivisionOfficeThanaId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj2) {
-                        $('#DivisionOfficeUnionId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.UnionName +'</option>')
-                    });
-                },
-                error: function () {
+        //     var op = " ";
+        //     var DivisionOfficeThanaId = $(this).val();
+        //     //var div = $(this).parent();
+        //     //console.log(DivisionId);
+        //     $('#DivisionOfficeUnionId').empty();
+        //     $.ajax({
+        //         type: 'get',
+        //         url: 'getUnion',
+        //         data: {'id': DivisionOfficeThanaId},
+        //         success: function (data) {
+        //             $.each(data, function (index, subcatObj2) {
+        //                 $('#DivisionOfficeUnionId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.UnionName +'</option>')
+        //             });
+        //         },
+        //         error: function () {
 
-                }
-            });
-            $.ajax(clear);
-        });
+        //         }
+        //     });
+        //     $.ajax(clear);
+        // });
 
-        $(document).on('change', '.DivisionOfficeUnionId', function () {
-            //console.log("yes it is change");
+        // $(document).on('change', '.DivisionOfficeUnionId', function () {
+        //     //console.log("yes it is change");
 
-            var op = " ";
-            var DivisionOfficeUnionId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
-            $('#DivisionOfficeWordId').empty();
-            $.ajax({
-                type: 'get',
-                url: 'getWord',
-                data: {'id': DivisionOfficeUnionId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj2) {
-                        $('#DivisionOfficeWordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
-                    });
-                },
-                error: function () {
+        //     var op = " ";
+        //     var DivisionOfficeUnionId = $(this).val();
+        //     //var div = $(this).parent();
+        //     //console.log(DivisionId);
+        //     $('#DivisionOfficeWordId').empty();
+        //     $.ajax({
+        //         type: 'get',
+        //         url: 'getWord',
+        //         data: {'id': DivisionOfficeUnionId},
+        //         success: function (data) {
+        //             $.each(data, function (index, subcatObj2) {
+        //                 $('#DivisionOfficeWordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
+        //             });
+        //         },
+        //         error: function () {
 
-                }
-            });
-            $.ajax(clear);
-        });
+        //         }
+        //     });
+        //     $.ajax(clear);
+        // });
 
 //        $(document).on('change', '.DistrictId', function () {
 //            //console.log("yes it is change");
@@ -283,6 +284,6 @@
 //            });
 //            $.ajax(clear);
 //        });
-    });
+    
 
 </script>

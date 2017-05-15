@@ -1,6 +1,6 @@
 <div class="col-md-12" style="background-color: #EAEAEA">
     <div class="form-group col-md-12" id="form-DivisionalOfficeInfo-error">
-        <h3>Zonal Office Information</h3>               
+        <h3>Zonal/Departmental Office Information</h3>               
     </div>
          <div class="form-group required col-md-6" id="form-DomainName-error">
             {!! Form::label("DomainName","Domains",["class"=>"control-label test col-md-3"]) !!}
@@ -12,19 +12,19 @@
         <div class="form-group required col-md-6" id="form-ZoneDivisionOfficeId-error">
             {!! Form::label("ZoneDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
-                {!! Form::select("ZoneDivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"ZoneDivisionOfficeId"]) !!}
+                {!! Form::select("ZoneDivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control ZoneDivisionOfficeId required","id"=>"ZoneDivisionOfficeId"]) !!}
                 <span id="ZoneDivisionOfficeId-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneName-error">
-            {!! Form::label("ZoneName","Zone Name",["class"=>"control-label test col-md-3"]) !!}
+            {!! Form::label("ZoneName","Zone/Department Name",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("ZoneName",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneName-error" class="help-block"></span>
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneCode-error">
-            {!! Form::label("ZoneCode","Zone Code",["class"=>"control-label test col-md-3"]) !!}
+            {!! Form::label("ZoneCode","Zone/Department Code",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("ZoneCode",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneCode-error" class="help-block"></span>
@@ -82,7 +82,7 @@
         <div class="form-group required col-md-6" id="form-ZoneUnionId-error">
             {!! Form::label("ZoneUnionId","Union",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
-                {!! Form::select("ZoneUnionId",$UnionInfo,null,["class"=>"form-control UnionId required","id"=>"UnionId"]) !!}
+                {!! Form::text("ZoneUnionId",null,["class"=>"form-control UnionId required","id"=>"UnionId"]) !!}
                 <span id="ZoneUnionId-error" class="help-block"></span>
             </div>
         </div>
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="form-group required col-md-6" id="form-ZoneWardId-error">
-            {!! Form::label("ZoneWardId","Ward",["class"=>"control-label test col-md-3"]) !!}
+            {!! Form::label("ZoneWardId","Ward No",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("ZoneWardId",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ZoneWardId-error" class="help-block"></span>
@@ -166,6 +166,31 @@
 <script>
 
     $(document).ready(function () {
+        $(document).on('change', '.DomainName', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var DomainName = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#ZoneDivisionOfficeId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getDivisionOffice',
+                data: {'id': DomainName},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#ZoneDivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
+    
         $(document).on('change', '.DivisionId', function () {
             //console.log("yes it is change");
 
@@ -189,6 +214,8 @@
             });
             $.ajax(clear);
         });
+
+
         $(document).on('change', '.DistrictId', function () {
             //console.log("yes it is change");
 

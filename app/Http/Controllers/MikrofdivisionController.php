@@ -59,7 +59,7 @@ class MikrofdivisionController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $mikrofdivision->DomainName = Input::get('DomainName');
+        $mikrofdivision->DomainId = Input::get('DomainName');
         $mikrofdivision->DivisionOfficeName = Input::get('DivisionOfficeName');
         $mikrofdivision->DivisionOfficeNameBangla = Input::get('DivisionOfficeNameBangla');
         $mikrofdivision->DivisionOfficeCode = Input::get('DivisionOfficeCode');
@@ -70,9 +70,9 @@ class MikrofdivisionController extends Controller
         $mikrofdivision->DivisionOfficeDistrictId = Input::get('DivisionOfficeDistrictId');
         $mikrofdivision->DivisionOfficeThanaId = Input::get('DivisionOfficeThanaId');
         $mikrofdivision->DivisionOfficeUnionId = Input::get('DivisionOfficeUnionId');
+        $mikrofdivision->DivisionOfficePostOfficeId = Input::get('DivisionOfficePostOfficeId');
         $mikrofdivision->DivisionOfficeWardId = Input::get('DivisionOfficeWardId');
         $mikrofdivision->DivisionOfficeRoadNo = Input::get('DivisionOfficeRoadNo');
-        $mikrofdivision->DivisionOfficePostOfficeId = Input::get('DivisionOfficePostOfficeId');
         $mikrofdivision->save();
         return ['url' => 'mikrofdivision/list'];
     }
@@ -105,7 +105,7 @@ class MikrofdivisionController extends Controller
             );
         }
         $mikrofdivision = new Mikrofdivision();
-        $mikrofdivision->DomainName = Input::get('DomainName');
+        $mikrofdivision->DomainId = Input::get('DomainName');
         $mikrofdivision->DivisionOfficeName = Input::get('DivisionOfficeName');
         $mikrofdivision->DivisionOfficeNameBangla = Input::get('DivisionOfficeNameBangla');
         $mikrofdivision->DivisionOfficeCode = Input::get('DivisionOfficeCode');
@@ -116,9 +116,9 @@ class MikrofdivisionController extends Controller
         $mikrofdivision->DivisionOfficeDistrictId = Input::get('DivisionOfficeDistrictId');
         $mikrofdivision->DivisionOfficeThanaId = Input::get('DivisionOfficeThanaId');
         $mikrofdivision->DivisionOfficeUnionId = Input::get('DivisionOfficeUnionId');
+        $mikrofdivision->DivisionOfficePostOfficeId = Input::get('DivisionOfficePostOfficeId');
         $mikrofdivision->DivisionOfficeWardId = Input::get('DivisionOfficeWardId');
         $mikrofdivision->DivisionOfficeRoadNo = Input::get('DivisionOfficeRoadNo');
-        $mikrofdivision->DivisionOfficePostOfficeId = Input::get('DivisionOfficePostOfficeId');
         $mikrofdivision->save();
         return ['url' => 'mikrofdivision/list'];
     }

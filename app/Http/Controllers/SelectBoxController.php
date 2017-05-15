@@ -46,8 +46,9 @@ class SelectBoxController extends Controller
     public function getDivisionOffice(Request $request){
          $data = DB::table('mikrofdivisions')
             ->select('*')
-            ->where('DivisionId', $request->id)
+            ->where('DomainId', $request->id)
             ->get();
+
         return response()->json($data);
     }
 

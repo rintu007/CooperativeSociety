@@ -7,8 +7,8 @@
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.1
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -27,7 +27,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `mikrofdivisions` (
-  `id` int(11) NOT NULL,
+  `id` int(2) unsigned NOT NULL AUTO_INCREMENT,
+  `DomainId` int(2) unsigned NOT NULL,
   `DivisionOfficeName` varchar(500) DEFAULT NULL,
   `DivisionOfficeNameBangla` varchar(500) DEFAULT NULL,
   `DivisionOfficeCode` varchar(500) DEFAULT NULL,
@@ -38,11 +39,15 @@ CREATE TABLE `mikrofdivisions` (
   `DivisionOfficeDistrictId` varchar(500) DEFAULT NULL,
   `DivisionOfficeThanaId` varchar(500) DEFAULT NULL,
   `DivisionOfficeUnionId` varchar(500) DEFAULT NULL,
+  `DivisionOfficePostOfficeId` varchar(500) DEFAULT NULL,
   `DivisionOfficeWardId` varchar(500) DEFAULT NULL,
   `DivisionOfficeRoadNo` varchar(500) DEFAULT NULL,
-  `DivisionOfficePostOfficeId` varchar(500) DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL
+  
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`DomainId`) REFERENCES `domains` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -52,8 +57,8 @@ CREATE TABLE `mikrofdivisions` (
 --
 -- Indexes for table `mikrofdivisions`
 --
-ALTER TABLE `mikrofdivisions`
-  ADD PRIMARY KEY (`id`);
+-- ALTER TABLE `mikrofdivisions`
+--   ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -62,8 +67,8 @@ ALTER TABLE `mikrofdivisions`
 --
 -- AUTO_INCREMENT for table `mikrofdivisions`
 --
-ALTER TABLE `mikrofdivisions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+-- ALTER TABLE `mikrofdivisions`
+--   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -1,6 +1,6 @@
 @if (Auth::guest())
 @else
-    <h1 class="page-header">Zones 
+    <h1 class="page-header">Zones/Departments 
         <div class="pull-right">
             <a href="javascript:ajaxLoad('zone/create')" class="btn btn-primary pull-right"><i
                         class="glyphicon glyphicon-plus-sign"></i>New</a>
@@ -27,7 +27,7 @@
             <th width="50px" style="text-align: center">Serial No</th>
             <th>
                 <a href="javascript:ajaxLoad('zone/list?field=ZoneName&sort={{Session::get("zone_sort")=="asc"?"desc":"asc"}}')">
-                    Zone Name
+                    Zone/Department Name
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('zone_field')=='ZoneName'?(Session::get('zone_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -35,7 +35,7 @@
             </th>
             <th>
                 <a href="javascript:ajaxLoad('zone/list?field=ZoneCode&sort={{Session::get("zone_sort")=="asc"?"desc":"asc"}}')">
-                    Zone Code
+                    Zone/Department Code
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('zone_field')=='ZoneCode'?(Session::get('zone_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -79,12 +79,12 @@
                 <td>{{$zone->ZoneMobileNo}}</td>
                 <td>{{$zone->ZoneEmail}}</td>
                 <td style="text-align: center">
-                    {{--<a class="btn btn-primary btn-xs" title="Edit"--}}
-                    {{--href="javascript:ajaxLoad('zone/update/{{$zone->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-edit"></i> আপডেট</a>--}}
-                    {{--<a class="btn btn-danger btn-xs" title="Delete"--}}
+                    <a class="btn btn-primary btn-xs" title="Edit"
+                    href="javascript:ajaxLoad('zone/update/{{$zone->id}}')">
+                    <i class="glyphicon glyphicon-edit"></i> update</a>
+                   {{-- <a class="btn btn-danger btn-xs" title="Delete"--}}
                     {{--href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('zone/delete/{{$zone->id}}')">--}}
-                    {{--<i class="glyphicon glyphicon-trash"></i> ডিলিট--}}
+                    {{--<i class="glyphicon glyphicon-trash"></i> delete--}}
                     {{--</a>--}}
                 </td>
             </tr>

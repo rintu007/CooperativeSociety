@@ -94,10 +94,10 @@
                     <a class="btn btn-primary btn-xs" title="Edit"
                     href="javascript:ajaxLoad('area/update/{{$area->id}}')">
                     <i class="glyphicon glyphicon-edit"></i> update</a>
-                    <a class="btn btn-danger btn-xs" title="Delete"
+                   <!--  <a class="btn btn-danger btn-xs" title="Delete"
                     href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('area/delete/{{$area->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> delete
-                    </a>
+                    </a> -->
                 </td>
             </tr>
         @endforeach

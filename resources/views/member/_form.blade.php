@@ -3,38 +3,38 @@
         <h3>Office Information</h3>               
     </div>
      
-     <div class="form-group required col-md-6" id="form-DomainId-error">
-        {!! Form::label("DomainId","Domain",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-DomainName-error">
+        {!! Form::label("DomainName","Domain",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("DomainId",$DomainInfo,null,["class"=>"form-control required","id"=>"DomainId"]) !!}
-            <span id="DomainId-error" class="help-block"></span>
+            {!! Form::select("DomainName",$DomainInfo,null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+            <span id="DomainName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
         {!! Form::label("DivisionOfficeId","Divisional Office",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("DivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"DivisionOfficeId"]) !!}
+            {!! Form::select("DivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
             <span id="DivisionOfficeId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-ZoneId-error">
         {!! Form::label("ZoneId","Zone",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("ZoneId",$Zone_info,null,["class"=>"form-control required","id"=>"ZoneId"]) !!}
+            {!! Form::select("ZoneId",$Zone_info,null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
             <span id="ZoneId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-AreaId-error">
         {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("AreaId",$area,null,["class"=>"form-control required","id"=>"AreaId"]) !!}
+            {!! Form::select("AreaId",$area,null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
             <span id="AreaId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BranchId-error">
         {!! Form::label("BranchId","Branch",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("BranchId",$BranchInfo,null,["class"=>"form-control required","id"=>"BranchId"]) !!}
+            {!! Form::select("BranchId",$BranchInfo,null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
     </div>
@@ -390,45 +390,43 @@
 <script>
 
     $(document).ready(function () {
-        $(document).on('change', '.DomainId', function () {
+        $(document).on('change', '.DomainName', function () {
             //console.log("yes it is change");
 
             var op = " ";
-            var DomainId = $(this).val();
-            alert ("zia");
-            //var div = $(this).parent();
-            //console.log(DivisionId);
+            var DomainName = $(this).val();
+        
             $('#DivisionOfficeId').empty();
             $.ajax({
                 type: 'get',
-                url: 'getDivisionoffice',
-                data: {'id': DomainId},
+                url: 'getDivisionOffice',
+                data: {'id': DomainName},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
                         $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
                     });
                 },
                 error: function () {
-
+                    alert("Enternal Connection errors.");
                 }
             });
             $.ajax(clear);
         });
-        $(document).on('change', '.DistrictId', function () {
+        $(document).on('change', '.DivisionOfficeId', function () {
             //console.log("yes it is change");
 
             var op = " ";
-            var DistrictId = $(this).val();
+            var DivisionOfficeId = $(this).val();
             //var div = $(this).parent();
             //console.log(DivisionId);
-            $('#ThanaId').empty();
+            $('#ZoneId').empty();
             $.ajax({
                 type: 'get',
-                url: 'getThana',
-                data: {'id': DistrictId},
+                url: 'getZone',
+                data: {'id': DivisionOfficeId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj1) {
-                        $('#ThanaId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ThanaName +'</option>')
+                        $('#ZoneId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ZoneName +'</option>')
                     });
                 },
                 error: function () {

@@ -13,7 +13,7 @@
         <div class="form-group required col-md-6" id="form-AreaDivisionOfficeId-error">
             {!! Form::label("AreaDivisionOfficeId","Divisional Office",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
-                {!! Form::select("AreaDivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control required","id"=>"AreaDivisionOfficeId"]) !!}
+                {!! Form::select("AreaDivisionOfficeId",$DivisionOfficeInfo,null,["class"=>"form-control AreaDivisionOfficeId required","id"=>"AreaDivisionOfficeId"]) !!}
                 <span id="AreaDivisionOfficeId-error" class="help-block"></span>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 {{--<option value="{{$d->id}}">{{$d->ZoneName}}</option>--}}
                 {{--@endforeach--}}
                 {{--</select>--}}
-                {!! Form::select("ZoneId",$Zone_info,null,["class"=>"form-control required","id"=>"focus"]) !!}
+                {!! Form::select("ZoneId",$Zone_info,null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
                 <span id="ZoneId-error" class="help-block"></span>
             </div>
         </div>
@@ -98,7 +98,7 @@
         <div class="form-group required col-md-6" id="form-AreaUnionId-error">
             {!! Form::label("AreaUnionId","Union",["class"=>"control-label test col-md-3"]) !!}
             <div class="col-md-6">
-                {!! Form::select("AreaUnionId",$UnionInfo,null,["class"=>"form-control UnionId required","id"=>"UnionId"]) !!}
+                {!! Form::text("AreaUnionId",null,["class"=>"form-control UnionId required","id"=>"UnionId"]) !!}
                 <span id="AreaUnionId-error" class="help-block"></span>
             </div>
         </div>
@@ -186,6 +186,55 @@
 <script>
 
     $(document).ready(function () {
+
+         $(document).on('change', '.DomainName', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var DomainName = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#AreaDivisionOfficeId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getDivisionOffice',
+                data: {'id': DomainName},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#AreaDivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
+          $(document).on('change', '.AreaDivisionOfficeId', function () {
+            //console.log("yes it is change");
+
+            var op = " ";
+            var AreaDivisionOfficeId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#ZoneId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getZone',
+                data: {'id': AreaDivisionOfficeId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#ZoneId').append('<option value="'+subcatObj.id+'">'+subcatObj.ZoneName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            $.ajax(clear);
+        });
+
         $(document).on('change', '.DivisionId', function () {
             //console.log("yes it is change");
 
