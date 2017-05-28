@@ -55,6 +55,12 @@ Route::controllers([
     'postoffice'                     => 'PostofficeController',
     'district'                       => 'DistrictController',
     'domain'                         => 'DomainController',
+    'year'                           => 'YearController',
+    'month'                          => 'MonthController',
+    'dpsapplication'                 => 'DpsapplicationController',
+    'savingaccounts'                 => 'SavingaccountsController',
+    'product'                        => 'ProductController',
+    'producttype'                        => 'ProducttypeController',
 
 ]); 
 
@@ -73,6 +79,8 @@ Route::get('getArea','SelectBoxController@getArea');
 Route::get('getBranch','SelectBoxController@getBranch');
 
 Route::get('getThana','SelectBoxController@getThana');
+
+Route::get('getJustify','SelectBoxController@getJustify');
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {

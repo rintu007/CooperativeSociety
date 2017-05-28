@@ -87,7 +87,7 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <!-- <ul class="nav navbar-nav">
+           <!--  <ul class="nav navbar-nav">
                 <li><a href="https://github.com/yajra/laravel-datatables"><strong><i class="fa fa-github"></i>
                             Github</strong></a></li>
                 <li><a href="https://yajrabox.com/docs/laravel-datatables/6.0"><strong>Documentation</strong></a></li>
@@ -149,13 +149,13 @@
     </div>
 </div>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
-<!-- <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script> -->
+<script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('js/datatables.bootstrap.js') }}"></script>
 <script src="{{ asset('js/handlebars.js') }}"></script>
 <script src="{{ asset('js/jquery.mark.min.js') }}"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.0.0/jquery.mark.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.0.0/jquery.mark.min.js"></script>
 <script>
     $(function () {
         var $input = $("input[name='keyword']"), $context = $(".keyword");

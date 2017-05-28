@@ -46,14 +46,14 @@
         </div>
     </div>
 </div>
-<div class="col-md-12" style="background-color: #EAEAEA">
+<div class="col-md-12 inforError" style="background-color: #EAEAEA">
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Personal Information</h3>               
     </div>
     <div class="form-group required col-md-6" id="form-MemberId-error">
         {!! Form::label("MemberId","Member Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("MemberId",null,["class"=>"form-control MemberId required","id"=>"MemberId"]) !!}
             <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
@@ -67,7 +67,7 @@
     <div class="form-group required col-md-6" id="form-EnglishName-error">
         {!! Form::label("EnglishName","Name in English: ",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("EnglishName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("EnglishName",null,["class"=>"form-control EnglishName required","id"=>"EnglishName"]) !!}
             <span id="EnglishName-error" class="help-block"></span>
         </div>
     </div>
@@ -153,7 +153,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-12" style="background-color: #F7F7F7">
+<div class="col-md-12 inforError" style="background-color: #F7F7F7">
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Present Address</h3>               
     </div>
@@ -279,7 +279,7 @@
         </div>
     </div>
 </div>
-<div class="col-md-12" style="background-color: #F7F7F7">
+<div class="col-md-12 inforError" style="background-color: #F7F7F7">
     <div class="form-group col-md-12">
        <h4>Images</h4>
     </div>
@@ -340,7 +340,7 @@
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
-    btn-primary"])!!}
+    btn-primary "])!!}
     </div>
 </div>
 <script>
@@ -530,6 +530,28 @@
                 }
             });
             $.ajax(clear);
+        });
+
+        $(document).on('change', '.MemberId', function () {
+
+            var op = " ";
+            var MemberId = $(this).val();           
+            
+            $.ajax({
+                type: 'get',
+                url: 'getJustify',
+                data: {'id': MemberId},
+                success: function (data) {
+                    $('#EnglishName').empty();
+                    console.log(data); 
+                        document.getElementById("EnglishName").value = data;
+                },
+                error: function () {
+                        alert("Please pay form and passbook fee first.");
+                        $(".inforError :input").attr("disabled", true);
+                }
+            });
+            // $.ajax(clear);
         });
 
     });

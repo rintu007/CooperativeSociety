@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Appformandpassbook;
 use App\Share;
+use App\User;
 use App\Addshare;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -40,6 +41,7 @@ class AppformandpassbookController extends Controller
 
     public function postUpdate($id)
     {
+        $user_id = Auth::user()->id;
         $appformandpassbook = Appformandpassbook::find($id);
         // $rules = ["unitprice" => "required|numeric"];
         // if ($appformandpassbook->member_name != Input::get('member_name'))
@@ -63,9 +65,10 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->share_amount = Input::get('share_amount');          
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
+        $appformandpassbook->created_by = $user_id;
         $appformandpassbook->save();
 
-        $addshare = Addshare::find($id);
+        $addshare = new Addshare();
         $addshare->serial_no = Input::get('serial_no');
         $addshare->member_id = Input::get('member_id');
         $addshare->date = Input::get('date');
@@ -73,19 +76,17 @@ class AppformandpassbookController extends Controller
         $addshare->share_amount = Input::get('share_amount');
         $addshare->save();
 
-        $share = Share::find($id);
-        $share->serial_no       = Input::get('serial_no');
-        $share->member_id       = Input::get('member_id');       
-        $share->member_name     = Input::get('member_name');
+        $share = new Share();
+        $share->serial_no    = Input::get('serial_no');
+        $share->member_id  = Input::get('member_id');       
+        $share->member_name    = Input::get('member_name');
         $share->mobile_no         = Input::get('mobile_no');
         $share->base_share_number = Input::get('share_number'); 
         $share->base_share_amount = Input::get('share_amount');
         $share->present_share_number = Input::get('share_number'); 
         $share->present_share_amount = Input::get('share_amount');
-        $share->date              = Input::get('date');
+        $share->date           = Input::get('date');
         $share->save();
-
-
         return ['url' => 'appformandpassbook/list'];
     }
 
@@ -107,6 +108,7 @@ class AppformandpassbookController extends Controller
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
+        $user_id = Auth::user()->id;
         $appformandpassbook = new Appformandpassbook();
         $appformandpassbook->serial_no = Input::get('serial_no');
         $appformandpassbook->member_name = Input::get('member_name');       
@@ -120,6 +122,7 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->share_amount = Input::get('share_amount');          
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
+        $appformandpassbook->created_by = $user_id;
         $appformandpassbook->save();
 
         $addshare = new Addshare();

@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 
 use App\Member;
+use App\Share;
+use App\Addshare;
 use App\Division;
 use App\Mikrofdivision;
 use App\Postoffice;
@@ -81,7 +83,7 @@ class MemberController extends Controller
         $member->EnglishName        = Input::get('EnglishName');
         $member->FatherName         = Input::get('FatherName');
         $member->MotherName         = Input::get('MotherName');
-        $member->HusbandWifeName    = Input::get('FatherName');
+        $member->HusbandWifeName    = Input::get('HusbandWifeName');
         $member->Age                = Input::get('Age');
         $member->Occupation         = Input::get('Occupation');
         $member->Nationality        = Input::get('Nationality');
@@ -203,7 +205,7 @@ class MemberController extends Controller
         $member->EnglishName        = Input::get('EnglishName');
         $member->FatherName         = Input::get('FatherName');
         $member->MotherName         = Input::get('MotherName');
-        $member->HusbandWifeName    = Input::get('FatherName');
+        $member->HusbandWifeName    = Input::get('HusbandWifeName');
         $member->Age                = Input::get('Age');
         $member->Occupation         = Input::get('Occupation');
         $member->Nationality        = Input::get('Nationality');
@@ -290,7 +292,30 @@ class MemberController extends Controller
     public function getDelete($id)
     {
         Member::destroy($id);
+
+        $member_id = Member::select('MemberId')
+                    ->where('id', $id)->get();
+        foreach ($member_id as $key => $value) {
+            $MemId = $value->MemberId;
+        }
+
+        $AddshareId = Addshare::select('id')
+                    ->where('member_id', $MemId)->get();
+        foreach ($AddshareId as $key => $value) {
+            $id = $value->id;
+        }        
+        Addshare::destroy($id);
+
+        $ShareId = Share::select('id')
+                    ->where('member_id', $MemId)->get();
+        foreach ($ShareId as $key => $value) {
+            $id = $value->id;
+        }        
+        Share::destroy($id);
         return Redirect('member/list');
+        
+    
+        
     }
 
 }

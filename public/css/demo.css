@@ -5,7 +5,6 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
-  background-color: #01A7D7;
 }
 
 
@@ -64,6 +63,7 @@ body {
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
   color: #fff;
+  background-color: #428bca;
 }
 
 
@@ -72,7 +72,7 @@ body {
  */
 
 .main {
-  padding: 10px;
+  padding: 20px;
 }
 @media (min-width: 768px) {
   .main {
@@ -133,11 +133,157 @@ div.dataTables_wrapper {
 }
 .panel {
     margin: 0;
+
 }
+div.col-md-12.survey input[type='password'],
 .form-group input.form-control{
   height: 30px;
   width: 100%;
 }
-.form-horizontal .control-label{
+.survey .form-horizontal .control-label{
+  /* width: auto; */
+}
+.form-horizontal textarea{
+  width: 100%;
+  height: 60px;
+}
+.organizationpanel select{
+  width: 100%;
+}
+.organizationpanel .form-group{
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+}
+.organizationpanel .control-label{
+  width: auto !important;
+  text-align: left !important;
+}
 
+
+
+    div.formtest form{
+  margin: 20px 0;
+    }
+    div.formtest form input, div.formtest button{
+  padding: 6px;
+    font-size: 18px;
+    }
+    div.formtest table{
+        width: 100%;
+        margin-bottom: 20px;
+    border-collapse: collapse;
+    background: #fff;
+    }
+    div.formtest table, div.formtest th, div.formtest td{
+        border: 1px solid #cdcdcd;
+    }
+    div.formtest table th, div.formtest table td{
+        padding: 10px;
+        text-align: left;
+    }
+  div.formtest .add-row, div.formtest .delete-row {
+  font-size: 16px;
+    font-weight: 600;
+    padding: 8px 16px;
+  }
+  div.borderportion{
+    width: 98%;
+    float: left;
+    border: 1px solid #cccccc;
+    padding: 1%;
+    margin:1%; 
+  }
+  .col-md-12.survey select{
+    width: 100%;
+  }
+.col-md-12.member select{
+  width: 100%;
+}
+.col-md-12.loan select{
+  width: 100%;
+}
+.col-md-12.jamindar select{
+  width: 100%;
+}
+.form-horizontal .form-group{
+    /*margin: 0;*/
+    padding: 0;
+}
+div.survey table th, div.survey table th a{
+  font-size: 12px;
+}
+div.col-md-12.survey div.surveyview div.col-md-6.col-md-push-4,
+div.col-md-12.surveysearch div.row,
+div.col-md-12.surveysearch div.pull-right {
+    display: none;
+}
+div.col-md-12.survey div.surveyview div.col-md-6.col-md-push-4.back{
+  display: block;
+}
+.col-md-12.survey div.surveyview select,
+.col-md-12.survey div.surveyview input,
+.col-md-12.survey div.surveyview textarea{
+  /*pointer-events: none;*/
+  background: #f2f2f2;
+}
+.page-header{
+  margin: 10px 0 10px;
+  font-size: 16px;
+}
+div.zoneareabran{
+    float: right;
+    display: block;
+    position: relative;
+    width: 15%;
+    border: 1px solid #f2f2f2;
+}
+div.zoneareabran li {
+    color: #ffffff;
+    /*clear: both;*/
+}
+div.footercopy{
+    width: 100%;
+    float: left;
+}
+div.zoneareabran ul li span{
+    font-weight: bold;
+    color: navy;
+}
+div.waitingapproval .form-group input.form-control,
+div.waitingapproval .form-group select.form-control,
+div.waitingapproval .form-group textarea.form-control{
+    pointer-events: none;
+    background: #f2f2f2;
+}
+div.waitingapproval .form-group input.form-control.montobbo,
+div.waitingapproval .form-group textarea.form-control.montobbo{
+  pointer-events: auto;
+  background: transparent;
+}
+div.memberdetails select, div.memberdetails input, div.memberdetails textarea{
+    pointer-events: none;
+    background: #f2f2f2;
+}
+div.memberdetails img {
+    width: 100px;
+    height: 100px;
+}
+div.memberdetails input{
+    width: 100%;
+    height: auto;
+}
+div.memberdetails .nav-tabs>li>a{
+    padding-right: 5px;
+    padding-left: 5px;
+}
+p.savingsschedule{
+    border: 1px solid #cccccc;
+    width: 70%;
+    padding: 2%;
+    margin: auto;
+    text-align: center;
+}
+div.memberdetails h4{
+    text-align: center;
 }

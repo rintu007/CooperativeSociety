@@ -12,6 +12,7 @@ use App\Product;
 use App\Saving1;
 use App\Savingtransactionsetup;
 use App\Thana;
+use App\Appformandpassbook;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -141,6 +142,17 @@ class SelectBoxController extends Controller
         return response()->json($data);
     }
 
+    public function getJustify(Request $request)
+    {
+        
+        $data = DB::table('appformandpassbooks')
+            ->select('member_name')
+            ->where('member_id', $request->id)
+            ->first();
+            $member = $data->member_name;
+                 return response()->json($member);             
+    }
+
     public function getProductInfo(Request $request)
     {
         $data = DB::table('producttypes')
@@ -168,7 +180,7 @@ class SelectBoxController extends Controller
         $datanum = Member::select('*')
             ->where('grouppresident', 1)
             ->get();
-//        $data  = $datanum->count();
+
         $data  =200;
         return response()->json($data);
     }
@@ -176,63 +188,24 @@ class SelectBoxController extends Controller
     public function dateinsert()
     {
         $date2 = new Carbon('first friday of july 2016');
-//        echo $date2;
+
         $date23 = Carbon::create(2023, 1, 31);
         $date21 = Carbon::create(2017, 1, 6);
         $day233 = new Carbon('today');
         echo $day233;
-//        echo $date2->addWeeks(1);
-//        for ($i=0;$i<52;$i++)
-//        {
-////            $day1 = $date21->addDays($i);
-//            $holiday = new Holiday();
-//            $holiday->OfficeId = 1;
-//            $holiday->SamityID_CenterID = 1;
-//            $holiday->HolidayyName = 'F';
-//            $holiday->HolidayType = 'W';
-//            $holiday->Holiday_Date = $date2->addWeeks(1);
-//            $holiday->OrgID = 1;
-//            $holiday->IsActive = 1;
-//            $holiday->save();
-//        }
-//
-//        $day1 = $date21->addMonth(7);
-// $day233 = new Carbon();
-// $rr = Date();
-// echo $rr;
-//     echo   $day1 = $day233->addDays(7);
-//        for ($i = 1; $i <= 12; $i++) {
-//            $NewDate = Date('Y-m-d', strtotime('+' . 0 . ' months'));
-////            $NewDate=Date('Y:m:d');
-//            $date_collection = Holiday::all();
-//            foreach ($date_collection as $date) {
-//                if ($NewDate == $date->Holiday_Date) {
-//                    echo "Hi";
-////                    $NewDate = Date('y:m:d', strtotime('+' . 1 . ' Days'));
-////                    echo $NewDate."</br>";
-//                }
-//            }
-//        }
 
     }
 
     public function getSchedule(Request $request)
     {
-//        echo $request->SamityId;
-//        echo "<br>";
-//        echo $request->ProductId;
-//        $datetest = new Carbon('today');
-//        $datetest = $datetest->addMonths(1);
+
         $datetest = '2017-05-16';
         $data = DB::table('savingtransactionsetups')
             ->select('*')
             ->where('SamityName', $request->SamityId)
-//            ->where('SavingType', $request->ProductId)
             ->where('Date', $datetest)
             ->get();
-//        foreach ($data as $data1):
-//            echo $data1->MemberId."</br>";
-//        endforeach;
+
         return response()->json($data);
     }
 
@@ -266,40 +239,15 @@ class SelectBoxController extends Controller
     }
 
 
-//    public function autocomplete(){
-//        $term = Input::get('term');
-//
-//        $results = array();
-//
-//        $queries = DB::table('members')
-//            ->where('MemberId', 'LIKE', '%'.$term.'%')
-////            ->orWhere('FirstName', 'LIKE', '%'.$term.'%')
-//            ->take(5)->get();
-//
-//        foreach ($queries as $query)
-//        {
-//            $results[] = [ 'id' => $query->id, 'value' => $query->MemberId.' '.$query->id ];
-//        }
-////        foreach ( $persons as $query ){
-////            $data[] = array('value' => $row->$column, 'id' =>$row->id);
-////        }
-////        return Response::json($data);
-//        return Response::json($results);
-//    }
+
     public function search()
     {
         $term = Input::get('term');
 
-//        $fest = Session::get('festival');
-//        $festival = Festival::find($fest);
 
-//        $persons = DB::table('fs_persons')
-//            ->join('fs_festival_persons', 'person_id','=','fs_persons.id')
-//            ->where('festival_id', '=', $fest)
-//            ->get();
         $queries = DB::table('members')
             ->where('FirstName', 'LIKE', '%' . $term . '%')
-////            ->orWhere('FirstName', 'LIKE', '%'.$term.'%')
+
             ->get();
 
         foreach ($queries as $query) {
@@ -320,10 +268,6 @@ class SelectBoxController extends Controller
             ->join('products','accountstables.productid','=','product.id')
             ->where('memberid','=','1009')
             ->get();
-//        $date = Date('d:m:Y');
-//        echo $date;
-//        die();
-//        return $date;
     }
 
     /**

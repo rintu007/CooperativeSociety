@@ -65,7 +65,7 @@
         });
     }
     $(document).ready(function () {
-        ajaxLoad('product/list');
+        ajaxLoad('month/list');
     });
 </script><!-- 
 </body>
