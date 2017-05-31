@@ -292,26 +292,6 @@ class MemberController extends Controller
     public function getDelete($id)
     {
         Member::destroy($id);
-
-        $member_id = Member::select('MemberId')
-                    ->where('id', $id)->get();
-        foreach ($member_id as $key => $value) {
-            $MemId = $value->MemberId;
-        }
-
-        $AddshareId = Addshare::select('id')
-                    ->where('member_id', $MemId)->get();
-        foreach ($AddshareId as $key => $value) {
-            $id = $value->id;
-        }        
-        Addshare::destroy($id);
-
-        $ShareId = Share::select('id')
-                    ->where('member_id', $MemId)->get();
-        foreach ($ShareId as $key => $value) {
-            $id = $value->id;
-        }        
-        Share::destroy($id);
         return Redirect('member/list');
         
     

@@ -60,7 +60,9 @@ Route::controllers([
     'dpsapplication'                 => 'DpsapplicationController',
     'savingaccounts'                 => 'SavingaccountsController',
     'product'                        => 'ProductController',
-    'producttype'                        => 'ProducttypeController',
+    'producttype'                    => 'ProducttypeController',
+    'accountopen'                    => 'AccountopenController',
+    'duration'                       => 'DurationController',
 
 ]); 
 
@@ -81,6 +83,8 @@ Route::get('getBranch','SelectBoxController@getBranch');
 Route::get('getThana','SelectBoxController@getThana');
 
 Route::get('getJustify','SelectBoxController@getJustify');
+
+
 
 Route::get('{view}', function ($view) {
     if (view()->exists($view)) {

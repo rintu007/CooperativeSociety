@@ -17,7 +17,7 @@
     <div class="form-group required col-md-6" id="form-member_id-error">
         {!! Form::label("member_id","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("member_id",null,["class"=>"form-control member_id required","id"=>"member_id"]) !!}
             <span id="member_id-error" class="help-block"></span>
         </div>
     </div>
@@ -109,6 +109,28 @@
             }
             $(document).on("change, keyup", "#share_number", updatePrice);
     });
+
+    // $(document).on('change', '.member_id', function () {
+
+    //         var op = " ";
+    //         var member_id = $(this).val();           
+            
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getJustify',
+    //             data: {'id': member_id},
+    //             success: function (data) {
+    //                 alert("He has already payed, Give a new member.");
+    //                  $('#member_id').empty();
+    //                     document.getElementById("member_id").focus();
+    //                     document.getElementById("member_id").select();
+    //             },
+    //             error: function () {
+                        
+    //             }
+    //         });
+    //         // $.ajax(clear);
+    //     });
 
     $("#frm").submit(function (event) {
         event.preventDefault();

@@ -20,7 +20,7 @@ class MonthController extends Controller
         Session::put('month_field', Input::has('field') ? Input::get('field') : (Session::has('month_field') ? Session::get('month_field') : 'id'));
         Session::put('month_sort', Input::has('sort') ? Input::get('sort') : (Session::has('month_sort') ? Session::get('month_sort') : 'asc'));
         $months = Month::where('id', 'like', '%' . Session::get('month_search') . '%')
-            ->orderBy(Session::get('month_field'), Session::get('month_sort'))->paginate(8);
+            ->orderBy(Session::get('month_field'), Session::get('month_sort'))->paginate(12);
         return view('month.list', ['months' => $months]);
     }
 

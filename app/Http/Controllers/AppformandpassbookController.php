@@ -43,16 +43,6 @@ class AppformandpassbookController extends Controller
     {
         $user_id = Auth::user()->id;
         $appformandpassbook = Appformandpassbook::find($id);
-        // $rules = ["unitprice" => "required|numeric"];
-        // if ($appformandpassbook->member_name != Input::get('member_name'))
-        //     $rules += ['member_name' => 'required|unique:appformandpassbooks'];
-        // $validator = Validator::make(Input::all(), $rules);
-        // if ($validator->fails()) {
-        //     return array(
-        //         'fail' => true,
-        //         'errors' => $validator->getMessageBag()->toArray()
-        //     );
-        // }
         $appformandpassbook->serial_no = Input::get('serial_no');
         $appformandpassbook->member_name = Input::get('member_name');       
         $appformandpassbook->member_id = Input::get('member_id');
@@ -98,7 +88,7 @@ class AppformandpassbookController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "member_name" => "required|unique:appformandpassbooks"
+            "member_id" => "required|unique:appformandpassbooks"
             // "CompanyrajCode" => "required|unique:appformandpassbooks",
             // "unitprice" => "required|numeric"
         ]);
@@ -149,7 +139,34 @@ class AppformandpassbookController extends Controller
 
     public function getDelete($id)
     {
-        Appformandpassbook::destroy($id);
+        $deletingId = $id;
+        $member_id = Appformandpassbook::select('member_id')
+                    ->where('id', $id)->get();
+        foreach ($member_id as $key => $value) {
+            $MemId = $value->member_id;
+        }
+
+         $AddshareId = Addshare::select('id')
+                    ->where('member_id', $MemId)->get();
+                foreach ($AddshareId as $key => $value) {
+                    $id = $value->id;
+                    Addshare::destroy($id);
+                }        
+                
+
+                $ShareId = Share::select('id')
+                            ->where('member_id', $MemId)->get();
+                foreach ($ShareId as $key => $value) {
+                    $id = $value->id;
+                    Share::destroy($id);
+                }        
+                
+
+        Appformandpassbook::destroy($deletingId);
+
+        
+
+        
         return Redirect('appformandpassbook/list');
     }
 

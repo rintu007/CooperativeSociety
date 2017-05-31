@@ -20,7 +20,7 @@ class YearController extends Controller
         Session::put('year_field', Input::has('field') ? Input::get('field') : (Session::has('year_field') ? Session::get('year_field') : 'id'));
         Session::put('year_sort', Input::has('sort') ? Input::get('sort') : (Session::has('year_sort') ? Session::get('year_sort') : 'asc'));
         $years = Year::where('id', 'like', '%' . Session::get('year_search') . '%')
-            ->orderBy(Session::get('year_field'), Session::get('year_sort'))->paginate(8);
+            ->orderBy(Session::get('year_field'), Session::get('year_sort'))->paginate(25);
         return view('year.list', ['years' => $years]);
     }
 

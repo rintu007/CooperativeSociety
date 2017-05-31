@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Share;
+use App\Appformandpassbook;
 use App\Addshare;
 use App\Withdrawshare;
 use Illuminate\Support\Facades\Auth;

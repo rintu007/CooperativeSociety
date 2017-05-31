@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `appformandpassbooks` (
   `saving_amount` int(11) DEFAULT NULL,
   `name` varchar(500) DEFAULT NULL,
   `unitprice` decimal(10,2) DEFAULT '0.00',
+  `created_by` varchar(500) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
  
