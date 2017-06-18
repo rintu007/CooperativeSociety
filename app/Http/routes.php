@@ -84,6 +84,8 @@ Route::get('getThana','SelectBoxController@getThana');
 
 Route::get('getJustify','SelectBoxController@getJustify');
 
+Route::get('getAccountVerification','SelectBoxController@getAccountVerification');
+
 
 
 Route::get('{view}', function ($view) {

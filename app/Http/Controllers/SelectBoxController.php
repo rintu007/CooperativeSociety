@@ -44,6 +44,30 @@ class SelectBoxController extends Controller
         //
     }
 
+    public function getAccountVerification(Request $request)
+    {
+        $MemberId = $request->MemberId;
+        $AccountType = $request->AccountType;
+        $i = 1;
+        $data = DB::table('accountopens')
+            ->select('AccountNo')
+            ->where('MemberId', '!=', $MemberId)
+            ->get();
+
+        foreach ($data as $key => $value) {
+            $AccountNo = $MemberId + $AccountType + (string)$i;
+            $DbAccountNo = $value->AccountNo;
+            if($DbAccountNo != $AccountNo){
+                break;
+            }
+            else{
+                $i++;
+            }
+        }
+        
+                 return response()->json($AccountNo);             
+    }
+
     public function getDivisionOffice(Request $request){
          $data = DB::table('mikrofdivisions')
             ->select('*')

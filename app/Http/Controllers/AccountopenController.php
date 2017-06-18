@@ -6,6 +6,7 @@ use App\Share;
 use App\User;
 use App\Addshare;
 use App\Domain;
+use App\Mikrofdivision;
 use App\Zone;
 use App\Area;
 use App\Brn;
@@ -77,12 +78,13 @@ class AccountopenController extends Controller
     public function getCreate()
     {
         $DomainInfo     = ['' => '--select--'] + Domain::lists('DomainName', 'id')->all();
+        $DivisionInfo     = ['' => '--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $ZoneInfo       = ['' => '--select--'] + Zone::lists('ZoneName', 'id')->all();
         $AreaInfo       = ['' => '--select--'] + Area::lists('AreaName', 'id')->all();
         $BranchInfo     = ['' => '--select--'] + Brn::lists('BranchName', 'id')->all();
         $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
         $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.create')->with('DomainInfo', $DomainInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('accountopen.create')->with('DomainInfo', $DomainInfo)->with('DivisionInfo', $DivisionInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
     }
 
     public function postCreate()

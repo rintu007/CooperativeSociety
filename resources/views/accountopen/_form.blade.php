@@ -2,18 +2,18 @@
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Office Information</h3>               
     </div>
-     <div class="form-group required col-md-6" id="form-VoutcherId-error">
-        {!! Form::label("VoutcherId","Voutcher No",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-MemberId-error">
+        {!! Form::label("MemberId","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("VoutcherId",null,["class"=>"form-control VoutcherId required","id"=>"VoutcherId"]) !!}
-            <span id="VoutcherId-error" class="help-block"></span>
+            {!! Form::text("MemberId",null,["class"=>"form-control MemberId required","id"=>"MemberId"]) !!}
+            <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-MemberId-error">
-        {!! Form::label("MemberId","Member ID",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-MemberName-error">
+        {!! Form::label("MemberName","Member Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MemberId",null,["class"=>"form-control MemberId  required","id"=>"MemberId"]) !!}
-            <span id="MemberId-error" class="help-block"></span>
+            {!! Form::text("MemberName",null,["class"=>"form-control MemberName  required","id"=>"MemberName"]) !!}
+            <span id="MemberName-error" class="help-block"></span>
         </div>
     </div>
     
@@ -22,6 +22,13 @@
         <div class="col-md-6">
             {!! Form::select("DomainName",$DomainInfo,null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
             <span id="DomainName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-DivisionName-error">
+        {!! Form::label("DivisionName","Division Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::select("DivisionName",$DivisionInfo,null,["class"=>"form-control DivisionName required","id"=>"DivisionName"]) !!}
+            <span id="DivisionName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-ZoneId-error">
@@ -109,10 +116,32 @@
                 url: 'getJustify',
                 data: {'id': MemberId},
                 success: function (data) {
-                    alert("He has already payed, Give a new member.");
+                    
                      $('#MemberId').empty();
-                        document.getElementById("MemberId").focus();
-                        document.getElementById("MemberId").select();
+                        document.getElementById("MemberName").value = $member;
+                        // document.getElementById("MemberId").select();
+                },
+                error: function () {
+                        
+                }
+            });
+            // $.ajax(clear);
+        });
+
+        $(document).on('change', '.AccountType', function () {
+
+            var MemberId = $('MemberId').val(); 
+            var AccountType = $('AccountType').val();          
+            
+            $.ajax({
+                type: 'get',
+                url: 'getAccountVerification',
+                data: {'MemberId': MemberId, 'AccountType': AccountType},
+                success: function (data) {
+                    
+                     $('#MemberId').empty();
+                        document.getElementById("MemberName").value = $member;
+                        // document.getElementById("MemberId").select();
                 },
                 error: function () {
                         

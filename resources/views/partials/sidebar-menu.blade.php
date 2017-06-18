@@ -89,24 +89,35 @@
 @else
     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
     
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
+         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
             <ul class="dropdown-menu">
-                <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
                 <li><a tabindex="-1" href="{{ url('/member') }}">Member</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
             <ul class="dropdown-menu">
-                <!-- <li><a tabindex="-1" href="{{ url('/product') }}">Product</a></li> -->
+                
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
-               <!--  <li><a tabindex="-1" href="{{ url('/share') }}">Shares</a></li>
-                <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
+               <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Share Exchange</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/share') }}">Shares</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Savings</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/accountopen') }}">Opening Account</a></li>
+                <li><a tabindex="-1" href="{{ url('/accountopen') }}">Posting</a></li>
+                <li><a tabindex="-1" href="{{ url('/accountopen') }}">Withdraw</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
+                <li><a tabindex="-1" href="{{ url('/mikrofdivision') }}">Divisional Office</a></li>
                 <li><a tabindex="-1" href="{{ url('/zone') }}">Zones</a></li>
                 <li><a tabindex="-1" href="{{ url('/area') }}">Areas</a></li>
                 <li><a tabindex="-1" href="{{ url('/brn') }}">Branches</a></li>
@@ -115,6 +126,16 @@
                 <li><a tabindex="-1" href="{{ url('/thana') }}">Pollice Stations</a></li>
                 <li><a tabindex="-1" href="{{ url('/union') }}">Unions</a></li>
                 <li><a tabindex="-1" href="{{ url('/ward') }}">Wards</a></li>
+                <li><a tabindex="-1" href="{{ url('/year') }}">Year</a></li>
+                <li><a tabindex="-1" href="{{ url('/month') }}">Month</a></li>
+                <li><a tabindex="-1" href="{{ url('/producttype') }}">Product Type</a></li>
+                <li><a tabindex="-1" href="{{ url('/product') }}">Products</a></li>
+                <li><a tabindex="-1" href="{{ url('/duration') }}">Duration</a></li>
+            </ul>
+        </li>
+         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/') }}">Reports</a></li>
             </ul>
         </li>
 
