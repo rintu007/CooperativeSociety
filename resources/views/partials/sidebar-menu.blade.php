@@ -25,7 +25,7 @@
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Savings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/accountopen') }}">Opening Account</a></li>
-                <li><a tabindex="-1" href="{{ url('/accountopen') }}">Posting</a></li>
+                <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>
                 <li><a tabindex="-1" href="{{ url('/accountopen') }}">Withdraw</a></li>
             </ul>
         </li>
@@ -110,7 +110,7 @@
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Savings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/accountopen') }}">Opening Account</a></li>
-                <li><a tabindex="-1" href="{{ url('/accountopen') }}">Posting</a></li>
+                <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>
                 <li><a tabindex="-1" href="{{ url('/accountopen') }}">Withdraw</a></li>
             </ul>
         </li>

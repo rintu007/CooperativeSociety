@@ -63,6 +63,7 @@ Route::controllers([
     'producttype'                    => 'ProducttypeController',
     'accountopen'                    => 'AccountopenController',
     'duration'                       => 'DurationController',
+    'posting'                        => 'PostingController',
 
 ]); 
 
@@ -85,6 +86,8 @@ Route::get('getThana','SelectBoxController@getThana');
 Route::get('getJustify','SelectBoxController@getJustify');
 
 Route::get('getAccountVerification','SelectBoxController@getAccountVerification');
+
+Route::get('getPostingInfo','SelectBoxController@getPostingInfo');
 
 
 

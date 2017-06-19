@@ -44,28 +44,42 @@ class SelectBoxController extends Controller
         //
     }
 
+     public function getPostingInfo(Request $request){
+        $DomainName = $reuest->DomainName;
+        $DivisionName = $request->DivisionName;
+        $ZoneId = $request->ZoneId;
+        $AreaId = $requst->AreaId;
+        $BranchId = $request->BranchId;
+
+        $data = DB::table('mikrofdivisions')
+            ->select('*')
+            ->where('DomainId', $request->id)
+            ->get();
+
+        return response()->json($data);
+    }
+
     public function getAccountVerification(Request $request)
     {
         $MemberId = $request->MemberId;
         $AccountType = $request->AccountType;
+        $AccountNo = '';
         $i = 1;
-        $data = DB::table('accountopens')
-            ->select('AccountNo')
-            ->where('MemberId', '!=', $MemberId)
-            ->get();
-
-        foreach ($data as $key => $value) {
-            $AccountNo = $MemberId + $AccountType + (string)$i;
-            $DbAccountNo = $value->AccountNo;
-            if($DbAccountNo != $AccountNo){
-                break;
-            }
-            else{
-                $i++;
-            }
-        }
         
-                 return response()->json($AccountNo);             
+        while ($i <= 3) {
+                $AccountNo = $MemberId . $AccountType . $i;
+                $data = DB::table('accountopens')
+                        ->select('AccountNo')
+                        ->where('AccountNo', $AccountNo)
+                        ->first();
+                    if($data == null){
+                            return response()->json($AccountNo); 
+                    } 
+                    else{
+                        $i++;
+                    }   
+        }
+                        
     }
 
     public function getDivisionOffice(Request $request){

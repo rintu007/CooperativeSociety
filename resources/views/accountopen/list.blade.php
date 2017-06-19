@@ -49,38 +49,7 @@
                class="glyphicon  {{ Session::get('accountopen_field')=='AccountNo'?(Session::get('accountopen_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-        <th>
-            <a href="javascript:ajaxLoad('accountopen/list?field=app_form&sort={{Session::get("accountopen_sort")=="asc"?"desc":"asc"}}')">
-                General Saving
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('accountopen_field')=='app_form'?(Session::get('accountopen_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-        <th>
-            <a href="javascript:ajaxLoad('accountopen/list?field=passbook&sort={{Session::get("accountopen_sort")=="asc"?"desc":"asc"}}')">
-                DPS 
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('accountopen_field')=='passbook'?(Session::get('accountopen_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-         <th>
-            <a href="javascript:ajaxLoad('accountopen/list?field=share_amount&sort={{Session::get("accountopen_sort")=="asc"?"desc":"asc"}}')">
-                FDR
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('accountopen_field')=='share_amount'?(Session::get('accountopen_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-       <!--  <th>
-            <a href="javascript:ajaxLoad('accountopen/list?field=saving_amount&sort={{Session::get("accountopen_sort")=="asc"?"desc":"asc"}}')">
-                Entry Saving Amount
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('accountopen_field')=='saving_amount'?(Session::get('accountopen_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th> -->
+       
         <th width="140px">Actions</th>
     </tr>
     </thead>

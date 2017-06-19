@@ -44,31 +44,32 @@ class AccountopenController extends Controller
     public function getUpdate($id)
     {
         $DomainInfo     = ['' => '--select--'] + Domain::lists('DomainName', 'id')->all();
+        $DivisionInfo     = ['' => '--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
         $ZoneInfo       = ['' => '--select--'] + Zone::lists('ZoneName', 'id')->all();
         $AreaInfo       = ['' => '--select--'] + Area::lists('AreaName', 'id')->all();
         $BranchInfo     = ['' => '--select--'] + Brn::lists('BranchName', 'id')->all();
         $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
         $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.create', ['accountopen' => Accountopen::find($id)])->with('DomainInfo', $DomainInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('accountopen.create', ['accountopen' => Accountopen::find($id)])->with('DomainInfo', $DomainInfo)->with('DivisionInfo', $DivisionInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
     }
 
     public function postUpdate($id)
     {
         $user_id = Auth::user()->id;
         $accountopen = Accountopen::find($id);
-        $accountopen->serial_no = Input::get('serial_no');
-        $accountopen->MemberId = Input::get('MemberId');       
-        $accountopen->member_id = Input::get('member_id');
-        $accountopen->mobile_no = Input::get('mobile_no');
-        $accountopen->date       = Input::get('date');
-        $accountopen->app_form = Input::get('app_form');
-        $accountopen->passbook = Input::get('passbook');
-        $accountopen->saving_amount = Input::get('saving_amount'); 
-        $accountopen->share_number = Input::get('share_number');
-        $accountopen->share_amount = Input::get('share_amount');          
-        $accountopen->name = Input::get('name');       
-        $accountopen->unitprice = Input::get('unitprice');
-        $accountopen->created_by = $user_id;
+        $accountopen->MemberId     = Input::get('MemberId');
+        $accountopen->MemberName      = Input::get('MemberName');       
+        $accountopen->DomainName     = Input::get('DomainName');
+        $accountopen->DivisionName     = Input::get('DivisionName');
+        $accountopen->ZoneId          = Input::get('ZoneId');
+        $accountopen->AreaId      = Input::get('AreaId');
+        $accountopen->BranchId      = Input::get('BranchId');
+        $accountopen->AccountType = Input::get('AccountType'); 
+        $accountopen->AccountNo  = Input::get('AccountNo');
+        $accountopen->Duration  = Input::get('Duration');          
+        $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
+        $accountopen->Date     = Input::get('Date');
+        $accountopen->created_by    = $user_id;
         $accountopen->save();
 
         
@@ -90,7 +91,7 @@ class AccountopenController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "member_id" => "required|unique:accountopens"
+            "AccountNo" => "required|unique:accountopens"
             // "CompanyrajCode" => "required|unique:accountopens",
             // "unitprice" => "required|numeric"
         ]);
@@ -102,18 +103,18 @@ class AccountopenController extends Controller
         }
         $user_id = Auth::user()->id;
         $accountopen = new Accountopen();
-        $accountopen->serial_no     = Input::get('serial_no');
-        $accountopen->MemberId      = Input::get('MemberId');       
-        $accountopen->member_id     = Input::get('member_id');
-        $accountopen->mobile_no     = Input::get('mobile_no');
-        $accountopen->date          = Input::get('date');
-        $accountopen->app_form      = Input::get('app_form');
-        $accountopen->passbook      = Input::get('passbook');
-        $accountopen->saving_amount = Input::get('saving_amount'); 
-        $accountopen->share_number  = Input::get('share_number');
-        $accountopen->share_amount  = Input::get('share_amount');          
-        $accountopen->name          = Input::get('name');       
-        $accountopen->unitprice     = Input::get('unitprice');
+        $accountopen->MemberId     = Input::get('MemberId');
+        $accountopen->MemberName      = Input::get('MemberName');       
+        $accountopen->DomainName     = Input::get('DomainName');
+        $accountopen->DivisionName     = Input::get('DivisionName');
+        $accountopen->ZoneId          = Input::get('ZoneId');
+        $accountopen->AreaId      = Input::get('AreaId');
+        $accountopen->BranchId      = Input::get('BranchId');
+        $accountopen->AccountType = Input::get('AccountType'); 
+        $accountopen->AccountNo  = Input::get('AccountNo');
+        $accountopen->Duration  = Input::get('Duration');          
+        $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
+        $accountopen->Date     = Input::get('Date');
         $accountopen->created_by    = $user_id;
         $accountopen->save();
 
@@ -123,28 +124,8 @@ class AccountopenController extends Controller
 
     public function getDelete($id)
     {
-        $deletingId = $id;
-        $member_id = Accountopen::select('member_id')
-                    ->where('id', $id)->get();
-        foreach ($member_id as $key => $value) {
-            $MemId = $value->member_id;
-        }
-
-         $AddshareId = Addshare::select('id')
-                    ->where('member_id', $MemId)->get();
-                foreach ($AddshareId as $key => $value) {
-                    $id = $value->id;
-                    Addshare::destroy($id);
-                }        
-                
-
-                $ShareId = Share::select('id')
-                            ->where('member_id', $MemId)->get();
-                foreach ($ShareId as $key => $value) {
-                    $id = $value->id;
-                    Share::destroy($id);
-                }        
-        Accountopen::destroy($deletingId);
+       
+        Accountopen::destroy($id);
         return Redirect('accountopen/list');
     }
 
