@@ -12,6 +12,8 @@ use App\Area;
 use App\Brn;
 use App\Product;
 use App\Duration;
+use App\Month;
+use App\Year;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -40,9 +42,11 @@ class PostingController extends Controller
         $ZoneInfo       = ['' => '--select--'] + Zone::lists('ZoneName', 'id')->all();
         $AreaInfo       = ['' => '--select--'] + Area::lists('AreaName', 'id')->all();
         $BranchInfo     = ['' => '--select--'] + Brn::lists('BranchName', 'id')->all();
+        $MonthInfo     = ['' => '--select--'] + Month::lists('MonthName', 'id')->all();
+        $YearInfo     = ['' => '--select--'] + Year::lists('YearName', 'id')->all();
         $postings = Posting::where('MemberId', 'like', '%' . Session::get('posting_search') . '%') ->paginate(25);
             // ->orderBy(Session::get('posting_field'), Session::get('posting_sort'))
-        return view('posting.list', ['postings' => $postings])->with('DomainInfo', $DomainInfo)->with('DivisionInfo', $DivisionInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo);
+        return view('posting.list', ['postings' => $postings])->with('DomainInfo', $DomainInfo)->with('DivisionInfo', $DivisionInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('MonthInfo',$MonthInfo)->with('YearInfo',$YearInfo);
 
     }
 

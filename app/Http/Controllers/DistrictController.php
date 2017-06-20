@@ -22,7 +22,7 @@ class DistrictController extends Controller
         Session::put('district_field', Input::has('field') ? Input::get('field') : (Session::has('district_field') ? Session::get('district_field') : 'DistrictName'));
         Session::put('district_sort', Input::has('sort') ? Input::get('sort') : (Session::has('district_sort') ? Session::get('district_sort') : 'asc'));
         $districts = District::where('DistrictName', 'like', '%' . Session::get('district_search') . '%')
-            ->orderBy(Session::get('district_field'), Session::get('district_sort'))->paginate(8);
+            ->orderBy(Session::get('district_field'), Session::get('district_sort'))->paginate(25);
 
         /*$zone_data=DB::table('areas')
             ->join('zones', 'areas.ZoneId', '=', 'zones.id')

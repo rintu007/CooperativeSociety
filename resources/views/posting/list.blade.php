@@ -43,8 +43,22 @@
             <span id="BranchId-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-4" id="form-MonthId-error">
+        {!! Form::label("MonthId","Month",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::select("MonthId",$MonthInfo,null,["class"=>"form-control MonthId required","id"=>"MonthId"]) !!}
+            <span id="MonthId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-4" id="form-YearId-error">
+        {!! Form::label("YearId","Branch",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::select("YearId",$YearInfo,null,["class"=>"form-control YearId required","id"=>"YearId"]) !!}
+            <span id="YearId-error" class="help-block"></span>
+        </div>
+    </div>
      <div class="form-group required col-md-4" id="form-BranchId-error">
-       <button id="postingInfo" onclick="postingInfo();">search</button>
+       <button id="postingInfo">search</button>
     </div>
     
 </div>
@@ -122,16 +136,18 @@
                 var ZoneId = document.getElementById('ZoneId').value;
                 var AreaId = document.getElementById('AreaId').value;
                 var BranchId = document.getElementById('BranchId').value;
+                var MonthId = document.getElementById('MonthId').value;
+                var YearId = document.getElementById('YearId').value;
                 var i = 1;
                 $('#postingPlace').empty();
                 $.ajax({
                     type: 'get',
                     url: 'getPostingInfo',
-                    data: {'departure_place': departure_place, 'arrival_place': arrival_place, 'departure_date': departure_date},
+                    data: {'DomainName': DomainName, 'DivisionName': DivisionName, 'ZoneId': ZoneId, 'AreaId': AreaId, 'BranchId': BranchId, 'MonthId': MonthId, 'YearId': YearId},
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
-                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center">' + subcatObj3p.bus_id + '</td><td style="text-align: center">' + subcatObj3p.company_id + '</td><td style="text-align: center">' + subcatObj3p.departure_time + '</td><td style="text-align: center">' + subcatObj3p.arrival_time + '</td><td style="text-align: center">' + subcatObj3p.departure_place + '</td><td style="text-align: center">' + subcatObj3p.arrival_place + '</td><td style="text-align: center">' + subcatObj3p.bus_type + '</td><td style="text-align: center">' + subcatObj3p.total_seat + '</td><td style="text-align: center">' + subcatObj3p.seat_fare + '</td><td style="text-align: center">' + subcatObj3p.facility + '</td><td><a class="btn btn-primary btn-xs" title="Edit" href="javascript:ajaxLoad(\'busraj/viewseats/' + subcatObj3p.bus_id + '\')">View Seats</a></td></tr>');
+                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><input' + subcatObj3p.MemberId + '></td><td style="text-align: center"><input' + subcatObj3p.MemberName + '></td><td style="text-align: center"><input' + subcatObj3p.AccountNo + '></td><td style="text-align: center"><input' + subcatObj3p.GeneralSaving + '></td><td style="text-align: center"><input' + subcatObj3p.Dps + '></td><td><button type="submit" onclick="">submit</td></tr>');
                             i++;
                         });
                         document.getElementById('hidden').value = i - 1;

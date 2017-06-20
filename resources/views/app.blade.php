@@ -148,7 +148,7 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+<!-- <script src="{{ asset('js/jquery.min.js') }}"></script> -->
 <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>

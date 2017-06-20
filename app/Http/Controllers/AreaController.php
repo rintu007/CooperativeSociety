@@ -68,19 +68,21 @@ class AreaController extends Controller
             );
         }
         $area->DomainName = Input::get('DomainName');
+        $area->AreaDivisionOfficeId = Input::get('AreaDivisionOfficeId');
         $area->ZoneId = Input::get('ZoneId');
         $area->AreaName = Input::get('AreaName');
-        $area->AreaCode = Input::get('AreaCode');
-        $area->AreaAddress = Input::get('AreaAddress');
+        $area->AreaCode = Input::get('AreaCode');        
         $area->AreaMobileNo = Input::get('AreaMobileNo');
-        $area->AreaDivisionOfficeId = Input::get('AreaDivisionOfficeId');
-        $area->AreaDistrictId = Input::get('AreaDistrictId');
-        $area->AreaThanaId = Input::get('AreaThanaId');
-        $area->AreaDivisionId = Input::get('AreaDivisionId');
-        $area->AreaUnionId = Input::get('AreaUnionId');
-        $area->AreaWardId = Input::get('AreaWardId');
-        $area->AreaPostOfficeId = Input::get('AreaPostOfficeId');
         $area->AreaEmail = Input::get('AreaEmail');
+        $area->AreaAddress = Input::get('AreaAddress');
+        $area->AreaDivisionId = Input::get('AreaDivisionId');
+        $area->AreaDistrictId = Input::get('AreaDistrictId');
+        $area->AreaThanaId = Input::get('AreaThanaId');        
+        $area->AreaUnionId = Input::get('AreaUnionId');
+        $area->AreaPostOfficeId = Input::get('AreaPostOfficeId');
+        $area->AreaWardId = Input::get('AreaWardId');
+        
+        
         $area->save();
         return ['url' => 'area/list'];
     }
@@ -124,19 +126,20 @@ class AreaController extends Controller
 //        }
         $area = new Area();
         $area->DomainName = Input::get('DomainName');
+        $area->AreaDivisionOfficeId = Input::get('AreaDivisionOfficeId');
         $area->ZoneId = Input::get('ZoneId');
         $area->AreaName = Input::get('AreaName');
-        $area->AreaCode = Input::get('AreaCode');
-        $area->AreaAddress = Input::get('AreaAddress');
+        $area->AreaCode = Input::get('AreaCode');        
         $area->AreaMobileNo = Input::get('AreaMobileNo');
-        $area->AreaDivisionOfficeId = Input::get('AreaDivisionOfficeId');
-        $area->AreaDistrictId = Input::get('AreaDistrictId');
-        $area->AreaThanaId = Input::get('AreaThanaId');
-        $area->AreaDivisionId = Input::get('AreaDivisionId');
-        $area->AreaUnionId = Input::get('AreaUnionId');
-        $area->AreaWardId = Input::get('AreaWardId');
-        $area->AreaPostOfficeId = Input::get('AreaPostOfficeId');
         $area->AreaEmail = Input::get('AreaEmail');
+        $area->AreaAddress = Input::get('AreaAddress');
+        $area->AreaDivisionId = Input::get('AreaDivisionId');
+        $area->AreaDistrictId = Input::get('AreaDistrictId');
+        $area->AreaThanaId = Input::get('AreaThanaId');        
+        $area->AreaUnionId = Input::get('AreaUnionId');
+        $area->AreaPostOfficeId = Input::get('AreaPostOfficeId');
+        $area->AreaWardId = Input::get('AreaWardId');
+        
         $area->save();
         return ['url' => 'area/list'];
     }

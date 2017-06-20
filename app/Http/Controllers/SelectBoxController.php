@@ -50,8 +50,10 @@ class SelectBoxController extends Controller
         $ZoneId = $request->ZoneId;
         $AreaId = $requst->AreaId;
         $BranchId = $request->BranchId;
+        $MonthId = $request->MonthId;
+        $YearId = $request->YearId;
 
-        $data = DB::table('mikrofdivisions')
+        $data = DB::table('members')
             ->select('*')
             ->where('DomainId', $request->id)
             ->get();

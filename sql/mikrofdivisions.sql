@@ -42,6 +42,8 @@ CREATE TABLE `mikrofdivisions` (
   `DivisionOfficePostOfficeId` varchar(500) DEFAULT NULL,
   `DivisionOfficeWardId` varchar(500) DEFAULT NULL,
   `DivisionOfficeRoadNo` varchar(500) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   
   PRIMARY KEY (`id`),
   FOREIGN KEY (`DomainId`) REFERENCES `domains` (`id`)

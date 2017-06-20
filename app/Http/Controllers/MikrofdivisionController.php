@@ -43,7 +43,7 @@ class MikrofdivisionController extends Controller
         // $WardInfo = [''=>'--select--'] + Ward::lists('WardName', 'id')->all();
         
         
-        return view('mikrofdivision.create')->with('ThanaInfo', $ThanaInfo)->with('district_info', $district_info)->with('DivisionInfo', $DivisionInfo)->with('DomainInfo', $DomainInfo);
+        return view('mikrofdivision.update', ['mikrofdivision' => Mikrofdivision::find($id)])->with('ThanaInfo', $ThanaInfo)->with('district_info', $district_info)->with('DivisionInfo', $DivisionInfo)->with('DomainInfo', $DomainInfo);
     }
 
     public function postUpdate($id)

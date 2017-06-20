@@ -200,7 +200,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
           $(document).on('change', '.DivisionOfficeId', function () {
@@ -224,7 +224,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
            $(document).on('change', '.ZoneId', function () {
@@ -248,7 +248,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
         $(document).on('change', '.DivisionId', function () {
@@ -272,7 +272,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
         $(document).on('change', '.DistrictId', function () {
             //console.log("yes it is change");
@@ -295,7 +295,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
         $(document).on('change', '.ThanaId', function () {
@@ -319,32 +319,32 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
-        $(document).on('change', '.UnionId', function () {
-            //console.log("yes it is change");
+        // $(document).on('change', '.UnionId', function () {
+        //     //console.log("yes it is change");
 
-            var op = " ";
-            var UnionId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
-            $('#WordId').empty();
-            $.ajax({
-                type: 'get',
-                url: 'getWord',
-                data: {'id': UnionId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj2) {
-                        $('#WordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
-                    });
-                },
-                error: function () {
+        //     var op = " ";
+        //     var UnionId = $(this).val();
+        //     //var div = $(this).parent();
+        //     //console.log(DivisionId);
+        //     $('#WordId').empty();
+        //     $.ajax({
+        //         type: 'get',
+        //         url: 'getWord',
+        //         data: {'id': UnionId},
+        //         success: function (data) {
+        //             $.each(data, function (index, subcatObj2) {
+        //                 $('#WordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
+        //             });
+        //         },
+        //         error: function () {
 
-                }
-            });
-            $.ajax(clear);
-        });
+        //         }
+        //     });
+        //     //$.ajax(clear);
+        // });
 
         $(document).on('change', '.DistrictId', function () {
             //console.log("yes it is change");
@@ -367,7 +367,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
         $(document).on('change', '.ZoneId', function () {
@@ -391,7 +391,7 @@
 
                 }
             });
-            $.ajax(clear);
+            //$.ajax(clear);
         });
 
     });

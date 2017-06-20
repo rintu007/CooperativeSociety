@@ -75,15 +75,15 @@ class BrnController extends Controller
         $brn->BranchName = Input::get('BranchName');
         $brn->BranchCode = Input::get('BranchCode');
         $brn->OpeningDate = Input::get('OpeningDate');
-        $brn->BranchAddress = Input::get('BranchAddress');
         $brn->BranchMobileNo = Input::get('BranchMobileNo');
         $brn->BranchEmail = Input::get('BranchEmail');
+        $brn->BranchAddress = Input::get('BranchAddress');
+        $brn->BranchDivisionId = Input::get('BranchDivisionId');
         $brn->BranchDistrictId = Input::get('BranchDistrictId');
         $brn->BranchThanaId = Input::get('BranchThanaId');
-        $brn->BranchDivisionId = Input::get('BranchDivisionId');
         $brn->BranchUnionId = Input::get('BranchUnionId');
-        $brn->BranchWardId = Input::get('BranchWardId');
         $brn->BranchPostOfficeId = Input::get('BranchPostOfficeId');
+        $brn->BranchWardId = Input::get('BranchWardId');$brn->BranchPostOfficeId = Input::get('BranchPostOfficeId');
         $brn->save();
         return ['url' => 'brn/list'];
     }
@@ -124,15 +124,16 @@ class BrnController extends Controller
         $brn->BranchName = Input::get('BranchName');
         $brn->BranchCode = Input::get('BranchCode');
         $brn->OpeningDate = Input::get('OpeningDate');
-        $brn->BranchAddress = Input::get('BranchAddress');
         $brn->BranchMobileNo = Input::get('BranchMobileNo');
         $brn->BranchEmail = Input::get('BranchEmail');
+        $brn->BranchAddress = Input::get('BranchAddress');
+        $brn->BranchDivisionId = Input::get('BranchDivisionId');
         $brn->BranchDistrictId = Input::get('BranchDistrictId');
         $brn->BranchThanaId = Input::get('BranchThanaId');
-        $brn->BranchDivisionId = Input::get('BranchDivisionId');
         $brn->BranchUnionId = Input::get('BranchUnionId');
-        $brn->BranchWardId = Input::get('BranchWardId');
         $brn->BranchPostOfficeId = Input::get('BranchPostOfficeId');
+        $brn->BranchWardId = Input::get('BranchWardId');
+        
         $brn->save();
         return ['url' => 'brn/list'];
     }
