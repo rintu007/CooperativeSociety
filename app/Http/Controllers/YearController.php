@@ -54,16 +54,16 @@ class YearController extends Controller
 
     public function postCreate()
     {
-        // $validator = Validator::make(Input::all(), [
-        //     "YearName" => "required|unique:years",
+        $validator = Validator::make(Input::all(), [
+            "YearName" => "required|unique:years",
             
-        // ]);
-        // if ($validator->fails()) {
-        //     return array(
-        //         'fail' => true,
-        //         'errors' => $validator->getMessageBag()->toArray()
-        //     );
-        // }
+        ]);
+        if ($validator->fails()) {
+            return array(
+                'fail' => true,
+                'errors' => $validator->getMessageBag()->toArray()
+            );
+        }
 
         $year = new Year();
         $year->YearName = Input::get('YearName');

@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="form-group required col-md-4" id="form-YearId-error">
-        {!! Form::label("YearId","Branch",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("YearId","Year",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("YearId",$YearInfo,null,["class"=>"form-control YearId required","id"=>"YearId"]) !!}
             <span id="YearId-error" class="help-block"></span>
@@ -131,14 +131,16 @@
      $(document).ready(function () {
 
         $(document).on('click', '#postingInfo', function () {
+               
                 var DomainName = document.getElementById('DomainName').value;
-                var DivisionName = document.getElementById('DivisionName').value;
+                var DivisionName = document.getElementById('DivisionOfficeId').value;
                 var ZoneId = document.getElementById('ZoneId').value;
                 var AreaId = document.getElementById('AreaId').value;
                 var BranchId = document.getElementById('BranchId').value;
                 var MonthId = document.getElementById('MonthId').value;
                 var YearId = document.getElementById('YearId').value;
                 var i = 1;
+
                 $('#postingPlace').empty();
                 $.ajax({
                     type: 'get',
@@ -147,7 +149,7 @@
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
-                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><input' + subcatObj3p.MemberId + '></td><td style="text-align: center"><input' + subcatObj3p.MemberName + '></td><td style="text-align: center"><input' + subcatObj3p.AccountNo + '></td><td style="text-align: center"><input' + subcatObj3p.GeneralSaving + '></td><td style="text-align: center"><input' + subcatObj3p.Dps + '></td><td><button type="submit" onclick="">submit</td></tr>');
+                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><input' + subcatObj3p.MemberId.i + '></td><td style="text-align: center"><input' + subcatObj3p.MemberName.i + '></td><td style="text-align: center"><input' + subcatObj3p.AccountNo.i + '></td><td style="text-align: center"><input' + subcatObj3p.GeneralSaving.i + '></td><td style="text-align: center"><input' + subcatObj3p.Dps.i + '></td><td><button type="submit" onclick="">submit</td></tr>');
                             i++;
                         });
                         document.getElementById('hidden').value = i - 1;
@@ -164,7 +166,7 @@
 
             var op = " ";
             var DomainName = $(this).val();
-        
+            
             $('#DivisionOfficeId').empty();
             $.ajax({
                 type: 'get',
@@ -172,7 +174,7 @@
                 data: {'id': DomainName},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
-                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
                     });
                 },
                 error: function () {
@@ -186,8 +188,7 @@
 
             var op = " ";
             var DivisionOfficeId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
+
             $('#ZoneId').empty();
             $.ajax({
                 type: 'get',

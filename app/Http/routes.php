@@ -89,6 +89,8 @@ Route::get('getAccountVerification','SelectBoxController@getAccountVerification'
 
 Route::get('getPostingInfo','SelectBoxController@getPostingInfo');
 
+Route::get('getMemberInfo','SelectBoxController@getMemberInfo');
+
 
 
 Route::get('{view}', function ($view) {

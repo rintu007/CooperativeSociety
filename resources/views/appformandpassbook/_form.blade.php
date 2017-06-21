@@ -110,27 +110,27 @@
             $(document).on("change, keyup", "#share_number", updatePrice);
     });
 
-    // $(document).on('change', '.member_id', function () {
+    $(document).on('change', '.member_id', function () {
 
-    //         var op = " ";
-    //         var member_id = $(this).val();           
+            var op = " ";
+            var member_id = $(this).val();           
             
-    //         $.ajax({
-    //             type: 'get',
-    //             url: 'getJustify',
-    //             data: {'id': member_id},
-    //             success: function (data) {
-    //                 alert("He has already payed, Give a new member.");
-    //                  $('#member_id').empty();
-    //                     document.getElementById("member_id").focus();
-    //                     document.getElementById("member_id").select();
-    //             },
-    //             error: function () {
+            $.ajax({
+                type: 'get',
+                url: 'getJustify',
+                data: {'id': member_id},
+                success: function (data) {
+                    alert("He has already payed, Give a new member.");
+                     $('#member_id').empty();
+                        document.getElementById("member_id").focus();
+                        document.getElementById("member_id").select();
+                },
+                error: function () {
                         
-    //             }
-    //         });
-    //         // $.ajax(clear);
-    //     });
+                }
+            });
+            // $.ajax(clear);
+        });
 
     $("#frm").submit(function (event) {
         event.preventDefault();

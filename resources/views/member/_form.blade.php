@@ -403,7 +403,7 @@
                 data: {'id': DomainName},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
-                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
                     });
                 },
                 error: function () {

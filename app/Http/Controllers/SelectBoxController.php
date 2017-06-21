@@ -44,6 +44,15 @@ class SelectBoxController extends Controller
         //
     }
 
+     public function getMemberInfo(Request $request){
+         $data = DB::table('members')
+            ->select('*')
+            ->where('MemberId', $request->id)
+            ->get();
+
+        return response()->json($data);
+    }
+
      public function getPostingInfo(Request $request){
         $DomainName = $reuest->DomainName;
         $DivisionName = $request->DivisionName;

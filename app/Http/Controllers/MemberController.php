@@ -100,7 +100,7 @@ class MemberController extends Controller
         $member->SPName2            = Input::get('SPName2');
         $member->SPMotherName       = Input::get('SPFatherName');
         $member->SPMotherName2      = Input::get('SPFatherName2');
-        $member->SPHusbandWifeName  = Input::get('SPHusbanWifeName');
+        $member->SPHusbandWifeName  = Input::get('SPHusbandWifeName');
         $member->SPHusbandWifeName2 = Input::get('SPHusbanWifeName2');
         $member->Relation           = Input::get('Relation');
         $member->Relation2          = Input::get('Relation2');

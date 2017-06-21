@@ -45,7 +45,7 @@ class PostingController extends Controller
         $MonthInfo     = ['' => '--select--'] + Month::lists('MonthName', 'id')->all();
         $YearInfo     = ['' => '--select--'] + Year::lists('YearName', 'id')->all();
         $postings = Posting::where('MemberId', 'like', '%' . Session::get('posting_search') . '%') ->paginate(25);
-            // ->orderBy(Session::get('posting_field'), Session::get('posting_sort'))
+            
         return view('posting.list', ['postings' => $postings])->with('DomainInfo', $DomainInfo)->with('DivisionInfo', $DivisionInfo)->with('ZoneInfo',$ZoneInfo)->with('AreaInfo',$AreaInfo)->with('BranchInfo',$BranchInfo)->with('MonthInfo',$MonthInfo)->with('YearInfo',$YearInfo);
 
     }

@@ -1,9 +1,15 @@
 DROP TABLE IF EXISTS `members`;
 CREATE TABLE IF NOT EXISTS `members` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CSMId` varchar(500) DEFAULT NULL,
+  `DomainName` varchar(500) DEFAULT NULL,
+  `DivisionOfficeId` varchar(500) DEFAULT NULL,
+  `ZoneId` varchar(500) DEFAULT NULL,
+  `AreaId` varchar(500) DEFAULT NULL,
+  `BranchId` varchar(500) DEFAULT NULL,
+  `TMSSId` varchar(500) DEFAULT NULL,
+  `MemberId` varchar(500) DEFAULT NULL,
   `BanglaName` varchar(500) DEFAULT NULL,
-  `name` varchar(500) DEFAULT NULL,
+  `EnglishName` varchar(500) DEFAULT NULL,
   `FatherName` varchar(500) DEFAULT NULL,
   `MotherName` varchar(500) DEFAULT NULL,
   `HusbandWifeName` varchar(500) DEFAULT NULL,
@@ -39,5 +45,5 @@ CREATE TABLE IF NOT EXISTS `members` (
   `NomineeImage2` varchar(500) DEFAULT NULL,
   `BirthCertificate2` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  FULLTEXT KEY `idx_name` (`name`)
+  FULLTEXT KEY `idx_name` (`MemberId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

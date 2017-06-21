@@ -20,35 +20,35 @@
      <div class="form-group required col-md-6" id="form-DomainName-error">
         {!! Form::label("DomainName","Domain",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("DomainName",$DomainInfo,null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+            {!! Form::text("DomainName",null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
             <span id="DomainName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-DivisionName-error">
         {!! Form::label("DivisionName","Division Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("DivisionName",$DivisionInfo,null,["class"=>"form-control DivisionName required","id"=>"DivisionName"]) !!}
+            {!! Form::text("DivisionName", null,["class"=>"form-control DivisionName required","id"=>"DivisionName"]) !!}
             <span id="DivisionName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-ZoneId-error">
         {!! Form::label("ZoneId","Zone/Department",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("ZoneId",$ZoneInfo,null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
+            {!! Form::text("ZoneId", null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
             <span id="ZoneId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-AreaId-error">
         {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("AreaId",$AreaInfo,null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
+            {!! Form::text("AreaId", null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
             <span id="AreaId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BranchId-error">
         {!! Form::label("BranchId","Branch",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("BranchId",$BranchInfo,null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
+            {!! Form::text("BranchId", null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
     </div>
@@ -106,20 +106,27 @@
 </div>
 <script>
 
-     $(document).on('change', '.DomainName', function () {
+     $(document).on('change', '.MemberId', function () {
             //console.log("yes it is change");
 
             var op = " ";
-            var DomainName = $(this).val();
+            var MemberId = $(this).val();
         
             $('#DivisionOfficeId').empty();
             $.ajax({
                 type: 'get',
-                url: 'getDivisionOffice',
-                data: {'id': DomainName},
+                url: 'getMemberInfo',
+                data: {'id': MemberId},
                 success: function (data) {
-                    $.each(data, function (index, subcatObj) {
-                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionName +'</option>')
+                    $.each(data, function (subcatObj) {
+                        $('#MemberName').val(subcatObj.MemberName);
+                        // document.getElementById("MemberName").value = subcatObj.MemberName;
+                        // $('#MemberName').append(subcatObj.MemberName)
+                        // $('#DomainName').append('<option value="'+subcatObj.id+'">'+subcatObj.DomainName +'</option>');
+                        // $('#DivisionName').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>');
+                        // $('#ZoneId').append('<option value="'+subcatObj.id+'">'+subcatObj.ZoneId +'</option>');
+                        // $('#AreaId').append('<option value="'+subcatObj.id+'">'+subcatObj.AreaId +'</option>');
+                        // $('#BranchId').append('<option value="'+subcatObj.id+'">'+subcatObj.BranchId +'</option>');
                     });
                 },
                 error: function () {
@@ -176,27 +183,27 @@
             // $.ajax(clear);
         });
 
-    $(document).on('change', '.MemberId', function () {
+    // $(document).on('change', '.MemberId', function () {
 
-            var op = " ";
-            var MemberId = $(this).val();           
+    //         var op = " ";
+    //         var MemberId = $(this).val();           
             
-            $.ajax({
-                type: 'get',
-                url: 'getJustify',
-                data: {'id': MemberId},
-                success: function (data) {
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getJustify',
+    //             data: {'id': MemberId},
+    //             success: function (data) {
                     
-                     $('#MemberId').empty();
-                        document.getElementById("MemberName").value = $member;
-                        // document.getElementById("MemberId").select();
-                },
-                error: function () {
-                        alert("Please be a member first.");
-                }
-            });
-            // $.ajax(clear);
-        });
+    //                  $('#MemberId').empty();
+    //                     document.getElementById("MemberName").value = $member;
+    //                     // document.getElementById("MemberId").select();
+    //             },
+    //             error: function () {
+    //                     alert("Please be a member first.");
+    //             }
+    //         });
+    //         // $.ajax(clear);
+    //     });
 
         $(document).on('change', '.AccountType', function () {
 
