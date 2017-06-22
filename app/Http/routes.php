@@ -64,6 +64,7 @@ Route::controllers([
     'accountopen'                    => 'AccountopenController',
     'duration'                       => 'DurationController',
     'posting'                        => 'PostingController',
+    'withdraw'                       => 'WithdrawController',
 
 ]); 
 

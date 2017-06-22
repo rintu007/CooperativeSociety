@@ -44,7 +44,7 @@ CREATE TABLE `shares` (
   `created_at` varchar(500) DEFAULT NULL,
   `updated_at` varchar(100) DEFAULT NULL,
   `name` varchar(100) DEFAULT NULL,
-  primary key (member_id`) 
+  primary key (`id`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
