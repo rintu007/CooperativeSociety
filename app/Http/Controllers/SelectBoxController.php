@@ -16,7 +16,7 @@ use App\Appformandpassbook;
 use App\Posting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
@@ -45,7 +45,31 @@ class SelectBoxController extends Controller
         //
     }
 
-     public function getMemberInfo(Request $request){
+    public function getShishirSubmit(Request $request){
+
+        $user_id = Auth::user()->id;
+        $posting = new Posting();        
+         $posting->DomainName = $request->DomainName;
+         $posting->DivisionName = $request->DivisionName;
+         $posting->ZoneId = $request->ZoneId;               
+         $posting->AreaId = $request->AreaId;                
+         $posting->BranchId = $request->BranchId;
+         $posting->MonthId = $request->MonthId;
+         $posting->YearId = $request->YearId;                
+         $posting->MemberId = $request->MemberId;
+         $posting->MemberName = $request->MemberName;
+         $posting->AccountNo = $request->AccountNo;
+         $posting->GSaving = $request->GSaving;
+         $posting->Dps = $request->Dps;
+         $posting->Loan = $request->Loan;
+         $posting->posted_by    = $user_id;
+         $posting->save();
+
+
+        return response()->json(true);
+    }
+
+    public function getMemberInfo(Request $request){
          $data = DB::table('members')
             ->select('*')
             ->where('MemberId', $request->id)

@@ -106,6 +106,14 @@
                class="glyphicon  {{ Session::get('posting_field')=='passbook'?(Session::get('posting_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
+        <th>
+            <a href="javascript:ajaxLoad('posting/list?field=passbook&sort={{Session::get("posting_sort")=="asc"?"desc":"asc"}}')">
+                Loan
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('posting_field')=='passbook'?(Session::get('posting_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
        
 
         <th width="140px">Actions</th>
@@ -149,7 +157,7 @@
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
-                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td id="MemberId'+i+'" style="text-align: center">' + subcatObj3p.MemberId + '</td><td id="MemberName'+i+'" style="text-align: center">' + subcatObj3p.EnglishName  + '</td><td id="AccountNo'+i+'" style="text-align: center">' + subcatObj3p.BanglaName + '</td><td style="text-align: center">' +100+ '</td><td id="Dps'+i+'" style="text-align: center">' + subcatObj3p.Age + '</td><td><button onClick="shishirSubmit('+i+')" type="submit" >submit</td></tr>');
+                            $('#postingPlace').append('<tr id="row'+i+'"><td style="text-align: center">' + i + '</td><td style="text-align: center"><input type="text" id="MemberId'+i+'" value="' + subcatObj3p.MemberId + '" readonly></td><td style="text-align: center"><input type="text" id="MemberName'+i+'" value="' + subcatObj3p.EnglishName + '" readonly></td><td style="text-align: center"><input type="text" id="AccountNo'+i+'" value="' + subcatObj3p.Age + '" readonly></td><td style="text-align: center">' +100+ '</td><td style="text-align: center"><input type="text" id="Dps'+i+'" value="' + subcatObj3p.Age + '"></td><td style="text-align: center"><input type="text" id="Loan'+i+'" value="' + subcatObj3p.Age + '"></td><td><button onClick="shishirSubmit('+i+')" type="submit" >submit</td></tr>');
                             i++;
                         });
                         // document.getElementById('hidden').value = i - 1;
@@ -242,10 +250,27 @@
                 var DivisionName = document.getElementById("DivisionOfficeId").value;                
                 var ZoneId = document.getElementById("ZoneId").value;                
                 var AreaId = document.getElementById("AreaId").value;                
-                var BranchId = document.getElementById("BranchId").value;                
-                var MemberId = "MemberId" . j;
-                alert(MemberId);
-                var MemberId = document.getElementById(MemberId);
-                alert(MemberId);
+                var BranchId = document.getElementById("BranchId").value;
+                var MonthId = document.getElementById("MonthId").value;
+                var YearId = document.getElementById("YearId").value;                
+                var MemberId = document.getElementById("MemberId" + j ).value;
+                var MemberName = document.getElementById("MemberName" + j ).value;
+                var AccountNo = document.getElementById("AccountNo" + j ).value;
+                var GSaving = 100;
+                var Dps = document.getElementById("Dps" + j ).value;
+                var Loan = document.getElementById("Loan" + j ).value;
+                
+                $.ajax({
+                type: 'get',
+                url: 'getShishirSubmit',
+                data: {'DomainName': DomainName, 'DivisionName': DivisionName, 'ZoneId': ZoneId, 'AreaId': AreaId, 'BranchId': BranchId, 'MonthId': MonthId, 'YearId': YearId, 'MemberId': MemberId, 'MemberName': MemberName, 'AccountNo': AccountNo, 'GSaving': GSaving, 'Dps': Dps, 'Loan': Loan},
+                success: function (data) {
+                    // $( "row" + j ).remove();
+                    document.getElementById("row" + j ).remove();
+                },
+                error: function () {
+
+                }
+            });
             }
 </script>

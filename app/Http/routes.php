@@ -91,6 +91,8 @@ Route::get('getPostingInfo','SelectBoxController@getPostingInfo');
 
 Route::get('getMemberInfo','SelectBoxController@getMemberInfo');
 
+Route::get('getShishirSubmit','SelectBoxController@getShishirSubmit');
+
 
 
 Route::get('{view}', function ($view) {
