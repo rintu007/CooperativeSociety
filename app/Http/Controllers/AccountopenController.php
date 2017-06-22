@@ -64,7 +64,7 @@ class AccountopenController extends Controller
         $accountopen->Duration  = Input::get('Duration');          
         $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
         $accountopen->Date     = Input::get('Date');
-        $accountopen->created_by    = $user_id;
+        $accountopen->posted_by    = $user_id;
         $accountopen->save();
 
         
@@ -110,7 +110,7 @@ class AccountopenController extends Controller
         $accountopen->Duration  = Input::get('Duration');          
         $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
         $accountopen->Date     = Input::get('Date');
-        $accountopen->created_by    = $user_id;
+        $accountopen->posted_by    = $user_id;
         $accountopen->save();
 
        

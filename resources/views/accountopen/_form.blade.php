@@ -118,19 +118,19 @@
                 url: 'getMemberInfo',
                 data: {'id': MemberId},
                 success: function (data) {
-                    $.each(data, function (subcatObj) {
-                        $('#MemberName').val(subcatObj.MemberName);
-                        // document.getElementById("MemberName").value = subcatObj.MemberName;
-                        // $('#MemberName').append(subcatObj.MemberName)
-                        // $('#DomainName').append('<option value="'+subcatObj.id+'">'+subcatObj.DomainName +'</option>');
-                        // $('#DivisionName').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>');
-                        // $('#ZoneId').append('<option value="'+subcatObj.id+'">'+subcatObj.ZoneId +'</option>');
-                        // $('#AreaId').append('<option value="'+subcatObj.id+'">'+subcatObj.AreaId +'</option>');
-                        // $('#BranchId').append('<option value="'+subcatObj.id+'">'+subcatObj.BranchId +'</option>');
+                    $.each(data, function (index, subcatObj) {
+                          document.getElementById("MemberName").value = subcatObj.BanglaName;
+                          document.getElementById("DomainName").value = subcatObj.DomainName;
+                          document.getElementById("DivisionName").value = subcatObj.DivisionOfficeId;
+                          document.getElementById("ZoneId").value = subcatObj.ZoneId;
+                          document.getElementById("AreaId").value = subcatObj.AreaId;
+                          document.getElementById("BranchId").value = subcatObj.BranchId;
+                        
                     });
                 },
                 error: function () {
-                    alert("Enternal Connection errors.");
+                    alert("Please be a member first.");
+                    // $(".inforError :input").attr("disabled", true);
                 }
             });
             // $.ajax(clear);

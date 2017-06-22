@@ -1,6 +1,6 @@
 @if(Auth::guest())
     @else
-<h1 class="page-header">Application Form & Passbook Fee
+<h1 class="page-header">Accounts List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('accountopen/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>

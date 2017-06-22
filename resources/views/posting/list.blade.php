@@ -149,17 +149,21 @@
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
-                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td style="text-align: center"><input' + subcatObj3p.MemberId.i + '></td><td style="text-align: center"><input' + subcatObj3p.MemberName.i + '></td><td style="text-align: center"><input' + subcatObj3p.AccountNo.i + '></td><td style="text-align: center"><input' + subcatObj3p.GeneralSaving.i + '></td><td style="text-align: center"><input' + subcatObj3p.Dps.i + '></td><td><button type="submit" onclick="">submit</td></tr>');
+                            $('#postingPlace').append('<tr><td style="text-align: center">' + i + '</td><td id="MemberId'+i+'" style="text-align: center">' + subcatObj3p.MemberId + '</td><td id="MemberName'+i+'" style="text-align: center">' + subcatObj3p.EnglishName  + '</td><td id="AccountNo'+i+'" style="text-align: center">' + subcatObj3p.BanglaName + '</td><td style="text-align: center">' +100+ '</td><td id="Dps'+i+'" style="text-align: center">' + subcatObj3p.Age + '</td><td><button onClick="shishirSubmit('+i+')" type="submit" >submit</td></tr>');
                             i++;
                         });
-                        document.getElementById('hidden').value = i - 1;
+                        // document.getElementById('hidden').value = i - 1;
                     },
                     error: function () {
                     }
                 });
-                $.ajax(clear);
+                // $.ajax(clear);
 //            document.getElementById("MemberId").reset();
             });
+
+        
+       
+
 
         $(document).on('change', '.DomainName', function () {
             //console.log("yes it is change");
@@ -181,7 +185,7 @@
                     alert("Enternal Connection errors.");
                 }
             });
-            $.ajax(clear);
+            // $.ajax(clear);
         });
         $(document).on('change', '.DivisionOfficeId', function () {
             //console.log("yes it is change");
@@ -203,7 +207,7 @@
 
                 }
             });
-            $.ajax(clear);
+            // $.ajax(clear);
         });
 
          $(document).on('change', '.ZoneId', function () {
@@ -227,7 +231,21 @@
 
                 }
             });
-            $.ajax(clear);
+            // $.ajax(clear);
         });
     });
+
+     function shishirSubmit(i){
+                var j = i;
+                
+                var DomainName = document.getElementById("DomainName").value;                
+                var DivisionName = document.getElementById("DivisionOfficeId").value;                
+                var ZoneId = document.getElementById("ZoneId").value;                
+                var AreaId = document.getElementById("AreaId").value;                
+                var BranchId = document.getElementById("BranchId").value;                
+                var MemberId = "MemberId" . j;
+                alert(MemberId);
+                var MemberId = document.getElementById(MemberId);
+                alert(MemberId);
+            }
 </script>

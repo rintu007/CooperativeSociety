@@ -13,6 +13,7 @@ use App\Saving1;
 use App\Savingtransactionsetup;
 use App\Thana;
 use App\Appformandpassbook;
+use App\Posting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -54,17 +55,33 @@ class SelectBoxController extends Controller
     }
 
      public function getPostingInfo(Request $request){
-        $DomainName = $reuest->DomainName;
+        $DomainName = $request->DomainName;
         $DivisionName = $request->DivisionName;
         $ZoneId = $request->ZoneId;
-        $AreaId = $requst->AreaId;
+        $AreaId = $request->AreaId;
         $BranchId = $request->BranchId;
         $MonthId = $request->MonthId;
         $YearId = $request->YearId;
 
+        // $first = DB::table('postings')
+        //     ->where('MonthId', $MonthId)
+        //     ->where('YearId', $YearId);
+
+        // $second = DB::table('accountopens')
+        //     ->where('DomainName', $DomainName)
+        //     ->where('DivisionOfficeId', $DivisionName)
+        //     ->where('ZoneId', $ZoneId)
+        //     ->where('AreaId', $AreaId)
+        //     ->where('BranchId', $BranchId)
+
         $data = DB::table('members')
-            ->select('*')
-            ->where('DomainId', $request->id)
+            ->where('DomainName', $DomainName)
+            ->where('DivisionOfficeId', $DivisionName)
+            ->where('ZoneId', $ZoneId)
+            ->where('AreaId', $AreaId)
+            ->where('BranchId', $BranchId)
+            // ->union($first)
+            // ->union($second)
             ->get();
 
         return response()->json($data);
