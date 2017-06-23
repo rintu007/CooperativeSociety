@@ -1,5 +1,5 @@
-<h2 class="page-header">Withdraw Shares</h2>
+<h2 class="page-header">Withdraw Withdraws</h2>
 
-{!! Form::model($share,["id"=>"frm","class"=>"form-horizontal"]) !!}
-@include("share._form")
+{!! Form::model($withdraw,["id"=>"frm","class"=>"form-horizontal"]) !!}
+@include("withdraw._form")
 {!! Form::close() !!}

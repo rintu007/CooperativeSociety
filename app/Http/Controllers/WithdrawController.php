@@ -1,44 +1,44 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Share;
+use App\Withdraw;
 use App\Appformandpassbook;
-use App\Addshare;
-use App\Withdrawshare;
+use App\Addwithdraw;
+use App\Accountopen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class ShareController extends Controller
+class WithdrawController extends Controller
 {
     public function getIndex()
     {
 
-        return view('share.index');
+        return view('withdraw.index');
 
     }
 
     public function getList()
     {
 
-        Session::put('share_search', Input::has('ok') ? Input::get('search') : (Session::has('share_search') ? Session::get('share_search') : ''));
+        Session::put('withdraw_search', Input::has('ok') ? Input::get('search') : (Session::has('withdraw_search') ? Session::get('withdraw_search') : ''));
 
-        Session::put('share_field', Input::has('field') ? Input::get('field') : (Session::has('share_field') ? Session::get('share_field') : 'member_id'));
+        Session::put('withdraw_field', Input::has('field') ? Input::get('field') : (Session::has('withdraw_field') ? Session::get('withdraw_field') : 'MemberId'));
 
-        Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
+        Session::put('withdraw_sort', Input::has('sort') ? Input::get('sort') : (Session::has('withdraw_sort') ? Session::get('withdraw_sort') : 'asc'));
 
-        $shares = Share::where('id', 'like', '%' . Session::get('share_search') . '%') 
-            ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(10);
-        return view('share.list', ['shares' => $shares]);
+        $withdraws = Accountopen::where('id', 'like', '%' . Session::get('withdraw_search') . '%')->paginate(10);
+            // ->orderBy(Session::get('withdraw_field'), Session::get('withdraw_sort'))->paginate(10);
+        return view('withdraw.list', ['withdraws' => $withdraws]);
 
     }
 
     public function getUpdate($member_id)
     {
         
-        $share = Share::find($member_id);
-        return view('share.update', ['share' => $share]);
+        $withdraw = Withdraw::find($member_id);
+        return view('withdraw.update', ['withdraw' => $withdraw]);
     }
 
     public function postUpdate($id)
@@ -46,99 +46,99 @@ class ShareController extends Controller
         
 
 
-        $share = Share::find($id);
+        $withdraw = Withdraw::find($id);
         $member_id    = Input::get('member_id');
-        $share->date  = Input::get('date');
-        $add_share_number    = Input::get('share_number');
-        $share->add_share_number = $add_share_number; 
-        $add_share_amount = Input::get('share_amount');       
-        $share->add_share_amount = $add_share_amount;
+        $withdraw->date  = Input::get('date');
+        $add_withdraw_number    = Input::get('withdraw_number');
+        $withdraw->add_withdraw_number = $add_withdraw_number; 
+        $add_withdraw_amount = Input::get('withdraw_amount');       
+        $withdraw->add_withdraw_amount = $add_withdraw_amount;
         
 
-                $shares_data = Share::where('member_id', $member_id)->get();
-                 foreach($shares_data as $key=>$share_data){
-                    $present_share_number = $share_data->present_share_number;
-                    $present_share_amount = $share_data->present_share_amount;
+                $withdraws_data = Withdraw::where('member_id', $member_id)->get();
+                 foreach($withdraws_data as $key=>$withdraw_data){
+                    $present_withdraw_number = $withdraw_data->present_withdraw_number;
+                    $present_withdraw_amount = $withdraw_data->present_withdraw_amount;
                  }
-        $present_share_number = ($present_share_number + $add_share_number);
-        $present_share_amount = $present_share_amount + $add_share_amount;
-        $share->present_share_number = $present_share_number;
-        $share->present_share_amount = $present_share_amount;
-        $share->created_at   = Input::get('created_at');
-        $share->updated_at   = Input::get('updated_at');
-        $share->save();
+        $present_withdraw_number = ($present_withdraw_number + $add_withdraw_number);
+        $present_withdraw_amount = $present_withdraw_amount + $add_withdraw_amount;
+        $withdraw->present_withdraw_number = $present_withdraw_number;
+        $withdraw->present_withdraw_amount = $present_withdraw_amount;
+        $withdraw->created_at   = Input::get('created_at');
+        $withdraw->updated_at   = Input::get('updated_at');
+        $withdraw->save();
 
-        $addshare = new Addshare();
-        $addshare->serial_no = Input::get('serial_no');
-        $addshare->member_id = Input::get('member_id');
-        $addshare->date = Input::get('date');
-        $addshare->share_number = Input::get('share_number');
-        $addshare->share_amount = Input::get('share_amount');
-        $addshare->save();
+        $addwithdraw = new Addwithdraw();
+        $addwithdraw->serial_no = Input::get('serial_no');
+        $addwithdraw->member_id = Input::get('member_id');
+        $addwithdraw->date = Input::get('date');
+        $addwithdraw->withdraw_number = Input::get('withdraw_number');
+        $addwithdraw->withdraw_amount = Input::get('withdraw_amount');
+        $addwithdraw->save();
 
-        // $share = Share::find($id);
-        // $share->present_share_number += $add_share_number;
-        // $share->present_share_amount += $add_share_amount;
-        // $share->save();
-        return ['url' => 'share/list'];
+        // $withdraw = Withdraw::find($id);
+        // $withdraw->present_withdraw_number += $add_withdraw_number;
+        // $withdraw->present_withdraw_amount += $add_withdraw_amount;
+        // $withdraw->save();
+        return ['url' => 'withdraw/list'];
     }
 
     public function getCreate($member_id)
     {
-         return view('share.create', ['share' => Share::find($member_id)]);
-        // return view('share.create');
+         return view('withdraw.create', ['withdraw' => Withdraw::find($member_id)]);
+        // return view('withdraw.create');
     }
 
     public function postCreate($id)
     {
-        $share = Share::find($id);
+        $withdraw = Withdraw::find($id);
         $member_id    = Input::get('member_id');
-        $share->date  = Input::get('date');
-        $withdraw_share_number    = Input::get('share_number');
-        $share->withdraw_share_number = $withdraw_share_number; 
-        $withdraw_share_amount = Input::get('share_amount');       
-        $share->withdraw_share_amount = $withdraw_share_amount;
+        $withdraw->date  = Input::get('date');
+        $withdraw_withdraw_number    = Input::get('withdraw_number');
+        $withdraw->withdraw_withdraw_number = $withdraw_withdraw_number; 
+        $withdraw_withdraw_amount = Input::get('withdraw_amount');       
+        $withdraw->withdraw_withdraw_amount = $withdraw_withdraw_amount;
         
 
-                $shares_data = Share::where('member_id', $member_id)->get();
-                 foreach($shares_data as $key=>$share_data){
-                    $present_share_number = $share_data->present_share_number;
-                    $present_share_amount = $share_data->present_share_amount;
+                $withdraws_data = Withdraw::where('member_id', $member_id)->get();
+                 foreach($withdraws_data as $key=>$withdraw_data){
+                    $present_withdraw_number = $withdraw_data->present_withdraw_number;
+                    $present_withdraw_amount = $withdraw_data->present_withdraw_amount;
                  }
-        $present_share_number = ($present_share_number - $withdraw_share_number);
-        $present_share_amount = $present_share_amount - $withdraw_share_amount;
-        $share->present_share_number = $present_share_number;
-        $share->present_share_amount = $present_share_amount;
-        $share->created_at   = Input::get('created_at');
-        $share->updated_at   = Input::get('updated_at');
-        $share->save();
+        $present_withdraw_number = ($present_withdraw_number - $withdraw_withdraw_number);
+        $present_withdraw_amount = $present_withdraw_amount - $withdraw_withdraw_amount;
+        $withdraw->present_withdraw_number = $present_withdraw_number;
+        $withdraw->present_withdraw_amount = $present_withdraw_amount;
+        $withdraw->created_at   = Input::get('created_at');
+        $withdraw->updated_at   = Input::get('updated_at');
+        $withdraw->save();
 
-        $withdrawshare = new Withdrawshare();
-        $withdrawshare->serial_no = Input::get('serial_no');
-        $withdrawshare->member_id = Input::get('member_id');
-        $withdrawshare->date = Input::get('date');
-        $withdrawshare->share_number = Input::get('share_number');
-        $withdrawshare->share_amount = Input::get('share_amount');
-        $withdrawshare->save();
-        return ['url' => 'share/list'];
+        $withdrawwithdraw = new Withdrawwithdraw();
+        $withdrawwithdraw->serial_no = Input::get('serial_no');
+        $withdrawwithdraw->member_id = Input::get('member_id');
+        $withdrawwithdraw->date = Input::get('date');
+        $withdrawwithdraw->withdraw_number = Input::get('withdraw_number');
+        $withdrawwithdraw->withdraw_amount = Input::get('withdraw_amount');
+        $withdrawwithdraw->save();
+        return ['url' => 'withdraw/list'];
        
-        // $share = new Share();
-        // $share->member_id    = Input::get('member_id');
-        // $share->date  = Input::get('date');
-        // $withdraw_share_number = Input::get('share_number');
-        // $share->withdraw_share_number = $withdraw_share_number;
-        // $withdraw_share_amount = Input::get('share_amount');
-        // $share->withdraw_share_amount = $withdraw_share_amount;
-        // $share->created_at = Input::get('created_at');
-        // $share->updated_at = Input::get('updated_at');
-        // $share->save();
-        // return ['url' => 'share/list'];
+        // $withdraw = new Withdraw();
+        // $withdraw->member_id    = Input::get('member_id');
+        // $withdraw->date  = Input::get('date');
+        // $withdraw_withdraw_number = Input::get('withdraw_number');
+        // $withdraw->withdraw_withdraw_number = $withdraw_withdraw_number;
+        // $withdraw_withdraw_amount = Input::get('withdraw_amount');
+        // $withdraw->withdraw_withdraw_amount = $withdraw_withdraw_amount;
+        // $withdraw->created_at = Input::get('created_at');
+        // $withdraw->updated_at = Input::get('updated_at');
+        // $withdraw->save();
+        // return ['url' => 'withdraw/list'];
     }
 
     public function getDelete($id)
     {
-        Share::destroy($id);
-        return Redirect('share/list');
+        Withdraw::destroy($id);
+        return Redirect('withdraw/list');
     }
 
 }

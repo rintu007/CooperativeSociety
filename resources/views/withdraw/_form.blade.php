@@ -4,43 +4,43 @@
     <tr>
         
         <th>
-            <a href="javascript:ajaxLoad('share/list?field=member_id&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('withdraw/list?field=member_id&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                 Member Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('share_field')=='member_id'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='member_id'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('share/list?field=member_name&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('withdraw/list?field=member_name&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                 Member Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('share_field')=='member_name'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='member_name'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('share/list?field=share_number&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
-                Your Shares
+            <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_number&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
+                Your Withdraws
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('share_field')=='share_number'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_number'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('share/list?field=share_amount&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_amount&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                Your Amount
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('share_field')=='share_amount'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_amount'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
          <th>
-            <a href="javascript:ajaxLoad('share/list?field=created_at&sort={{Session::get("share_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('withdraw/list?field=created_at&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                Created Date
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('share_field')=='created_at'?(Session::get('share_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='created_at'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
     </tr>
@@ -61,12 +61,12 @@
             </div>
             <div >
                 <td>                
-                     {!! Form::text("present_share_number",null,["class"=>"form-control readonly","id"=>"present_share_number", "readonly" => "true"]) !!}
+                     {!! Form::text("present_withdraw_number",null,["class"=>"form-control readonly","id"=>"present_withdraw_number", "readonly" => "true"]) !!}
                 </td>
             </div>
             <div >
                 <td>                
-                     {!! Form::text("present_share_amount",null,["class"=>"form-control readonly","id"=>"present_share_amount", "readonly" => "true"]) !!}
+                     {!! Form::text("present_withdraw_amount",null,["class"=>"form-control readonly","id"=>"present_withdraw_amount", "readonly" => "true"]) !!}
                 </td>
             </div>
             <div >
@@ -87,11 +87,11 @@
             <span id="serial_no-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-share_number-error">
-        {!! Form::label("share_number","Share Number",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-withdraw_number-error">
+        {!! Form::label("withdraw_number","Withdraw Number",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6" onChange= "updatePrice()">
-            {!! Form::number("share_number",null,["class"=>"form-control required","id"=>"share_number" ]) !!}
-            <span id="share_number-error" class="help-block"></span>
+            {!! Form::number("withdraw_number",null,["class"=>"form-control required","id"=>"withdraw_number" ]) !!}
+            <span id="withdraw_number-error" class="help-block"></span>
         </div>
     </div>
      <div class="form-group required col-md-6" id="form-member_id-error">
@@ -108,18 +108,18 @@
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-share_amount-error">
-        {!! Form::label("share_amount","Share Amount",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-withdraw_amount-error">
+        {!! Form::label("withdraw_amount","Withdraw Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("share_amount",null,["class"=>"form-control required","id"=>"share_amount", "readonly" => "true"]) !!}
-            <span id="share_amount-error" class="help-block"></span>
+            {!! Form::number("withdraw_amount",null,["class"=>"form-control required","id"=>"withdraw_amount", "readonly" => "true"]) !!}
+            <span id="withdraw_amount-error" class="help-block"></span>
         </div>
     </div>  
  
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('share/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('withdraw/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
@@ -131,8 +131,8 @@
 <!--<script type="text/javascript">
 i = 0;
 $(document).ready(function(){
-    $("#share_number").keypress(function(){
-        $("#share_amount").text(i += 1);
+    $("#withdraw_number").keypress(function(){
+        $("#withdraw_amount").text(i += 1);
     });
 });
 </script> -->
@@ -143,12 +143,12 @@ $(document).ready(function(){
     {
             function updatePrice()
             {
-                var share_number = parseFloat($("#share_number").val());
-                var share_amount = share_number * 100.00;
-                // var share_amount = total.toFixed(2);
-                $("#share_amount").val(share_amount);
+                var withdraw_number = parseFloat($("#withdraw_number").val());
+                var withdraw_amount = withdraw_number * 100.00;
+                // var withdraw_amount = total.toFixed(2);
+                $("#withdraw_amount").val(withdraw_amount);
             }
-            $(document).on("change, keyup", "#share_number", updatePrice);
+            $(document).on("change, keyup", "#withdraw_number", updatePrice);
     });
 
     $("#frm").submit(function (event) {
