@@ -21,7 +21,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_number&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
-                Your Withdraws
+                Duration
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_number'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -29,7 +29,7 @@
         </th>
         <th>
             <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_amount&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
-               Your Amount
+               MonthlyInstallment
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_amount'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -51,22 +51,22 @@
             
            <div >
                 <td>                
-                     {!! Form::text("member_id",null,["class"=>"form-control readonly","id"=>"member_id", "readonly" => "true"]) !!}
+                     {!! Form::text("MemberId",null,["class"=>"form-control readonly","id"=>"MemberId", "readonly" => "true"]) !!}
                 </td>
             </div>
            <div >
                 <td>                
-                     {!! Form::text("member_name",null,["class"=>"form-control readonly","id"=>"member_name", "readonly" => "true"]) !!}
+                     {!! Form::text("MemberName",null,["class"=>"form-control readonly","id"=>"MemberName", "readonly" => "true"]) !!}
                 </td>
             </div>
             <div >
                 <td>                
-                     {!! Form::text("present_withdraw_number",null,["class"=>"form-control readonly","id"=>"present_withdraw_number", "readonly" => "true"]) !!}
+                     {!! Form::text("Duration",null,["class"=>"form-control readonly","id"=>"Duration", "readonly" => "true"]) !!}
                 </td>
             </div>
             <div >
                 <td>                
-                     {!! Form::text("present_withdraw_amount",null,["class"=>"form-control readonly","id"=>"present_withdraw_amount", "readonly" => "true"]) !!}
+                     {!! Form::text("MonthlyInstallment",null,["class"=>"form-control readonly","id"=>"MonthlyInstallment", "readonly" => "true"]) !!}
                 </td>
             </div>
             <div >

@@ -1,7 +1,7 @@
 @if(Auth::guest())
 <h4>Please Log in</h4>
 @else
-<h1 class="page-header">Withdraw Exchange List
+<h1 class="page-header">Withdraw List
     <!-- <div class="pull-right">
         <a href="javascript:ajaxLoad('withdraw/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -91,7 +91,7 @@
                 <!-- <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('withdraw/update/{{$withdraw->id}}')">
                     <i class="glyphicon glyphicon-plus-sign"></i> add</a> -->
-                <a class="btn btn-primary btn-xs" title="Edit"
+                <a class="btn btn-primary btn-xs" title="withdraw"
                    href="javascript:ajaxLoad('withdraw/create/{{$withdraw->AccountNo}}')">
                     <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
                <!--  <a class="btn btn-primary btn-xs" title="Edit"

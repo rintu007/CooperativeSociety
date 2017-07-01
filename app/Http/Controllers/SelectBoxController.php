@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Accountstable;
+use App\Accountopen;
 use App\Age;
 use App\Count;
 use App\Day;
@@ -99,13 +100,15 @@ class SelectBoxController extends Controller
         //     ->where('BranchId', $BranchId)
 
         $data = DB::table('members')
-            ->where('DomainName', $DomainName)
-            ->where('DivisionOfficeId', $DivisionName)
-            ->where('ZoneId', $ZoneId)
-            ->where('AreaId', $AreaId)
-            ->where('BranchId', $BranchId)
-            // ->union($first)
-            // ->union($second)
+            ->join('accountopens', 'members.MemberId', '=', 'accountopens.MemberId')
+            ->join('postings', 'members.MemberId', '=', 'postings.MemberId')
+            ->where('members.DomainName', $DomainName)
+            ->where('members.DivisionOfficeId', $DivisionName)
+            ->where('members.ZoneId', $ZoneId)
+            ->where('members.AreaId', $AreaId)
+            ->where('members.BranchId', $BranchId)
+            ->where('postings.Status', '!=', '1')
+            ->select('members.*', 'accountopens.Dps')
             ->get();
 
         return response()->json($data);
