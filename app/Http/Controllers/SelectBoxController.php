@@ -15,6 +15,7 @@ use App\Savingtransactionsetup;
 use App\Thana;
 use App\Appformandpassbook;
 use App\Posting;
+use App\Savingtable;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,24 +49,57 @@ class SelectBoxController extends Controller
 
     public function getShishirSubmit(Request $request){
 
-        $user_id = Auth::user()->id;
-        $posting = new Posting();        
-         $posting->DomainName = $request->DomainName;
-         $posting->DivisionName = $request->DivisionName;
-         $posting->ZoneId = $request->ZoneId;               
-         $posting->AreaId = $request->AreaId;                
-         $posting->BranchId = $request->BranchId;
-         $posting->MonthId = $request->MonthId;
-         $posting->YearId = $request->YearId;                
-         $posting->MemberId = $request->MemberId;
-         $posting->MemberName = $request->MemberName;
-         $posting->AccountNo = $request->AccountNo;
-         $posting->GSaving = $request->GSaving;
-         $posting->Dps = $request->Dps;
-         $posting->Loan = $request->Loan;
+         $user_id = Auth::user()->id;
+         $posting = new Posting();        
+                    $DomainName = $request->DomainName;
+         $posting->DomainName = $DomainName;
+                     $DivisionName = $request->DivisionName;
+         $posting->DivisionName = $DivisionName;
+                    $ZoneId = $request->ZoneId;
+         $posting->ZoneId = $ZoneId;               
+                    $AreaId = $request->AreaId;                
+         $posting->AreaId = $AreaId;                
+                    $BranchId = $request->BranchId;
+         $posting->BranchId = $BranchId;
+                    $MonthId = $request->MonthId;
+         $posting->MonthId = $MonthId;
+                    $YearId = $request->YearId;                
+         $posting->YearId = $YearId;                
+                    $MemberId = $request->MemberId;
+         $posting->MemberId = $MemberId;
+                    $MemberName = $request->MemberName;
+         $posting->MemberName = $MemberName;
+                    $AccountNo = $request->AccountNo;
+         $posting->AccountNo = $AccountNo;
+                    $GSaving = $request->GSaving;
+         $posting->GSaving = $GSaving;
+                    $Dps = $request->Dps;
+         $posting->Dps = $Dps;
+                    $Loan = $request->Loan;
+         $posting->Loan = $Loan;
          $posting->posted_by    = $user_id;
          $posting->save();
 
+        //         $withdraws_data = Savingtable::where('MemberId', $MemberId)->get();
+        //          foreach($withdraws_data as $key=>$withdraw_data){
+        //             $PresentGSaving = $withdraw_data->GSaving;
+        //             $presentDps = $withdraw_data->Dps;
+        //          }
+        // $savingtables = Savingtable::find($MemberId);
+        // $savingtables ->DomainName = $DomainName;
+        // $savingtables ->DivisionName = $DivisionName;
+        // $savingtables ->ZoneId = $ZoneId;
+        // $savingtables ->AreaId = $AreaId;
+        // $savingtables ->BranchId = $BranchId;
+        // $savingtables ->MonthId = $MonthId;
+        // $savingtables ->YearId = $YearId;
+        // $savingtables ->MemberId = $MemberId;
+        // $savingtables ->MemberName = $MemberName;
+        // $savingtables ->AccountNo = $AccountNo;
+        // $savingtables ->GSaving = $GSaving + $PresentGSaving;
+        // $savingtables ->Dps = $Dps + $presentDps;
+        // $savingtables ->posted_by = $user_id;
+        // $savingtables->save();
 
         return response()->json(true);
     }
@@ -101,13 +135,13 @@ class SelectBoxController extends Controller
 
         $data = DB::table('members')
             ->join('accountopens', 'members.MemberId', '=', 'accountopens.MemberId')
-            ->join('postings', 'members.MemberId', '=', 'postings.MemberId')
-            ->where('members.DomainName', $DomainName)
-            ->where('members.DivisionOfficeId', $DivisionName)
-            ->where('members.ZoneId', $ZoneId)
-            ->where('members.AreaId', $AreaId)
-            ->where('members.BranchId', $BranchId)
-            ->where('postings.Status', '!=', '1')
+            // ->join('postings', 'members.MemberId', '=', 'postings.MemberId')
+            ->where('members.DomainName', $DomainName) 
+            // ->where('members.DivisionOfficeId', $DivisionName)
+            // ->where('members.ZoneId', $ZoneId)
+            // ->where('members.AreaId', $AreaId)
+            // ->where('members.BranchId', $BranchId)
+            // ->where('postings.Status', '!=', '1')
             ->select('members.*', 'accountopens.Dps')
             ->get();
 

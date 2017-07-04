@@ -3,7 +3,6 @@ namespace App\Http\Controllers;
 
 use App\Appformandpassbook;
 use App\Share;
-use App\User;
 use App\Addshare;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -24,12 +23,12 @@ class AppformandpassbookController extends Controller
 
         Session::put('appformandpassbook_search', Input::has('ok') ? Input::get('search') : (Session::has('appformandpassbook_search') ? Session::get('appformandpassbook_search') : ''));
 
-        Session::put('appformandpassbook_field', Input::has('field') ? Input::get('field') : (Session::has('appformandpassbook_field') ? Session::get('appformandpassbook_field') : 'member_name'));
+        Session::put('appformandpassbook_field', Input::has('field') ? Input::get('field') : (Session::has('appformandpassbook_field') ? Session::get('appformandpassbook_field') : 'member_id'));
 
         Session::put('appformandpassbook_sort', Input::has('sort') ? Input::get('sort') : (Session::has('appformandpassbook_sort') ? Session::get('appformandpassbook_sort') : 'asc'));
 
-        $appformandpassbooks = Appformandpassbook::where('member_name', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
-            ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(8);
+        $appformandpassbooks = Appformandpassbook::where('member_id', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
+            ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(25);
         return view('appformandpassbook.list', ['appformandpassbooks' => $appformandpassbooks]);
 
     }
@@ -44,8 +43,7 @@ class AppformandpassbookController extends Controller
         $user_id = Auth::user()->id;
         $appformandpassbook = Appformandpassbook::find($id);
         $appformandpassbook->serial_no = Input::get('serial_no');
-        $appformandpassbook->member_name = Input::get('member_name');  
-        $member_id = Input::get('member_id');     
+        $appformandpassbook->member_name = Input::get('member_name');       
         $appformandpassbook->member_id = Input::get('member_id');
         $appformandpassbook->mobile_no = Input::get('mobile_no');
         $appformandpassbook->date       = Input::get('date');
@@ -59,7 +57,7 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->created_by = $user_id;
         $appformandpassbook->save();
 
-        // $addshare = Addshare::find($member_id);
+        // $addshare = Addshare::find($id);
         // $addshare->serial_no = Input::get('serial_no');
         // $addshare->member_id = Input::get('member_id');
         // $addshare->date = Input::get('date');
@@ -67,7 +65,7 @@ class AppformandpassbookController extends Controller
         // $addshare->share_amount = Input::get('share_amount');
         // $addshare->save();
 
-        // $share = Share::find($member_id);
+        // $share = Share::find($id);
         // $share->serial_no    = Input::get('serial_no');
         // $share->member_id  = Input::get('member_id');       
         // $share->member_name    = Input::get('member_name');
@@ -78,6 +76,8 @@ class AppformandpassbookController extends Controller
         // $share->present_share_amount = Input::get('share_amount');
         // $share->date           = Input::get('date');
         // $share->save();
+
+
         return ['url' => 'appformandpassbook/list'];
     }
 
@@ -161,14 +161,9 @@ class AppformandpassbookController extends Controller
                     $id = $value->id;
                     Share::destroy($id);
                 }        
-                
-
         Appformandpassbook::destroy($deletingId);
-
-        
-
-        
         return Redirect('appformandpassbook/list');
+    
     }
 
 }
