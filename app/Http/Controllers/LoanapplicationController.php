@@ -17,10 +17,10 @@ class LoanapplicationController extends Controller
     public function getList()
     {
         Session::put('loanapplication_search', Input::has('ok') ? Input::get('search') : (Session::has('loanapplication_search') ? Session::get('loanapplication_search') : ''));
-        Session::put('loanapplication_field', Input::has('field') ? Input::get('field') : (Session::has('loanapplication_field') ? Session::get('loanapplication_field') : 'name'));
+        Session::put('loanapplication_field', Input::has('field') ? Input::get('field') : (Session::has('loanapplication_field') ? Session::get('loanapplication_field') : 'MemberId'));
         Session::put('loanapplication_sort', Input::has('sort') ? Input::get('sort') : (Session::has('loanapplication_sort') ? Session::get('loanapplication_sort') : 'asc'));
-        $loanapplications = Loanapplication::where('name', 'like', '%' . Session::get('loanapplication_search') . '%')
-            ->orderBy(Session::get('loanapplication_field'), Session::get('loanapplication_sort'))->paginate(8);
+        $loanapplications = Loanapplication::where('MemberId', 'like', '%' . Session::get('loanapplication_search') . '%')->paginate(8);
+            // ->orderBy(Session::get('loanapplication_field'), Session::get('loanapplication_sort'))
         return view('loanapplication.list', ['loanapplications' => $loanapplications]);
     }
 
@@ -32,19 +32,101 @@ class LoanapplicationController extends Controller
     public function postUpdate($id)
     {
         $loanapplication = Loanapplication::find($id);
-        $rules = ["unitprice" => "required|numeric"];
-        if ($loanapplication->name != Input::get('name'))
-            $rules += ['name' => 'required|unique:loanapplications'];
-        $validator = Validator::make(Input::all(), $rules);
+         $validator = Validator::make(Input::all(), [
+            "MemberId" => "required|unique:loanapplications"
+            // "LoanapplicationCode" => "required|unique:loanapplications",
+            // "unitprice" => "required|numeric"
+        ]);
         if ($validator->fails()) {
             return array(
                 'fail' => true,
                 'errors' => $validator->getMessageBag()->toArray()
             );
         }
-        $loanapplication->name = Input::get('name');
-        $loanapplication->LoanapplicationCode = Input::get('LoanapplicationCode');
-        $loanapplication->unitprice = Input::get('unitprice');
+        $loanapplication->MemberId = Input::get('MemberId');
+        $loanapplication->Designation = Input::get('Designation');
+        $loanapplication->Savings = Input::get('Savings');
+        $loanapplication->LoanAmount = Input::get('LoanAmount');
+        $loanapplication->LoanDuration = Input::get('LoanDuration');
+        $loanapplication->InterestRate = Input::get('InterestRate');
+        $loanapplication->BankAccountName = Input::get('BankAccountName');
+        $loanapplication->AccountType = Input::get('AccountType');
+        $loanapplication->AccountNo = Input::get('AccountNo');
+        $loanapplication->BankName = Input::get('BankName');
+        $loanapplication->BranchName = Input::get('BranchName');
+        $loanapplication->IncomeSource = Input::get('IncomeSource');
+        $loanapplication->EnglishName = Input::get('EnglishName');
+        $loanapplication->DomainName = Input::get('DomainName');
+        $loanapplication->DivisionOfficeId = Input::get('DivisionOfficeId');
+        $loanapplication->ZoneId = Input::get('ZoneId');
+        $loanapplication->AreaId = Input::get('AreaId');
+        $loanapplication->BranchId = Input::get('BranchId');
+        $loanapplication->TMSSId = Input::get('TMSSId');
+                            $TMSSId = Input::get('TMSSId');
+        $loanapplication->GaurantorName = Input::get('GaurantorName');
+        $loanapplication->GFatherName = Input::get('GFatherName');
+        $loanapplication->GMotherName = Input::get('GMotherName');
+        $loanapplication->GHusbandWifeName = Input::get('GHusbandWifeName');
+        $loanapplication->GBirthDate = Input::get('GBirthDate');
+        $loanapplication->GAge = Input::get('GAge');
+        $loanapplication->GNationality = Input::get('GNationality');
+        $loanapplication->GOccupation = Input::get('GOccupation');
+        $loanapplication->GNId = Input::get('GNId');
+        $loanapplication->GTaxNo = Input::get('GTaxNo');
+        $loanapplication->GDrivingLicenseNo = Input::get('GDrivingLicenseNo');
+        $loanapplication->GMobileNo = Input::get('GMobileNo');
+        $loanapplication->GVillageName = Input::get('GVillageName');
+        $loanapplication->GPostOffice = Input::get('GPostOffice');
+        $loanapplication->GPolliceStation = Input::get('GPolliceStation');
+        $loanapplication->GOfficeName = Input::get('GOfficeName');
+        $loanapplication->GDesignation = Input::get('GDesignation');
+        $loanapplication->GOfficeId = Input::get('GOfficeId');
+        $loanapplication->GOfficeAddress = Input::get('GOfficeAddress');
+        $loanapplication->GOfficeAddress = Input::get('GOfficeAddress');
+        $loanapplication->GBankAccountName = Input::get('GBankAccountName');
+        $loanapplication->GAccountType = Input::get('GAccountType');
+        $loanapplication->GAccountNo = Input::get('GAccountNo');
+        $loanapplication->GBankName = Input::get('GBankName');
+        $loanapplication->GTMemberId = Input::get('GTMemberId');
+        $loanapplication->GBranchName = Input::get('GBranchName');
+        $loanapplication->GAdmDate = Input::get('GAdmDate');
+        $loanapplication->GSavingAmount = Input::get('GSavingAmount');
+
+        $file = Input::file('GImage ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('GImage')->move($destinationPath, $filename);
+            $loanapplication->GImage = $filename;
+        }
+
+        $file = Input::file('GSignature ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('GSignature')->move($destinationPath, $filename);
+            $loanapplication->GSignature = $filename;
+        }
+
+        
+        $loanapplication->WName1 = Input::get('WName1');
+        $loanapplication->WName2 = Input::get('WName2');
+        
+        $file = Input::file('W1Signature ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('W1Signature')->move($destinationPath, $filename);
+            $loanapplication->W1Signature = $filename;
+        }
+
+        $file = Input::file('W2Signature ');
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('W2Signature')->move($destinationPath, $filename);
+            $loanapplication->W2Signature = $filename;
+        }
+
         $loanapplication->save();
         return ['url' => 'loanapplication/list'];
     }
@@ -57,9 +139,9 @@ class LoanapplicationController extends Controller
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "name" => "required|unique:loanapplications",
-            "LoanapplicationCode" => "required|unique:loanapplications",
-            "unitprice" => "required|numeric"
+            "MemberId" => "required|unique:loanapplications"
+            // "LoanapplicationCode" => "required|unique:loanapplications",
+            // "unitprice" => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(
@@ -68,9 +150,90 @@ class LoanapplicationController extends Controller
             );
         }
         $loanapplication = new Loanapplication();
-        $loanapplication->name = Input::get('name');
-        $loanapplication->LoanapplicationCode = Input::get('LoanapplicationCode');
-        $loanapplication->unitprice = Input::get('unitprice');
+        $loanapplication->MemberId = Input::get('MemberId');
+        $loanapplication->Designation = Input::get('Designation');
+        $loanapplication->Savings = Input::get('Savings');
+        $loanapplication->LoanAmount = Input::get('LoanAmount');
+        $loanapplication->LoanDuration = Input::get('LoanDuration');
+        $loanapplication->InterestRate = Input::get('InterestRate');
+        $loanapplication->BankAccountName = Input::get('BankAccountName');
+        $loanapplication->AccountType = Input::get('AccountType');
+        $loanapplication->AccountNo = Input::get('AccountNo');
+        $loanapplication->BankName = Input::get('BankName');
+        $loanapplication->BranchName = Input::get('BranchName');
+        $loanapplication->IncomeSource = Input::get('IncomeSource');
+        $loanapplication->EnglishName = Input::get('EnglishName');
+        $loanapplication->DomainName = Input::get('DomainName');
+        $loanapplication->DivisionOfficeId = Input::get('DivisionOfficeId');
+        $loanapplication->ZoneId = Input::get('ZoneId');
+        $loanapplication->AreaId = Input::get('AreaId');
+        $loanapplication->BranchId = Input::get('BranchId');
+        $loanapplication->TMSSId = Input::get('TMSSId');
+                            $TMSSId = Input::get('TMSSId');
+        $loanapplication->GaurantorName = Input::get('GaurantorName');
+        $loanapplication->GFatherName = Input::get('GFatherName');
+        $loanapplication->GMotherName = Input::get('GMotherName');
+        $loanapplication->GHusbandWifeName = Input::get('GHusbandWifeName');
+        $loanapplication->GBirthDate = Input::get('GBirthDate');
+        $loanapplication->GAge = Input::get('GAge');
+        $loanapplication->GNationality = Input::get('GNationality');
+        $loanapplication->GOccupation = Input::get('GOccupation');
+        $loanapplication->GNId = Input::get('GNId');
+        $loanapplication->GTaxNo = Input::get('GTaxNo');
+        $loanapplication->GDrivingLicenseNo = Input::get('GDrivingLicenseNo');
+        $loanapplication->GMobileNo = Input::get('GMobileNo');
+        $loanapplication->GVillageName = Input::get('GVillageName');
+        $loanapplication->GPostOffice = Input::get('GPostOffice');
+        $loanapplication->GPolliceStation = Input::get('GPolliceStation');
+        $loanapplication->GOfficeName = Input::get('GOfficeName');
+        $loanapplication->GDesignation = Input::get('GDesignation');
+        $loanapplication->GOfficeId = Input::get('GOfficeId');
+        $loanapplication->GOfficeAddress = Input::get('GOfficeAddress');
+        $loanapplication->GOfficeAddress = Input::get('GOfficeAddress');
+        $loanapplication->GBankAccountName = Input::get('GBankAccountName');
+        $loanapplication->GAccountType = Input::get('GAccountType');
+        $loanapplication->GAccountNo = Input::get('GAccountNo');
+        $loanapplication->GBankName = Input::get('GBankName');
+        $loanapplication->GTMemberId = Input::get('GTMemberId');
+        $loanapplication->GBranchName = Input::get('GBranchName');
+        $loanapplication->GAdmDate = Input::get('GAdmDate');
+        $loanapplication->GSavingAmount = Input::get('GSavingAmount');
+
+        $file = Input::file('GImage ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('GImage')->move($destinationPath, $filename);
+            $loanapplication->GImage = $filename;
+        }
+
+        $file = Input::file('GSignature ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('GSignature')->move($destinationPath, $filename);
+            $loanapplication->GSignature = $filename;
+        }
+
+        
+        $loanapplication->WName1 = Input::get('WName1');
+        $loanapplication->WName2 = Input::get('WName2');
+
+        $file = Input::file('W1Signature ');
+        $destinationPath = 'uploads/';
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('W1Signature')->move($destinationPath, $filename);
+            $loanapplication->W1Signature = $filename;
+        }
+
+        $file = Input::file('W2Signature ');
+        if(!empty($file)){
+            $filename = $TMSSId.'_'.$file->getClientOriginalName();
+            Input::file('W2Signature')->move($destinationPath, $filename);
+            $loanapplication->W2Signature = $filename;
+        }
+
         $loanapplication->save();
         return ['url' => 'loanapplication/list'];
     }

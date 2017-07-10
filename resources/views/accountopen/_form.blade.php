@@ -119,7 +119,8 @@
                 data: {'id': MemberId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
-                          document.getElementById("MemberName").value = subcatObj.BanglaName;
+
+                          document.getElementById("MemberName").value = subcatObj.EnglishName;
                           document.getElementById("DomainName").value = subcatObj.DomainName;
                           document.getElementById("DivisionName").value = subcatObj.DivisionOfficeId;
                           document.getElementById("ZoneId").value = subcatObj.ZoneId;

@@ -1,6 +1,6 @@
 @if(Auth::guest())
 @else
-<h1 class="page-header">Joining money receipt List
+<h1 class="page-header">Loan Money Receipt List
     <div class="pull-right">
         <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
@@ -26,35 +26,35 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=member_name&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=MemberName&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
                 Member Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='member_name'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='MemberName'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=member_id&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=MemberId&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
                 Member Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='member_id'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='MemberId'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=form_fee&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
-                Form Price
+            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=FormFee&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
+                Form Fee
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='form_fee'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='FormFee'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=created_at&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('loanapplicationmoneyreceipt/list?field=ActualDate&sort={{Session::get("loanapplicationmoneyreceipt_sort")=="asc"?"desc":"asc"}}')">
                 Date
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='created_at'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplicationmoneyreceipt_field')=='ActualDate'?(Session::get('loanapplicationmoneyreceipt_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -65,10 +65,10 @@
     @foreach($loanapplicationmoneyreceipts as $key=>$loanapplicationmoneyreceipt)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$loanapplicationmoneyreceipt->member_id}}</td>
-            <td>{{$loanapplicationmoneyreceipt->member_name}}</td>
-            <td>{{$loanapplicationmoneyreceipt->form_fee}}</td>
-            <td>{{$loanapplicationmoneyreceipt->created_at}}</td>
+            <td>{{$loanapplicationmoneyreceipt->MemberId}}</td>
+            <td>{{$loanapplicationmoneyreceipt->MemberName}}</td>
+            <td>{{$loanapplicationmoneyreceipt->FormFee}}</td>
+            <td>{{$loanapplicationmoneyreceipt->ActualDate}}</td>
             @if(Auth::user()->user_type == "admin")
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"

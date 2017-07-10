@@ -13,6 +13,7 @@
             <ul class="dropdown-menu">
                 
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Fee</a></li>
                <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
@@ -98,6 +99,7 @@
             <ul class="dropdown-menu">
                 
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Fee</a></li>
                <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
@@ -112,6 +114,13 @@
                 <li><a tabindex="-1" href="{{ url('/accountopen') }}">Opening Account</a></li>
                 <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>
                 <li><a tabindex="-1" href="{{ url('/withdraw') }}">Withdraw</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Loan</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/loanapplication') }}">Loan Application</a></li>
+                <li><a tabindex="-1" href="{{ url('/withdraw') }}">Approval</a></li>
+                <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>                
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>

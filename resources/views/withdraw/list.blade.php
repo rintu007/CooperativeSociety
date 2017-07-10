@@ -92,7 +92,7 @@
                    href="javascript:ajaxLoad('withdraw/update/{{$withdraw->id}}')">
                     <i class="glyphicon glyphicon-plus-sign"></i> add</a> -->
                 <a class="btn btn-primary btn-xs" title="withdraw"
-                   href="javascript:ajaxLoad('withdraw/create/{{$withdraw->AccountNo}}')">
+                   href="javascript:ajaxLoad('withdraw/create/{{$withdraw->MemberId}}')">
                     <i class="glyphicon glyphicon-minus-sign"></i> withdraw</a>
                <!--  <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('withdraw/delete/{{$withdraw->id}}')">

@@ -6,39 +6,40 @@
             <span id="serial_no-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-member_name-error">
-        {!! Form::label("member_name","Member Name:",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-12" id="form-MemberId-error">
+        {!! Form::label("MemberId","Member Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="member_name-error" class="help-block"></span>
+            {!! Form::text("MemberId",null,["class"=>"form-control required","id"=>"MemberId"]) !!}
+            <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-member_id-error">
-        {!! Form::label("member_id","Member Id:",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-12" id="form-MemberName-error">
+        {!! Form::label("MemberName","Member Name:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_id",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="member_id-error" class="help-block"></span>
+            {!! Form::text("MemberName",null,["class"=>"form-control required","id"=>"MemberName"]) !!}
+            <span id="MemberName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-mobile_no-error">
-        {!! Form::label("mobile_no","Mobile No:",["class"=>"control-label col-md-3"]) !!}
+   
+    <div class="form-group required col-md-12" id="form-MobileNo-error">
+        {!! Form::label("MobileNo","Mobile No:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("mobile_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="mobile_no-error" class="help-block"></span>
+            {!! Form::text("MobileNo",null,["class"=>"form-control required","id"=>"MobileNo"]) !!}
+            <span id="MobileNo-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-form_fee-error">
-        {!! Form::label("form_fee","Form Fee:",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-12" id="form-FormFee-error">
+        {!! Form::label("FormFee","Form Fee:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("form_fee",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="form_fee-error" class="help-block"></span>
+            {!! Form::text("FormFee",100,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="FormFee-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-12" id="form-created_at-error">
-        {!! Form::label("created_at","Date",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-12" id="form-ActualDate-error">
+        {!! Form::label("ActualDate","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("created_at",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="created_at-error" class="help-block"></span>
+            {!! Form::text("ActualDate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="ActualDate-error" class="help-block"></span>
         </div>
     </div>
 </div>
@@ -52,6 +53,34 @@
     </div>
 </div>
 <script>
+
+    $(document).on('change', '.MemberId', function () {
+            //console.log("yes it is change");
+            alert('hey this is working.');
+            // var op = " ";
+            var MemberId =  $(this).val();
+        
+            $('#DivisionOfficeId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getMemberInfo',
+                data: {'id': MemberId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+
+                          document.getElementById("MemberName").value = subcatObj.EnglishName;
+                          document.getElementById("MobileNo").value = subcatObj.MobileNo;
+                        
+                    });
+                },
+                error: function () {
+                    alert("Please be a member first.");
+                    // $(".inforError :input").attr("disabled", true);
+                }
+            });
+            // $.ajax(clear);
+        });
+
     $("#frm").submit(function (event) {
         event.preventDefault();
         $('.loading').show();
@@ -69,7 +98,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('member_name');
+                        index = $(this).attr('MemberId');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

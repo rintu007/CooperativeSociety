@@ -1,567 +1,422 @@
-<h2>Loan Application</h2>
-<div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-LoanReceiverNAme-error">
-        {!! Form::label("LoanReceiverNAme","ঋণ গ্রহীতার নাম",["class"=>"control-label col-md-3"]) !!}
+<div class="col-md-12 inforError" style="background-color: #EAEAEA">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Loan Information</h3>               
+    </div>
+    <div class="form-group required col-md-6" id="form-MemberId-error">
+        {!! Form::label("MemberId","Member Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("LoanReceiverNAme",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="LoanReceiverNAme-error" class="help-block"></span>
+            {!! Form::text("MemberId",null,["class"=>"form-control MemberId required","id"=>"MemberId"]) !!}
+            <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-FatherName-error">
-        {!! Form::label("FatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-Designation-error">
+        {!! Form::label("Designation","Designation",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("FatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="FatherName-error" class="help-block"></span>
+            {!! Form::text("Designation",null,["class"=>"form-control Designation required","id"=>"Designation"]) !!}
+            <span id="Designation-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-MotherName-error">
-        {!! Form::label("MotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-Savings-error">
+        {!! Form::label("Savings","Saving in TECSL",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("MotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MotherName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-HasbandWifeNAme-error">
-        {!! Form::label("HasbandWifeNAme","স্বামী/ স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("HasbandWifeNAme",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="HasbandWifeNAme-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-DateOfBirth-error">
-        {!! Form::label("DateOfBirth","জন্ম তারিখ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("PurposeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="DateOfBirth-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Age-error">
-        {!! Form::label("Age","বয়স",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Age",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Age-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Nationality-error">
-        {!! Form::label("Nationality","জাতীয়তা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Nationality",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Nationality-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Profession-error">
-        {!! Form::label("Profession","পেশা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Profession",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Profession-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-Nid-error">
-        {!! Form::label("Nid","জাতীয় পরিচয় পত্র নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("Nid",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Nid-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-IncomeTexVerificationNo-error">
-        {!! Form::label("IncomeTexVerificationNo","আয়কর শনাক্তকরণ নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("IncomeTexVerificationNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="IncomeTexVerificationNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-DrivingLicenceNo-error">
-        {!! Form::label("DrivingLicenceNo","ড্রাইভিং লাইসেন্স নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("DrivingLicenceNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="DrivingLicenceNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-MobileNoOffice-error">
-        {!! Form::label("MobileNoOffice","মোবাইল নং(অফিস)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("MobileNoOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MobileNoOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-MobileNoHouse-error">
-        {!! Form::label("MobileNoHouse","মোবাইল নং(বাসা)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("MobileNoHouse",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="MobileNoHouse-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CurrentVillageName-error">
-        {!! Form::label("CurrentVillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CurrentVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CurrentVillageName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CurrentPostOffice-error">
-        {!! Form::label("CurrentPostOffice","ডাকঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CurrentPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CurrentPostOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CurrentUpojela-error">
-        {!! Form::label("CurrentUpojela","উপজেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CurrentUpojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CurrentUpojela-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-CurrentJela-error">
-        {!! Form::label("CurrentJela","জেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("CurrentJela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="CurrentJela-error" class="help-block"></span>
+            {!! Form::text("Savings",null,["class"=>"form-control Savings required","id"=>"Savings"]) !!}
+            <span id="Savings-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-PermanentVillageName-error">
-        {!! Form::label("PermanentVillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-LoanAmount-error">
+        {!! Form::label("LoanAmount","Loan Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("PermanentVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PermanentVillageName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-PermanentPostOffice-error">
-        {!! Form::label("PermanentPostOffice","ডাকঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("PermanentPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PermanentPostOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-PermanentUpojela-error">
-        {!! Form::label("PermanentUpojela","উপজেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("PermanentUpojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PermanentUpojela-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-PermanentJela-error">
-        {!! Form::label("PermanentJela","জেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("PermanentJela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="PermanentJela-error" class="help-block"></span>
+            {!! Form::text("LoanAmount",null,["class"=>"form-control required","id"=>"LoanAmount"]) !!}
+            <span id="LoanAmount-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-OfficeOrgName-error">
-        {!! Form::label("OfficeOrgName","প্রতিষ্ঠানের নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-LoanDuration-error">
+        {!! Form::label("LoanDuration","Loan Duration",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("OfficeOrgName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="OfficeOrgName-error" class="help-block"></span>
+            {!! Form::text("LoanDuration",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="LoanDuration-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Officej-error">
-        {!! Form::label("Officej","পদবী",["class"=>"control-label col-md-3"]) !!}
+
+    <div class="form-group required col-md-6" id="form-InterestRate-error">
+        {!! Form::label("InterestRate","Interest Rate",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Officej",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Officej-error" class="help-block"></span>
+            {!! Form::text("InterestRate",null,["class"=>"form-control InterestRate required","id"=>"InterestRate"]) !!}
+            <span id="InterestRate-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-OfficeIdNo-error">
-        {!! Form::label("OfficeIdNo","পরিচিতি নং",["class"=>"control-label col-md-3"]) !!}
+
+    <div class="form-group required col-md-6" id="form-BankAccountName-error">
+        {!! Form::label("BankAccountName","Bank Account Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("OfficeIdNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="OfficeIdNo-error" class="help-block"></span>
+            {!! Form::text("BankAccountName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="BankAccountName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-OfficeAddress-error">
-        {!! Form::label("OfficeAddress","ঠিকানা",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-AccountType-error">
+        {!! Form::label("AccountType","Account Type:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::textarea("OfficeAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="OfficeAddress-error" class="help-block"></span>
+            {!! Form::text("AccountType",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="AccountType-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-BankName-error">
-        {!! Form::label("BankName","ব্যাংক হিসাবের নাম/ শিরোনাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-AccountNo-error">
+        {!! Form::label("AccountNo","Account No",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("BankName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BankName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BankAccountType-error">
-        {!! Form::label("BankAccountType","হিসাবের ধরন",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BankAccountType",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BankAccountType-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BankAccountNo-error">
-        {!! Form::label("BankAccountNo","হিসাব নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BankAccountNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BankAccountNo-error" class="help-block"></span>
+            {!! Form::text("AccountNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="AccountNo-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BankName-error">
-        {!! Form::label("BankName","ব্যাংকের নাম",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("BankName","Bank Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("BankName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="BankName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BranchName-error">
-        {!! Form::label("BranchName","শাখা",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("BranchName","Branch Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("BranchName",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="BranchName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-IncomeSource-error">
-        {!! Form::label("IncomeSource","আয়ের উৎস",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("IncomeSource","Income Source",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("IncomeSource",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="IncomeSource-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Signature-error">
-        {!! Form::label("Signature","স্বাক্ষর",["class"=>"control-label col-md-3"]) !!}
+</div>
+
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Office Information</h3>               
+    </div>
+      <div class="form-group required col-md-6" id="form-MemberName-error">
+        {!! Form::label("MemberName","Member Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Signature",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Signature-error" class="help-block"></span>
+            {!! Form::text("MemberName",null,["class"=>"form-control MemberName required","id"=>"MemberName"]) !!}
+            <span id="MemberName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Name-error">
-        {!! Form::label("Name","নাম",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-DomainName-error">
+        {!! Form::label("DomainName","Domain Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Name",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Name-error" class="help-block"></span>
+            {!! Form::text("DomainName", null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+            <span id="DomainName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-j-error">
-        {!! Form::label("j","পদবী",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
+        {!! Form::label("DivisionOfficeId","Divisional Office",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("j",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="j-error" class="help-block"></span>
+            {!! Form::text("DivisionOfficeId", null,["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
+            <span id="DivisionOfficeId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-IdNo-error">
-        {!! Form::label("IdNo","পরিচিতি নং",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-ZoneId-error">
+        {!! Form::label("ZoneId","Zone",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("IdNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="IdNo-error" class="help-block"></span>
+            {!! Form::text("ZoneId", null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
+            <span id="ZoneId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-Date-error">
-        {!! Form::label("Date","তারিখ",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-AreaId-error">
+        {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Date",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="Date-error" class="help-block"></span>
+            {!! Form::text("AreaId", null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
+            <span id="AreaId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-BranchId-error">
+        {!! Form::label("BranchId","Branch",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("BranchId", null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
+            <span id="BranchId-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-TMSSId-error">
+        {!! Form::label("TMSSId","TMSS Employee ID",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("TMSSId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TMSSId-error" class="help-block"></span>
         </div>
     </div>
 </div>
-<h2>Jamindar</h2>
-<div class="col-md-12">
-    <div class="form-group required col-md-6" id="form-GrantorName-error">
-        {!! Form::label("GrantorName","জিম্মাদারের নাম",["class"=>"control-label col-md-3"]) !!}
+<div class="col-md-12 inforError" style="background-color: #EAEAEA">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Gaurantor Information</h3>               
+    </div>
+    <div class="form-group required col-md-6" id="form-GaurantorName-error">
+        {!! Form::label("GaurantorName","Gaurantor Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("GrantorName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorName-error" class="help-block"></span>
+            {!! Form::text("GaurantorName",null,["class"=>"form-control GaurantorName required","id"=>"GaurantorName"]) !!}
+            <span id="GaurantorName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-GrantorFatherName-error">
-        {!! Form::label("GrantorFatherName","পিতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GFatherName-error">
+        {!! Form::label("GFatherName","Father Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("GrantorFatherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorFatherName-error" class="help-block"></span>
+            {!! Form::text("GFatherName",null,["class"=>"form-control GFatherName required","id"=>"GFatherName"]) !!}
+            <span id="GFatherName-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-GrantorMotherName-error">
-        {!! Form::label("GrantorMotherName","মাতার নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GMotherName-error">
+        {!! Form::label("GMotherName","GMotherName",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("GrantorMotherName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorMotherName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorHasbandWifeNAme-error">
-        {!! Form::label("GrantorHasbandWifeNAme","স্বামী/ স্ত্রীর নাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorHasbandWifeNAme",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorHasbandWifeNAme-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorDateOfBirth-error">
-        {!! Form::label("GrantorDateOfBirth","জন্ম তারিখ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorPurposeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorDateOfBirth-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorAge-error">
-        {!! Form::label("GrantorAge","বয়স",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorAge",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorAge-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorNationality-error">
-        {!! Form::label("GrantorNationality","জাতীয়তা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorNationality",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorNationality-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorProfession-error">
-        {!! Form::label("GrantorProfession","পেশা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorProfession",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorProfession-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorNid-error">
-        {!! Form::label("GrantorNid","জাতীয় পরিচয় পত্র নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorNid",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorNid-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorIncomeTexVerificationNo-error">
-        {!! Form::label("GrantorIncomeTexVerificationNo","আয়কর শনাক্তকরণ নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorIncomeTexVerificationNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorIncomeTexVerificationNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorDrivingLicenceNo-error">
-        {!! Form::label("GrantorDrivingLicenceNo","ড্রাইভিং লাইসেন্স নং(যদি থাকে)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorDrivingLicenceNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorDrivingLicenceNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorMobileNoOffice-error">
-        {!! Form::label("GrantorMobileNoOffice","মোবাইল নং(অফিস)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorMobileNoOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorMobileNoOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorMobileNoHouse-error">
-        {!! Form::label("GrantorMobileNoHouse","মোবাইল নং(বাসা)",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorMobileNoHouse",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorMobileNoHouse-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorCurrentVillageName-error">
-        {!! Form::label("GrantorCurrentVillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorCurrentVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorCurrentVillageName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorCurrentPostOffice-error">
-        {!! Form::label("GrantorCurrentPostOffice","ডাকঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorCurrentPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorCurrentPostOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorCurrentUpojela-error">
-        {!! Form::label("GrantorCurrentUpojela","উপজেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorCurrentUpojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorCurrentUpojela-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorCurrentJela-error">
-        {!! Form::label("GrantorCurrentJela","জেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorCurrentJela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorCurrentJela-error" class="help-block"></span>
+            {!! Form::text("GMotherName",null,["class"=>"form-control GMotherName required","id"=>"GMotherName"]) !!}
+            <span id="GMotherName-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-GrantorPermanentVillageName-error">
-        {!! Form::label("GrantorPermanentVillageName","গ্রাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GAge-error">
+        {!! Form::label("GAge","Age",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("GrantorPermanentVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorPermanentVillageName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorPermanentPostOffice-error">
-        {!! Form::label("GrantorPermanentPostOffice","ডাকঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorPermanentPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorPermanentPostOffice-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorPermanentUpojela-error">
-        {!! Form::label("GrantorPermanentUpojela","উপজেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorPermanentUpojela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorPermanentUpojela-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorPermanentJela-error">
-        {!! Form::label("GrantorPermanentJela","জেলাঃ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorPermanentJela",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorPermanentJela-error" class="help-block"></span>
+            {!! Form::text("GAge",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GAge-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-GrantorOfficeOrgName-error">
-        {!! Form::label("GrantorOfficeOrgName","প্রতিষ্ঠানের নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GBirthDate-error">
+        {!! Form::label("GBirthDate","Birth Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("GrantorOfficeOrgName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorOfficeOrgName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorOfficej-error">
-        {!! Form::label("GrantorOfficej","পদবী",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorOfficej",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorOfficej-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorOfficeIdNo-error">
-        {!! Form::label("GrantorOfficeIdNo","পরিচিতি নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorOfficeIdNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorOfficeIdNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorOfficeAddress-error">
-        {!! Form::label("GrantorOfficeAddress","ঠিকানা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::textarea("GrantorOfficeAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorOfficeAddress-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorBankName-error">
-        {!! Form::label("GrantorBankName","ব্যাংক হিসাবের নাম/ শিরোনাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorBankName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorBankName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorBankAccountType-error">
-        {!! Form::label("GrantorBankAccountType","হিসাবের ধরন",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorBankAccountType",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorBankAccountType-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorBankAccountNo-error">
-        {!! Form::label("GrantorBankAccountNo","হিসাব নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorBankAccountNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorBankAccountNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorBankName-error">
-        {!! Form::label("GrantorBankName","ব্যাংকের নাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorBankName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorBankName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorBranchName-error">
-        {!! Form::label("GrantorBranchName","শাখা",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorBranchName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorBranchName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorIncomeSource-error">
-        {!! Form::label("GrantorIncomeSource","TECSL সদস্য ভুক্ত হওয়ার তারিখ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorIncomeSource",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorIncomeSource-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorIncomeSource-error">
-        {!! Form::label("GrantorIncomeSource","সদস্য নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorIncomeSource",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorIncomeSource-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorSaving-error">
-        {!! Form::label("GrantorSaving","সঞ্চয়ের পরিমাণ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorSaving",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorSaving-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-GrantorSignature-error">
-        {!! Form::label("GrantorSignature","স্বাক্ষর",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GrantorSignature",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="GrantorSignature-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BorrowerName-error">
-        {!! Form::label("BorrowerName","নাম",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BorrowerName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BorrowerName-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BorrowerDesignation-error">
-        {!! Form::label("BorrowerDesignation","পদবী",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BorrowerDesignation",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BorrowerDesignation-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BorrowerIdNo-error">
-        {!! Form::label("BorrowerIdNo","পরিচিতি নং",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BorrowerIdNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BorrowerIdNo-error" class="help-block"></span>
-        </div>
-    </div>
-    <div class="form-group required col-md-6" id="form-BorrowerDate-error">
-        {!! Form::label("BorrowerDate","তারিখ",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("BorrowerDate",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="BorrowerDate-error" class="help-block"></span>
+            {!! Form::text("GBirthDate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GBirthDate-error" class="help-block"></span>
         </div>
     </div>
 
-    <div class="form-group required col-md-6" id="form-WitnessesSignature-error">
-        {!! Form::label("WitnessesSignature","স্বাক্ষর",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GNationality-error">
+        {!! Form::label("GNationality","Nationality",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("WitnessesSignature",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="WitnessesSignature-error" class="help-block"></span>
+            {!! Form::text("GNationality",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GNationality-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-WitnessesName-error">
-        {!! Form::label("WitnessesName","নাম",["class"=>"control-label col-md-3"]) !!}
+
+    <div class="form-group required col-md-6" id="form-GOccupation-error">
+        {!! Form::label("GOccupation","Occupation",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("WitnessesName",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="WitnessesName-error" class="help-block"></span>
+            {!! Form::text("GOccupation",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GOccupation-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-WitnessesSignature1-error">
-        {!! Form::label("WitnessesSignature1","স্বাক্ষর",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GNId-error">
+        {!! Form::label("GNId","National Id:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("WitnessesSignature1",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="WitnessesSignature1-error" class="help-block"></span>
+            {!! Form::text("GNId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GNId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-WitnessesName1-error">
-        {!! Form::label("WitnessesName1","নাম",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-GTaxNo-error">
+        {!! Form::label("GTaxNo","Tax No(if any)",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("WitnessesName1",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="WitnessesName1-error" class="help-block"></span>
+            {!! Form::text("GTaxNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GTaxNo-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GDrivingLicenseNo-error">
+        {!! Form::label("GDrivingLicenseNo","Driving License No",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GDrivingLicenseNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GDrivingLicenseNo-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GMobileNo-error">
+        {!! Form::label("GMobileNo","Mobile No",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GMobileNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GMobileNo-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GVillageName-error">
+        {!! Form::label("GVillageName","Village Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GVillageName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GVillageName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GPostOffice-error">
+        {!! Form::label("GPostOffice","Post Office:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GPostOffice",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GPostOffice-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GPolliceStation-error">
+        {!! Form::label("GPolliceStation","Pollice Station",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GPolliceStation",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GPolliceStation-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-GDistrict-error">
+        {!! Form::label("GDistrict","District",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GDistrict",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GDistrict-error" class="help-block"></span>
+        </div>
+    </div>
+</div>
+<div class="col-md-12 inforError" style="background-color: #F7F7F7">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Gaurantor Office Information</h3>               
+    </div>
+    
+    <div class="form-group required col-md-6" id="form-GOfficeName-error">
+        {!! Form::label("GOfficeName","Village:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GOfficeName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GOfficeName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GDesignation-error">
+        {!! Form::label("GDesignation","Post Office:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GDesignation",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GDesignation-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GOfficeId-error">
+        {!! Form::label("GOfficeId","Pollice Station:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GOfficeId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GOfficeId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GOfficeAddress-error">
+        {!! Form::label("GOfficeAddress","District:",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GOfficeAddress",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GOfficeAddress-error" class="help-block"></span>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12 inforError" style="background-color: #EAEAEA">
+    <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
+        <h3>Gaurantor Bank Information</h3>               
+    </div>
+    
+    <div class="form-group required col-md-6" id="form-GBankAccountName-error">
+        {!! Form::label("GBankAccountName","Band Account Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GBankAccountName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GBankAccountName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GAccountType-error">
+        {!! Form::label("GAccountType","Account Type",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GAccountType",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GAccountType-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GAccountNo-error">
+        {!! Form::label("GAccountNo","Account No",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GAccountNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GAccountNo-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GBankName-error">
+        {!! Form::label("GBankName","Bank Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GBankName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GBankName-error" class="help-block"></span>
+        </div>
+    </div>
+
+    <div class="form-group required col-md-6" id="form-GTMemberId-error">
+        {!! Form::label("GTMemberId","TMSS Id",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GTMemberId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GTMemberId-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GBranchName-error">
+        {!! Form::label("GBranchName","Branch Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GBranchName",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GBranchName-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GAdmDate-error">
+        {!! Form::label("GAdmDate","Admission Date",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GAdmDate",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GAdmDate-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-GSavingAmount-error">
+        {!! Form::label("GSavingAmount","Saving Amount",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("GSavingAmount",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GSavingAmount-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-GImage-error">
+        {!! Form::label("GImage","Gaurantor Image",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("GImage",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GImage-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-GSignature-error">
+        {!! Form::label("GSignature","Gaurantor Signature",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("GSignature",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="GSignature-error" class="help-block"></span>
+        </div>
+    </div>
+    
+</div>
+
+<div class="col-md-12" style="background-color: #F7F7F7">
+    <div class="form-group required col-md-6" id="">
+    <h3>Witness Information-1</h3>
+    </div>
+    <div class="form-group required col-md-6" id="">
+       <h3>Witness Information-2</h3>
+    </div>
+     <div class="form-group required col-md-6" id="form-WName1-error">
+        {!! Form::label("WName1","Witness Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("WName1",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="WName1-error" class="help-block"></span>
+        </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-WName2-error">
+        {!! Form::label("WName2","Witness Name",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("WName2",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="WName2-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-W1Signature-error">
+        {!! Form::label("W1Signature","Witness Signature",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("W1Signature",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="W1Signature-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-W2Signature-error">
+        {!! Form::label("W2Signature","Witness Signature",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::file("W2Signature",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="W2Signature-error" class="help-block"></span>
         </div>
     </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('loanapplication/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('member/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
-    btn-primary"])!!}
+    btn-primary "])!!}
     </div>
 </div>
 <script>
@@ -582,7 +437,7 @@
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('name');
+                        index = $(this).attr('MemberId');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);
@@ -606,4 +461,176 @@
         });
         return false;
     });
+
 </script>
+<script>
+
+    // $(document).ready(function () {
+    //     $(document).on('change', '.DomainName', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var DomainName = $(this).val();
+        
+    //         $('#DivisionOfficeId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getDivisionOffice',
+    //             data: {'id': DomainName},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObj) {
+    //                     $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+    //                 alert("Enternal Connection errors.");
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+    //     $(document).on('change', '.DivisionOfficeId', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var DivisionOfficeId = $(this).val();
+    //         //var div = $(this).parent();
+    //         //console.log(DivisionId);
+    //         $('#ZoneId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getZone',
+    //             data: {'id': DivisionOfficeId},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObj1) {
+    //                     $('#ZoneId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ZoneName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+
+    //     $(document).on('change', '.ThanaId', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var ThanaId = $(this).val();
+    //         //var div = $(this).parent();
+    //         //console.log(DivisionId);
+    //         $('#UnionId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getUnion',
+    //             data: {'id': ThanaId},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObj2) {
+    //                     $('#UnionId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.UnionName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+
+    //     $(document).on('change', '.UnionId', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var UnionId = $(this).val();
+    //         //var div = $(this).parent();
+    //         //console.log(DivisionId);
+    //         $('#WordId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getWord',
+    //             data: {'id': UnionId},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObj2) {
+    //                     $('#WordId').append('<option value="'+subcatObj2.id+'">'+subcatObj2.WardName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+
+    //     $(document).on('change', '.DistrictId', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var DistrictId = $(this).val();
+    //         //var div = $(this).parent();
+    //         //console.log(DistrictId);
+    //         $('#PostOfficeId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getPostOffice',
+    //             data: {'id': DistrictId},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObj3) {
+    //                     $('#PostOfficeId').append('<option value="'+subcatObj3.id+'">'+subcatObj3.PostofficeName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+
+    //     $(document).on('change', '.ZoneId', function () {
+    //         //console.log("yes it is change");
+
+    //         var op = " ";
+    //         var ZoneId = $(this).val();
+    //         //var div = $(this).parent();
+    //         //console.log(DivisionId);
+    //         $('#AreaId').empty();
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getArea',
+    //             data: {'id': ZoneId},
+    //             success: function (data) {
+    //                 $.each(data, function (index, subcatObjArea) {
+    //                     $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
+    //                 });
+    //             },
+    //             error: function () {
+
+    //             }
+    //         });
+    //         $.ajax(clear);
+    //     });
+
+    //     $(document).on('change', '.MemberId', function () {
+
+    //         var op = " ";
+    //         var MemberId = $(this).val();           
+            
+    //         $.ajax({
+    //             type: 'get',
+    //             url: 'getJustify',
+    //             data: {'id': MemberId},
+    //             success: function (data) {
+    //                 $('#EnglishName').empty();
+    //                 console.log(data); 
+    //                     document.getElementById("EnglishName").value = data;
+    //             },
+    //             error: function () {
+    //                     alert("Please pay form and passbook fee first.");
+    //                     $(".inforError :input").attr("disabled", true);
+    //             }
+    //         });
+    //         // $.ajax(clear);
+    //     });
+
+    // });
+
+</script>
+

@@ -80,26 +80,30 @@ class SelectBoxController extends Controller
          $posting->posted_by    = $user_id;
          $posting->save();
 
-        //         $withdraws_data = Savingtable::where('MemberId', $MemberId)->get();
-        //          foreach($withdraws_data as $key=>$withdraw_data){
-        //             $PresentGSaving = $withdraw_data->GSaving;
-        //             $presentDps = $withdraw_data->Dps;
-        //          }
-        // $savingtables = Savingtable::find($MemberId);
-        // $savingtables ->DomainName = $DomainName;
-        // $savingtables ->DivisionName = $DivisionName;
-        // $savingtables ->ZoneId = $ZoneId;
-        // $savingtables ->AreaId = $AreaId;
-        // $savingtables ->BranchId = $BranchId;
-        // $savingtables ->MonthId = $MonthId;
-        // $savingtables ->YearId = $YearId;
-        // $savingtables ->MemberId = $MemberId;
-        // $savingtables ->MemberName = $MemberName;
-        // $savingtables ->AccountNo = $AccountNo;
-        // $savingtables ->GSaving = $GSaving + $PresentGSaving;
-        // $savingtables ->Dps = $Dps + $presentDps;
-        // $savingtables ->posted_by = $user_id;
-        // $savingtables->save();
+                
+        $savingtables = new Savingtable();
+        $savingtables ->DomainName = $DomainName;
+        $savingtables ->DivisionName = $DivisionName;
+        $savingtables ->ZoneId = $ZoneId;
+        $savingtables ->AreaId = $AreaId;
+        $savingtables ->BranchId = $BranchId;
+        $savingtables ->MonthId = $MonthId;
+        $savingtables ->YearId = $YearId;
+        $savingtables ->MemberId = $MemberId;
+        $savingtables ->MemberName = $MemberName;
+        $savingtables ->AccountNo = $AccountNo;
+
+        $withdraws_data = DB::table('savingtables')
+                                  ->where('MemberId', $MemberId)->get();
+                 foreach($withdraws_data as $key=>$withdraw_data){
+                    $PresentGSaving = $withdraw_data->GSaving;
+                    $presentDps = $withdraw_data->Dps;
+                 }
+
+        $savingtables ->GSaving = $GSaving + $PresentGSaving ;
+        $savingtables ->Dps = $Dps + $presentDps ;
+        $savingtables ->posted_by = $user_id;
+        $savingtables->save();
 
         return response()->json(true);
     }
@@ -109,8 +113,9 @@ class SelectBoxController extends Controller
             ->select('*')
             ->where('MemberId', $request->id)
             ->get();
-
-        return response()->json($data);
+            if($data != null){
+             return response()->json($data);
+        }
     }
 
      public function getPostingInfo(Request $request){
@@ -142,7 +147,7 @@ class SelectBoxController extends Controller
             // ->where('members.AreaId', $AreaId)
             // ->where('members.BranchId', $BranchId)
             // ->where('postings.Status', '!=', '1')
-            ->select('members.*', 'accountopens.Dps')
+            ->select('members.*', 'accountopens.*')
             ->get();
 
         return response()->json($data);

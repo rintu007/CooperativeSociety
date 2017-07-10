@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `withdraws` (
   `id` int(11) NOT NULL,
   `serial_no` int(11) DEFAULT NULL,
-  `member_id` varchar(500) DEFAULT NULL,
+  `MemberId` varchar(500) DEFAULT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `share_number` int(22) DEFAULT NULL,
-  `share_amount` double DEFAULT NULL,
+  `AccountNo` int(22) DEFAULT NULL,
+  `Amount` double DEFAULT NULL,
+  `posted_by` varchar(500) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -42,7 +43,7 @@ CREATE TABLE `withdraws` (
 -- Dumping data for table `withdraws`
 --
 
-INSERT INTO `withdraws` (`id`, `serial_no`, `member_id`, `date`, `share_number`, `share_amount`, `created_at`, `updated_at`) VALUES
+INSERT INTO `withdraws` (`id`, `serial_no`, `MemberId`, `date`, `AccountNo`, `Amount`, `created_at`, `updated_at`) VALUES
 (1, 1, '1', '2017-04-08 18:00:00', 1, 100, '2017-04-09 05:13:30', '2017-04-09 05:13:30'),
 (2, 2, '2', '2017-04-09 18:00:00', 3, 300, '2017-04-09 21:40:30', '2017-04-09 21:40:30');
 

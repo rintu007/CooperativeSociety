@@ -4,45 +4,45 @@
     <tr>
         
         <th>
-            <a href="javascript:ajaxLoad('withdraw/list?field=member_id&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
+            <a href="javascript:ajaxLoad('withdraw/list?field=MemberId&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                 Member Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('withdraw_field')=='member_id'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='MemberId'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-         <th>
-            <a href="javascript:ajaxLoad('withdraw/list?field=member_name&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
+        <!--  <th>
+            <a href="javascript:ajaxLoad('withdraw/list?field=MemberName&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                 Member Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('withdraw_field')=='member_name'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='MemberName'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th>-->
         <th>
-            <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_number&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
-                Duration
+            <a href="javascript:ajaxLoad('withdraw/list?field=Duration&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
+                Account No
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_number'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='Duration'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th> 
         <th>
-            <a href="javascript:ajaxLoad('withdraw/list?field=withdraw_amount&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
-               MonthlyInstallment
+            <a href="javascript:ajaxLoad('withdraw/list?field=MonthlyInstallment&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
+               Dps Amount
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('withdraw_field')=='withdraw_amount'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('withdraw_field')=='MonthlyInstallment'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-         <th>
+        <!--  <th>
             <a href="javascript:ajaxLoad('withdraw/list?field=created_at&sort={{Session::get("withdraw_sort")=="asc"?"desc":"asc"}}')">
                Created Date
             </a>
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('withdraw_field')=='created_at'?(Session::get('withdraw_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>
+        </th> -->
     </tr>
     </thead>
     <tbody>
@@ -51,54 +51,54 @@
             
            <div >
                 <td>                
-                     {!! Form::text("MemberId",null,["class"=>"form-control readonly","id"=>"MemberId", "readonly" => "true"]) !!}
+                     {!! Form::text("MemberId", null,["class"=>"form-control readonly","id"=>"MemberId"]) !!}
                 </td>
             </div>
-           <div >
+          <!--  <div >
                 <td>                
-                     {!! Form::text("MemberName",null,["class"=>"form-control readonly","id"=>"MemberName", "readonly" => "true"]) !!}
+                     {!! Form::text("MemberName",null,["class"=>"form-control readonly","id"=>"MemberName"]) !!}
+                </td>
+            </div> -->
+            <div >
+                <td>                
+                     {!! Form::text("Duration",null,["class"=>"form-control readonly","id"=>"Duration"]) !!}
                 </td>
             </div>
             <div >
                 <td>                
-                     {!! Form::text("Duration",null,["class"=>"form-control readonly","id"=>"Duration", "readonly" => "true"]) !!}
+                     {!! Form::text("Dps",null,["class"=>"form-control readonly","id"=>"Dps"]) !!}
                 </td>
             </div>
-            <div >
+<!--             <div >
                 <td>                
-                     {!! Form::text("MonthlyInstallment",null,["class"=>"form-control readonly","id"=>"MonthlyInstallment", "readonly" => "true"]) !!}
+                     {!! Form::date("date",null,["class"=>"form-control readonly","id"=>"created_at"]) !!}
                 </td>
-            </div>
-            <div >
-                <td>                
-                     {!! Form::date("date",null,["class"=>"form-control readonly","id"=>"created_at", "readonly" => "true"]) !!}
-                </td>
-            </div>
+            </div> -->
         </tr>
    
     </tbody>
 </table>
 </div>
 <div class="col-md-12" style="background-color: #EAEAEA">
-    <div class="form-group required col-md-6" id="form-serial_no-error">
+    <!-- <div class="form-group required col-md-6" id="form-serial_no-error">
         {!! Form::label("serial_no","Voutcher No",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::text("serial_no",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="serial_no-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-withdraw_number-error">
-        {!! Form::label("withdraw_number","Withdraw Number",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-Duration-error">
+        {!! Form::label("Duration","Withdraw Number",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6" onChange= "updatePrice()">
-            {!! Form::number("withdraw_number",null,["class"=>"form-control required","id"=>"withdraw_number" ]) !!}
-            <span id="withdraw_number-error" class="help-block"></span>
+            {!! Form::number("Duration",null,["class"=>"form-control required","id"=>"Duration" ]) !!}
+            <span id="Duration-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-member_id-error">
-        {!! Form::label("member_id","Member Id",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-MemberId-error">
+        {!! Form::label("MemberId","Member Id",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("member_id",null,["class"=>"form-control required","id"=>"focus", "readonly" => "true"]) !!}
-            <span id="member_id-error" class="help-block"></span>
+            {!! Form::text("MemberId",null,["class"=>"form-control required","id"=>"focus", "readonly" => "true"]) !!}
+            <span id="MemberId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-date-error">
@@ -108,13 +108,13 @@
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-6" id="form-withdraw_amount-error">
-        {!! Form::label("withdraw_amount","Withdraw Amount",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-MonthlyInstallment-error">
+        {!! Form::label("MonthlyInstallment","Withdraw Amount",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::number("withdraw_amount",null,["class"=>"form-control required","id"=>"withdraw_amount", "readonly" => "true"]) !!}
-            <span id="withdraw_amount-error" class="help-block"></span>
+            {!! Form::number("MonthlyInstallment",null,["class"=>"form-control required","id"=>"MonthlyInstallment", "readonly" => "true"]) !!}
+            <span id="MonthlyInstallment-error" class="help-block"></span>
         </div>
-    </div>  
+    </div>   -->
  
 </div>
 <div class="form-group">
@@ -131,8 +131,8 @@
 <!--<script type="text/javascript">
 i = 0;
 $(document).ready(function(){
-    $("#withdraw_number").keypress(function(){
-        $("#withdraw_amount").text(i += 1);
+    $("#Duration").keypress(function(){
+        $("#MonthlyInstallment").text(i += 1);
     });
 });
 </script> -->
@@ -143,12 +143,12 @@ $(document).ready(function(){
     {
             function updatePrice()
             {
-                var withdraw_number = parseFloat($("#withdraw_number").val());
-                var withdraw_amount = withdraw_number * 100.00;
-                // var withdraw_amount = total.toFixed(2);
-                $("#withdraw_amount").val(withdraw_amount);
+                var Duration = parseFloat($("#Duration").val());
+                var MonthlyInstallment = Duration * 100.00;
+                // var MonthlyInstallment = total.toFixed(2);
+                $("#MonthlyInstallment").val(MonthlyInstallment);
             }
-            $(document).on("change, keyup", "#withdraw_number", updatePrice);
+            $(document).on("change, keyup", "#Duration", updatePrice);
     });
 
     $("#frm").submit(function (event) {
@@ -168,7 +168,7 @@ $(document).ready(function(){
             success: function (data) {
                 if (data.fail) {
                     $('#frm input.required, #frm textarea.required').each(function () {
-                        index = $(this).attr('member_id');
+                        index = $(this).attr('MemberId');
                         if (index in data.errors) {
                             $("#form-" + index + "-error").addClass("has-error");
                             $("#" + index + "-error").html(data.errors[index]);

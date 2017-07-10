@@ -1,4 +1,4 @@
-<h2 class="page-header">New Loanapplication</h2>
+<h2 class="page-header">New Loan Application</h2>
 {!! Form::open(["id"=>"frm","class"=>"form-horizontal"]) !!}
 @include("loanapplication._form")
 {!! Form::close() !!}

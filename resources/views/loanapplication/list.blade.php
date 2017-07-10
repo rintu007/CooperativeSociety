@@ -26,27 +26,27 @@
     <tr>
         <th width="50px" style="text-align: center">No</th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplication/list?field=name&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
-                Name
+            <a href="javascript:ajaxLoad('loanapplication/list?field=MemberId&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
+                Member Id
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplication_field')=='name'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplication_field')=='MemberId'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplication/list?field=LoanapplicationCode&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
-                Loanapplication Code
+            <a href="javascript:ajaxLoad('loanapplication/list?field=MemberName&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
+                Member Name
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplication_field')=='LoanapplicationCode'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplication_field')=='MemberName'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th>
-            <a href="javascript:ajaxLoad('loanapplication/list?field=unitprice&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
-                Unitprice
+            <a href="javascript:ajaxLoad('loanapplication/list?field=LoanAmount&sort={{Session::get("loanapplication_sort")=="asc"?"desc":"asc"}}')">
+                Loan Amount
             </a>
             <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('loanapplication_field')=='unitprice'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+               class="glyphicon  {{ Session::get('loanapplication_field')=='LoanAmount'?(Session::get('loanapplication_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
         <th width="140px">Actions</th>
@@ -57,10 +57,9 @@
     @foreach($loanapplications as $key=>$loanapplication)
         <tr>
             <td align="center">{{$i++}}</td>
-            <td>{{$loanapplication->name}}</td>
-            <td>{{$loanapplication->LoanapplicationCode}}</td>
-            <td>{{$loanapplication->testfield}}</td>
-            <td align="right">$ {{$loanapplication->unitprice}}</td>
+            <td>{{$loanapplication->MemberId}}</td>
+            <td>{{$loanapplication->EnglishName}}</td>
+            <td>{{$loanapplication->LoanAmount}}</td>
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="Edit"
                    href="javascript:ajaxLoad('loanapplication/update/{{$loanapplication->id}}')">

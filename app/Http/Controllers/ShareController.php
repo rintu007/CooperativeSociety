@@ -29,7 +29,7 @@ class ShareController extends Controller
         Session::put('share_sort', Input::has('sort') ? Input::get('sort') : (Session::has('share_sort') ? Session::get('share_sort') : 'asc'));
 
         $shares = Share::where('id', 'like', '%' . Session::get('share_search') . '%') 
-            ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(10);
+            ->orderBy(Session::get('share_field'), Session::get('share_sort'))->paginate(25);
         return view('share.list', ['shares' => $shares]);
 
     }
