@@ -65,6 +65,9 @@ Route::controllers([
     'duration'                       => 'DurationController',
     'posting'                        => 'PostingController',
     'withdraw'                       => 'WithdrawController',
+    'approve'                       => 'ApproveController',
+    'addcat'                        => 'AddcatController',
+    'subcat'                        => 'SubcatController',
 
 ]); 
 
@@ -93,6 +96,8 @@ Route::get('getPostingInfo','SelectBoxController@getPostingInfo');
 Route::get('getMemberInfo','SelectBoxController@getMemberInfo');
 
 Route::get('getShishirSubmit','SelectBoxController@getShishirSubmit');
+
+Route::get('getShishirapproval','SelectBoxController@getShishirapproval');
 
 
 

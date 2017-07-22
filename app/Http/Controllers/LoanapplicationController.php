@@ -32,17 +32,17 @@ class LoanapplicationController extends Controller
     public function postUpdate($id)
     {
         $loanapplication = Loanapplication::find($id);
-         $validator = Validator::make(Input::all(), [
-            "MemberId" => "required|unique:loanapplications"
-            // "LoanapplicationCode" => "required|unique:loanapplications",
-            // "unitprice" => "required|numeric"
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        //  $validator = Validator::make(Input::all(), [
+        //     "MemberId" => "required|unique:loanapplications"
+        //     // "LoanapplicationCode" => "required|unique:loanapplications",
+        //     // "unitprice" => "required|numeric"
+        // ]);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
         $loanapplication->MemberId = Input::get('MemberId');
         $loanapplication->Designation = Input::get('Designation');
         $loanapplication->Savings = Input::get('Savings');
@@ -92,16 +92,16 @@ class LoanapplicationController extends Controller
         $loanapplication->GAdmDate = Input::get('GAdmDate');
         $loanapplication->GSavingAmount = Input::get('GSavingAmount');
 
-        $file = Input::file('GImage ');
-        $destinationPath = 'uploads/';
+       $file = Input::file('GImage ');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('GImage')->move($destinationPath, $filename);
             $loanapplication->GImage = $filename;
         }
 
-        $file = Input::file('GSignature ');
-        $destinationPath = 'uploads/';
+        $file = Input::file('GSignature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('GSignature')->move($destinationPath, $filename);
@@ -111,22 +111,22 @@ class LoanapplicationController extends Controller
         
         $loanapplication->WName1 = Input::get('WName1');
         $loanapplication->WName2 = Input::get('WName2');
-        
-        $file = Input::file('W1Signature ');
-        $destinationPath = 'uploads/';
+
+        $file = Input::file('W1Signature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('W1Signature')->move($destinationPath, $filename);
             $loanapplication->W1Signature = $filename;
         }
 
-        $file = Input::file('W2Signature ');
+        $file = Input::file('W2Signature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('W2Signature')->move($destinationPath, $filename);
             $loanapplication->W2Signature = $filename;
         }
-
         $loanapplication->save();
         return ['url' => 'loanapplication/list'];
     }
@@ -150,9 +150,10 @@ class LoanapplicationController extends Controller
             );
         }
         $loanapplication = new Loanapplication();
-        $loanapplication->MemberId = Input::get('MemberId');
+        $loanapplication->MemberId      = Input::get('MemberId');
         $loanapplication->Designation = Input::get('Designation');
         $loanapplication->Savings = Input::get('Savings');
+        $loanapplication->LoanType = Input::get('LoanType');
         $loanapplication->LoanAmount = Input::get('LoanAmount');
         $loanapplication->LoanDuration = Input::get('LoanDuration');
         $loanapplication->InterestRate = Input::get('InterestRate');
@@ -169,7 +170,7 @@ class LoanapplicationController extends Controller
         $loanapplication->AreaId = Input::get('AreaId');
         $loanapplication->BranchId = Input::get('BranchId');
         $loanapplication->TMSSId = Input::get('TMSSId');
-                            $TMSSId = Input::get('TMSSId');
+                          $TMSSId = Input::get('TMSSId');
         $loanapplication->GaurantorName = Input::get('GaurantorName');
         $loanapplication->GFatherName = Input::get('GFatherName');
         $loanapplication->GMotherName = Input::get('GMotherName');
@@ -185,6 +186,7 @@ class LoanapplicationController extends Controller
         $loanapplication->GVillageName = Input::get('GVillageName');
         $loanapplication->GPostOffice = Input::get('GPostOffice');
         $loanapplication->GPolliceStation = Input::get('GPolliceStation');
+        $loanapplication->GDistrict = Input::get('GDistrict');
         $loanapplication->GOfficeName = Input::get('GOfficeName');
         $loanapplication->GDesignation = Input::get('GDesignation');
         $loanapplication->GOfficeId = Input::get('GOfficeId');
@@ -200,15 +202,15 @@ class LoanapplicationController extends Controller
         $loanapplication->GSavingAmount = Input::get('GSavingAmount');
 
         $file = Input::file('GImage ');
-        $destinationPath = 'uploads/';
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('GImage')->move($destinationPath, $filename);
             $loanapplication->GImage = $filename;
         }
 
-        $file = Input::file('GSignature ');
-        $destinationPath = 'uploads/';
+        $file = Input::file('GSignature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('GSignature')->move($destinationPath, $filename);
@@ -219,21 +221,22 @@ class LoanapplicationController extends Controller
         $loanapplication->WName1 = Input::get('WName1');
         $loanapplication->WName2 = Input::get('WName2');
 
-        $file = Input::file('W1Signature ');
-        $destinationPath = 'uploads/';
+        $file = Input::file('W1Signature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('W1Signature')->move($destinationPath, $filename);
             $loanapplication->W1Signature = $filename;
         }
 
-        $file = Input::file('W2Signature ');
+        $file = Input::file('W2Signature');
+        $destinationPath = 'jamindar/';
         if(!empty($file)){
             $filename = $TMSSId.'_'.$file->getClientOriginalName();
             Input::file('W2Signature')->move($destinationPath, $filename);
             $loanapplication->W2Signature = $filename;
         }
-
+        $loanapplication->Approval1 = 0;
         $loanapplication->save();
         return ['url' => 'loanapplication/list'];
     }

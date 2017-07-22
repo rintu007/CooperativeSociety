@@ -16,6 +16,7 @@ use App\Thana;
 use App\Appformandpassbook;
 use App\Posting;
 use App\Savingtable;
+use App\Loanapplication;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +46,18 @@ class SelectBoxController extends Controller
     public function create()
     {
         //
+    }
+
+    public function getShishirapproval(Request $request){
+        $MemberId = $request->MemberId;
+        $Approval1 = $request->Approval1;
+        // $id = $MemberId;
+        // $loanapplication = Loanapplication::find($id);  
+        // $loanapplication->Approval1 = $Approval1;
+        // $loanapplication->save();
+        DB::table('loanapplications')->where('MemberId',$MemberId)
+                                     ->update(['Approval1'=> $Approval1]);
+        return response()->json(true);
     }
 
     public function getShishirSubmit(Request $request){

@@ -58,7 +58,8 @@ CREATE TABLE IF NOT EXISTS `loanapplications` (
   `WName1` varchar(100) DEFAULT NULL,
   `WName2` varchar(100) DEFAULT NULL,
   `W1Signature` varchar(100) DEFAULT NULL,
-  `W2Signature` varchar(100) DEFAULT NULL,  
+  `W2Signature` varchar(100) DEFAULT NULL,
+  `Approval1` int(2) DEFAULT NULL,  
   PRIMARY KEY (`id`),
   FULLTEXT KEY `idx_name` (`MemberId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;

@@ -179,13 +179,6 @@
             <span id="GMotherName-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-GHusbandWifeName-error">
-        {!! Form::label("GHusbandWifeName","GHusbandWifeName",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::text("GHusbandWifeName",null,["class"=>"form-control GHusbandWifeName required","id"=>"GHusbandWifeName"]) !!}
-            <span id="GHusbandWifeName-error" class="help-block"></span>
-        </div>
-    </div>
 
     <div class="form-group required col-md-6" id="form-GAge-error">
         {!! Form::label("GAge","Age",["class"=>"control-label col-md-3"]) !!}
@@ -427,14 +420,14 @@
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
-        <a href="javascript:ajaxLoad('loanapplication/list')" class="btn btn-danger"><i
+        <a href="javascript:ajaxLoad('approve/list')" class="btn btn-danger"><i
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
-        {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
-    btn-primary "])!!}
+       <!--  {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
+    btn-primary "])!!} -->
     </div>
 </div>
-<script>
+<!-- <script>
     $("#frm").submit(function (event) {
         event.preventDefault();
         $('.loading').show();
@@ -477,7 +470,7 @@
         return false;
     });
 
-</script>
+</script> -->
 <script>
 
     // $(document).ready(function () {

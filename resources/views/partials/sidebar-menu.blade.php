@@ -119,7 +119,7 @@
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Loan</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/loanapplication') }}">Loan Application</a></li>
-                <li><a tabindex="-1" href="{{ url('/withdraw') }}">Approval</a></li>
+                <li><a tabindex="-1" href="{{ url('/approve') }}">Approval</a></li>
                 <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>                
             </ul>
         </li>
@@ -140,6 +140,13 @@
                 <li><a tabindex="-1" href="{{ url('/producttype') }}">Product Type</a></li>
                 <li><a tabindex="-1" href="{{ url('/product') }}">Products</a></li>
                 <li><a tabindex="-1" href="{{ url('/duration') }}">Duration</a></li>
+                
+            </ul>
+        </li>
+        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Report Settings</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/addcat') }}">Category</a></li>
+                <li><a tabindex="-1" href="{{ url('/subcat') }}">Sub Category</a></li>            
             </ul>
         </li>
          <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
