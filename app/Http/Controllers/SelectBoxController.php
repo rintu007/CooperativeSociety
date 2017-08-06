@@ -17,6 +17,8 @@ use App\Appformandpassbook;
 use App\Posting;
 use App\Savingtable;
 use App\Loanapplication;
+use App\Loanschedule;
+use App\Loanposting;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,13 +50,86 @@ class SelectBoxController extends Controller
         //
     }
 
+    public function getLoanSubmit(Request $request){
+
+         $user_id = Auth::user()->id;
+         $loanposting = new Loanposting();        
+                    $DomainName = $request->DomainName;
+         $loanposting->DomainName = $DomainName;
+                     $DivisionName = $request->DivisionName;
+         $loanposting->DivisionName = $DivisionName;
+                    $MonthId = $request->MonthId;
+         $loanposting->MonthId = $MonthId;
+                    $YearId = $request->YearId;                
+         $loanposting->YearId = $YearId;                
+                    $MemberId = $request->MemberId;
+         $loanposting->MemberId = $MemberId;
+                    $MemberName = $request->MemberName;
+         $loanposting->MemberName = $MemberName;
+                    $InstallmentNo = $request->InstallmentNo;
+         $loanposting->InstallmentNo = $InstallmentNo;
+                    $Payable = $request->Payable;
+         $loanposting->Payable = $Payable;
+                    $Interest = $request->Interest;
+         $loanposting->Interest = $Interest;
+                    $Total = $request->Total;
+         $loanposting->Total = $Total;
+         $loanposting->posted_by    = $user_id;
+         $loanposting->save();
+    }
+
     public function getShishirapproval(Request $request){
         $MemberId = $request->MemberId;
         $Approval1 = $request->Approval1;
-        // $id = $MemberId;
-        // $loanapplication = Loanapplication::find($id);  
-        // $loanapplication->Approval1 = $Approval1;
-        // $loanapplication->save();
+        $Schedule = Loanapplication::where('MemberId', $MemberId)->get();
+
+        foreach ($Schedule as $key => $value) {
+           
+            $LoanAmount = $value->LoanAmount;
+            $InstallmentNo = $value->InstallmentNo;
+            $InterestRate = $value->InterestRate;
+            $DomainName = $value->DomainName;
+            $DivisionOfficeId = $value->DivisionOfficeId;
+            $MemberName = $value->EnglishName;
+        }
+
+        $insDivided = $InstallmentNo;
+        $Principal = $LoanAmount;
+        $TInterest  = 0;
+        $Payable = 0;
+        $Total = 0; 
+        $TTotal = 0;        
+        $TPayable = 0;
+        
+        
+        for ($i=1; $i<=$InstallmentNo; $i++) {
+            $Payable = round($Principal/$insDivided) ;
+            $Interest = round(($Principal * 20)/(12*100));
+            $TInterest = $TInterest + $Interest;
+            $Total = $Payable + $Interest;
+            $TTotal = $TTotal + $Total;
+            $TPayable = $TPayable + $Payable;
+
+
+            $user_id = Auth::user()->id;
+            $loanschedule = new Loanschedule();
+            $loanschedule->DomainName     = $DomainName;
+            $loanschedule->DivisionOfficeId     = $DivisionOfficeId;
+            $loanschedule->MemberId     = $MemberId;
+            $loanschedule->MemberName     = $MemberName;
+            $loanschedule->InstallmentNo     = $i;
+            $loanschedule->Payable      = $Payable;
+            $loanschedule->Interest     = $Interest;
+            $loanschedule->Total        = $Total;
+            $loanschedule->ScheduleDate = Carbon::now()->addMonths($i);
+            $loanschedule->posted_by    = $user_id;        
+            $loanschedule->save();
+
+            $Principal = $Principal - $Payable;
+            $insDivided--;
+
+        }
+
         DB::table('loanapplications')->where('MemberId',$MemberId)
                                      ->update(['Approval1'=> $Approval1]);
         return response()->json(true);
@@ -131,6 +206,20 @@ class SelectBoxController extends Controller
         }
     }
 
+        public function getLoanpostingInfo(Request $request){
+        $DomainName = $request->DomainName;
+        $DivisionName = $request->DivisionName;
+        $MonthId = $request->MonthId;
+        $YearId = $request->YearId;
+
+        $data = Loanschedule::where('DomainName', $DomainName)
+                                ->where('DivisionOfficeId', $DivisionName)
+                                ->whereMonth('ScheduleDate','=', $MonthId)
+                                ->whereYear('ScheduleDate','=',$YearId)
+                                ->get();
+        return response()->json($data);
+    }
+
      public function getPostingInfo(Request $request){
         $DomainName = $request->DomainName;
         $DivisionName = $request->DivisionName;
@@ -140,16 +229,6 @@ class SelectBoxController extends Controller
         $MonthId = $request->MonthId;
         $YearId = $request->YearId;
 
-        // $first = DB::table('postings')
-        //     ->where('MonthId', $MonthId)
-        //     ->where('YearId', $YearId);
-
-        // $second = DB::table('accountopens')
-        //     ->where('DomainName', $DomainName)
-        //     ->where('DivisionOfficeId', $DivisionName)
-        //     ->where('ZoneId', $ZoneId)
-        //     ->where('AreaId', $AreaId)
-        //     ->where('BranchId', $BranchId)
 
         $data = DB::table('members')
             ->join('accountopens', 'members.MemberId', '=', 'accountopens.MemberId')
@@ -291,11 +370,9 @@ class SelectBoxController extends Controller
     {
         
         $data = DB::table('appformandpassbooks')
-            ->select('member_name')
             ->where('member_id', $request->id)
             ->first();
-            $member = $data->member_name;
-                 return response()->json($member);             
+                 return response()->json($data);             
     }
 
     public function getProductInfo(Request $request)

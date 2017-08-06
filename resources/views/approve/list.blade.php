@@ -5,6 +5,10 @@
         <a href="javascript:ajaxLoad('approve/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
+    <div class="pull-right">
+        <a href="javascript:ajaxLoad('approve/approved')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-ok-sign"></i> approved</a>
+    </div>
 </h1>
 <div class="col-sm-7 form-group">
     <div class="input-group">

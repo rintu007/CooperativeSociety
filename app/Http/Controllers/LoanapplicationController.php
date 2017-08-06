@@ -46,8 +46,10 @@ class LoanapplicationController extends Controller
         $loanapplication->MemberId = Input::get('MemberId');
         $loanapplication->Designation = Input::get('Designation');
         $loanapplication->Savings = Input::get('Savings');
+        $loanapplication->LoanType = Input::get('LoanType');
         $loanapplication->LoanAmount = Input::get('LoanAmount');
         $loanapplication->LoanDuration = Input::get('LoanDuration');
+        $loanapplication->InstallmentNo = Input::get('InstallmentNo');
         $loanapplication->InterestRate = Input::get('InterestRate');
         $loanapplication->BankAccountName = Input::get('BankAccountName');
         $loanapplication->AccountType = Input::get('AccountType');
@@ -156,6 +158,7 @@ class LoanapplicationController extends Controller
         $loanapplication->LoanType = Input::get('LoanType');
         $loanapplication->LoanAmount = Input::get('LoanAmount');
         $loanapplication->LoanDuration = Input::get('LoanDuration');
+        $loanapplication->InstallmentNo = Input::get('InstallmentNo');
         $loanapplication->InterestRate = Input::get('InterestRate');
         $loanapplication->BankAccountName = Input::get('BankAccountName');
         $loanapplication->AccountType = Input::get('AccountType');

@@ -63,6 +63,17 @@ return [
 			'prefix'    => '',
         ],
 
+        //  'mysql' => [
+        //     'host' => '116.68.200.5',
+        //     'driver'    => 'mysql',
+        //     'database'  => 'coops',
+        //     'username'  => 'coops',
+        //     'password'  => 'casash@nge1T',
+        //     'charset'   => 'utf8',
+        //     'collation' => 'utf8_unicode_ci',
+        //     'prefix'    => '',
+        // ],
+
         /*'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', 'localhost'),

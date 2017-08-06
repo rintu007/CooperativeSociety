@@ -33,14 +33,7 @@
                    class="glyphicon  {{ Session::get('product_field')=='ProductName'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </th>
-            <th>
-                <a href="javascript:ajaxLoad('product/list?field=ProductNameBanglaFull&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
-                    Product Name (Bangla)
-                </a>
-                <i style="font-size: 12px"
-                   class="glyphicon  {{ Session::get('product_field')=='ProductNameBanglaFull'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-                </i>
-            </th>
+            
             <th>
                 <a href="javascript:ajaxLoad('product/list?field=ProductCode&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
                     Product Code
@@ -50,22 +43,8 @@
                 </i>
             </th>
 
-            <th>
-                <a href="javascript:ajaxLoad('product/list?field=ProductType&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
-                    Activating Year
-                </a>
-                <i style="font-size: 12px"
-                   class="glyphicon  {{ Session::get('product_field')=='ProductType'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-                </i>
-            </th>
-            <th>
-                <a href="javascript:ajaxLoad('product/list?field=InterestPercentage&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
-                   Profit Rate(%)
-                </a>
-                <i style="font-size: 12px"
-                   class="glyphicon  {{ Session::get('product_field')=='InterestPercentage'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-                </i>
-            </th>
+            
+            
             <th>
                 <a href="javascript:ajaxLoad('product/list?field=Frequency&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
                     Payement Frequency
@@ -82,17 +61,10 @@
                    class="glyphicon  {{ Session::get('product_field')=='InstallationServiceCharge'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
                 </i>
             </th>
-            <th>
-                <a href="javascript:ajaxLoad('product/list?field=ServiceChargeCalculationMethod&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
-                    Minimum Amount
-                </a>
-                <i style="font-size: 12px"
-                   class="glyphicon  {{ Session::get('product_field')=='ServiceChargeCalculationMethod'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-                </i>
-            </th>
+           
             <th>
                 <a href="javascript:ajaxLoad('product/list?field=SavingInstallment&sort={{Session::get("product_sort")=="asc"?"desc":"asc"}}')">
-                    Withdrawal Date
+                    Withdrawal Facility
                 </a>
                 <i style="font-size: 12px"
                    class="glyphicon  {{ Session::get('product_field')=='SavingInstallment'?(Session::get('product_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
@@ -107,13 +79,9 @@
             <tr>
                 <td align="center">{{$i++}}</td>
                 <td>{{$product->ProductName}}</td>
-                <td>{{$product->ProductNameBanglaFull}}</td>
                 <td>{{$product->ProductCode}}</td>
-                <td>{{$product->EffectiveFrom}}-{{$product->EffectiveTo}}</td>
-                <td>{{$product->InterestPercentage}}</td>
                 <td>{{$product->Frequency}}</td>
                 <td>{{$product->Duration}}</td>
-                <td>{{$product->MinimumBalanceAmount}}</td>
                 <td>{{$product->WithdrawlFacily}}</td>
                 <td style="text-align: center">
                     <a class="btn btn-primary btn-xs" title="Edit"

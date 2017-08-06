@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Loanapplicationmoneyreceipt;
+use App\Moneymethod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -26,7 +27,8 @@ class LoanapplicationmoneyreceiptController extends Controller
 
     public function getUpdate($id)
     {
-        return view('loanapplicationmoneyreceipt.update', ['loanapplicationmoneyreceipt' => Loanapplicationmoneyreceipt::find($id)]);
+        $MoneymethodInfo = Moneymethod::lists('MoneymethodName', 'id');
+        return view('loanapplicationmoneyreceipt.update', ['loanapplicationmoneyreceipt' => Loanapplicationmoneyreceipt::find($id)], compact('MoneymethodInfo'));
     }
 
     public function postUpdate($id)
@@ -54,7 +56,8 @@ class LoanapplicationmoneyreceiptController extends Controller
 
     public function getCreate()
     {
-        return view('loanapplicationmoneyreceipt.create');
+        $MoneymethodInfo = Moneymethod::lists('MoneymethodName', 'id');
+        return view('loanapplicationmoneyreceipt.create',compact('MoneymethodInfo'));
     }
 
     public function postCreate()

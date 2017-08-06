@@ -42,6 +42,13 @@
             <span id="ActualDate-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-12" id="form-CashType-error">
+        {!! Form::label("CashType","Cash/Not Cash",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::select("CashType",$MoneymethodInfo, null, ["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="CashType-error" class="help-block"></span>
+        </div>
+    </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">

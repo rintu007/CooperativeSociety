@@ -37,44 +37,34 @@ class ProductController extends Controller
 
     public function postUpdate($id)
     {
+        $user_id = Auth::user()->id;
         $product = Product::find($id);
-        $rules = ["ProductName" => "required"];
-        if ($product->ProductName != Input::get('ProductName'))
-            $rules += ['ProductName' => 'required|unique:products'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // $rules = ["ProductName" => "required"];
+        // if ($product->ProductName != Input::get('ProductName'))
+        //     $rules += ['ProductName' => 'required|unique:products'];
+        // $validator = Validator::make(Input::all(), $rules);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
         $product->ProductCode = Input::get('ProductCode');
-        $product->ProductID = Input::get('ProductID');
         $product->ProductName = Input::get('ProductName');
-        $product->ProductNameEng = Input::get('ProductNameEng');
-        $product->ProductNameBanglaShort = Input::get('ProductNameBanglaShort');
-        $product->ProductNameBanglaFull = Input::get('ProductNameBanglaFull');
         $product->InterestPercentage = Input::get('InterestPercentage');
         $product->Frequency = Input::get('Frequency');
         $product->Duration = Input::get('Duration');
-        $product->EffectiveFrom = Input::get('EffectiveFrom');
-        $product->EffectiveTo = Input::get('EffectiveTo');
         $product->IsActive = Input::get('IsActive');
         $product->MultipleSavings = Input::get('MultipleSavings');
         $product->WithdrawlFacily = Input::get('WithdrawlFacily');
         $product->MinimumAmount = Input::get('MinimumAmount');
         $product->MaximumAmount = Input::get('MaximumAmount');
         $product->MinimumBalanceAmount = Input::get('MinimumBalanceAmount');
-        $product->MinimumBalanceAmountPercentage = Input::get('MinimumBalanceAmountPercentage');
         $product->MaxDueCycle = Input::get('MaxDueCycle');
         $product->PassBookAvailability = Input::get('PassBookAvailability');
-        $product->SpecialWithdrawFacility = Input::get('SpecialWithdrawFacility');
-        $product->InvestmentAgainstSavings = Input::get('InvestmentAgainstSavings');
-        $product->PercentageofInvestmentAgainstSavings = Input::get('PercentageofInvestmentAgainstSavings');
         $product->AutomaticSchemeRenewal = Input::get('AutomaticSchemeRenewal');
-        $product->DividedbyValue = Input::get('DividedbyValue');
         $product->MaxWithdrawTimeforAvoidingPenaltyPerMonth = Input::get('MaxWithdrawTimeforAvoidingPenaltyPerMonth');
-        $product->MaxWithdrawLimitPerMonth = Input::get('MaxWithdrawLimitPerMonth');
+        $product->posted_by = $user_id;
         $product->save();
         return ['url' => 'product/list'];
     }
@@ -89,44 +79,34 @@ class ProductController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
-            "ProductCode" => "required|unique:products",
-            "ProductName" => "required|unique:products"
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // $validator = Validator::make(Input::all(), [
+        //     "ProductCode" => "required|unique:products",
+        //     "ProductName" => "required|unique:products"
+        // ]);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
+        $user_id = Auth::user()->id;
         $product = new Product();
         $product->ProductCode = Input::get('ProductCode');
-        $product->ProductID = Input::get('ProductID');
         $product->ProductName = Input::get('ProductName');
-        $product->ProductNameEng = Input::get('ProductNameEng');
-        $product->ProductNameBanglaShort = Input::get('ProductNameBanglaShort');
-        $product->ProductNameBanglaFull = Input::get('ProductNameBanglaFull');
         $product->InterestPercentage = Input::get('InterestPercentage');
         $product->Frequency = Input::get('Frequency');
         $product->Duration = Input::get('Duration');
-        $product->EffectiveFrom = Input::get('EffectiveFrom');
-        $product->EffectiveTo = Input::get('EffectiveTo');
         $product->IsActive = Input::get('IsActive');
         $product->MultipleSavings = Input::get('MultipleSavings');
         $product->WithdrawlFacily = Input::get('WithdrawlFacily');
         $product->MinimumAmount = Input::get('MinimumAmount');
         $product->MaximumAmount = Input::get('MaximumAmount');
         $product->MinimumBalanceAmount = Input::get('MinimumBalanceAmount');
-        $product->MinimumBalanceAmountPercentage = Input::get('MinimumBalanceAmountPercentage');
         $product->MaxDueCycle = Input::get('MaxDueCycle');
         $product->PassBookAvailability = Input::get('PassBookAvailability');
-        $product->SpecialWithdrawFacility = Input::get('SpecialWithdrawFacility');
-        $product->InvestmentAgainstSavings = Input::get('InvestmentAgainstSavings');
-        $product->PercentageofInvestmentAgainstSavings = Input::get('PercentageofInvestmentAgainstSavings');
         $product->AutomaticSchemeRenewal = Input::get('AutomaticSchemeRenewal');
-        $product->DividedbyValue = Input::get('DividedbyValue');
         $product->MaxWithdrawTimeforAvoidingPenaltyPerMonth = Input::get('MaxWithdrawTimeforAvoidingPenaltyPerMonth');
-        $product->MaxWithdrawLimitPerMonth = Input::get('MaxWithdrawLimitPerMonth');
+        $product->posted_by = $user_id;
         $product->save();
         return ['url' => 'product/list'];
     }

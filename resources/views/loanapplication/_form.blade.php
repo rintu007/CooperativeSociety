@@ -48,6 +48,14 @@
         </div>
     </div>
 
+    <div class="form-group required col-md-6" id="form-InstallmentNo-error">
+        {!! Form::label("InstallmentNo","No of Installment",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("InstallmentNo",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="InstallmentNo-error" class="help-block"></span>
+        </div>
+    </div>
+
     <div class="form-group required col-md-6" id="form-InterestRate-error">
         {!! Form::label("InterestRate","Interest Rate",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">

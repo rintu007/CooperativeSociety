@@ -31,7 +31,7 @@
     <div class="form-group required col-md-6" id="form-date-error">
         {!! Form::label("date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::date("date",\Carbon\Carbon::now(),["class"=>"form-control required","id"=>"focus", "readonly"=>"true"]) !!}
+            {!! Form::text("date",null,["class"=>"form-control required","id"=>"focus"]) !!}
             <span id="date-error" class="help-block"></span>
         </div>
     </div>
@@ -86,6 +86,13 @@
             <span id="unitprice-error" class="help-block"></span>
         </div>
     </div>
+    <div class="form-group required col-md-6" id="form-CashType-error">
+        {!! Form::label("CashType","Cash/Not Cash",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::select("CashType",$MoneymethodInfo, null, ["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="CashType-error" class="help-block"></span>
+        </div>
+    </div>
 </div>
 <div class="form-group">
     <div class="col-md-6 col-md-push-3">
@@ -120,7 +127,7 @@
                 url: 'getJustify',
                 data: {'id': member_id},
                 success: function (data) {
-                    alert("He has already payed, Give a new member.");
+                    // alert("He has already payed, Give a new member.");
                      $('#member_id').empty();
                         document.getElementById("member_id").focus();
                         document.getElementById("member_id").select();

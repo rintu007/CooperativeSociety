@@ -120,7 +120,7 @@
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/loanapplication') }}">Loan Application</a></li>
                 <li><a tabindex="-1" href="{{ url('/approve') }}">Approval</a></li>
-                <li><a tabindex="-1" href="{{ url('/posting') }}">Posting</a></li>                
+                <li><a tabindex="-1" href="{{ url('/loanposting') }}">Posting</a></li>                
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>

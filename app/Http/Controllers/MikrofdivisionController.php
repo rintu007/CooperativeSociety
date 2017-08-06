@@ -28,7 +28,7 @@ class MikrofdivisionController extends Controller
         Session::put('mikrofdivision_field', Input::has('field') ? Input::get('field') : (Session::has('mikrofdivision_field') ? Session::get('mikrofdivision_field') : 'id'));
         Session::put('mikrofdivision_sort', Input::has('sort') ? Input::get('sort') : (Session::has('mikrofdivision_sort') ? Session::get('mikrofdivision_sort') : 'asc'));
         $mikrofdivisions = Mikrofdivision::where('id', 'like', '%' . Session::get('mikrofdivision_search') . '%')
-            ->orderBy(Session::get('mikrofdivision_field'), Session::get('mikrofdivision_sort'))->paginate(8);
+            ->orderBy(Session::get('mikrofdivision_field'), Session::get('mikrofdivision_sort'))->paginate(25);
         return view('mikrofdivision.list', ['mikrofdivisions' => $mikrofdivisions]);
     }
 
@@ -49,16 +49,16 @@ class MikrofdivisionController extends Controller
     public function postUpdate($id)
     {
         $mikrofdivision = Mikrofdivision::find($id);
-        $rules = ["DivisionOfficeCode" => "required"];
-        if ($mikrofdivision->DivisionOfficeCode != Input::get('DivisionOfficeCode'))
-            $rules += ['DivisionOfficeCode' => 'required|unique:mikrofdivisions'];
-        $validator = Validator::make(Input::all(), $rules);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // $rules = ["DivisionOfficeCode" => "required"];
+        // if ($mikrofdivision->DivisionOfficeCode != Input::get('DivisionOfficeCode'))
+        //     $rules += ['DivisionOfficeCode' => 'required|unique:mikrofdivisions'];
+        // $validator = Validator::make(Input::all(), $rules);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
         $mikrofdivision->DomainId = Input::get('DomainName');
         $mikrofdivision->DivisionOfficeName = Input::get('DivisionOfficeName');
         $mikrofdivision->DivisionOfficeNameBangla = Input::get('DivisionOfficeNameBangla');
@@ -95,15 +95,15 @@ class MikrofdivisionController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
-            "DivisionOfficeCode" => "required|unique:mikrofdivisions"
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // $validator = Validator::make(Input::all(), [
+        //     "DivisionOfficeCode" => "required|unique:mikrofdivisions"
+        // ]);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
         $mikrofdivision = new Mikrofdivision();
         $mikrofdivision->DomainId = Input::get('DomainName');
         $mikrofdivision->DivisionOfficeName = Input::get('DivisionOfficeName');

@@ -38,11 +38,11 @@
             <span id="BranchId-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-TMSSID-error">
-        {!! Form::label("TMSSID","TMSS Employee ID",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-TMSSId-error">
+        {!! Form::label("TMSSId","TMSS Employee ID",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("TMSSID",null,["class"=>"form-control required","id"=>"focus"]) !!}
-            <span id="TMSSID-error" class="help-block"></span>
+            {!! Form::text("TMSSId",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            <span id="TMSSId-error" class="help-block"></span>
         </div>
     </div>
 </div>
@@ -148,7 +148,7 @@
     <div class="form-group required col-md-6" id="form-Mobile-error">
         {!! Form::label("Mobile","Mobile No:",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("Mobile",null,["class"=>"form-control required","id"=>"focus"]) !!}
+            {!! Form::text("Mobile",null,["class"=>"form-control required","id"=>"Mobile"]) !!}
             <span id="Mobile-error" class="help-block"></span>
         </div>
     </div>
@@ -544,12 +544,13 @@
                 success: function (data) {
                     $('#EnglishName').empty();
                     console.log(data); 
-                        document.getElementById("EnglishName").value = data;
+                        document.getElementById("EnglishName").value = data.member_name;
+                        document.getElementById("Mobile").value = data.mobile_no;
                 },
-                error: function () {
-                        alert("Please pay form and passbook fee first.");
-                        $(".inforError :input").attr("disabled", true);
-                }
+                // error: function () {
+                //         alert("Please pay form and passbook fee first.");
+                //         $(".inforError :input").attr("disabled", true);
+                // }
             });
             // $.ajax(clear);
         });

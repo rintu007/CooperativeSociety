@@ -5,6 +5,7 @@ use App\Appformandpassbook;
 use App\Share;
 use App\User;
 use App\Addshare;
+use App\Moneymethod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -29,14 +30,15 @@ class AppformandpassbookController extends Controller
         Session::put('appformandpassbook_sort', Input::has('sort') ? Input::get('sort') : (Session::has('appformandpassbook_sort') ? Session::get('appformandpassbook_sort') : 'asc'));
 
         $appformandpassbooks = Appformandpassbook::where('member_name', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
-            ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(8);
+            ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(25);
         return view('appformandpassbook.list', ['appformandpassbooks' => $appformandpassbooks]);
 
     }
 
     public function getUpdate($id)
     {
-        return view('appformandpassbook.update', ['appformandpassbook' => Appformandpassbook::find($id)]);
+        $MoneymethodInfo = Moneymethod::lists('MoneymethodName', 'id');
+        return view('appformandpassbook.update', ['MoneymethodInfo' => $MoneymethodInfo], ['appformandpassbook' => Appformandpassbook::find($id)]);
     }
 
     public function postUpdate($id)
@@ -56,6 +58,7 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->share_amount = Input::get('share_amount');          
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
+        $appformandpassbook->CashType = Input::get('CashType');
         $appformandpassbook->created_by = $user_id;
         $appformandpassbook->save();
 
@@ -83,7 +86,8 @@ class AppformandpassbookController extends Controller
 
     public function getCreate()
     {
-        return view('appformandpassbook.create');
+        $MoneymethodInfo = Moneymethod::lists('MoneymethodName', 'id');
+        return view('appformandpassbook.create', compact('MoneymethodInfo'));
     }
 
     public function postCreate()
@@ -113,6 +117,7 @@ class AppformandpassbookController extends Controller
         $appformandpassbook->share_amount = Input::get('share_amount');          
         $appformandpassbook->name = Input::get('name');       
         $appformandpassbook->unitprice = Input::get('unitprice');
+        $appformandpassbook->CashType = Input::get('CashType');
         $appformandpassbook->created_by = $user_id;
         $appformandpassbook->save();
 

@@ -68,6 +68,9 @@ Route::controllers([
     'approve'                       => 'ApproveController',
     'addcat'                        => 'AddcatController',
     'subcat'                        => 'SubcatController',
+    'moneymethod'                   => 'MoneymethodController',
+    'loanposting'                   => 'LoanpostingController',
+    'note'                          => 'NoteController',
 
 ]); 
 
@@ -98,6 +101,10 @@ Route::get('getMemberInfo','SelectBoxController@getMemberInfo');
 Route::get('getShishirSubmit','SelectBoxController@getShishirSubmit');
 
 Route::get('getShishirapproval','SelectBoxController@getShishirapproval');
+
+Route::get('getLoanpostingInfo','SelectBoxController@getLoanpostingInfo');
+
+Route::get('getLoanSubmit','SelectBoxController@getLoanSubmit');
 
 
 

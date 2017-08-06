@@ -36,7 +36,7 @@ class MemberController extends Controller
         Session::put('member_sort', Input::has('sort') ? Input::get('sort') : (Session::has('member_sort') ? Session::get('member_sort') : 'asc'));
 
         $members = Member::where('MemberId', 'like', '%' . Session::get('member_search') . '%')
-            ->orderBy(Session::get('member_field'), Session::get('member_sort'))->paginate(8);
+            ->orderBy(Session::get('member_field'), Session::get('member_sort'))->paginate(25);
 
 
         return view('member.list', ['members' => $members]);
@@ -74,7 +74,7 @@ class MemberController extends Controller
         $member->ZoneId             = Input::get('ZoneId');
         $member->AreaId             = Input::get('AreaId');
         $member->BranchId           = Input::get('BranchId');
-        $member->TMSSId             = Input::get('TMSSID');
+        $member->TMSSId             = Input::get('TMSSId');
 
         $member->MemberId           = Input::get('MemberId');
         $member_id                  = Input::get('MemberId');
@@ -98,10 +98,12 @@ class MemberController extends Controller
         $member->PresentJela        = Input::get('PresentJela');
         $member->SPName             = Input::get('SPName');
         $member->SPName2            = Input::get('SPName2');
-        $member->SPMotherName       = Input::get('SPFatherName');
-        $member->SPMotherName2      = Input::get('SPFatherName2');
+        $member->SPFatherName       = Input::get('SPFatherName');
+        $member->SPFatherName2      = Input::get('SPFatherName2');
+        $member->SPMotherName       = Input::get('SPMotherName');
+        $member->SPMotherName2      = Input::get('SPMotherName2');
         $member->SPHusbandWifeName  = Input::get('SPHusbandWifeName');
-        $member->SPHusbandWifeName2 = Input::get('SPHusbanWifeName2');
+        $member->SPHusbandWifeName2 = Input::get('SPHusbandWifeName2');
         $member->Relation           = Input::get('Relation');
         $member->Relation2          = Input::get('Relation2');
         $member->GivenPortion       = Input::get('GivenPortion');
@@ -180,16 +182,16 @@ class MemberController extends Controller
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
-            "TMSSID" => "required|unique:members",
-            "MemberId" => "required|unique:members"
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        // $validator = Validator::make(Input::all(), [
+        //     // "TMSSID" => "required|unique:members",
+        //     "MemberId" => "required|unique:members"
+        // ]);
+        // if ($validator->fails()) {
+        //     return array(
+        //         'fail' => true,
+        //         'errors' => $validator->getMessageBag()->toArray()
+        //     );
+        // }
                 
         $member = new Member();
         $member->DomainName         = Input::get('DomainName');
@@ -197,7 +199,7 @@ class MemberController extends Controller
         $member->ZoneId             = Input::get('ZoneId');
         $member->AreaId             = Input::get('AreaId');
         $member->BranchId           = Input::get('BranchId');
-        $member->TMSSId             = Input::get('TMSSID');
+        $member->TMSSId             = Input::get('TMSSId');
 
         $member->MemberId           = Input::get('MemberId');
         $member_id                  = Input::get('MemberId');
@@ -220,10 +222,12 @@ class MemberController extends Controller
         $member->PresentJela        = Input::get('PresentJela');
         $member->SPName             = Input::get('SPName');
         $member->SPName2            = Input::get('SPName2');
-        $member->SPMotherName       = Input::get('SPFatherName');
-        $member->SPMotherName2      = Input::get('SPFatherName2');
-        $member->SPHusbandWifeName  = Input::get('SPHusbanWifeName');
-        $member->SPHusbandWifeName2 = Input::get('SPHusbanWifeName2');
+        $member->SPFatherName       = Input::get('SPFatherName');
+        $member->SPFatherName2      = Input::get('SPFatherName2');
+        $member->SPMotherName       = Input::get('SPMotherName');
+        $member->SPMotherName2      = Input::get('SPMotherName2');
+        $member->SPHusbandWifeName  = Input::get('SPHusbandWifeName');
+        $member->SPHusbandWifeName2 = Input::get('SPHusbandWifeName2');
         $member->Relation           = Input::get('Relation');
         $member->Relation2          = Input::get('Relation2');
         $member->GivenPortion       = Input::get('GivenPortion');

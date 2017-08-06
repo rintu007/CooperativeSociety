@@ -46,7 +46,9 @@
 
 <!-- JavaScripts -->
 <script src="{{ asset('bootstrap-3.3.6/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bootstrap-3.3.6/js/shishir.js') }}"></script>
 <script src="{{ asset('js/jquery-1.11.2.min.js') }}"></script>
+<script src="{{ asset('js/shishir.js') }}"></script>
 <script>
     function ajaxLoad(filename, content) {
         content = typeof content !== 'undefined' ? content : 'content';

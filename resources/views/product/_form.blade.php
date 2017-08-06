@@ -8,42 +8,13 @@
                 <span id="ProductCode-error" class="help-block"></span>
             </div>
         </div>
-        <div class="form-group required col-md-6" id="form-ProductID-error">
-            {!! Form::label("ProductID","Product ID",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("ProductID",null,["class"=>"form-control required","id"=>"focus"]) !!}
-                <span id="ProductID-error" class="help-block"></span>
-            </div>
-        </div>    
         <div class="form-group required col-md-6" id="form-ProductName-error">
             {!! Form::label("ProductName","Product Name",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">
                 {!! Form::text("ProductName",null,["class"=>"form-control required","id"=>"focus"]) !!}
                 <span id="ProductName-error" class="help-block"></span>
             </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-ProductNameEng-error">
-            {!! Form::label("ProductNameEng","Product ALias",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("ProductNameEng",null,["class"=>"form-control required","id"=>"focus"]) !!}
-                <span id="ProductNameEng-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-ProductNameBanglaShort-error">
-            {!! Form::label("ProductNameBanglaShort","Product Abbreviation",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("ProductNameBanglaShort",null,["class"=>"form-control required"]) !!}
-                <span id="ProductNameBanglaShort-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-ProductNameBanglaFull-error">
-            {!! Form::label("ProductNameBanglaFull","Product Bangla Name",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::text("ProductNameBanglaFull",null,["class"=>"form-control required"]) !!}
-                <span id="ProductNameBanglaFull-error" class="help-block"></span>
-            </div>
-        </div>
-   
+        </div>   
      </div>   
     <div>
         <div class="form-group required col-md-6" id="form-InterestPercentage-error">
@@ -66,27 +37,7 @@
                 {!! Form::number("Duration",null,["class"=>"form-control Duration required" ,"id"=>"Duration"]) !!}
                 <span id="Duration-error" class="help-block"></span>
             </div>
-        </div>
-    
-
-   
-        <div class="form-group required col-md-6" id="form-EffectiveFrom-error">
-            {!! Form::label("EffectiveFrom","Effective From",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::date("EffectiveFrom",null,["class"=>"form-control required"]) !!}
-                <span id="EffectiveFrom-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-EffectiveTo-error">
-            {!! Form::label("EffectiveTo","Effective To",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::date("EffectiveTo",null,["class"=>"form-control required"]) !!}
-                <span id="EffectiveTo-error" class="help-block"></span>
-            </div>
-        </div>
-    
-
-    
+        </div>       
         <div class="form-group required col-md-6" id="form-IsActive-error">
             {!! Form::label("IsActive","Active Or Not",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">
@@ -134,16 +85,6 @@
                 <span id="MinimumBalanceAmount-error" class="help-block"></span>
             </div>
         </div>
-    
-
-    
-        <div class="form-group required col-md-6" id="form-MinimumBalanceAmountPercentage-error">
-            {!! Form::label("MinimumBalanceAmountPercentage","Minimum Balance Amount(%)",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::number("MinimumBalanceAmountPercentage",null,["class"=>"form-control required"]) !!}
-                <span id="MinimumBalanceAmountPercentage-error" class="help-block"></span>
-            </div>
-        </div>
     </div>
     <div>
         <div class="form-group required col-md-6" id="form-MaxDueCycle-error">
@@ -159,34 +100,7 @@
                 {!! Form::select("PassBookAvailability", $status, null,["class"=>"form-control PassBookAvailability required","id"=>"PassBookAvailability"]) !!}
                 <span id="PassBookAvailability-error" class="help-block"></span>
             </div>
-        </div>
-    
-
-    
-        <div class="form-group required col-md-6" id="form-SpecialWithdrawFacility-error">
-            {!! Form::label("SpecialWithdrawFacility","Withdrawal Facility",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::select("SpecialWithdrawFacility", $status, null,["class"=>"form-control SpecialWithdrawFacility required","id"=>"SpecialWithdrawFacility"]) !!}
-                <span id="SpecialWithdrawFacility-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-InvestmentAgainstSavings-error">
-            {!! Form::label("InvestmentAgainstSavings","Amount of loan against saving",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::number("InvestmentAgainstSavings",null,["class"=>"form-control required"]) !!}
-                <span id="InvestmentAgainstSavings-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-PercentageofInvestmentAgainstSavings-error">
-            {!! Form::label("PercentageofInvestmentAgainstSavings","Amount of loan against saving(%)",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::number("PercentageofInvestmentAgainstSavings",null,["class"=>"form-control required"]) !!}
-                <span id="PercentageofInvestmentAgainstSavings-error" class="help-block"></span>
-            </div>
-        </div>
-    
-
-    
+        </div>    
         <div class="form-group required col-md-6" id="form-AutomaticSchemeRenewal-error">
             {!! Form::label("AutomaticSchemeRenewal","Automatic Schema Renewal",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">
@@ -195,24 +109,7 @@
             </div>
         </div>
     </div>
-    <div>
-        <div class="form-group required col-md-6" id="form-DividedbyValue-error">
-            {!! Form::label("DividedbyValue","Divided By value",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::number("DividedbyValue",null,["class"=>"form-control required"]) !!}
-                <span id="DividedbyValue-error" class="help-block"></span>
-            </div>
-        </div>
-        <div class="form-group required col-md-6" id="form-MaxWithdrawLimitPerMonth-error">
-            {!! Form::label("MaxWithdrawLimitPerMonth","Withdraw Limit Per Month",["class"=>"control-label col-md-3"]) !!}
-            <div class="col-md-6">
-                {!! Form::number("MaxWithdrawLimitPerMonth",null,["class"=>"form-control required"]) !!}
-                <span id="MaxWithdrawLimitPerMonth-error" class="help-block"></span>
-            </div>
-        </div>
-    
-
-    
+    <div>    
         <div class="form-group required col-md-6" id="form-MaxWithdrawTimeforAvoidingPenaltyPerMonth-error">
             {!! Form::label("MaxWithdrawTimeforAvoidingPenaltyPerMonth","Time Limit for Penulty",["class"=>"control-label col-md-3"]) !!}
             <div class="col-md-6">

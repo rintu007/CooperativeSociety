@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="form-group required col-md-4" id="form-DivisionOfficeId-error">
-        {!! Form::label("DivisionOfficeId","Divisional Office",["class"=>"control-label col-md-3"]) !!}
+        {!! Form::label("DivisionOfficeId","Divi.Office",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("DivisionOfficeId",$DivisionInfo,null,["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
             <span id="DivisionOfficeId-error" class="help-block"></span>
