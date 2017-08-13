@@ -108,6 +108,7 @@ class MemberController extends Controller
         $member->Relation2          = Input::get('Relation2');
         $member->GivenPortion       = Input::get('GivenPortion');
         $member->GivenPortion2      = Input::get('GivenPortion2');
+        $member->Approval1          = 0;
         
         $file = Input::file('Image');
         $destinationPath = 'uploads/';
@@ -232,6 +233,7 @@ class MemberController extends Controller
         $member->Relation2          = Input::get('Relation2');
         $member->GivenPortion       = Input::get('GivenPortion');
         $member->GivenPortion2      = Input::get('GivenPortion2');
+        $member->Approval1          = 0;
         
         $file = Input::file('Image');
         $destinationPath = 'uploads/';

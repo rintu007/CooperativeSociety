@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Accountopen;
+use App\Riskfund;
 use App\Share;
 use App\User;
 use App\Addshare;
@@ -20,27 +20,27 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-class AccountopenController extends Controller
+class RiskfundController extends Controller
 {
     public function getIndex()
     {
 
-        return view('accountopen.index');
+        return view('riskfund.index');
 
     }
 
     public function getList()
     {
 
-        Session::put('accountopen_search', Input::has('ok') ? Input::get('search') : (Session::has('accountopen_search') ? Session::get('accountopen_search') : ''));
+        Session::put('riskfund_search', Input::has('ok') ? Input::get('search') : (Session::has('riskfund_search') ? Session::get('riskfund_search') : ''));
 
-        Session::put('accountopen_field', Input::has('field') ? Input::get('field') : (Session::has('accountopen_field') ? Session::get('accountopen_field') : 'MemberId'));
+        Session::put('riskfund_field', Input::has('field') ? Input::get('field') : (Session::has('riskfund_field') ? Session::get('riskfund_field') : 'MemberId'));
 
-        Session::put('accountopen_sort', Input::has('sort') ? Input::get('sort') : (Session::has('accountopen_sort') ? Session::get('accountopen_sort') : 'asc'));
+        Session::put('riskfund_sort', Input::has('sort') ? Input::get('sort') : (Session::has('riskfund_sort') ? Session::get('riskfund_sort') : 'asc'));
 
-        $accountopens = Accountopen::where('MemberId', 'like', '%' . Session::get('accountopen_search') . '%') ->paginate(25);
-            // ->orderBy(Session::get('accountopen_field'), Session::get('accountopen_sort'))
-        return view('accountopen.list', ['accountopens' => $accountopens]);
+        $riskfunds = Riskfund::where('MemberId', 'like', '%' . Session::get('riskfund_search') . '%') ->paginate(25);
+            // ->orderBy(Session::get('riskfund_field'), Session::get('riskfund_sort'))
+        return view('riskfund.list', ['riskfunds' => $riskfunds]);
 
     }
 
@@ -48,30 +48,30 @@ class AccountopenController extends Controller
     {
          $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
         $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.update',['accountopen' => Accountopen::find($id)])->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('riskfund.update',['riskfund' => Riskfund::find($id)])->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
     }
 
     public function postUpdate($id)
     {
         $user_id = Auth::user()->id;
-        $accountopen = Accountopen::find($id);
-        $accountopen->MemberId     = Input::get('MemberId');
-        $accountopen->MemberName      = Input::get('MemberName');       
-        $accountopen->DomainName     = Input::get('DomainName');
-        $accountopen->DivisionName     = Input::get('DivisionName');
-        $accountopen->ZoneId          = Input::get('ZoneId');
-        $accountopen->AreaId      = Input::get('AreaId');
-        $accountopen->BranchId      = Input::get('BranchId');
-        $accountopen->AccountType = Input::get('AccountType'); 
-        $accountopen->AccountNo  = Input::get('AccountNo');
-        $accountopen->Duration  = Input::get('Duration');          
-        $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
-        $accountopen->Date     = Input::get('Date');
-        $accountopen->posted_by    = $user_id;
-        $accountopen->save();
+        $riskfund = Riskfund::find($id);
+        $riskfund->MemberId     = Input::get('MemberId');
+        $riskfund->MemberName      = Input::get('MemberName');       
+        $riskfund->DomainName     = Input::get('DomainName');
+        $riskfund->DivisionName     = Input::get('DivisionName');
+        $riskfund->ZoneId          = Input::get('ZoneId');
+        $riskfund->AreaId      = Input::get('AreaId');
+        $riskfund->BranchId      = Input::get('BranchId');
+        $riskfund->AccountType = Input::get('AccountType'); 
+        $riskfund->AccountNo  = Input::get('AccountNo');
+        $riskfund->Duration  = Input::get('Duration');          
+        $riskfund->MonthlyInstallment          = Input::get('MonthlyInstallment');       
+        $riskfund->Date     = Input::get('Date');
+        $riskfund->posted_by    = $user_id;
+        $riskfund->save();
 
         
-        return ['url' => 'accountopen/list'];
+        return ['url' => 'riskfund/list'];
     }
 
     public function getCreate()
@@ -83,13 +83,13 @@ class AccountopenController extends Controller
         // $BranchInfo     = ['' => '--select--'] + Brn::lists('BranchName', 'id')->all();
         $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
         $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.create')->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('riskfund.create')->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
     }
 
     public function postCreate()
     {
         $validator = Validator::make(Input::all(), [
-            "AccountNo" => "required|unique:accountopens"
+            "AccountNo" => "required|unique:riskfunds"
         ]);
         if ($validator->fails()) {
             return array(
@@ -98,33 +98,33 @@ class AccountopenController extends Controller
             );
         }
         $user_id = Auth::user()->id;
-        $accountopen = new Accountopen();
-        $accountopen->MemberId     = Input::get('MemberId');
+        $riskfund = new Riskfund();
+        $riskfund->MemberId     = Input::get('MemberId');
                       $MemberId = Input::get('MemberId');
-        $accountopen->MemberName      = Input::get('MemberName');       
+        $riskfund->MemberName      = Input::get('MemberName');       
                       $MemberName = Input::get('MemberName');
-        $accountopen->DomainName     = Input::get('DomainName');
+        $riskfund->DomainName     = Input::get('DomainName');
                         $DomainName = Input::get('DomainName');
-        $accountopen->DivisionName     = Input::get('DivisionName');
+        $riskfund->DivisionName     = Input::get('DivisionName');
                         $DivisionName = Input::get('DivisionName');
-        $accountopen->ZoneId          = Input::get('ZoneId');
+        $riskfund->ZoneId          = Input::get('ZoneId');
                         $ZoneId = Input::get('ZoneId');
-        $accountopen->AreaId      = Input::get('AreaId');
+        $riskfund->AreaId      = Input::get('AreaId');
                         $AreaId = Input::get('AreaId');
-        $accountopen->BranchId      = Input::get('BranchId');
+        $riskfund->BranchId      = Input::get('BranchId');
                         $BranchId = Input::get('BranchId');
-        $accountopen->AccountType = Input::get('AccountType'); 
-        $accountopen->AccountNo  = Input::get('AccountNo');
+        $riskfund->AccountType = Input::get('AccountType'); 
+        $riskfund->AccountNo  = Input::get('AccountNo');
                         $AccountNo = Input::get('AccountNo');
-        $accountopen->Duration  = Input::get('Duration');
+        $riskfund->Duration  = Input::get('Duration');
                         $Duration  = Input::get('Duration'); 
-        $accountopen->GSaving  = 0;         
-        $accountopen->MonthlyInstallment        = Input::get('MonthlyInstallment');
+        $riskfund->GSaving  = 0;         
+        $riskfund->MonthlyInstallment        = Input::get('MonthlyInstallment');
                         $Dps = Input::get('MonthlyInstallment');       
-        $accountopen->Date     = Input::get('Date');
+        $riskfund->Date     = Input::get('Date');
                         $Date     = Input::get('Date');
-        $accountopen->posted_by    = $user_id;
-        $accountopen->save();
+        $riskfund->posted_by    = $user_id;
+        $riskfund->save();
 
         $savingtables = new Savingtable();
         $savingtables ->DomainName = $DomainName;
@@ -195,13 +195,13 @@ class AccountopenController extends Controller
         $savingtables->save();
 
        
-        return ['url' => 'accountopen/list'];
+        return ['url' => 'riskfund/list'];
     }
 
     public function getDelete($id)
     {
         $deletingId = $id;
-        $MemberId = Accountopen::select('MemberId')
+        $MemberId = Riskfund::select('MemberId')
                     ->where('id', $id)->get();
         foreach ($MemberId as $key => $value) {
             $MemId = $value->MemberId;
@@ -213,8 +213,8 @@ class AccountopenController extends Controller
                     $id = $value->id;
                     Savingtable::destroy($id);
                 }        
-        Accountopen::destroy($id);  
-        return Redirect('accountopen/list');
+        Riskfund::destroy($id);  
+        return Redirect('riskfund/list');
     }
 
 }

@@ -1,12 +1,13 @@
 @if (Auth::guest())
-        <!-- <li><a href="{{ url('/auth/login') }}">Login</a></li> -->
-        <!-- <li><a href="{{ url('/auth/register') }}">Register</a></li> -->
+       <!--  <li><a href="{{ url('/auth/login') }}">Login</a></li> 
+         <li><a href="{{ url('/auth/register') }}">Register</a></li>  -->
 @elseif(Auth::user()->user_type == "admin")
 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display: block; position: static; margin-bottom: 5px; *width: 180px;">
     
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
             <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/member') }}">Member</a></li>
+                <li><a tabindex="-1" href="{{ url('/member') }}">Member Application</a></li>
+                <li><a tabindex="-1" href="{{ url('/memberapprove') }}">Member Approve</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
@@ -30,6 +31,13 @@
                 <li><a tabindex="-1" href="{{ url('/withdraw') }}">Withdraw</a></li>
             </ul>
         </li>
+         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Loan</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ url('/loanapplication') }}">Loan Application</a></li>
+                <li><a tabindex="-1" href="{{ url('/approve') }}">Approval</a></li>
+                <li><a tabindex="-1" href="{{ url('/loanposting') }}">Posting</a></li>                
+            </ul>
+        </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">General Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/domain') }}">Domains</a></li>
@@ -51,7 +59,7 @@
         </li>
          <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
             <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/') }}">Reports</a></li>
+                <li><a tabindex="-1" href="{{ url('/note') }}">Operational Report</a></li>
             </ul>
         </li>
         <!-- <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Shares</a>
@@ -92,7 +100,8 @@
     
          <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Member</a>
             <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/member') }}">Member</a></li>
+                <li><a tabindex="-1" href="{{ url('/member') }}">Member Application</a></li>
+                <li><a tabindex="-1" href="{{ url('/memberapprove') }}">Member Approve</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Finance</a>
@@ -143,15 +152,15 @@
                 
             </ul>
         </li>
-        <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Report Settings</a>
+       <!--  <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Report Settings</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/addcat') }}">Category</a></li>
                 <li><a tabindex="-1" href="{{ url('/subcat') }}">Sub Category</a></li>            
             </ul>
-        </li>
+        </li> -->
          <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
             <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ url('/') }}">Reports</a></li>
+                <li><a tabindex="-1" href="{{ url('/note') }}">Operational Report</a></li>
             </ul>
         </li>
 

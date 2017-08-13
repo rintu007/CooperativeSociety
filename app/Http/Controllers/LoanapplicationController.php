@@ -2,6 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Loanapplication;
+use App\Domain;
+use App\Mikrofdivision;
+use App\Zone;
+use App\Area;
+use App\Brn;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -19,14 +24,20 @@ class LoanapplicationController extends Controller
         Session::put('loanapplication_search', Input::has('ok') ? Input::get('search') : (Session::has('loanapplication_search') ? Session::get('loanapplication_search') : ''));
         Session::put('loanapplication_field', Input::has('field') ? Input::get('field') : (Session::has('loanapplication_field') ? Session::get('loanapplication_field') : 'MemberId'));
         Session::put('loanapplication_sort', Input::has('sort') ? Input::get('sort') : (Session::has('loanapplication_sort') ? Session::get('loanapplication_sort') : 'asc'));
-        $loanapplications = Loanapplication::where('MemberId', 'like', '%' . Session::get('loanapplication_search') . '%')->paginate(8);
+        $loanapplications = Loanapplication::where('MemberId', 'like', '%' . Session::get('loanapplication_search') . '%')->paginate(25);
             // ->orderBy(Session::get('loanapplication_field'), Session::get('loanapplication_sort'))
         return view('loanapplication.list', ['loanapplications' => $loanapplications]);
     }
 
     public function getUpdate($id)
     {
-        return view('loanapplication.update', ['loanapplication' => Loanapplication::find($id)]);
+       $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
+       $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
+       $ZoneInfo =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
+       $Area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
+       $BranchInfo =[''=>'--select--'] +  Brn::lists('BranchName', 'id')->all();
+        return view('loanapplication.update', ['loanapplication' => Loanapplication::find($id)])->with('DomainInfo', $DomainInfo)->with('DivisionOfficeInfo', $DivisionOfficeInfo)->with('ZoneInfo',$ZoneInfo)->with('Area',$Area)->with('BranchInfo',$BranchInfo);
+        
     }
 
     public function postUpdate($id)
@@ -50,6 +61,7 @@ class LoanapplicationController extends Controller
         $loanapplication->LoanAmount = Input::get('LoanAmount');
         $loanapplication->LoanDuration = Input::get('LoanDuration');
         $loanapplication->InstallmentNo = Input::get('InstallmentNo');
+        $loanapplication->PayedInstallment = 0;
         $loanapplication->InterestRate = Input::get('InterestRate');
         $loanapplication->BankAccountName = Input::get('BankAccountName');
         $loanapplication->AccountType = Input::get('AccountType');
@@ -135,7 +147,12 @@ class LoanapplicationController extends Controller
 
     public function getCreate()
     {
-        return view('loanapplication.create');
+       $DomainInfo = [''=>'--select--'] + Domain::lists('DomainName', 'id')->all();
+       $DivisionOfficeInfo = [''=>'--select--'] + Mikrofdivision::lists('DivisionOfficeName', 'id')->all();
+       $ZoneInfo =[''=>'--select--'] +  Zone::lists('ZoneName', 'id')->all();
+       $Area =[''=>'--select--'] +  Area::lists('AreaName', 'id')->all();
+       $BranchInfo =[''=>'--select--'] +  Brn::lists('BranchName', 'id')->all();
+        return view('loanapplication.create')->with('DomainInfo', $DomainInfo)->with('DivisionOfficeInfo', $DivisionOfficeInfo)->with('ZoneInfo',$ZoneInfo)->with('Area',$Area)->with('BranchInfo',$BranchInfo);
     }
 
     public function postCreate()
@@ -159,6 +176,7 @@ class LoanapplicationController extends Controller
         $loanapplication->LoanAmount = Input::get('LoanAmount');
         $loanapplication->LoanDuration = Input::get('LoanDuration');
         $loanapplication->InstallmentNo = Input::get('InstallmentNo');
+        $loanapplication->PayedInstallment = 0;
         $loanapplication->InterestRate = Input::get('InterestRate');
         $loanapplication->BankAccountName = Input::get('BankAccountName');
         $loanapplication->AccountType = Input::get('AccountType');

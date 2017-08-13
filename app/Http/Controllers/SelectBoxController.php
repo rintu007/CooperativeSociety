@@ -19,6 +19,7 @@ use App\Savingtable;
 use App\Loanapplication;
 use App\Loanschedule;
 use App\Loanposting;
+use App\Loanapplicationmoneyreceipt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,12 +77,31 @@ class SelectBoxController extends Controller
          $loanposting->Total = $Total;
          $loanposting->posted_by    = $user_id;
          $loanposting->save();
+
+         $loanapplication = Loanapplication::where('MemberId', $MemberId)->increment('PayedInstallment');
+         DB::table('loanschedules')->where('MemberId', $MemberId)
+                                        ->whereMonth('ScheduleDate','=', $MonthId)
+                                        ->whereYear('ScheduleDate','=', $YearId)
+                                        ->update(['Ok'=>1]);
+
+        return response()->json(true);
+    }
+
+    public function getMemberapproval(Request $request){
+        $MemberId = $request->MemberId;
+        $Approval1 = $request->Approval1;
+        
+        DB::table('members')->where('MemberId',$MemberId)
+                                     ->update(['Approval1'=> $Approval1]);
+        return response()->json(true);
     }
 
     public function getShishirapproval(Request $request){
         $MemberId = $request->MemberId;
         $Approval1 = $request->Approval1;
+        if($Approval1 == 1){
         $Schedule = Loanapplication::where('MemberId', $MemberId)->get();
+       
 
         foreach ($Schedule as $key => $value) {
            
@@ -92,6 +112,13 @@ class SelectBoxController extends Controller
             $DivisionOfficeId = $value->DivisionOfficeId;
             $MemberName = $value->EnglishName;
         }
+
+         $Date = Loanapplicationmoneyreceipt::select('ActualDate')
+                                                ->where('MemberId', $MemberId)
+                                                ->get();
+            foreach ($Date as $key => $value) {
+               $date = $value->ActualDate;
+            }
 
         $insDivided = $InstallmentNo;
         $Principal = $LoanAmount;
@@ -121,7 +148,9 @@ class SelectBoxController extends Controller
             $loanschedule->Payable      = $Payable;
             $loanschedule->Interest     = $Interest;
             $loanschedule->Total        = $Total;
-            $loanschedule->ScheduleDate = Carbon::now()->addMonths($i);
+                            $ScheduleDate = Carbon::createFromFormat('Y-m-d', $date);
+            $loanschedule->ScheduleDate = $ScheduleDate->addMonth($i);
+            $loanschedule->Ok        = 0;
             $loanschedule->posted_by    = $user_id;        
             $loanschedule->save();
 
@@ -132,67 +161,55 @@ class SelectBoxController extends Controller
 
         DB::table('loanapplications')->where('MemberId',$MemberId)
                                      ->update(['Approval1'=> $Approval1]);
+
         return response()->json(true);
+    }
+
+        else{
+            DB::table('loanapplications')->where('MemberId',$MemberId)
+                                         ->update(['Approval1'=> $Approval1]);
+
+        return response()->json(true);
+        }
     }
 
     public function getShishirSubmit(Request $request){
 
+         $DomainName = $request->DomainName;
+         $DivisionName = $request->DivisionName;
+         $MonthId = $request->MonthId;
+         $YearId = $request->YearId;
+         $MemberId = $request->MemberId;
+         $MemberName = $request->MemberName;
+         $AccountNo = $request->AccountNo;
+         $GSaving = $request->GSaving;
+         $Dps = $request->Dps;
          $user_id = Auth::user()->id;
-         $posting = new Posting();        
-                    $DomainName = $request->DomainName;
-         $posting->DomainName = $DomainName;
-                     $DivisionName = $request->DivisionName;
-         $posting->DivisionName = $DivisionName;
-                    $ZoneId = $request->ZoneId;
-         $posting->ZoneId = $ZoneId;               
-                    $AreaId = $request->AreaId;                
-         $posting->AreaId = $AreaId;                
-                    $BranchId = $request->BranchId;
-         $posting->BranchId = $BranchId;
-                    $MonthId = $request->MonthId;
-         $posting->MonthId = $MonthId;
-                    $YearId = $request->YearId;                
-         $posting->YearId = $YearId;                
-                    $MemberId = $request->MemberId;
-         $posting->MemberId = $MemberId;
-                    $MemberName = $request->MemberName;
-         $posting->MemberName = $MemberName;
-                    $AccountNo = $request->AccountNo;
-         $posting->AccountNo = $AccountNo;
-                    $GSaving = $request->GSaving;
-         $posting->GSaving = $GSaving;
-                    $Dps = $request->Dps;
-         $posting->Dps = $Dps;
-                    $Loan = $request->Loan;
-         $posting->Loan = $Loan;
-         $posting->posted_by    = $user_id;
-         $posting->save();
+         $posting = Posting::where('MemberId', $MemberId)
+                            ->whereMonth('ScheduleDate','=', $MonthId)
+                            ->whereYear('ScheduleDate','=', $YearId)
+                            ->increment('PayedInstallment');
+         DB::table('postings')->where('MemberId', $MemberId)
+                                        ->whereMonth('ScheduleDate','=', $MonthId)
+                                        ->whereYear('ScheduleDate','=', $YearId)
+                                        ->update(['Ok'=>1]);
 
-                
-        $savingtables = new Savingtable();
-        $savingtables ->DomainName = $DomainName;
-        $savingtables ->DivisionName = $DivisionName;
-        $savingtables ->ZoneId = $ZoneId;
-        $savingtables ->AreaId = $AreaId;
-        $savingtables ->BranchId = $BranchId;
-        $savingtables ->MonthId = $MonthId;
-        $savingtables ->YearId = $YearId;
-        $savingtables ->MemberId = $MemberId;
-        $savingtables ->MemberName = $MemberName;
-        $savingtables ->AccountNo = $AccountNo;
 
-        $withdraws_data = DB::table('savingtables')
+         
+         $withdraws_data = DB::table('savingtables')
                                   ->where('MemberId', $MemberId)->get();
                  foreach($withdraws_data as $key=>$withdraw_data){
                     $PresentGSaving = $withdraw_data->GSaving;
                     $presentDps = $withdraw_data->Dps;
+                    $Duration = $withdraw_data->Duration;
                  }
+        $GSaving = $GSaving + $PresentGSaving ;
+        $Dps = $Dps + $presentDps ;
 
-        $savingtables ->GSaving = $GSaving + $PresentGSaving ;
-        $savingtables ->Dps = $Dps + $presentDps ;
-        $savingtables ->posted_by = $user_id;
-        $savingtables->save();
-
+        $savingtables = Savingtable::where('AccountNo', $AccountNo)
+                                    ->update(['GSaving'=>$GSaving, 'Dps'=>$Dps]);
+        $savingtables = Savingtable::where('AccountNo', $AccountNo)
+                                    ->increment('TotalInstallment');
         return response()->json(true);
     }
 
@@ -206,7 +223,7 @@ class SelectBoxController extends Controller
         }
     }
 
-        public function getLoanpostingInfo(Request $request){
+    public function getLoanpostingInfo(Request $request){
         $DomainName = $request->DomainName;
         $DivisionName = $request->DivisionName;
         $MonthId = $request->MonthId;
@@ -216,32 +233,23 @@ class SelectBoxController extends Controller
                                 ->where('DivisionOfficeId', $DivisionName)
                                 ->whereMonth('ScheduleDate','=', $MonthId)
                                 ->whereYear('ScheduleDate','=',$YearId)
+                                ->where('Ok', 0)
                                 ->get();
         return response()->json($data);
     }
 
-     public function getPostingInfo(Request $request){
+    public function getPostingInfo(Request $request){
         $DomainName = $request->DomainName;
         $DivisionName = $request->DivisionName;
-        $ZoneId = $request->ZoneId;
-        $AreaId = $request->AreaId;
-        $BranchId = $request->BranchId;
         $MonthId = $request->MonthId;
         $YearId = $request->YearId;
 
-
-        $data = DB::table('members')
-            ->join('accountopens', 'members.MemberId', '=', 'accountopens.MemberId')
-            // ->join('postings', 'members.MemberId', '=', 'postings.MemberId')
-            ->where('members.DomainName', $DomainName) 
-            // ->where('members.DivisionOfficeId', $DivisionName)
-            // ->where('members.ZoneId', $ZoneId)
-            // ->where('members.AreaId', $AreaId)
-            // ->where('members.BranchId', $BranchId)
-            // ->where('postings.Status', '!=', '1')
-            ->select('members.*', 'accountopens.*')
-            ->get();
-
+        $data = Posting::where('DomainName', $DomainName)
+                                ->where('DivisionName', $DivisionName)
+                                ->whereMonth('ScheduleDate','=', $MonthId)
+                                ->whereYear('ScheduleDate','=',$YearId)
+                                ->where('Ok', 0)
+                                ->get();
         return response()->json($data);
     }
 

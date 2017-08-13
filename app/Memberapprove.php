@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Riskfund extends Model
+class Memberapprove extends Model
 {
 
 }

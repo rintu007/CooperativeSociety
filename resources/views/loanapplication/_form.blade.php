@@ -122,35 +122,35 @@
      <div class="form-group required col-md-6" id="form-DomainName-error">
         {!! Form::label("DomainName","Domain Name",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("DomainName", null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
+            {!! Form::select("DomainName", $DomainInfo, null, ["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
             <span id="DomainName-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-DivisionOfficeId-error">
         {!! Form::label("DivisionOfficeId","Divisional Office",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("DivisionOfficeId", null,["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
+            {!! Form::select("DivisionOfficeId", $DivisionOfficeInfo, null, ["class"=>"form-control DivisionOfficeId required","id"=>"DivisionOfficeId"]) !!}
             <span id="DivisionOfficeId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-ZoneId-error">
         {!! Form::label("ZoneId","Zone",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("ZoneId", null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
+            {!! Form::select("ZoneId", $ZoneInfo, null, ["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
             <span id="ZoneId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-AreaId-error">
         {!! Form::label("AreaId","Area",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("AreaId", null,["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
+            {!! Form::select("AreaId", $Area, null, ["class"=>"form-control AreaId required","id"=>"AreaId"]) !!}
             <span id="AreaId-error" class="help-block"></span>
         </div>
     </div>
     <div class="form-group required col-md-6" id="form-BranchId-error">
         {!! Form::label("BranchId","Branch",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("BranchId", null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
+            {!! Form::select("BranchId", $BranchInfo, null, ["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
     </div>
@@ -488,52 +488,55 @@
 </script>
 <script>
 
-    // $(document).ready(function () {
-    //     $(document).on('change', '.DomainName', function () {
-    //         //console.log("yes it is change");
+    $(document).ready(function () {
+        $(document).on('change', '.DomainName', function () {
+            //console.log("yes it is change");
 
-    //         var op = " ";
-    //         var DomainName = $(this).val();
+            var op = " ";
+            var DomainName = $(this).val();
         
-    //         $('#DivisionOfficeId').empty();
-    //         $.ajax({
-    //             type: 'get',
-    //             url: 'getDivisionOffice',
-    //             data: {'id': DomainName},
-    //             success: function (data) {
-    //                 $.each(data, function (index, subcatObj) {
-    //                     $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
-    //                 });
-    //             },
-    //             error: function () {
-    //                 alert("Enternal Connection errors.");
-    //             }
-    //         });
-    //         $.ajax(clear);
-    //     });
-    //     $(document).on('change', '.DivisionOfficeId', function () {
-    //         //console.log("yes it is change");
+            $('#DivisionOfficeId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getDivisionOffice',
+                data: {'id': DomainName},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+                    });
+                },
+                error: function () {
+                    alert("Enternal Connection errors.");
+                }
+            });
+            // $.ajax(clear);
+        });
+       
 
-    //         var op = " ";
-    //         var DivisionOfficeId = $(this).val();
-    //         //var div = $(this).parent();
-    //         //console.log(DivisionId);
-    //         $('#ZoneId').empty();
-    //         $.ajax({
-    //             type: 'get',
-    //             url: 'getZone',
-    //             data: {'id': DivisionOfficeId},
-    //             success: function (data) {
-    //                 $.each(data, function (index, subcatObj1) {
-    //                     $('#ZoneId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ZoneName +'</option>')
-    //                 });
-    //             },
-    //             error: function () {
+        $(document).on('change', '.DivisionOfficeId', function () {
+            //console.log("yes it is change");
 
-    //             }
-    //         });
-    //         $.ajax(clear);
-    //     });
+            var op = " ";
+            var DivisionOfficeId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#ZoneId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getZone',
+                data: {'id': DivisionOfficeId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj1) {
+                        $('#ZoneId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ZoneName +'</option>')
+                    });
+                },
+                error: function () {
+
+                }
+            });
+            // $.ajax(clear);
+        });
+
 
     //     $(document).on('change', '.ThanaId', function () {
     //         //console.log("yes it is change");
@@ -607,29 +610,29 @@
     //         $.ajax(clear);
     //     });
 
-    //     $(document).on('change', '.ZoneId', function () {
-    //         //console.log("yes it is change");
+        $(document).on('change', '.ZoneId', function () {
+            //console.log("yes it is change");
 
-    //         var op = " ";
-    //         var ZoneId = $(this).val();
-    //         //var div = $(this).parent();
-    //         //console.log(DivisionId);
-    //         $('#AreaId').empty();
-    //         $.ajax({
-    //             type: 'get',
-    //             url: 'getArea',
-    //             data: {'id': ZoneId},
-    //             success: function (data) {
-    //                 $.each(data, function (index, subcatObjArea) {
-    //                     $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
-    //                 });
-    //             },
-    //             error: function () {
+            var op = " ";
+            var ZoneId = $(this).val();
+            //var div = $(this).parent();
+            //console.log(DivisionId);
+            $('#AreaId').empty();
+            $.ajax({
+                type: 'get',
+                url: 'getArea',
+                data: {'id': ZoneId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObjArea) {
+                        $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
+                    });
+                },
+                error: function () {
 
-    //             }
-    //         });
-    //         $.ajax(clear);
-    //     });
+                }
+            });
+            $.ajax(clear);
+        });
 
     //     $(document).on('change', '.MemberId', function () {
 
@@ -653,7 +656,7 @@
     //         // $.ajax(clear);
     //     });
 
-    // });
+    });
 
 </script>
 

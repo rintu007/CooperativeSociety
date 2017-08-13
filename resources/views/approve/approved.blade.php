@@ -94,7 +94,7 @@
             <td style="text-align: center">
                 <a class="btn btn-primary btn-xs" title="view"
                    href="javascript:ajaxLoad('approve/update1/{{$approve->id}}')">
-                    <i class="glyphicon glyphicon-edit"></i> view</a>
+                    <i class="glyphicon glyphicon-edit"></i> view schedule</a>
                 <!-- <a class="btn btn-danger btn-xs" title="Delete"
                    href="javascript:if(confirm('Are you sure want to delete?')) ajaxLoad('approve/delete/{{$approve->id}}')">
                     <i class="glyphicon glyphicon-trash"></i> Delete

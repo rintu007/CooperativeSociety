@@ -1,10 +1,10 @@
 @if(Auth::guest())
     @else
 <h1 class="page-header">Loan Posting
-    <div class="pull-right">
+   <!--  <div class="pull-right">
         <a href="javascript:ajaxLoad('loanposting/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div>
+    </div> -->
 </h1>
 <div >
     <div class="input-group">

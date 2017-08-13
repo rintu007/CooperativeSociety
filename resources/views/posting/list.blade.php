@@ -1,10 +1,10 @@
 @if(Auth::guest())
     @else
 <h1 class="page-header">Posting
-    <div class="pull-right">
+    <!-- <div class="pull-right">
         <a href="javascript:ajaxLoad('posting/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div>
+    </div> -->
 </h1>
 <div >
     <div class="input-group">
@@ -22,7 +22,7 @@
             <span id="DivisionOfficeId-error" class="help-block"></span>
         </div>
     </div>
-    <div class="form-group required col-md-4" id="form-ZoneId-error">
+    <!-- <div class="form-group required col-md-4" id="form-ZoneId-error">
         {!! Form::label("ZoneId","Zone",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
             {!! Form::select("ZoneId",$ZoneInfo,null,["class"=>"form-control ZoneId required","id"=>"ZoneId"]) !!}
@@ -42,7 +42,7 @@
             {!! Form::select("BranchId",$BranchInfo,null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
-    </div>
+    </div> -->
     <div class="form-group required col-md-4" id="form-MonthId-error">
         {!! Form::label("MonthId","Month",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -106,16 +106,6 @@
                class="glyphicon  {{ Session::get('posting_field')=='passbook'?(Session::get('posting_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
         </th>
-        <th>
-            <a href="javascript:ajaxLoad('posting/list?field=passbook&sort={{Session::get("posting_sort")=="asc"?"desc":"asc"}}')">
-                Loan
-            </a>
-            <i style="font-size: 12px"
-               class="glyphicon  {{ Session::get('posting_field')=='passbook'?(Session::get('posting_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
-            </i>
-        </th>
-       
-
         <th width="140px">Actions</th>
     </tr>
     </thead>
@@ -123,12 +113,12 @@
 
     </tbody>
 </table>
-<div class="pull-right">{!! str_replace('/?','?',$postings->render()) !!}</div>
-<div class="row">
+<!--<div class="pull-right">{!! str_replace('/?','?',$postings->render()) !!}</div>
+ <div class="row">
     <i class="col-sm-12">
         Total: {{$postings->total()}} records
     </i>
-</div>
+</div> -->
 @endif
 <script>
     $('.pagination a').on('click', function (event) {
@@ -142,9 +132,9 @@
                
                 var DomainName = document.getElementById('DomainName').value;
                 var DivisionName = document.getElementById('DivisionOfficeId').value;
-                var ZoneId = document.getElementById('ZoneId').value;
-                var AreaId = document.getElementById('AreaId').value;
-                var BranchId = document.getElementById('BranchId').value;
+                // var ZoneId = document.getElementById('ZoneId').value;
+                // var AreaId = document.getElementById('AreaId').value;
+                // var BranchId = document.getElementById('BranchId').value;
                 var MonthId = document.getElementById('MonthId').value;
                 var YearId = document.getElementById('YearId').value;
                 var i = 1;
@@ -153,11 +143,11 @@
                 $.ajax({
                     type: 'get',
                     url: 'getPostingInfo',
-                    data: {'DomainName': DomainName, 'DivisionName': DivisionName, 'ZoneId': ZoneId, 'AreaId': AreaId, 'BranchId': BranchId, 'MonthId': MonthId, 'YearId': YearId},
+                    data: {'DomainName': DomainName, 'DivisionName': DivisionName, 'MonthId': MonthId, 'YearId': YearId},
                     success: function (data) {
 //                    console.log(data);
                         $.each(data, function (index, subcatObj3p) {
-                            $('#postingPlace').append('<tr class="listPagetr" id="row'+i+'"><td style="text-align: center;" >' + i + '</td><td style="text-align: center;"><input type="text"  id="MemberId'+i+'" value="' + subcatObj3p.MemberId + '" class="listPagetd"  readonly></td><td style="text-align: center"><input type="text" id="MemberName'+i+'" value="' + subcatObj3p.EnglishName + '" class="listPagetd" readonly></td><td style="text-align: center"><input type="text" id="AccountNo'+i+'" value="' + subcatObj3p.AccountNo + '" class="listPagetd" readonly></td><td style="text-align: center">' +100+ '</td><td style="text-align: center"><input type="text" id="Dps'+i+'" value="' + subcatObj3p.MonthlyInstallment + '" class="listPagetd"></td><td style="text-align: center"><input type="text" id="Loan'+i+'" class="listPagetd"></td><td><button onClick="shishirSubmit('+i+')" type="submit" >submit</td></tr>');
+                            $('#postingPlace').append('<tr id="row'+i+'"><td style="text-align: center " >' + i + '</td><td id="MemberId'+i+'" style="text-align: center ">' + subcatObj3p.MemberId + '</td><td id="MemberName'+i+'" style="text-align: center ">' + subcatObj3p.MemberName + '</td><td id="AccountNo'+i+'" style="text-align: center ">' + subcatObj3p.AccountNo + '</td><td id="GSaving'+i+'" style="text-align: center ">' + subcatObj3p.GSaving + '</td><td id="Dps'+i+'" style="text-align: center ">' + subcatObj3p.Dps + '</td><td><button onClick="shishirSubmit('+i+')" type="submit" >submit</td></tr>');
                             i++;
                         });
                         // document.getElementById('hidden').value = i - 1;
@@ -248,24 +238,19 @@
                 
                 var DomainName = document.getElementById("DomainName").value;                
                 var DivisionName = document.getElementById("DivisionOfficeId").value;                
-                var ZoneId = document.getElementById("ZoneId").value;                
-                var AreaId = document.getElementById("AreaId").value;                
-                var BranchId = document.getElementById("BranchId").value;
                 var MonthId = document.getElementById("MonthId").value;
                 var YearId = document.getElementById("YearId").value;                
-                var MemberId = document.getElementById("MemberId" + j ).value;
-                var MemberName = document.getElementById("MemberName" + j ).value;
-                var AccountNo = document.getElementById("AccountNo" + j ).value;
-                var GSaving = 100;
-                var Dps = document.getElementById("Dps" + j ).value;
-                var Loan = document.getElementById("Loan" + j ).value;
+                var MemberId = document.getElementById("MemberId" + j ).innerText;
+                var MemberName = document.getElementById("MemberName" + j ).innerText;
+                var AccountNo = document.getElementById("AccountNo" + j ).innerText;
+                var GSaving = document.getElementById("GSaving" + j ).innerText;
+                var Dps = document.getElementById("Dps" + j ).innerText;
                 
                 $.ajax({
                 type: 'get',
                 url: 'getShishirSubmit',
-                data: {'DomainName': DomainName, 'DivisionName': DivisionName, 'ZoneId': ZoneId, 'AreaId': AreaId, 'BranchId': BranchId, 'MonthId': MonthId, 'YearId': YearId, 'MemberId': MemberId, 'MemberName': MemberName, 'AccountNo': AccountNo, 'GSaving': GSaving, 'Dps': Dps, 'Loan': Loan},
+                data: {'DomainName': DomainName, 'DivisionName': DivisionName,  'MonthId': MonthId, 'YearId': YearId, 'MemberId': MemberId, 'MemberName': MemberName, 'AccountNo': AccountNo, 'GSaving': GSaving, 'Dps': Dps},
                 success: function (data) {
-                    // $( "row" + j ).remove();
                     document.getElementById("row" + j ).remove();
                 },
                 error: function () {

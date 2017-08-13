@@ -14,7 +14,7 @@ use App\Product;
 use App\Duration;
 use App\Savingtable;
 use App\Posting;
-use Carbon\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
@@ -48,7 +48,7 @@ class AccountopenController extends Controller
     {
          $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
         $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.update',['accountopen' => Accountopen::find($id)])->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('accountopen.create')->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
     }
 
     public function postUpdate($id)
@@ -122,7 +122,6 @@ class AccountopenController extends Controller
         $accountopen->MonthlyInstallment        = Input::get('MonthlyInstallment');
                         $Dps = Input::get('MonthlyInstallment');       
         $accountopen->Date     = Input::get('Date');
-                        $Date     = Input::get('Date');
         $accountopen->posted_by    = $user_id;
         $accountopen->save();
 
@@ -154,10 +153,10 @@ class AccountopenController extends Controller
             $posting->Dps     = $Dps;
             $posting->InstallmentNo     = $i;
             $posting->PayedInstallment     = 0;
-                    $ScheduleDate = Carbon::createFromFormat('Y-m-d', $Date);
-            $posting->ScheduleDate = $ScheduleDate->addMonth($i);
-            $posting->Duration = 1;
-            $posting->Ok        = 0;           
+            $posting->ScheduleDate = Carbon::now()->addMonths($i);
+            $posting->Ok        = 0;
+            // $loanschedule->ScheduleDate = Carbon::now()->addMonths($i);
+            
             $posting->posted_by    = $user_id;        
             $posting->save();
         }
@@ -179,9 +178,7 @@ class AccountopenController extends Controller
             $posting->Dps     = $Dps;
             $posting->InstallmentNo     = $i;
             $posting->PayedInstallment     = 0;
-                        $ScheduleDate = Carbon::createFromFormat('Y-m-d', $Date);
-            $posting->ScheduleDate = $ScheduleDate->addMonth($i);
-            $posting->Duration = 2;
+            $posting->ScheduleDate = Carbon::now()->addMonths($i);
             $posting->Ok        = 0;
             // $loanschedule->ScheduleDate = Carbon::now()->addMonths($i);
             

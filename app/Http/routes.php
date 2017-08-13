@@ -71,6 +71,9 @@ Route::controllers([
     'moneymethod'                   => 'MoneymethodController',
     'loanposting'                   => 'LoanpostingController',
     'note'                          => 'NoteController',
+    'memberapprove'                 => 'MemberapproveController',
+    'report'                        => 'ReportController',
+    'riskfund'                        => 'RiskfundController',
 
 ]); 
 
@@ -101,6 +104,8 @@ Route::get('getMemberInfo','SelectBoxController@getMemberInfo');
 Route::get('getShishirSubmit','SelectBoxController@getShishirSubmit');
 
 Route::get('getShishirapproval','SelectBoxController@getShishirapproval');
+
+Route::get('getMemberapproval','SelectBoxController@getMemberapproval');
 
 Route::get('getLoanpostingInfo','SelectBoxController@getLoanpostingInfo');
 

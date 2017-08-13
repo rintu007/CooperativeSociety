@@ -1,10 +1,10 @@
 @if(Auth::guest())
 @else
 <h1 class="page-header">Loan Application List
-    <div class="pull-right">
+    <!-- <div class="pull-right">
         <a href="javascript:ajaxLoad('approve/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
-    </div>
+    </div> -->
     <div class="pull-right">
         <a href="javascript:ajaxLoad('approve/approved')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-ok-sign"></i> approved</a>
@@ -85,7 +85,7 @@
     @foreach($approves as $key=>$approve)
         <tr id="row{{$i}}">
             <td align="center" id="SerialNo{{$i}}">{{$i}}</td>
-            <td ><input id="MemberId{{$i}}" value="{{$approve->MemberId}}" readonly="true" /></td>
+            <td id="MemberId{{$i}}">{{$approve->MemberId}}</td>
             <td>{{$approve->EnglishName}}</td>
             <td>{{$approve->LoanType}}</td>
             <td>{{$approve->LoanAmount}}</td>
@@ -118,7 +118,7 @@
          function shishirApproval(i) {
             var SerialNo = i;
             var approve = 1;           
-            var MemberId = document.getElementById("MemberId" + SerialNo).value;
+            var MemberId = document.getElementById("MemberId" + SerialNo).innerText;
             
             $.ajax({
                     type: 'get',
@@ -137,7 +137,7 @@
          function shishirReject(i) {
             var approve = 2;
             var SerialNo = i;
-            var MemberId = document.getElementById("MemberId" + SerialNo).value;
+            var MemberId = document.getElementById("MemberId" + SerialNo).innerText;
           
             $.ajax({
                     type: 'get',

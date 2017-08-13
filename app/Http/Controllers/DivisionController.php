@@ -20,7 +20,7 @@ class DivisionController extends Controller
         Session::put('division_field', Input::has('field') ? Input::get('field') : (Session::has('division_field') ? Session::get('division_field') : 'id'));
         Session::put('division_sort', Input::has('sort') ? Input::get('sort') : (Session::has('division_sort') ? Session::get('division_sort') : 'asc'));
         $divisions = Division::where('id', 'like', '%' . Session::get('division_search') . '%')
-            ->orderBy(Session::get('division_field'), Session::get('division_sort'))->paginate(8);
+            ->orderBy(Session::get('division_field'), Session::get('division_sort'))->paginate(25);
         return view('division.list', ['divisions' => $divisions]);
     }
 
