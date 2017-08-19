@@ -74,7 +74,7 @@
             <td align="center">{{$i++}}</td>
             <td>{{$member->MemberId}}</td>
             <td><img src="uploads/{{$member->Image}}" width="30" height="30"></td>
-            <td>{{$member->BanglaName}}</td>
+            <td>{{$member->EnglishName}}</td>
             <td>{{$member->NId}}</td>
             <td>{{$member->Mobile}}</td>
 

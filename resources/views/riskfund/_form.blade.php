@@ -51,8 +51,7 @@
             {!! Form::text("BranchId", null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
-    </div>
-     
+    </div>     
 </div>
 
 <div class="col-md-12" style="background-color: #EAEAEA">

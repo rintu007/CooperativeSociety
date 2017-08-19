@@ -6,11 +6,11 @@
             </h1>
     </div>
      <div class="col-md-4"> 
-            <h1 class="page-header">Month:
+            <h1 class="page-header">Month:{{date('m')}}
             </h1>
     </div>
      <div class="col-md-4"> 
-            <h1 class="page-header">Year:   
+            <h1 class="page-header">Year: {{date('Y')}}   
             </h1>
     </div>
  
