@@ -9,6 +9,7 @@ use App\Loanapplication;
 use App\Withdraw;
 use App\Loanschedule;
 use App\Accountopen;
+use App\Riskfund;
 use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -134,6 +135,42 @@ class NoteController extends Controller
         $ThisYear = Posting::where('Duration', 2)->where('Ok',1)->whereYear('created_at', '=', date('Y'))->sum('Dps');
         $ThisPeriod = Posting::where('Duration', 2)->where('Ok',1)->sum('Dps');
         DB::table('notes')->where('id', 25)
+                            ->update(['ThisMonth'=>$ThisMonth, 'ThisYear'=>$ThisYear, 'ThisPeriod'=>$ThisPeriod]);
+
+        $ThisMonth = Riskfund::where('TransactionType', 1)->whereMonth('created_at', '=', date('m'))->count('id');
+        $ThisYear = Riskfund::where('TransactionType', 1)->whereYear('created_at', '=', date('Y'))->count('id');
+        $ThisPeriod = Riskfund::where('TransactionType', 1)->count('id');
+        DB::table('notes')->where('id', 26)
+                            ->update(['ThisMonth'=>$ThisMonth, 'ThisYear'=>$ThisYear, 'ThisPeriod'=>$ThisPeriod]);
+
+        $RThisMonth = Riskfund::where('TransactionType', 2)->whereMonth('created_at', '=', date('m'))->count('id');
+        $RThisYear = Riskfund::where('TransactionType', 2)->whereYear('created_at', '=', date('Y'))->count('id');
+        $RThisPeriod = Riskfund::where('TransactionType', 2)->count('id');
+        DB::table('notes')->where('id', 27)
+                            ->update(['ThisMonth'=>$RThisMonth, 'ThisYear'=>$RThisYear, 'ThisPeriod'=>$RThisPeriod]);
+
+        $ThisMonth = $ThisMonth - $RThisMonth;
+        $ThisYear = $ThisYear - $RThisYear;
+        $ThisPeriod = $ThisPeriod - $RThisPeriod;
+        DB::table('notes')->where('id', 28)
+                            ->update(['ThisMonth'=>$ThisMonth, 'ThisYear'=>$ThisYear, 'ThisPeriod'=>$ThisPeriod]);
+
+        $ThisMonth = Riskfund::where('TransactionType', 1)->whereMonth('created_at', '=', date('m'))->sum('RiskFund');
+        $ThisYear = Riskfund::where('TransactionType', 1)->whereYear('created_at', '=', date('Y'))->sum('RiskFund');
+        $ThisPeriod = Riskfund::where('TransactionType', 1)->sum('RiskFund');
+        DB::table('notes')->where('id', 29)
+                            ->update(['ThisMonth'=>$ThisMonth, 'ThisYear'=>$ThisYear, 'ThisPeriod'=>$ThisPeriod]);
+
+        $RThisMonth = Riskfund::where('TransactionType', 2)->whereMonth('created_at', '=', date('m'))->sum('RiskFund');
+        $RThisYear = Riskfund::where('TransactionType', 2)->whereYear('created_at', '=', date('Y'))->sum('RiskFund');
+        $RThisPeriod = Riskfund::where('TransactionType', 2)->sum('RiskFund');
+        DB::table('notes')->where('id', 30)
+                            ->update(['ThisMonth'=>$RThisMonth, 'ThisYear'=>$RThisYear, 'ThisPeriod'=>$RThisPeriod]);
+
+        $ThisMonth = $ThisMonth - $RThisMonth;
+        $ThisYear = $ThisYear - $RThisYear;
+        $ThisPeriod = $ThisPeriod - $RThisPeriod;
+        DB::table('notes')->where('id', 31)
                             ->update(['ThisMonth'=>$ThisMonth, 'ThisYear'=>$ThisYear, 'ThisPeriod'=>$ThisPeriod]);
 
         $ThisMonth = Appformandpassbook::whereMonth('created_at', '=', date('m'))->count('share_number');

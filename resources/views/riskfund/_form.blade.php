@@ -168,7 +168,7 @@
                             $('#submitButton').attr("disabled","disabled");
                           }
                           else{
-                            $('#MoneyMethod').empty();
+                            // $('#MoneyMethod').empty();
                           }
                                                
                     });

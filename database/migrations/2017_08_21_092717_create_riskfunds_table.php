@@ -22,7 +22,7 @@ class CreateRiskfundsTable extends Migration
             $table->string('AreaId', 100);
             $table->string('BranchId', 100);
             $table->string('TransactionType', 100);
-            $table->string('MoneyMethod', 100)->default(0);
+            $table->string('MoneyMethod', 100);
             $table->date('Date');
             $table->timestamps();
         });
