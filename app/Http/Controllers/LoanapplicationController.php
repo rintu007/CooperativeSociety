@@ -258,6 +258,7 @@ class LoanapplicationController extends Controller
             $loanapplication->W2Signature = $filename;
         }
         $loanapplication->Approval1 = 0;
+        $loanapplication->Riskfund = 0;
         $loanapplication->save();
         return ['url' => 'loanapplication/list'];
     }

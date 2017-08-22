@@ -51,6 +51,20 @@
             {!! Form::text("BranchId", null,["class"=>"form-control BranchId required","id"=>"BranchId"]) !!}
             <span id="BranchId-error" class="help-block"></span>
         </div>
+    </div>
+    <div class="form-group required col-md-6" id="form-LoanAmount-error">
+        {!! Form::label("LoanAmount","Loan Amount",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("LoanAmount", null,["class"=>"form-control LoanAmount required","id"=>"LoanAmount"]) !!}
+            <span id="LoanAmount-error" class="help-block"></span>
+        </div>
+    </div> 
+    <div class="form-group required col-md-6" id="form-RiskFund-error">
+        {!! Form::label("RiskFund","Risk Fund",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("RiskFund", null,["class"=>"form-control RiskFund required","id"=>"RiskFund"]) !!}
+            <span id="RiskFund-error" class="help-block"></span>
+        </div>
     </div>     
 </div>
 
@@ -58,34 +72,20 @@
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Account Information</h3>               
     </div>
-    <div class="form-group required col-md-6" id="form-AccountType-error">
-        {!! Form::label("AccountType","Account Type",["class"=>"control-label col-md-3"]) !!}
+    <div class="form-group required col-md-6" id="form-TransactionType-error">
+        {!! Form::label("TransactionType","Transaction Type",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::select("AccountType", $ProductInfo, null,["class"=>"form-control AccountType required","id"=>"AccountType"]) !!}
-            <span id="AccountType-error" class="help-block"></span>
+            {!! Form::select("TransactionType", $MoneyrrInfo, null,["class"=>"form-control TransactionType required","id"=>"TransactionType"]) !!}
+            <span id="TransactionType-error" class="help-block"></span>
         </div>
     </div>
-     <div class="form-group required col-md-6" id="form-AccountNo-error">
-        {!! Form::label("AccountNo","Account No",["class"=>"control-label col-md-3"]) !!}
+     <div class="form-group required col-md-6" id="form-MoneyMethod-error">
+        {!! Form::label("MoneyMethod","Cash Type",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
-            {!! Form::text("AccountNo",null,["class"=>"form-control AccountNo required","id"=>"AccountNo"]) !!}
-            <span id="AccountNo-error" class="help-block"></span>
+            {!! Form::select("MoneyMethod", $MoneymethodInfo, null,["class"=>"form-control MoneyMethod required","id"=>"MoneyMethod"]) !!}
+            <span id="MoneyMethod-error" class="help-block"></span>
         </div>
     </div>   
-    <div class="form-group required col-md-6" id="form-Duration-error">
-        {!! Form::label("Duration","Duration",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::select("Duration",$DurationInfo, null,["class"=>"form-control Duration required","id"=>"Duration"]) !!}
-            <span id="Duration-error" class="help-block"></span>
-        </div>
-    </div>
-     <div class="form-group required col-md-6" id="form-MonthlyInstallment-error">
-        {!! Form::label("MonthlyInstallment","Monthly Installment",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::number("MonthlyInstallment",null ,["class"=>"form-control MonthlyInstallment required","id"=>"MonthlyInstallment"]) !!}
-            <span id="MonthlyInstallment-error" class="help-block"></span>
-        </div>
-    </div>
     <div class="form-group required col-md-6" id="form-Date-error">
         {!! Form::label("Date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -100,7 +100,7 @@
                     class="glyphicon glyphicon-backward"></i>
             Back</a>
         {!! Form::button("<i class='glyphicon glyphicon-floppy-disk'></i> Save",["type" => "submit","class"=>"btn
-    btn-primary"])!!}
+    btn-primary", "id"=>"submitButton"])!!}
     </div>
 </div>
 <script>
@@ -111,118 +111,78 @@
             var op = " ";
             var MemberId = $(this).val();
         
-            $('#DivisionOfficeId').empty();
+            $('#MemberName','#DomainName', '#DivisionName', '#ZoneId', '#AreaId', '#BranchId', '#LoanAmount', '#RiskFund').empty();
             $.ajax({
                 type: 'get',
-                url: 'getMemberInfo',
-                data: {'id': MemberId},
+                url: 'getLoanInfo',
+                data: {'MemberId': MemberId},
                 success: function (data) {
                     $.each(data, function (index, subcatObj) {
 
+                          var riskfund, amount;
+                          if(subcatObj == 1){
+                            alert("Risk Fund has been paid to the member.");
+                            $('#submitButton').attr("disabled","disabled");
+                          }
+                          else{
                           document.getElementById("MemberName").value = subcatObj.EnglishName;
                           document.getElementById("DomainName").value = subcatObj.DomainName;
                           document.getElementById("DivisionName").value = subcatObj.DivisionOfficeId;
                           document.getElementById("ZoneId").value = subcatObj.ZoneId;
                           document.getElementById("AreaId").value = subcatObj.AreaId;
                           document.getElementById("BranchId").value = subcatObj.BranchId;
-                        
+                                            amount = subcatObj.LoanAmount;
+                                            riskfund = (amount / 100);
+                          document.getElementById("LoanAmount").value = amount;
+                          document.getElementById("RiskFund").value = riskfund;
+                          
+                        }                          
                     });
                 },
                 error: function () {
-                    alert("Please be a member first.");
+                    alert("Internal Connection Error.");
                     // $(".inforError :input").attr("disabled", true);
                 }
             });
             // $.ajax(clear);
         });
-        $(document).on('change', '.DivisionOfficeId', function () {
-            //console.log("yes it is change");
+        
 
-            var op = " ";
-            var DivisionOfficeId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
-            $('#ZoneId').empty();
+       
+   
+
+        $(document).on('change', '.TransactionType', function () {
+
+            var MemberId = $('#MemberId').val();
+            var TransactionType = $(this).val();
+            
+            if(TransactionType == 1){
             $.ajax({
                 type: 'get',
-                url: 'getZone',
-                data: {'id': DivisionOfficeId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj1) {
-                        $('#ZoneId').append('<option value="'+subcatObj1.id+'">'+subcatObj1.ZoneName +'</option>')
+                url: 'getRiskFundVerification',
+                data: {'MemberId': MemberId},
+               success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                          if(subcatObj.Riskfund == 1){
+                            alert("You have already paid.");
+                            $('#submitButton').attr("disabled","disabled");
+                          }
+                          else{
+                            $('#MoneyMethod').empty();
+                          }
+                                               
                     });
                 },
                 error: function () {
-
+                        // alert("Error.");
                 }
             });
-            // $.ajax(clear);
-        });
 
-        $(document).on('change', '.ZoneId', function () {
-            //console.log("yes it is change");
+        }
 
-            var op = " ";
-            var ZoneId = $(this).val();
-            //var div = $(this).parent();
-            //console.log(DivisionId);
-            $('#AreaId').empty();
-            $.ajax({
-                type: 'get',
-                url: 'getArea',
-                data: {'id': ZoneId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObjArea) {
-                        $('#AreaId').append('<option value="'+subcatObjArea.id+'">'+subcatObjArea.AreaName +'</option>')
-                    });
-                },
-                error: function () {
-
-                }
-            });
-            // $.ajax(clear);
-        });
-
-    // $(document).on('change', '.MemberId', function () {
-
-    //         var op = " ";
-    //         var MemberId = $(this).val();           
-            
-    //         $.ajax({
-    //             type: 'get',
-    //             url: 'getJustify',
-    //             data: {'id': MemberId},
-    //             success: function (data) {
-                    
-    //                  $('#MemberId').empty();
-    //                     document.getElementById("MemberName").value = $member;
-    //                     // document.getElementById("MemberId").select();
-    //             },
-    //             error: function () {
-    //                     alert("Please be a member first.");
-    //             }
-    //         });
-    //         // $.ajax(clear);
-    //     });
-
-        $(document).on('change', '.AccountType', function () {
-
-            var MemberId = document.getElementById('MemberId').value;
-            var AccountType = document.getElementById('AccountType').value;
-            
-            $.ajax({
-                type: 'get',
-                url: 'getAccountVerification',
-                data: {'MemberId': MemberId, 'AccountType': AccountType},
-                success: function (data) {
-
-                        document.getElementById("AccountNo").value = data;
-                        
-                },
-                error: function () {
-                        alert("Error.");
-                }
-            });
+        else{
+            $('#submitButton').removeAttr("disabled");
+        }
             // $.ajax(clear);
         });
 

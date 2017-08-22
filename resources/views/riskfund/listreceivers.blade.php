@@ -1,14 +1,14 @@
 @if(Auth::guest())
     @else
-<h1 class="page-header">Risk Fund Payers List
-    <div class="pull-right">
+<h1 class="page-header">Risk Fund Receivers List
+   <!--  <div class="pull-right">
         <a href="javascript:ajaxLoad('riskfund/create')" class="btn btn-primary pull-right"><i
                     class="glyphicon glyphicon-plus-sign"></i> New</a>
     </div>
     <div class="pull-right">
-        <a href="javascript:ajaxLoad('riskfund/listreceivers')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-ok-sign"></i> Receivers</a>
-    </div>
+        <a href="javascript:ajaxLoad('riskfund/update')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-plus-sign"></i> Receivers</a>
+    </div> -->
 </h1>
 <div class="col-sm-7 form-group">
     <div class="input-group">
@@ -52,7 +52,7 @@
             <i style="font-size: 12px"
                class="glyphicon  {{ Session::get('riskfund_field')=='Amount'?(Session::get('riskfund_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
             </i>
-        </th>       
+        </th>      
         
     </tr>
     </thead>
@@ -96,6 +96,13 @@
     <i class="col-sm-12">
         Total: {{$riskfunds->total()}} records
     </i>
+</div>
+<div class="form-group">
+    <div class="col-md-6 col-md-push-3">
+        <a href="javascript:ajaxLoad('riskfund/list')" class="btn btn-danger"><i
+                    class="glyphicon glyphicon-backward"></i>
+            Back</a>
+    </div>
 </div>
 @endif
 <script>

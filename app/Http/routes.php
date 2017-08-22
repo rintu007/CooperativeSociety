@@ -111,6 +111,10 @@ Route::get('getLoanpostingInfo','SelectBoxController@getLoanpostingInfo');
 
 Route::get('getLoanSubmit','SelectBoxController@getLoanSubmit');
 
+Route::get('getLoanInfo','SelectBoxController@getLoanInfo');
+
+Route::get('getRiskFundVerification','SelectBoxController@getRiskFundVerification');
+
 
 
 Route::get('{view}', function ($view) {

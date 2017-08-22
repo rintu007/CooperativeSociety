@@ -51,6 +51,38 @@ class SelectBoxController extends Controller
         //
     }
 
+    public function getRiskFundVerification(Request $request){
+        $MemberId = $request->MemberId;
+        $data = DB::table('loanapplications')
+            ->select('Riskfund')
+            ->where('MemberId', $MemberId)
+            ->get();
+        if($data != null){
+            return response()->json($data);
+        }
+        else{
+            return response()->json(false);
+        }
+    }
+
+    public function getLoanInfo(Request $request){
+         $MemberId = $request->MemberId;
+
+         $data = DB::table('loanapplications')
+            ->select('*')
+            ->where('MemberId', $MemberId)
+            ->where('Approval1', 1)
+            ->whereIn('Riskfund', [0,1])
+            ->get();
+        if($data == null){
+            $data = array('id' => 1);
+            return response()->json($data);
+        }
+        else{
+        return response()->json($data);
+        }
+    }
+
     public function getLoanSubmit(Request $request){
 
          $user_id = Auth::user()->id;

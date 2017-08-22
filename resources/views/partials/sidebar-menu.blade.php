@@ -15,6 +15,7 @@
                 
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Fee</a></li>
+                <li><a tabindex="-1" href="{{ url('/riskfund') }}">Risk Fund</a></li>
                <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
@@ -109,6 +110,7 @@
                 
                 <li><a tabindex="-1" href="{{ url('/appformandpassbook') }}">Entry Form & Passbook</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan Application Fee</a></li>
+                <li><a tabindex="-1" href="{{ url('/riskfund') }}">Risk Fund</a></li>
                <!--  <li><a tabindex="-1" href="{{ url('/saving') }}">Savings</a></li>
                 <li><a tabindex="-1" href="{{ url('/loanapplicationmoneyreceipt') }}">Loan App Money Receipt</a></li> -->
             </ul>
