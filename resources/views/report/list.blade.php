@@ -26,52 +26,58 @@
         <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
                 <h3>Select Fields</h3>               
             </div>
-            <div class="form-group required col-md-6" id="form-MemberIdF-error">
-                    {!! Form::label("MemberIdF","Member ID",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+            <div class="form-group required col-md-3" id="form-MemberIdF-error">
+                    {!! Form::label("MemberIdF","Member ID",["class"=>"control-label col-md-6"]) !!}
+                <div class="col-md-6">
                    <input type="checkbox" id="MemberIdF">
                 </div>
            </div>
             
-           <div class="form-group required col-md-6" id="form-MemberName-error">
-                    {!! Form::label("MemberName","Member Name",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-MemberName-error">
+                    {!! Form::label("MemberName","Member Name",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
                    <input type="checkbox" id="MemberName">
                 </div>
            </div>
-           <div class="form-group required col-md-6" id="form-DomainNameF-error">
-                    {!! Form::label("DomainNameF","Domain Name",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-DomainNameF-error">
+                    {!! Form::label("DomainNameF","Domain Name",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
                    <input type="checkbox" id="DomainNameF">
                 </div>
            </div>
-           <div class="form-group required col-md-6" id="form-GSaving-error">
-                    {!! Form::label("GSaving","General Saving",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-GSaving-error">
+                    {!! Form::label("GSaving","General Saving",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
                    <input type="checkbox" id="GSaving">
                 </div>
            </div>
-           <div class="form-group required col-md-6" id="form-Dps-error">
-                    {!! Form::label("Dps","DPS",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-Dps-error">
+                    {!! Form::label("Dps","DPS",["class"=>"control-label col-md-6"]) !!}
+                <div class="col-md-6">
                    <input type="checkbox" id="Dps">
                 </div>
            </div>
-           <div class="form-group required col-md-6" id="form-Share-error">
-                    {!! Form::label("Share","Share",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-Share-error">
+                    {!! Form::label("Share","Share",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
                    <input type="checkbox" id="Share">
                 </div>
            </div>
-           <div class="form-group required col-md-6" id="form-Loan-error">
-                    {!! Form::label("Loan","Loan",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-3">
+           <div class="form-group required col-md-3" id="form-Loan-error">
+                    {!! Form::label("Loan","Loan",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
                     <input type="checkbox" id="Loan">
+                </div>
+           </div>
+           <div class="form-group required col-md-3" id="form-All-error">
+                    {!! Form::label("All","All",["class"=>"control-label col-md-7"]) !!}
+                <div class="col-md-5">
+                    <input type="checkbox" id="All">
                 </div>
            </div>
       </div> 
 
-      <div class="col-md-12" style="background-color: #EAEAEA">
+      <div class="col-md-12" style="background-color: #EGEGEG">
           <button type="submit" id="Submit" onclick="shishirReport();">Submit</button>
          </div>
       </div>
@@ -106,10 +112,13 @@
 
         function shishirReport(){
             var MemberId = document.getElementById('MemberId').checked;
-            alert("MemberId"+MemberId);
+
             var DomainName = document.getElementById('DomainName').checked;
             alert("DomainName"+DomainName);
             var MemberIdF = document.getElementById('MemberIdF').checked;
+               if(MemberIdF == true){
+              MemberId = 1;
+            alert("MemberId"+MemberId);}
             alert("MemberIdF"+MemberIdF);
             var MemberName = document.getElementById('MemberName').checked;
             alert("MemberName"+MemberName);
