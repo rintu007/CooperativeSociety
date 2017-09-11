@@ -24,8 +24,8 @@ class LoanapplicationController extends Controller
         Session::put('loanapplication_search', Input::has('ok') ? Input::get('search') : (Session::has('loanapplication_search') ? Session::get('loanapplication_search') : ''));
         Session::put('loanapplication_field', Input::has('field') ? Input::get('field') : (Session::has('loanapplication_field') ? Session::get('loanapplication_field') : 'MemberId'));
         Session::put('loanapplication_sort', Input::has('sort') ? Input::get('sort') : (Session::has('loanapplication_sort') ? Session::get('loanapplication_sort') : 'asc'));
-        $loanapplications = Loanapplication::where('MemberId', 'like', '%' . Session::get('loanapplication_search') . '%')->paginate(25);
-            // ->orderBy(Session::get('loanapplication_field'), Session::get('loanapplication_sort'))
+        $loanapplications = Loanapplication::where('MemberId', 'like', '%' . Session::get('loanapplication_search') . '%')->orderBy(Session::get('loanapplication_field'), Session::get('loanapplication_sort'))->paginate(25);
+            
         return view('loanapplication.list', ['loanapplications' => $loanapplications]);
     }
 

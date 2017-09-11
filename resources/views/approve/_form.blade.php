@@ -156,9 +156,7 @@
                         Principal = Principal - Payable; 
                         insDivided--;
                         
-                }
-
-               
+                }              
 
             });
 </script>

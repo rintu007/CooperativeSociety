@@ -59,6 +59,20 @@
     <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
         <h3>Account Information</h3>               
     </div>
+     <div class="form-group required col-md-6" id="form-Duration-error">
+        {!! Form::label("Duration","Duration",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::text("Duration", null,["class"=>"form-control Duration required","id"=>"Duration"]) !!}
+            <span id="Duration-error" class="help-block"></span>
+        </div>
+    </div>
+     <div class="form-group required col-md-6" id="form-MonthlyInstallment-error">
+        {!! Form::label("MonthlyInstallment","Monthly Installment",["class"=>"control-label col-md-3"]) !!}
+        <div class="col-md-6">
+            {!! Form::number("MonthlyInstallment",null ,["class"=>"form-control MonthlyInstallment required","id"=>"MonthlyInstallment"]) !!}
+            <span id="MonthlyInstallment-error" class="help-block"></span>
+        </div>
+    </div>
     <div class="form-group required col-md-6" id="form-AccountType-error">
         {!! Form::label("AccountType","Account Type",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -73,20 +87,7 @@
             <span id="AccountNo-error" class="help-block"></span>
         </div>
     </div>   
-    <div class="form-group required col-md-6" id="form-Duration-error">
-        {!! Form::label("Duration","Duration",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::select("Duration",$DurationInfo, null,["class"=>"form-control Duration required","id"=>"Duration"]) !!}
-            <span id="Duration-error" class="help-block"></span>
-        </div>
-    </div>
-     <div class="form-group required col-md-6" id="form-MonthlyInstallment-error">
-        {!! Form::label("MonthlyInstallment","Monthly Installment",["class"=>"control-label col-md-3"]) !!}
-        <div class="col-md-6">
-            {!! Form::number("MonthlyInstallment",null ,["class"=>"form-control MonthlyInstallment required","id"=>"MonthlyInstallment"]) !!}
-            <span id="MonthlyInstallment-error" class="help-block"></span>
-        </div>
-    </div>
+   
     <div class="form-group required col-md-6" id="form-Date-error">
         {!! Form::label("Date","Date",["class"=>"control-label col-md-3"]) !!}
         <div class="col-md-6">
@@ -112,7 +113,7 @@
             var op = " ";
             var MemberId = $(this).val();
         
-            $('#DivisionOfficeId').empty();
+            $('#DivisionOfficeId', '#Duration', '#MonthlyInstallment').empty();
             $.ajax({
                 type: 'get',
                 url: 'getMemberInfo',
@@ -126,6 +127,8 @@
                           document.getElementById("ZoneId").value = subcatObj.ZoneId;
                           document.getElementById("AreaId").value = subcatObj.AreaId;
                           document.getElementById("BranchId").value = subcatObj.BranchId;
+                          document.getElementById("Duration").value = subcatObj.name;
+                          document.getElementById("MonthlyInstallment").value = subcatObj.unitprice;
                         
                     });
                 },

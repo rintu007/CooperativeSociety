@@ -38,8 +38,8 @@ class AccountopenController extends Controller
 
         Session::put('accountopen_sort', Input::has('sort') ? Input::get('sort') : (Session::has('accountopen_sort') ? Session::get('accountopen_sort') : 'asc'));
 
-        $accountopens = Accountopen::where('MemberId', 'like', '%' . Session::get('accountopen_search') . '%') ->paginate(25);
-            // ->orderBy(Session::get('accountopen_field'), Session::get('accountopen_sort'))
+        $accountopens = Accountopen::where('MemberId', 'like', '%' . Session::get('accountopen_search') . '%') ->orderBy(Session::get('accountopen_field'), Session::get('accountopen_sort'))->paginate(25);
+            
         return view('accountopen.list', ['accountopens' => $accountopens]);
 
     }
@@ -47,8 +47,7 @@ class AccountopenController extends Controller
     public function getUpdate($id)
     {
          $ProductInfo     = ['' => '--select--'] + Product::lists('ProductName', 'id')->all();
-        $DurationInfo     = ['' => '--select--'] + Duration::lists('DurationName', 'id')->all();
-         return view('accountopen.update',['accountopen' => Accountopen::find($id)])->with('ProductInfo', $ProductInfo)->with('DurationInfo', $DurationInfo);
+         return view('accountopen.update',['accountopen' => Accountopen::find($id)])->with('ProductInfo', $ProductInfo);
     }
 
     public function postUpdate($id)
@@ -62,10 +61,10 @@ class AccountopenController extends Controller
         $accountopen->ZoneId          = Input::get('ZoneId');
         $accountopen->AreaId      = Input::get('AreaId');
         $accountopen->BranchId      = Input::get('BranchId');
-        $accountopen->AccountType = Input::get('AccountType'); 
-        $accountopen->AccountNo  = Input::get('AccountNo');
         $accountopen->Duration  = Input::get('Duration');          
-        $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');       
+        $accountopen->MonthlyInstallment          = Input::get('MonthlyInstallment');
+        $accountopen->AccountType = Input::get('AccountType'); 
+        $accountopen->AccountNo  = Input::get('AccountNo');       
         $accountopen->Date     = Input::get('Date');
         $accountopen->posted_by    = $user_id;
         $accountopen->save();
@@ -113,14 +112,16 @@ class AccountopenController extends Controller
                         $AreaId = Input::get('AreaId');
         $accountopen->BranchId      = Input::get('BranchId');
                         $BranchId = Input::get('BranchId');
-        $accountopen->AccountType = Input::get('AccountType'); 
-        $accountopen->AccountNo  = Input::get('AccountNo');
-                        $AccountNo = Input::get('AccountNo');
-        $accountopen->Duration  = Input::get('Duration');
+         $accountopen->Duration  = Input::get('Duration');
                         $Duration  = Input::get('Duration'); 
         $accountopen->GSaving  = 0;         
         $accountopen->MonthlyInstallment        = Input::get('MonthlyInstallment');
-                        $Dps = Input::get('MonthlyInstallment');       
+                        $Dps = Input::get('MonthlyInstallment'); 
+                        
+        $accountopen->AccountType = Input::get('AccountType'); 
+        $accountopen->AccountNo  = Input::get('AccountNo');
+                        $AccountNo = Input::get('AccountNo');
+             
         $accountopen->Date     = Input::get('Date');
                         $Date     = Input::get('Date');
         $accountopen->posted_by    = $user_id;

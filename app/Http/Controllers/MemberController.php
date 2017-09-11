@@ -57,8 +57,8 @@ class MemberController extends Controller
 
     public function postUpdate($id)
     {
-        $member = Member::find($id);
-        //$rules = ["unitprice" => "required|numeric"];
+        // $member = Member::find($id);
+        // $rules = ["MemberId" => "required|unique:members"];
         // if ($member->name != Input::get('name'))
         //     $rules += ['name' => 'required|unique:members'];
         // $validator = Validator::make(Input::all(), $rules);
@@ -183,16 +183,16 @@ class MemberController extends Controller
 
     public function postCreate()
     {
-        // $validator = Validator::make(Input::all(), [
-        //     // "TMSSID" => "required|unique:members",
-        //     "MemberId" => "required|unique:members"
-        // ]);
-        // if ($validator->fails()) {
-        //     return array(
-        //         'fail' => true,
-        //         'errors' => $validator->getMessageBag()->toArray()
-        //     );
-        // }
+        $validator = Validator::make(Input::all(), [
+            // "TMSSID" => "required|unique:members",
+            "MemberId" => "required|unique:members"
+        ]);
+        if ($validator->fails()) {
+            return array(
+                'fail' => true,
+                'errors' => $validator->getMessageBag()->toArray()
+            );
+        }
                 
         $member = new Member();
         $member->DomainName         = Input::get('DomainName');

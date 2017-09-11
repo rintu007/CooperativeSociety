@@ -25,11 +25,11 @@ class AppformandpassbookController extends Controller
 
         Session::put('appformandpassbook_search', Input::has('ok') ? Input::get('search') : (Session::has('appformandpassbook_search') ? Session::get('appformandpassbook_search') : ''));
 
-        Session::put('appformandpassbook_field', Input::has('field') ? Input::get('field') : (Session::has('appformandpassbook_field') ? Session::get('appformandpassbook_field') : 'member_name'));
+        Session::put('appformandpassbook_field', Input::has('field') ? Input::get('field') : (Session::has('appformandpassbook_field') ? Session::get('appformandpassbook_field') : 'member_id'));
 
         Session::put('appformandpassbook_sort', Input::has('sort') ? Input::get('sort') : (Session::has('appformandpassbook_sort') ? Session::get('appformandpassbook_sort') : 'asc'));
 
-        $appformandpassbooks = Appformandpassbook::where('member_name', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
+        $appformandpassbooks = Appformandpassbook::where('member_id', 'like', '%' . Session::get('appformandpassbook_search') . '%') 
             ->orderBy(Session::get('appformandpassbook_field'), Session::get('appformandpassbook_sort'))->paginate(25);
         return view('appformandpassbook.list', ['appformandpassbooks' => $appformandpassbooks]);
 
@@ -94,8 +94,6 @@ class AppformandpassbookController extends Controller
     {
         $validator = Validator::make(Input::all(), [
             "member_id" => "required|unique:appformandpassbooks"
-            // "CompanyrajCode" => "required|unique:appformandpassbooks",
-            // "unitprice" => "required|numeric"
         ]);
         if ($validator->fails()) {
             return array(

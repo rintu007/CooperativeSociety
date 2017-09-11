@@ -246,12 +246,22 @@ class SelectBoxController extends Controller
     }
 
     public function getMemberInfo(Request $request){
+
          $data = DB::table('members')
-            ->select('*')
-            ->where('MemberId', $request->id)
+            ->join('appformandpassbooks', 'members.MemberId', '=', 'appformandpassbooks.member_id')
+            ->select('members.EnglishName', 'members.DomainName', 'members.DivisionOfficeId', 'members.ZoneId', 'members.AreaId', 'members.BranchId', 'appformandpassbooks.name', 'appformandpassbooks.unitprice')
+            ->where('members.MemberId', $request->id)
+            ->where('appformandpassbooks.member_id', $request->id)
             ->get();
+        // $data = DB::table('members')
+        //     ->join('appformandpassbooks', 'members.MemberId', '=', 'appformandpassbooks.member_id')
+        //     ->select('members.*', 'appformandpassbooks.name', 'orders.unitprice')
+        //     ->where('MemberId', $request->id)
+        //     ->get();
             if($data != null){
              return response()->json($data);
+
+
         }
     }
 
