@@ -113,25 +113,39 @@
         function shishirReport(){
             var MemberId = document.getElementById('MemberId').checked;
 
-            var DomainName = document.getElementById('DomainName').checked;
-            alert("DomainName"+DomainName);
-            var MemberIdF = document.getElementById('MemberIdF').checked;
-               if(MemberIdF == true){
-              MemberId = 1;
-            alert("MemberId"+MemberId);}
-            alert("MemberIdF"+MemberIdF);
-            var MemberName = document.getElementById('MemberName').checked;
-            alert("MemberName"+MemberName);
-            var DomainNameF = document.getElementById('DomainNameF').checked;
-            alert("DomainNameF"+DomainNameF);
-            var GSaving = document.getElementById('GSaving').checked;
-            alert("GSaving"+GSaving);
-            var Dps = document.getElementById('Dps').checked;
-            alert("Dps"+Dps);
-            var Share = document.getElementById('Share').checked;
-            alert("Share"+Share);
-            var Loan = document.getElementById('Loan').checked;
-            alert("Loan"+Loan);
+             $.ajax({
+                type: 'get',
+                url: 'getDivisionOffice',
+                data: {'id': MemberId},
+                success: function (data) {
+                    $.each(data, function (index, subcatObj) {
+                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
+                    });
+                },
+                error: function () {
+                    alert("Enternal Connection errors.");
+                }
+            });
+
+            // var DomainName = document.getElementById('DomainName').checked;
+            // alert("DomainName"+DomainName);
+            // var MemberIdF = document.getElementById('MemberIdF').checked;
+            //    if(MemberIdF == true){
+            //   MemberId = 1;
+            // alert("MemberId"+MemberId);}
+            // alert("MemberIdF"+MemberIdF);
+            // var MemberName = document.getElementById('MemberName').checked;
+            // alert("MemberName"+MemberName);
+            // var DomainNameF = document.getElementById('DomainNameF').checked;
+            // alert("DomainNameF"+DomainNameF);
+            // var GSaving = document.getElementById('GSaving').checked;
+            // alert("GSaving"+GSaving);
+            // var Dps = document.getElementById('Dps').checked;
+            // alert("Dps"+Dps);
+            // var Share = document.getElementById('Share').checked;
+            // alert("Share"+Share);
+            // var Loan = document.getElementById('Loan').checked;
+            // alert("Loan"+Loan);
         }
 
         $(document).ready(function () {

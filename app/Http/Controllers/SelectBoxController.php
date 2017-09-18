@@ -51,6 +51,11 @@ class SelectBoxController extends Controller
         //
     }
 
+    public function getReport(Request $request){
+            $data = [];
+            $MemberId = $request->MemberId;
+    }
+
     public function getRiskFundVerification(Request $request){
         $MemberId = $request->MemberId;
         $data = DB::table('loanapplications')
