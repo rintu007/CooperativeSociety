@@ -57,7 +57,7 @@ class MemberController extends Controller
 
     public function postUpdate($id)
     {
-        // $member = Member::find($id);
+        $member = Member::find($id);
         // $rules = ["MemberId" => "required|unique:members"];
         // if ($member->name != Input::get('name'))
         //     $rules += ['name' => 'required|unique:members'];

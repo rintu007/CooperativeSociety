@@ -46,14 +46,29 @@ class SelectBoxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     public function getReport(Request $request){
-            $data = [];
-            $MemberId = $request->MemberId;
+            $MemberId = $request->id;
+            $MemberInfo = DB::table('members')
+                                ->select('MemberId', 'EnglishName','FatherName', 'Mobile')
+                                ->where('MemberId', $MemberId)
+                                ->get();
+            $ShareInfo = DB::table('shares')
+                                ->select('present_share_number','present_share_amount')
+                                ->where('member_id', $MemberId)
+                                ->get();
+            $SavingInfo = DB::table('savingtables')
+                                ->select('*')
+                                ->where('MemberId', $MemberId)
+                                ->get();
+            $LoanInfo = DB::table('loanapplications')
+                                ->select('*')
+                                ->where('MemberId', $MemberId)
+                                ->where('Approval1', 1)
+                                ->get();
+
+             return response()->json(array('MemberInfo' => $MemberInfo, 'ShareInfo' => $ShareInfo, 'SavingInfo'=>$SavingInfo, 'LoanInfo'=>$LoanInfo));
     }
 
     public function getRiskFundVerification(Request $request){
@@ -238,7 +253,7 @@ class SelectBoxController extends Controller
                  foreach($withdraws_data as $key=>$withdraw_data){
                     $PresentGSaving = $withdraw_data->GSaving;
                     $presentDps = $withdraw_data->Dps;
-                    $Duration = $withdraw_data->Duration;
+                   
                  }
         $GSaving = $GSaving + $PresentGSaving ;
         $Dps = $Dps + $presentDps ;

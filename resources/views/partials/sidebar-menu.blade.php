@@ -61,6 +61,7 @@
          <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Reports</a>
             <ul class="dropdown-menu">
                 <li><a tabindex="-1" href="{{ url('/note') }}">Operational Report</a></li>
+                <li><a tabindex="-1" href="{{ url('/report') }}">Report</a></li>
             </ul>
         </li>
         <!-- <li class="dropdown-submenu pull-right"><a tabindex="-1" href="#">Shares</a>

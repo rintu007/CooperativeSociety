@@ -1,174 +1,70 @@
-@if (Auth::guest())
-@else
-
-    <h1 class="page-header" style="text-align: center;">Reports of Member Status</h1>
-     <div class="col-md-12" style="background-color: #EAEAEA">
-            <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
-                <h3>Select Member or Domain</h3>               
-            </div>
-           <div class="form-group required col-md-6" id="form-MemberId-error">
-                    {!! Form::label("MemberId","Member ID",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-6">
-                    {!! Form::text("MemberId",null,["class"=>"form-control MemberId required","id"=>"MemberId"]) !!}
-                    <span id="MemberId-error" class="help-block"></span>
-                </div>
-           </div>
-           <div class="form-group required col-md-6" id="form-DomainName-error">
-                    {!! Form::label("DomainName","Domain",["class"=>"control-label col-md-3"]) !!}
-                <div class="col-md-6">
-                    {!! Form::select("DomainName",$DomainInfo,null,["class"=>"form-control DomainName required","id"=>"DomainName"]) !!}
-                    <span id="DomainName-error" class="help-block"></span>
-                </div>
-            </div>
-                    
-     </div>
-      <div class="col-md-12" style="background-color: #F7F7F7">
-        <div class="form-group col-md-12" id="form-MemberPresentAddress-error">
-                <h3>Select Fields</h3>               
-            </div>
-            <div class="form-group required col-md-3" id="form-MemberIdF-error">
-                    {!! Form::label("MemberIdF","Member ID",["class"=>"control-label col-md-6"]) !!}
-                <div class="col-md-6">
-                   <input type="checkbox" id="MemberIdF">
-                </div>
-           </div>
-            
-           <div class="form-group required col-md-3" id="form-MemberName-error">
-                    {!! Form::label("MemberName","Member Name",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                   <input type="checkbox" id="MemberName">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-DomainNameF-error">
-                    {!! Form::label("DomainNameF","Domain Name",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                   <input type="checkbox" id="DomainNameF">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-GSaving-error">
-                    {!! Form::label("GSaving","General Saving",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                   <input type="checkbox" id="GSaving">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-Dps-error">
-                    {!! Form::label("Dps","DPS",["class"=>"control-label col-md-6"]) !!}
-                <div class="col-md-6">
-                   <input type="checkbox" id="Dps">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-Share-error">
-                    {!! Form::label("Share","Share",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                   <input type="checkbox" id="Share">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-Loan-error">
-                    {!! Form::label("Loan","Loan",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                    <input type="checkbox" id="Loan">
-                </div>
-           </div>
-           <div class="form-group required col-md-3" id="form-All-error">
-                    {!! Form::label("All","All",["class"=>"control-label col-md-7"]) !!}
-                <div class="col-md-5">
-                    <input type="checkbox" id="All">
-                </div>
-           </div>
-      </div> 
-
-      <div class="col-md-12" style="background-color: #EGEGEG">
-          <button type="submit" id="Submit" onclick="shishirReport();">Submit</button>
-         </div>
-      </div>
-    <!-- <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th>Serial No</th>
-            <th>Description</th>
-            <th>This Month</th>
-            <th>This Year</th>
-            <th>Up to this</th>
-            <th>Comments</th>
-        </tr>
-      
-        </thead>
-        <tbody>
-      
-      
-        </tbody>
-    </table> -->
-    
-    <div class="row">
-        <i class="col-sm-12">
-            
-        </i>
+@if(Auth::guest())
+    @else
+<h1 class="page-header">Reports
+    <div class="pull-right">
+        <a href="javascript:ajaxLoad('report/personal')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-plus-sign"></i> Personal Report</a>
     </div>
-    <script>
-        $('.pagination a').on('click', function (event) {
-            event.preventDefault();
-            ajaxLoad($(this).attr('href'));
-        });
+    <div class="pull-right">
+        <a href="javascript:ajaxLoad('report/listreceivers')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-ok-sign"></i> Receivers</a>
+    </div>
+</h1>
+<div class="col-sm-7 form-group">
+    <div class="input-group">
+        <input class="form-control" id="search" value="{{ Session::get('report_search') }}"
+               onkeydown="if (event.keyCode == 13) ajaxLoad('{{url('report/list')}}?ok=1&search='+this.value)"
+               placeholder="Search..."
+               type="text">
 
-        function shishirReport(){
-            var MemberId = document.getElementById('MemberId').checked;
+        <div class="input-group-btn">
+            <button type="button" class="btn btn-default"
+                    onclick="ajaxLoad('{{url('report/list')}}?ok=1&search='+$('#search').val())"><i
+                        class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th width="50px" style="text-align: center">No</th>
+        <th>
+            <a href="javascript:ajaxLoad('report/list?field=MemberId&sort={{Session::get("report_sort")=="asc"?"desc":"asc"}}')">
+                Member ID
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('report_field')=='MemberId'?(Session::get('report_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+        <th>
+            <a href="javascript:ajaxLoad('report/list?field=MemberName&sort={{Session::get("report_sort")=="asc"?"desc":"asc"}}')">
+                Member Name
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('report_field')=='MemberName'?(Session::get('report_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>
+         <th>
+            <a href="javascript:ajaxLoad('report/list?field=Amount&sort={{Session::get("report_sort")=="asc"?"desc":"asc"}}')">
+                Amount
+            </a>
+            <i style="font-size: 12px"
+               class="glyphicon  {{ Session::get('report_field')=='Amount'?(Session::get('report_sort')=='asc'?'glyphicon-sort-by-alphabet':'glyphicon-sort-by-alphabet-alt'):'' }}">
+            </i>
+        </th>       
+        
+    </tr>
+    </thead>
+    <tbody>
+   
+    </tbody>
+</table>
 
-             $.ajax({
-                type: 'get',
-                url: 'getDivisionOffice',
-                data: {'id': MemberId},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj) {
-                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
-                    });
-                },
-                error: function () {
-                    alert("Enternal Connection errors.");
-                }
-            });
-
-            // var DomainName = document.getElementById('DomainName').checked;
-            // alert("DomainName"+DomainName);
-            // var MemberIdF = document.getElementById('MemberIdF').checked;
-            //    if(MemberIdF == true){
-            //   MemberId = 1;
-            // alert("MemberId"+MemberId);}
-            // alert("MemberIdF"+MemberIdF);
-            // var MemberName = document.getElementById('MemberName').checked;
-            // alert("MemberName"+MemberName);
-            // var DomainNameF = document.getElementById('DomainNameF').checked;
-            // alert("DomainNameF"+DomainNameF);
-            // var GSaving = document.getElementById('GSaving').checked;
-            // alert("GSaving"+GSaving);
-            // var Dps = document.getElementById('Dps').checked;
-            // alert("Dps"+Dps);
-            // var Share = document.getElementById('Share').checked;
-            // alert("Share"+Share);
-            // var Loan = document.getElementById('Loan').checked;
-            // alert("Loan"+Loan);
-        }
-
-        $(document).ready(function () {
-        $(document).on('click', '.Submit', function () {
-            alert("hey it is working");
-            var DomainName = document.getElementById('DomainName').value;
-            alert(DomainName);
-            $('#DivisionOfficeId').empty();
-            $.ajax({
-                type: 'get',
-                url: 'getDivisionOffice',
-                data: {'id': DomainName},
-                success: function (data) {
-                    $.each(data, function (index, subcatObj) {
-                        $('#DivisionOfficeId').append('<option value="'+subcatObj.id+'">'+subcatObj.DivisionOfficeName +'</option>')
-                    });
-                },
-                error: function () {
-                    alert("Enternal Connection errors.");
-                }
-            });
-            $.ajax(clear);
-        });
-   });
-    </script>
 @endif
+<script>
+    $('.pagination a').on('click', function (event) {
+        event.preventDefault();
+        ajaxLoad($(this).attr('href'));
+    });
+</script>

@@ -65,15 +65,15 @@ Route::controllers([
     'duration'                       => 'DurationController',
     'posting'                        => 'PostingController',
     'withdraw'                       => 'WithdrawController',
-    'approve'                       => 'ApproveController',
-    'addcat'                        => 'AddcatController',
-    'subcat'                        => 'SubcatController',
-    'moneymethod'                   => 'MoneymethodController',
-    'loanposting'                   => 'LoanpostingController',
-    'note'                          => 'NoteController',
-    'memberapprove'                 => 'MemberapproveController',
-    'report'                        => 'ReportController',
-    'riskfund'                        => 'RiskfundController',
+    'approve'                        => 'ApproveController',
+    'addcat'                         => 'AddcatController',
+    'subcat'                         => 'SubcatController',
+    'moneymethod'                    => 'MoneymethodController',
+    'loanposting'                    => 'LoanpostingController',
+    'note'                           => 'NoteController',
+    'memberapprove'                  => 'MemberapproveController',
+    'report'                         => 'ReportController',
+    'riskfund'                       => 'RiskfundController',
 
 ]); 
 
@@ -114,6 +114,10 @@ Route::get('getLoanSubmit','SelectBoxController@getLoanSubmit');
 Route::get('getLoanInfo','SelectBoxController@getLoanInfo');
 
 Route::get('getRiskFundVerification','SelectBoxController@getRiskFundVerification');
+
+Route::get('getReport','SelectBoxController@getReport');
+
+// Route::get('getCreate','ReportController@getCreate');
 
 
 

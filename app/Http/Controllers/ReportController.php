@@ -30,13 +30,14 @@ class ReportController extends Controller
         Session::put('report_field', Input::has('field') ? Input::get('field') : (Session::has('report_field') ? Session::get('report_field') : 'id'));
         Session::put('report_sort', Input::has('sort') ? Input::get('sort') : (Session::has('report_sort') ? Session::get('report_sort') : 'asc'));
 
-        $DomainInfo = [''=>'All'] + Domain::lists('DomainName', 'id')->all();
-        return view('report.list')->with('DomainInfo', $DomainInfo);
+        // $DomainInfo = [''=>'All'] + Domain::lists('DomainName', 'id')->all();
+        return view('report.list');
 
     }
 
-    public function postList(){
-        
+    public function getPersonal()
+    {
+        return view('report.personal');
     }
     
     public function getUpdate($id)
@@ -64,27 +65,13 @@ class ReportController extends Controller
 
     public function getCreate()
     {
-        return view('report.create');
+            return view('report.create');        
     }
 
     public function postCreate()
     {
-        $validator = Validator::make(Input::all(), [
-            "ReportName" => "required|unique:reports",
-            
-        ]);
-        if ($validator->fails()) {
-            return array(
-                'fail' => true,
-                'errors' => $validator->getMessageBag()->toArray()
-            );
-        }
+        
 
-        $report = new Report();
-        $report->ReportName = Input::get('ReportName');
-        $report->save();
-
-        return ['url' => 'report/list'];
     }
 
     public function getDelete($id)
