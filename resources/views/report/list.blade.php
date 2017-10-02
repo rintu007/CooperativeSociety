@@ -6,8 +6,8 @@
                     class="glyphicon glyphicon-plus-sign"></i> Personal Report</a>
     </div>
     <div class="pull-right">
-        <a href="javascript:ajaxLoad('report/listreceivers')" class="btn btn-primary pull-right"><i
-                    class="glyphicon glyphicon-ok-sign"></i> Receivers</a>
+        <a href="javascript:ajaxLoad('report/domain')" class="btn btn-primary pull-right"><i
+                    class="glyphicon glyphicon-ok-sign"></i> Domain Report</a>
     </div>
 </h1>
 <div class="col-sm-7 form-group">

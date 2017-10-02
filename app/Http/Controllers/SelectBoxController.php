@@ -46,10 +46,20 @@ class SelectBoxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getDomain(Request $request){
+            $DomainName = $request->DomainName;
+            $data = DB::table('members')
+                        ->join('savingtables', 'members.DomainName', '=', 'savingtables.DomainName')
+                        ->join('loanapplications', 'savingtables.DomainName', '=', 'loanapplications.DomainName')
+                        ->select('members.EnglishName','members.MemberId', 'members.FatherName', 'members.Mobile', 'savingtables.AccountNo', 'savingtables.GSaving', 'savingtables.Dps', 'savingtables.InstallmentNo', 'savingtables.TotalInstallment', 'loanapplications.LoanType', 'loanapplications.LoanAmount', 'loanapplications.LoanDuration', 'loanapplications.InstallmentNo as LoanInstallment', 'loanapplications.PayedInstallment', 'loanapplications.InterestRate', 'loanapplications.Riskfund')
+                        // ->where('loanapplications.DomainName', $DomainName)
+                        ->get();
 
+            return response()->json($data);
+    }
 
     public function getReport(Request $request){
-            $MemberId = $request->id;
+            $MemberId = $request->MemberId;
             $MemberInfo = DB::table('members')
                                 ->select('MemberId', 'EnglishName','FatherName', 'Mobile')
                                 ->where('MemberId', $MemberId)

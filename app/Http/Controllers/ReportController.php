@@ -35,6 +35,12 @@ class ReportController extends Controller
 
     }
 
+    public function getDomain()
+    {
+        $DomainInfo     = ['' => '--select--'] + Domain::lists('DomainName', 'id')->all();
+        return view('report.domain')->with('DomainInfo',$DomainInfo);
+    }
+
     public function getPersonal()
     {
         return view('report.personal');

@@ -117,6 +117,8 @@ Route::get('getRiskFundVerification','SelectBoxController@getRiskFundVerificatio
 
 Route::get('getReport','SelectBoxController@getReport');
 
+Route::get('getDomain','SelectBoxController@getDomain');
+
 // Route::get('getCreate','ReportController@getCreate');
 
 
